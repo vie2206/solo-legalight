@@ -1,0 +1,11 @@
+<svg width="120" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Modern Level Up Logo with upward arrow -->
+  <g>
+    <!-- Upward arrow icon in a circle -->
+    <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
+    <path d="M16 8 L22 14 L19 14 L19 22 L13 22 L13 14 L10 14 Z" fill="currentColor"/>
+    
+    <!-- Level Up text -->
+    <text x="36" y="21" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" font-weight="600" fill="currentColor">Level Up</text>
+  </g>
+</svg>
