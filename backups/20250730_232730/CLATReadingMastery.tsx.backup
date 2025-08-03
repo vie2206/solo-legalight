@@ -1,0 +1,1215 @@
+import React, { useState, useEffect } from 'react'
+import { 
+  BookOpen, Target, Brain, Award, Clock, TrendingUp, 
+  Search, Heart, X, ChevronLeft, ChevronRight, Play, 
+  Pause, RotateCcw, Settings, BarChart3, Lightbulb,
+  Bookmark, MessageSquare, Highlighter, Volume2, Zap,
+  Trophy, Star, Users, Calendar, Download, Share2,
+  Eye, Headphones, Sunrise, Moon, Coffee, CheckCircle,
+  ArrowRight, Flame, Globe, PenTool, Mic, Camera,
+  Languages, Map, Activity, Layers, AlertTriangle
+} from 'lucide-react'
+
+interface User {
+  id: string
+  name: string
+  email: string
+  role: string
+}
+
+interface CLATReadingMasteryProps {
+  user: User | null
+  onBack: () => void
+}
+
+const CLATReadingMastery: React.FC<CLATReadingMasteryProps> = ({ user, onBack }) => {
+  // Core state management
+  const [currentScreen, setCurrentScreen] = useState('home')
+  const [selectedPassage, setSelectedPassage] = useState<any>(null)
+  const [readingTimer, setReadingTimer] = useState(0)
+  const [isReading, setIsReading] = useState(false)
+  const [selectedWord, setSelectedWord] = useState<string | null>(null)
+  const [selectedText, setSelectedText] = useState('')
+  const [aiQuestions, setAiQuestions] = useState<any[]>([])
+  const [userAnswers, setUserAnswers] = useState<Record<string, number>>({})
+  const [selectedLanguage, setSelectedLanguage] = useState('english')
+  
+  // User progress state
+  const [userStats, setUserStats] = useState({
+    readingSpeed: 185,
+    comprehensionScore: 78,
+    dailyStreak: 12,
+    wordsLearned: 247,
+    passagesRead: 45,
+    level: 'Intermediate Scholar',
+    xp: 2840,
+    xpToNext: 1160
+  })
+
+  // App state
+  const [highlights, setHighlights] = useState<any[]>([])
+  const [personalVocab, setPersonalVocab] = useState(new Set(['jurisprudence', 'precedent', 'constitutional']))
+  const [achievements, setAchievements] = useState(['Speed Reader', 'Vocabulary Explorer', 'Daily Warrior'])
+  const [readingPreferences, setReadingPreferences] = useState({
+    fontSize: 16,
+    theme: 'light',
+    highlightColor: 'yellow'
+  })
+
+  // Flashcard system state
+  const [flashcardMode, setFlashcardMode] = useState('review')
+  const [currentFlashcard, setCurrentFlashcard] = useState(0)
+  const [showAnswer, setShowAnswer] = useState(false)
+  const [flashcardStats, setFlashcardStats] = useState({
+    easy: 0,
+    medium: 0,
+    hard: 0,
+    streak: 5
+  })
+  const [vocabLevels, setVocabLevels] = useState<Record<string, string>>({
+    'jurisprudence': 'mastered',
+    'precedent': 'learning', 
+    'constitutional': 'new'
+  })
+
+  // GK Quiz system state
+  const [currentGKQuestion, setCurrentGKQuestion] = useState(0)
+  const [gkQuizMode, setGKQuizMode] = useState('daily')
+  const [gkScore, setGKScore] = useState(0)
+  const [gkStreak, setGKStreak] = useState(8)
+  const [gkAnswers, setGKAnswers] = useState<Record<number, number>>({})
+  const [quizTimeLeft, setQuizTimeLeft] = useState(60)
+  const [isQuizActive, setIsQuizActive] = useState(false)
+  const [gkStats, setGKStats] = useState({
+    totalQuestions: 145,
+    correct: 112,
+    accuracy: 77,
+    currentAffairs: 85,
+    history: 72,
+    polity: 88,
+    economics: 69,
+    legalAwareness: 91
+  })
+
+  // Sample passages with enhanced metadata
+  const passages = [
+    {
+      id: 1,
+      title: "Digital Rights and Privacy in Modern India",
+      type: "Current Affairs",
+      source: "Editorial Analysis - The Hindu, 2024",
+      difficulty: "Advanced",
+      fleschScore: 42,
+      gradeLevel: 12.5,
+      estimatedTime: "6-8 minutes",
+      wordCount: 520,
+      tags: ["Technology", "Privacy", "Constitutional Law", "Digital Rights"],
+      aiComplexity: 8.5,
+      text: `The landmark judgment in Justice K.S. Puttaswamy (Retd.) v. Union of India fundamentally transformed India's approach to digital privacy rights. The Supreme Court's recognition of privacy as a fundamental right under Article 21 has created new paradigms for how technology companies, government agencies, and citizens interact in the digital ecosystem.
+
+This constitutional recognition emerged from growing concerns about surveillance capitalism and the unchecked collection of personal data by both state and non-state actors. The court's nine-judge bench unanimously held that privacy is intrinsic to life and liberty, encompassing informational privacy, bodily privacy, and privacy of choice.
+
+The implications extend far beyond individual rights. Digital platforms now face enhanced scrutiny regarding data collection practices, algorithmic transparency, and user consent mechanisms. The Personal Data Protection Bill, currently under parliamentary consideration, seeks to operationalize these constitutional principles through comprehensive regulatory frameworks.
+
+However, implementation challenges persist. Balancing national security imperatives with individual privacy rights requires nuanced approaches that neither compromise legitimate governance needs nor undermine constitutional protections.`,
+      vocabulary: [
+        {
+          word: "paradigms",
+          definition: "A typical example or pattern of something; a model or framework of concepts",
+          context: "created new paradigms for how technology companies interact",
+          etymology: "From Greek 'paradeigma' meaning 'pattern, example'",
+          difficulty: "advanced"
+        },
+        {
+          word: "intrinsic",
+          definition: "Belonging naturally; essential; inherent to the basic nature of something",
+          context: "privacy is intrinsic to life and liberty",
+          etymology: "From Latin 'intrinsecus' meaning 'inwardly, on the inside'",
+          difficulty: "intermediate"
+        }
+      ]
+    },
+    {
+      id: 2,
+      title: "Climate Change and Intergenerational Justice",
+      type: "Current Affairs",
+      source: "Environmental Law Review - 2024",
+      difficulty: "Intermediate",
+      fleschScore: 58,
+      gradeLevel: 9.8,
+      estimatedTime: "5-7 minutes",
+      wordCount: 445,
+      tags: ["Environment", "Climate Change", "Justice", "Future Generations"],
+      aiComplexity: 7.2,
+      text: `Climate change litigation has emerged as a powerful tool for enforcing environmental obligations and protecting intergenerational equity. Courts worldwide increasingly recognize that present-day carbon emissions create legally cognizable harms for future generations, challenging traditional notions of standing and remedy in environmental law.
+
+The landmark Urgenda decision by the Dutch Supreme Court exemplifies this trend. The court held that the Netherlands government had a legal duty to reduce greenhouse gas emissions by at least 25% by 2020, based on human rights obligations to protect citizens from climate change impacts.
+
+Similar litigation strategies have gained traction globally. In Germany, the Federal Constitutional Court ruled that insufficient climate action violates the rights of younger generations. The court emphasized that current emissions consume the limited carbon budget available for future decades.
+
+India faces unique challenges in climate litigation. While the country contributes relatively little to historical emissions, it experiences severe climate impacts affecting millions of vulnerable citizens.`,
+      vocabulary: [
+        {
+          word: "cognizable",
+          definition: "Capable of being perceived, known, or legally recognized",
+          context: "create legally cognizable harms for future generations",
+          etymology: "From Latin 'cognoscere' meaning 'to get to know'",
+          difficulty: "intermediate"
+        }
+      ]
+    }
+  ]
+
+  // CLAT-based GK Questions Database
+  const gkQuestionsDatabase = [
+    {
+      id: 1,
+      category: "Current Affairs",
+      difficulty: "intermediate",
+      points: 10,
+      question: "Which country assumed the G20 presidency in December 2024?",
+      options: ["Brazil", "South Africa", "Turkey", "Australia"],
+      correct: 0,
+      explanation: "Brazil assumed the G20 presidency from India in December 2024, following India's successful presidency year.",
+      source: "G20 Summit 2024",
+      tags: ["International Relations", "G20", "2024"]
+    },
+    {
+      id: 2,
+      category: "Constitutional Law",
+      difficulty: "advanced",
+      points: 15,
+      question: "The concept of 'Cooperative Federalism' in India emphasizes:",
+      options: [
+        "Competition between Centre and States",
+        "Collaboration between Centre and States for governance",
+        "Complete autonomy of States",
+        "Central control over all subjects"
+      ],
+      correct: 1,
+      explanation: "Cooperative Federalism emphasizes collaboration and partnership between the Centre and States in governance and policy implementation.",
+      source: "Constitutional Governance",
+      tags: ["Federalism", "Centre-State Relations", "Governance"]
+    },
+    {
+      id: 3,
+      category: "Legal Awareness",
+      difficulty: "intermediate",
+      points: 10,
+      question: "Under which Article of the Constitution is the right to constitutional remedies guaranteed?",
+      options: ["Article 32", "Article 21", "Article 19", "Article 14"],
+      correct: 0,
+      explanation: "Article 32 is known as the 'Right to Constitutional Remedies' and is called the 'heart and soul' of the Constitution by Dr. B.R. Ambedkar.",
+      source: "Fundamental Rights",
+      tags: ["Constitutional Remedies", "Article 32", "Fundamental Rights"]
+    },
+    {
+      id: 4,
+      category: "Current Affairs",
+      difficulty: "beginner",
+      points: 5,
+      question: "Which space mission successfully landed on the Moon's South Pole in August 2023?",
+      options: ["Chandrayaan-2", "Chandrayaan-3", "Mangalyaan", "Aditya L1"],
+      correct: 1,
+      explanation: "Chandrayaan-3 successfully made India the first country to land on the Moon's South Pole in August 2023.",
+      source: "ISRO Achievement 2023",
+      tags: ["Space", "ISRO", "Chandrayaan-3", "2023"]
+    }
+  ]
+
+  // Flashcards data
+  const flashcardsData = [
+    {
+      id: 1,
+      term: "Jurisprudence",
+      definition: "The theory or philosophy of law; the science of law",
+      example: "The jurisprudence of constitutional interpretation has evolved significantly.",
+      category: "Legal Terms",
+      difficulty: "intermediate"
+    },
+    {
+      id: 2,
+      term: "Precedent",
+      definition: "An earlier event or action that serves as an example or guide",
+      example: "The Supreme Court judgment set a precedent for future cases.",
+      category: "Legal Terms",
+      difficulty: "basic"
+    },
+    {
+      id: 3,
+      term: "Constitutional",
+      definition: "Relating to an established set of principles governing a state",
+      example: "The constitutional validity of the law was challenged in court.",
+      category: "Legal Terms",
+      difficulty: "basic"
+    }
+  ]
+
+  // Timer for reading
+  useEffect(() => {
+    let interval: any
+    if (isReading) {
+      interval = setInterval(() => {
+        setReadingTimer(prev => prev + 1)
+      }, 1000)
+    }
+    return () => clearInterval(interval)
+  }, [isReading])
+
+  // Utility functions
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins}:${secs.toString().padStart(2, '0')}`
+  }
+
+  const calculateReadingSpeed = (wordCount: number, timeInSeconds: number) => {
+    if (timeInSeconds === 0) return 0
+    return Math.round((wordCount / timeInSeconds) * 60)
+  }
+
+  const getScoreColor = (score: number) => {
+    if (score >= 80) return 'text-green-600'
+    if (score >= 60) return 'text-yellow-600'
+    return 'text-red-600'
+  }
+
+  // Home Screen Component
+  const HomeScreen = () => (
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      {/* Enhanced Header */}
+      <div className="bg-white shadow-sm border-b border-gray-100 px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <button 
+              onClick={onBack}
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-600" />
+            </button>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900 flex items-center">
+                <BookOpen className="w-5 h-5 mr-2 text-indigo-500" />
+                CLAT Reading Mastery
+              </h2>
+              <p className="text-sm text-gray-500">Complete Learning System</p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 px-3 py-1 bg-yellow-100 rounded-full">
+              <Flame className="w-4 h-4 text-yellow-600" />
+              <span className="text-sm font-medium text-yellow-700">{userStats.dailyStreak} day streak</span>
+            </div>
+            <div className="flex items-center space-x-2 px-3 py-1 bg-purple-100 rounded-full">
+              <Trophy className="w-4 h-4 text-purple-600" />
+              <span className="text-sm font-medium text-purple-700">Level {userStats.level}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Progress Overview */}
+      <div className="px-6 py-8">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Your Progress</h3>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="text-center p-4 bg-blue-50 rounded-xl">
+              <Brain className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+              <p className="text-2xl font-bold text-gray-900">{userStats.readingSpeed}</p>
+              <p className="text-sm text-gray-600">WPM Speed</p>
+            </div>
+            <div className="text-center p-4 bg-green-50 rounded-xl">
+              <Target className="w-8 h-8 text-green-600 mx-auto mb-2" />
+              <p className="text-2xl font-bold text-gray-900">{userStats.comprehensionScore}%</p>
+              <p className="text-sm text-gray-600">Comprehension</p>
+            </div>
+            <div className="text-center p-4 bg-purple-50 rounded-xl">
+              <Bookmark className="w-8 h-8 text-purple-600 mx-auto mb-2" />
+              <p className="text-2xl font-bold text-gray-900">{userStats.wordsLearned}</p>
+              <p className="text-sm text-gray-600">Words Learned</p>
+            </div>
+            <div className="text-center p-4 bg-orange-50 rounded-xl">
+              <BookOpen className="w-8 h-8 text-orange-600 mx-auto mb-2" />
+              <p className="text-2xl font-bold text-gray-900">{userStats.passagesRead}</p>
+              <p className="text-sm text-gray-600">Passages Read</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Learning Modules */}
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Learning Modules</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <button 
+            onClick={() => setCurrentScreen('passages')}
+            className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all text-left group"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <BookOpen className="w-10 h-10 text-indigo-600" />
+              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-indigo-600 transition-colors" />
+            </div>
+            <h4 className="font-semibold text-gray-900 mb-2">Reading Passages</h4>
+            <p className="text-sm text-gray-600">Practice with CLAT-style passages</p>
+            <div className="mt-3 flex items-center space-x-2 text-sm">
+              <span className="px-2 py-1 bg-indigo-100 text-indigo-700 rounded-full">{passages.length} passages</span>
+              <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">All levels</span>
+            </div>
+          </button>
+
+          <button 
+            onClick={() => setCurrentScreen('flashcards')}
+            className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all text-left group"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <Layers className="w-10 h-10 text-purple-600" />
+              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-purple-600 transition-colors" />
+            </div>
+            <h4 className="font-semibold text-gray-900 mb-2">Flashcards</h4>
+            <p className="text-sm text-gray-600">Master legal vocabulary</p>
+            <div className="mt-3 flex items-center space-x-2 text-sm">
+              <span className="px-2 py-1 bg-purple-100 text-purple-700 rounded-full">{flashcardsData.length} cards</span>
+              <span className="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full">{flashcardStats.streak} streak</span>
+            </div>
+          </button>
+
+          <button 
+            onClick={() => setCurrentScreen('gk-quiz')}
+            className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all text-left group"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <Globe className="w-10 h-10 text-emerald-600" />
+              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" />
+            </div>
+            <h4 className="font-semibold text-gray-900 mb-2">GK Quiz</h4>
+            <p className="text-sm text-gray-600">Test your general knowledge</p>
+            <div className="mt-3 flex items-center space-x-2 text-sm">
+              <span className="px-2 py-1 bg-emerald-100 text-emerald-700 rounded-full">{gkStats.accuracy}% accuracy</span>
+              <span className="px-2 py-1 bg-orange-100 text-orange-700 rounded-full">{gkStreak} day streak</span>
+            </div>
+          </button>
+
+          <button 
+            onClick={() => setCurrentScreen('analytics')}
+            className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all text-left group"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <BarChart3 className="w-10 h-10 text-blue-600" />
+              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
+            </div>
+            <h4 className="font-semibold text-gray-900 mb-2">Analytics</h4>
+            <p className="text-sm text-gray-600">Track your performance</p>
+          </button>
+
+          <button 
+            onClick={() => setCurrentScreen('vocabulary')}
+            className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all text-left group"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <Languages className="w-10 h-10 text-pink-600" />
+              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-pink-600 transition-colors" />
+            </div>
+            <h4 className="font-semibold text-gray-900 mb-2">Vocabulary Builder</h4>
+            <p className="text-sm text-gray-600">Expand your word power</p>
+            <div className="mt-3 flex items-center space-x-2 text-sm">
+              <span className="px-2 py-1 bg-pink-100 text-pink-700 rounded-full">{userStats.wordsLearned} words</span>
+            </div>
+          </button>
+
+          <button 
+            onClick={() => setCurrentScreen('memory-palace')}
+            className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all text-left group"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <Map className="w-10 h-10 text-orange-600" />
+              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-orange-600 transition-colors" />
+            </div>
+            <h4 className="font-semibold text-gray-900 mb-2">Memory Palace</h4>
+            <p className="text-sm text-gray-600">Visual learning techniques</p>
+          </button>
+        </div>
+
+        {/* Daily Challenges */}
+        <div className="mt-8">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Daily Challenges</h3>
+          <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl p-6 text-white">
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="text-xl font-bold mb-2">Today's Challenge</h4>
+                <p className="text-sm opacity-90 mb-4">Complete 3 passages with 80%+ comprehension</p>
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-2">
+                    <Clock className="w-4 h-4" />
+                    <span className="text-sm">Ends in 8h 24m</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Award className="w-4 h-4" />
+                    <span className="text-sm">+50 XP Reward</span>
+                  </div>
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center">
+                  <span className="text-2xl font-bold">1/3</span>
+                </div>
+                <p className="text-sm mt-2">Progress</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
+  // Passages List Screen
+  const PassagesListScreen = () => (
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="bg-white shadow-sm border-b border-gray-100 px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <button 
+              onClick={() => setCurrentScreen('home')}
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-600" />
+            </button>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900">Reading Passages</h2>
+              <p className="text-sm text-gray-500">Select a passage to begin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-6 py-8">
+        <div className="grid gap-4">
+          {passages.map(passage => (
+            <button
+              key={passage.id}
+              onClick={() => {
+                setSelectedPassage(passage)
+                setCurrentScreen('reader')
+              }}
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all text-left"
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-900 text-lg mb-2">{passage.title}</h3>
+                  <div className="flex items-center space-x-4 text-sm text-gray-600 mb-3">
+                    <span>{passage.type}</span>
+                    <span>•</span>
+                    <span>{passage.wordCount} words</span>
+                    <span>•</span>
+                    <span>{passage.estimatedTime}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {passage.tags.map((tag, idx) => (
+                      <span 
+                        key={idx}
+                        className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="ml-4 text-right">
+                  <div className={`px-3 py-1 rounded-full text-sm font-medium ${
+                    passage.difficulty === 'Advanced' ? 'bg-red-100 text-red-700' :
+                    passage.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-700' :
+                    'bg-green-100 text-green-700'
+                  }`}>
+                    {passage.difficulty}
+                  </div>
+                  <div className="mt-2 text-sm text-gray-500">
+                    Grade {passage.gradeLevel}
+                  </div>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+
+  // Reader Screen
+  const ReaderScreen = () => {
+    if (!selectedPassage) return null
+
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <div className="bg-white shadow-sm border-b border-gray-100 px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <button 
+                onClick={() => {
+                  setCurrentScreen('passages')
+                  setIsReading(false)
+                  setReadingTimer(0)
+                }}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-600" />
+              </button>
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900">{selectedPassage.title}</h2>
+                <p className="text-sm text-gray-500">{selectedPassage.type} • {selectedPassage.wordCount} words</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 px-3 py-1 bg-gray-100 rounded-full">
+                <Clock className="w-4 h-4 text-gray-600" />
+                <span className="text-sm font-medium text-gray-700">{formatTime(readingTimer)}</span>
+              </div>
+              <button
+                onClick={() => setIsReading(!isReading)}
+                className={`p-2 rounded-full transition-colors ${
+                  isReading ? 'bg-red-100 hover:bg-red-200' : 'bg-green-100 hover:bg-green-200'
+                }`}
+              >
+                {isReading ? (
+                  <Pause className="w-5 h-5 text-red-600" />
+                ) : (
+                  <Play className="w-5 h-5 text-green-600" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 py-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+            <div 
+              className="prose prose-lg max-w-none"
+              style={{ fontSize: `${readingPreferences.fontSize}px` }}
+            >
+              {selectedPassage.text.split('\n\n').map((paragraph: string, idx: number) => (
+                <p key={idx} className="mb-4 leading-relaxed text-gray-800">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+
+            {selectedPassage.vocabulary && selectedPassage.vocabulary.length > 0 && (
+              <div className="mt-8 pt-8 border-t border-gray-200">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Vocabulary</h3>
+                <div className="space-y-3">
+                  {selectedPassage.vocabulary.map((vocab: any, idx: number) => (
+                    <div key={idx} className="bg-gray-50 rounded-lg p-4">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-gray-900">{vocab.word}</h4>
+                          <p className="text-sm text-gray-600 mt-1">{vocab.definition}</p>
+                          <p className="text-xs text-gray-500 mt-2 italic">"{vocab.context}"</p>
+                        </div>
+                        <span className={`ml-4 px-2 py-1 rounded-full text-xs font-medium ${
+                          vocab.difficulty === 'advanced' ? 'bg-red-100 text-red-700' :
+                          vocab.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-700' :
+                          'bg-green-100 text-green-700'
+                        }`}>
+                          {vocab.difficulty}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="mt-6 flex justify-center">
+            <button
+              onClick={() => {
+                const speed = calculateReadingSpeed(selectedPassage.wordCount, readingTimer)
+                alert(`Reading completed! Your speed: ${speed} WPM`)
+                setCurrentScreen('home')
+                setIsReading(false)
+                setReadingTimer(0)
+              }}
+              className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-colors"
+            >
+              Complete Reading
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // Flashcards Screen
+  const FlashcardsScreen = () => {
+    const currentCard = flashcardsData[currentFlashcard]
+
+    const handleNextCard = () => {
+      setShowAnswer(false)
+      setCurrentFlashcard((prev) => (prev + 1) % flashcardsData.length)
+    }
+
+    const handleDifficulty = (difficulty: string) => {
+      if (difficulty === 'easy') {
+        setFlashcardStats(prev => ({ ...prev, easy: prev.easy + 1 }))
+      } else if (difficulty === 'medium') {
+        setFlashcardStats(prev => ({ ...prev, medium: prev.medium + 1 }))
+      } else {
+        setFlashcardStats(prev => ({ ...prev, hard: prev.hard + 1 }))
+      }
+      handleNextCard()
+    }
+
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
+        <div className="bg-white shadow-sm border-b border-gray-100 px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <button 
+                onClick={() => setCurrentScreen('home')}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-600" />
+              </button>
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <Layers className="w-5 h-5 mr-2 text-purple-500" />
+                  Flashcards
+                </h2>
+                <p className="text-sm text-gray-500">Card {currentFlashcard + 1} of {flashcardsData.length}</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 px-3 py-1 bg-yellow-100 rounded-full">
+                <Flame className="w-4 h-4 text-yellow-600" />
+                <span className="text-sm font-medium text-yellow-700">{flashcardStats.streak} card streak</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="px-6 py-8">
+          <div className="max-w-2xl mx-auto">
+            <div 
+              className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 cursor-pointer transform transition-all duration-300 hover:scale-105"
+              onClick={() => setShowAnswer(!showAnswer)}
+              style={{ minHeight: '300px' }}
+            >
+              <div className="flex flex-col items-center justify-center h-full text-center">
+                {!showAnswer ? (
+                  <>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{currentCard.term}</h3>
+                    <p className="text-sm text-gray-500">Click to reveal definition</p>
+                  </>
+                ) : (
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-semibold text-gray-900">{currentCard.term}</h3>
+                    <p className="text-lg text-gray-700">{currentCard.definition}</p>
+                    {currentCard.example && (
+                      <p className="text-sm text-gray-600 italic">"{currentCard.example}"</p>
+                    )}
+                    <span className="inline-block px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">
+                      {currentCard.category}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {showAnswer && (
+              <div className="mt-6 flex justify-center space-x-4">
+                <button
+                  onClick={() => handleDifficulty('easy')}
+                  className="px-6 py-3 bg-green-100 text-green-700 rounded-xl font-medium hover:bg-green-200 transition-colors"
+                >
+                  Easy
+                </button>
+                <button
+                  onClick={() => handleDifficulty('medium')}
+                  className="px-6 py-3 bg-yellow-100 text-yellow-700 rounded-xl font-medium hover:bg-yellow-200 transition-colors"
+                >
+                  Medium
+                </button>
+                <button
+                  onClick={() => handleDifficulty('hard')}
+                  className="px-6 py-3 bg-red-100 text-red-700 rounded-xl font-medium hover:bg-red-200 transition-colors"
+                >
+                  Hard
+                </button>
+              </div>
+            )}
+
+            <div className="mt-8 bg-gray-50 rounded-xl p-4">
+              <h4 className="text-sm font-semibold text-gray-700 mb-2">Session Stats</h4>
+              <div className="flex justify-around">
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-green-600">{flashcardStats.easy}</p>
+                  <p className="text-xs text-gray-600">Easy</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-yellow-600">{flashcardStats.medium}</p>
+                  <p className="text-xs text-gray-600">Medium</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-red-600">{flashcardStats.hard}</p>
+                  <p className="text-xs text-gray-600">Hard</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // GK Quiz Screen
+  const GKQuizScreen = () => {
+    const currentQuestion = gkQuestionsDatabase[currentGKQuestion]
+    const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
+    const [showResult, setShowResult] = useState(false)
+
+    const handleGKAnswer = (selectedOption: number) => {
+      setSelectedAnswer(selectedOption)
+      setShowResult(true)
+      
+      if (selectedOption === currentQuestion.correct) {
+        setGKScore(prev => prev + currentQuestion.points)
+      }
+    }
+
+    const handleNextQuestion = () => {
+      if (currentGKQuestion < gkQuestionsDatabase.length - 1) {
+        setCurrentGKQuestion(prev => prev + 1)
+        setSelectedAnswer(null)
+        setShowResult(false)
+      } else {
+        alert(`Quiz completed! Your score: ${gkScore} points`)
+        setCurrentScreen('home')
+        setCurrentGKQuestion(0)
+        setGKScore(0)
+      }
+    }
+
+    const getCategoryColor = (category: string) => {
+      const colors: Record<string, string> = {
+        'Current Affairs': 'bg-blue-100 text-blue-700',
+        'Constitutional Law': 'bg-purple-100 text-purple-700',
+        'Legal Awareness': 'bg-indigo-100 text-indigo-700',
+        'History': 'bg-orange-100 text-orange-700',
+        'Polity': 'bg-pink-100 text-pink-700',
+        'Economics': 'bg-yellow-100 text-yellow-700',
+        'Environment': 'bg-emerald-100 text-emerald-700'
+      }
+      return colors[category] || 'bg-gray-100 text-gray-700'
+    }
+
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50">
+        <div className="bg-white shadow-sm border-b border-gray-100 px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <button 
+                onClick={() => setCurrentScreen('home')}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-600" />
+              </button>
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <Globe className="w-5 h-5 mr-2 text-emerald-500" />
+                  CLAT GK Challenge
+                </h2>
+                <p className="text-sm text-gray-500">
+                  Question {currentGKQuestion + 1} of {gkQuestionsDatabase.length}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="px-3 py-1 bg-emerald-100 rounded-full">
+                <span className="text-sm font-medium text-emerald-700">Score: {gkScore}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="px-6 py-8">
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+              <div className="flex items-center justify-between mb-4">
+                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(currentQuestion.category)}`}>
+                  {currentQuestion.category}
+                </span>
+                <span className="text-sm text-gray-500">{currentQuestion.points} points</span>
+              </div>
+
+              <h3 className="text-xl font-semibold text-gray-900 mb-6">{currentQuestion.question}</h3>
+
+              <div className="space-y-3">
+                {currentQuestion.options.map((option, index) => {
+                  const isSelected = selectedAnswer === index
+                  const isCorrect = index === currentQuestion.correct
+                  
+                  let buttonClass = "w-full p-4 text-left rounded-xl border-2 transition-all "
+                  
+                  if (showResult) {
+                    if (isCorrect) {
+                      buttonClass += "border-green-500 bg-green-50"
+                    } else if (isSelected && !isCorrect) {
+                      buttonClass += "border-red-500 bg-red-50"
+                    } else {
+                      buttonClass += "border-gray-200 bg-gray-50"
+                    }
+                  } else {
+                    buttonClass += "border-gray-200 hover:border-emerald-300 hover:bg-emerald-50 cursor-pointer"
+                  }
+
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => !showResult && handleGKAnswer(index)}
+                      disabled={showResult}
+                      className={buttonClass}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold ${
+                          showResult && isCorrect ? 'bg-green-500 border-green-500 text-white' :
+                          showResult && isSelected && !isCorrect ? 'bg-red-500 border-red-500 text-white' :
+                          'border-gray-300 text-gray-600'
+                        }`}>
+                          {String.fromCharCode(65 + index)}
+                        </div>
+                        <span className="font-medium">{option}</span>
+                        {showResult && isCorrect && (
+                          <CheckCircle className="w-5 h-5 text-green-500 ml-auto" />
+                        )}
+                        {showResult && isSelected && !isCorrect && (
+                          <X className="w-5 h-5 text-red-500 ml-auto" />
+                        )}
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+
+              {showResult && (
+                <div className="mt-6 p-4 bg-blue-50 rounded-xl">
+                  <h4 className="font-semibold text-blue-900 mb-2">Explanation</h4>
+                  <p className="text-sm text-blue-800">{currentQuestion.explanation}</p>
+                  <p className="text-xs text-blue-600 mt-2">Source: {currentQuestion.source}</p>
+                </div>
+              )}
+
+              {showResult && (
+                <div className="mt-6 flex justify-center">
+                  <button
+                    onClick={handleNextQuestion}
+                    className="px-6 py-3 bg-emerald-600 text-white rounded-xl font-medium hover:bg-emerald-700 transition-colors"
+                  >
+                    {currentGKQuestion < gkQuestionsDatabase.length - 1 ? 'Next Question' : 'Complete Quiz'}
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // Analytics Screen
+  const AnalyticsScreen = () => (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      <div className="bg-white shadow-sm border-b border-gray-100 px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <button 
+              onClick={() => setCurrentScreen('home')}
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-600" />
+            </button>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900 flex items-center">
+                <BarChart3 className="w-5 h-5 mr-2 text-blue-500" />
+                Performance Analytics
+              </h2>
+              <p className="text-sm text-gray-500">Track your progress</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-6 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+            <h3 className="font-semibold text-gray-900 mb-4">Reading Speed Trend</h3>
+            <div className="text-center py-8">
+              <TrendingUp className="w-12 h-12 text-green-500 mx-auto mb-2" />
+              <p className="text-3xl font-bold text-gray-900">{userStats.readingSpeed} WPM</p>
+              <p className="text-sm text-green-600 mt-1">↑ 12% from last week</p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+            <h3 className="font-semibold text-gray-900 mb-4">Comprehension Score</h3>
+            <div className="text-center py-8">
+              <Brain className="w-12 h-12 text-blue-500 mx-auto mb-2" />
+              <p className="text-3xl font-bold text-gray-900">{userStats.comprehensionScore}%</p>
+              <p className="text-sm text-blue-600 mt-1">Above average</p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+            <h3 className="font-semibold text-gray-900 mb-4">Study Consistency</h3>
+            <div className="text-center py-8">
+              <Flame className="w-12 h-12 text-orange-500 mx-auto mb-2" />
+              <p className="text-3xl font-bold text-gray-900">{userStats.dailyStreak} days</p>
+              <p className="text-sm text-orange-600 mt-1">Keep it up!</p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+            <h3 className="font-semibold text-gray-900 mb-4">GK Performance</h3>
+            <div className="space-y-3">
+              <div>
+                <div className="flex justify-between text-sm mb-1">
+                  <span>Current Affairs</span>
+                  <span className="font-medium">{gkStats.currentAffairs}%</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="bg-blue-500 h-2 rounded-full" style={{ width: `${gkStats.currentAffairs}%` }}></div>
+                </div>
+              </div>
+              <div>
+                <div className="flex justify-between text-sm mb-1">
+                  <span>Constitutional Law</span>
+                  <span className="font-medium">{gkStats.polity}%</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="bg-purple-500 h-2 rounded-full" style={{ width: `${gkStats.polity}%` }}></div>
+                </div>
+              </div>
+              <div>
+                <div className="flex justify-between text-sm mb-1">
+                  <span>Legal Awareness</span>
+                  <span className="font-medium">{gkStats.legalAwareness}%</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="bg-indigo-500 h-2 rounded-full" style={{ width: `${gkStats.legalAwareness}%` }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+            <h3 className="font-semibold text-gray-900 mb-4">Vocabulary Growth</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="text-sm">Mastered</span>
+                <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">
+                  {Object.values(vocabLevels).filter(level => level === 'mastered').length} words
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-sm">Learning</span>
+                <span className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium">
+                  {Object.values(vocabLevels).filter(level => level === 'learning').length} words
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-sm">New</span>
+                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                  {Object.values(vocabLevels).filter(level => level === 'new').length} words
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-6 text-white">
+            <h3 className="font-semibold mb-4">Achievement Unlocked!</h3>
+            <div className="flex items-center space-x-4">
+              <Trophy className="w-12 h-12" />
+              <div>
+                <p className="font-medium">Speed Reader Pro</p>
+                <p className="text-sm opacity-90">Read 50+ passages</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
+  // Vocabulary Builder Screen
+  const VocabularyScreen = () => (
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      <div className="bg-white shadow-sm border-b border-gray-100 px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <button 
+              onClick={() => setCurrentScreen('home')}
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-600" />
+            </button>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900 flex items-center">
+                <Languages className="w-5 h-5 mr-2 text-pink-500" />
+                Vocabulary Builder
+              </h2>
+              <p className="text-sm text-gray-500">{userStats.wordsLearned} words mastered</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-6 py-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+            <h3 className="font-semibold text-gray-900 mb-4">Today's New Words</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {passages[0].vocabulary.map((word, idx) => (
+                <div key={idx} className="border border-gray-200 rounded-xl p-4 hover:shadow-md transition-all">
+                  <div className="flex items-start justify-between mb-2">
+                    <h4 className="font-bold text-lg text-gray-900">{word.word}</h4>
+                    <button 
+                      onClick={() => setPersonalVocab(prev => new Set([...Array.from(prev), word.word]))}
+                      className="p-1 hover:bg-gray-100 rounded-full"
+                    >
+                      <Bookmark className={`w-4 h-4 ${personalVocab.has(word.word) ? 'text-pink-500 fill-current' : 'text-gray-400'}`} />
+                    </button>
+                  </div>
+                  <p className="text-sm text-gray-700 mb-2">{word.definition}</p>
+                  <p className="text-xs text-gray-500 italic mb-2">"{word.context}"</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-500">Etymology: {word.etymology}</span>
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      word.difficulty === 'advanced' ? 'bg-red-100 text-red-700' :
+                      word.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-700' :
+                      'bg-green-100 text-green-700'
+                    }`}>
+                      {word.difficulty}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+            <h3 className="font-semibold text-gray-900 mb-4">Your Personal Vocabulary</h3>
+            <div className="flex flex-wrap gap-3">
+              {Array.from(personalVocab).map((word, idx) => (
+                <span 
+                  key={idx}
+                  className="px-4 py-2 bg-pink-100 text-pink-700 rounded-full text-sm font-medium hover:bg-pink-200 transition-colors cursor-pointer"
+                >
+                  {word}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
+  // Memory Palace Screen
+  const MemoryPalaceScreen = () => (
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-yellow-50">
+      <div className="bg-white shadow-sm border-b border-gray-100 px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <button 
+              onClick={() => setCurrentScreen('home')}
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-600" />
+            </button>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900 flex items-center">
+                <Map className="w-5 h-5 mr-2 text-orange-500" />
+                Memory Palace
+              </h2>
+              <p className="text-sm text-gray-500">Visual learning techniques</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-6 py-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+            <div className="text-center">
+              <Map className="w-16 h-16 text-orange-500 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Build Your Memory Palace</h3>
+              <p className="text-gray-600 mb-8">Create visual associations to remember complex legal concepts</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div className="border border-gray-200 rounded-xl p-6">
+                  <h4 className="font-semibold text-gray-900 mb-3">Constitutional Articles Room</h4>
+                  <p className="text-sm text-gray-600 mb-4">Visualize key articles as objects in a room</p>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span>Article 14 - Equality (Golden Scale)</span>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span>Article 21 - Life & Liberty (Tree of Life)</span>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span>Article 32 - Remedies (Shield & Sword)</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="border border-gray-200 rounded-xl p-6">
+                  <h4 className="font-semibold text-gray-900 mb-3">Legal Maxims Garden</h4>
+                  <p className="text-sm text-gray-600 mb-4">Plant legal principles as memorable scenes</p>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-center space-x-2">
+                      <Lightbulb className="w-4 h-4 text-yellow-500" />
+                      <span>Audi Alteram Partem - Two Ears Statue</span>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                      <Lightbulb className="w-4 h-4 text-yellow-500" />
+                      <span>Res Judicata - Closed Door</span>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                      <Lightbulb className="w-4 h-4 text-yellow-500" />
+                      <span>Caveat Emptor - Buyer's Lantern</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <button className="mt-8 px-6 py-3 bg-orange-600 text-white rounded-xl font-medium hover:bg-orange-700 transition-colors">
+                Start Building Your Palace
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
+  // Render appropriate screen
+  const renderScreen = () => {
+    switch (currentScreen) {
+      case 'home': return <HomeScreen />
+      case 'passages': return <PassagesListScreen />
+      case 'reader': return <ReaderScreen />
+      case 'flashcards': return <FlashcardsScreen />
+      case 'gk-quiz': return <GKQuizScreen />
+      case 'analytics': return <AnalyticsScreen />
+      case 'vocabulary': return <VocabularyScreen />
+      case 'memory-palace': return <MemoryPalaceScreen />
+      default: return <HomeScreen />
+    }
+  }
+
+  return (
+    <div className="max-w-6xl mx-auto bg-white min-h-screen relative overflow-hidden">
+      {renderScreen()}
+    </div>
+  )
+}
+
+export default CLATReadingMastery

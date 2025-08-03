@@ -1,0 +1,1332 @@
+
+> frontend@0.1.0 start
+> react-scripts start
+
+(node:46000) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:46000) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:46000) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled with warnings.
+
+[eslint] 
+src/App.tsx
+  Line 33:10:  'showLogin' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/SMSAuth.tsx
+  Line 142:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.tsx
+  Line 33:10:  'showLogin' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src/components/SMSAuth.tsx
+  Line 142:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 142:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 142:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+ERROR in src/App.tsx:65:9
+TS2304: Cannot find name 'setShowLogin'.
+    63 |         localStorage.setItem('auth_token', data.token);
+    64 |         localStorage.setItem('user_data', JSON.stringify(data.user));
+  > 65 |         setShowLogin(false);
+       |         ^^^^^^^^^^^^
+    66 |       } else {
+    67 |         alert('Demo login failed');
+    68 |       }
+
+ERROR in src/App.tsx:95:9
+TS2304: Cannot find name 'setShowLogin'.
+    93 |         localStorage.setItem('auth_token', data.token);
+    94 |         localStorage.setItem('user_data', JSON.stringify(data.user));
+  > 95 |         setShowLogin(false);
+       |         ^^^^^^^^^^^^
+    96 |       } else {
+    97 |         alert(data.error || 'Login failed');
+    98 |       }
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 142:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 142:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 142:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 142:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 147:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 147:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+ERROR in src/components/SMSAuth.tsx:96:18
+TS2339: Property 'testOtp' does not exist on type 'AuthResponse'.
+    94 |         
+    95 |         // Show test OTP if available
+  > 96 |         if (data.testOtp) {
+       |                  ^^^^^^^
+    97 |           alert(`TEST MODE: Your OTP is ${data.testOtp}`);
+    98 |         }
+    99 |       } else {
+
+ERROR in src/components/SMSAuth.tsx:97:48
+TS2339: Property 'testOtp' does not exist on type 'AuthResponse'.
+     95 |         // Show test OTP if available
+     96 |         if (data.testOtp) {
+  >  97 |           alert(`TEST MODE: Your OTP is ${data.testOtp}`);
+        |                                                ^^^^^^^
+     98 |         }
+     99 |       } else {
+    100 |         setError(data.error || data.details || 'Failed to send OTP');
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.tsx
+  Line 4:8:  'AdminDashboard' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.tsx
+  Line 4:8:  'AdminDashboard' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/App.tsx
+  Line 318:14:  'AdminDashboard' is not defined  react/jsx-no-undef
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/App.tsx
+  Line 4:8:  'CompleteAdminDashboard' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+ERROR in [eslint] 
+src/App.tsx
+  Line 318:14:  'AdminDashboard' is not defined  react/jsx-no-undef
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/App.tsx:318:14
+TS2304: Cannot find name 'AdminDashboard'.
+    316 |           {/* Render different dashboards based on user role */}
+    317 |           {user.role === 'admin' ? (
+  > 318 |             <AdminDashboard 
+        |              ^^^^^^^^^^^^^^
+    319 |               user={user}
+    320 |               onLogout={handleLogout}
+    321 |             />
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 3:74:    'AlertCircle' is defined but never used                                                                          @typescript-eslint/no-unused-vars
+  Line 5:20:    'Calendar' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 5:37:    'Globe' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 5:44:    'Database' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 5:54:    'Server' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 5:62:    'Wifi' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 5:68:    'Lock' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 5:74:    'Key' is defined but never used                                                                                  @typescript-eslint/no-unused-vars
+  Line 6:44:    'MapPin' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 6:52:    'Phone' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 6:59:    'CreditCard' is defined but never used                                                                           @typescript-eslint/no-unused-vars
+  Line 7:14:    'Archive' is defined but never used                                                                              @typescript-eslint/no-unused-vars
+  Line 7:23:    'Upload' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 7:31:    'Save' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 7:40:    'Check' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 7:47:    'AlertTriangle' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 7:62:    'Info' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 7:68:    'Star' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 8:18:    'Headphones' is defined but never used                                                                           @typescript-eslint/no-unused-vars
+  Line 8:45:    'Briefcase' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 8:71:    'Home' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 103:10:  'loading' is assigned a value but never used                                                                     @typescript-eslint/no-unused-vars
+  Line 108:10:  'selectedItem' is assigned a value but never used                                                                @typescript-eslint/no-unused-vars
+  Line 114:6:   React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 3:74:    'AlertCircle' is defined but never used                                                                          @typescript-eslint/no-unused-vars
+  Line 5:20:    'Calendar' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 5:37:    'Globe' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 5:44:    'Database' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  Line 5:54:    'Server' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 5:62:    'Wifi' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 5:68:    'Lock' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 5:74:    'Key' is defined but never used                                                                                  @typescript-eslint/no-unused-vars
+  Line 6:44:    'MapPin' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 6:52:    'Phone' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 6:59:    'CreditCard' is defined but never used                                                                           @typescript-eslint/no-unused-vars
+  Line 7:14:    'Archive' is defined but never used                                                                              @typescript-eslint/no-unused-vars
+  Line 7:23:    'Upload' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  Line 7:31:    'Save' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 7:40:    'Check' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  Line 7:47:    'AlertTriangle' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+  Line 7:62:    'Info' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 7:68:    'Star' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 8:18:    'Headphones' is defined but never used                                                                           @typescript-eslint/no-unused-vars
+  Line 8:45:    'Briefcase' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  Line 8:71:    'Home' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  Line 103:10:  'loading' is assigned a value but never used                                                                     @typescript-eslint/no-unused-vars
+  Line 108:10:  'selectedItem' is assigned a value but never used                                                                @typescript-eslint/no-unused-vars
+  Line 114:6:   React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 101:10:  'loading' is assigned a value but never used                                                                     @typescript-eslint/no-unused-vars
+  Line 106:10:  'selectedItem' is assigned a value but never used                                                                @typescript-eslint/no-unused-vars
+  Line 112:6:   React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 101:10:  'loading' is assigned a value but never used                                                                     @typescript-eslint/no-unused-vars
+  Line 106:10:  'selectedItem' is assigned a value but never used                                                                @typescript-eslint/no-unused-vars
+  Line 112:6:   React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 110:6:  React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 110:6:  React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/components/CompleteAdminDashboard.tsx:120:5
+TS2304: Cannot find name 'setLoading'.
+    118 |       fetchFinancialData()
+    119 |     ]);
+  > 120 |     setLoading(false);
+        |     ^^^^^^^^^^
+    121 |   };
+    122 |
+    123 |   const fetchAdminStats = async () => {
+
+ERROR in src/components/CompleteAdminDashboard.tsx:505:52
+TS2304: Cannot find name 'setSelectedItem'.
+    503 |           </div>
+    504 |           <button 
+  > 505 |             onClick={() => { setModalType('user'); setSelectedItem(null); setShowModal(true); }}
+        |                                                    ^^^^^^^^^^^^^^^
+    506 |             className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg flex items-center font-medium"
+    507 |           >
+    508 |             <Plus className="w-5 h-5 mr-2" />
+
+ERROR in src/components/CompleteAdminDashboard.tsx:615:42
+TS2304: Cannot find name 'setSelectedItem'.
+    613 |                     <div className="flex space-x-2">
+    614 |                       <button 
+  > 615 |                         onClick={() => { setSelectedItem(user); setModalType('user'); setShowModal(true); }}
+        |                                          ^^^^^^^^^^^^^^^
+    616 |                         className="text-blue-600 hover:text-blue-900 p-2 rounded-lg hover:bg-blue-50"
+    617 |                       >
+    618 |                         <Eye className="w-4 h-4" />
+
+ERROR in src/components/CompleteAdminDashboard.tsx:649:55
+TS2304: Cannot find name 'setSelectedItem'.
+    647 |           </div>
+    648 |           <button 
+  > 649 |             onClick={() => { setModalType('content'); setSelectedItem(null); setShowModal(true); }}
+        |                                                       ^^^^^^^^^^^^^^^
+    650 |             className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-lg flex items-center font-medium"
+    651 |           >
+    652 |             <Plus className="w-5 h-5 mr-2" />
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 120:6:  React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 120:6:  React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/components/CompleteAdminDashboard.tsx:504:52
+TS2304: Cannot find name 'setSelectedItem'.
+    502 |           </div>
+    503 |           <button 
+  > 504 |             onClick={() => { setModalType('user'); setSelectedItem(null); setShowModal(true); }}
+        |                                                    ^^^^^^^^^^^^^^^
+    505 |             className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg flex items-center font-medium"
+    506 |           >
+    507 |             <Plus className="w-5 h-5 mr-2" />
+
+ERROR in src/components/CompleteAdminDashboard.tsx:614:42
+TS2304: Cannot find name 'setSelectedItem'.
+    612 |                     <div className="flex space-x-2">
+    613 |                       <button 
+  > 614 |                         onClick={() => { setSelectedItem(user); setModalType('user'); setShowModal(true); }}
+        |                                          ^^^^^^^^^^^^^^^
+    615 |                         className="text-blue-600 hover:text-blue-900 p-2 rounded-lg hover:bg-blue-50"
+    616 |                       >
+    617 |                         <Eye className="w-4 h-4" />
+
+ERROR in src/components/CompleteAdminDashboard.tsx:648:55
+TS2304: Cannot find name 'setSelectedItem'.
+    646 |           </div>
+    647 |           <button 
+  > 648 |             onClick={() => { setModalType('content'); setSelectedItem(null); setShowModal(true); }}
+        |                                                       ^^^^^^^^^^^^^^^
+    649 |             className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-lg flex items-center font-medium"
+    650 |           >
+    651 |             <Plus className="w-5 h-5 mr-2" />
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 120:6:  React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 120:6:  React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/components/CompleteAdminDashboard.tsx:614:42
+TS2304: Cannot find name 'setSelectedItem'.
+    612 |                     <div className="flex space-x-2">
+    613 |                       <button 
+  > 614 |                         onClick={() => { setSelectedItem(user); setModalType('user'); setShowModal(true); }}
+        |                                          ^^^^^^^^^^^^^^^
+    615 |                         className="text-blue-600 hover:text-blue-900 p-2 rounded-lg hover:bg-blue-50"
+    616 |                       >
+    617 |                         <Eye className="w-4 h-4" />
+
+ERROR in src/components/CompleteAdminDashboard.tsx:648:55
+TS2304: Cannot find name 'setSelectedItem'.
+    646 |           </div>
+    647 |           <button 
+  > 648 |             onClick={() => { setModalType('content'); setSelectedItem(null); setShowModal(true); }}
+        |                                                       ^^^^^^^^^^^^^^^
+    649 |             className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-lg flex items-center font-medium"
+    650 |           >
+    651 |             <Plus className="w-5 h-5 mr-2" />
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 120:6:  React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 120:6:  React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/components/CompleteAdminDashboard.tsx:648:55
+TS2304: Cannot find name 'setSelectedItem'.
+    646 |           </div>
+    647 |           <button 
+  > 648 |             onClick={() => { setModalType('content'); setSelectedItem(null); setShowModal(true); }}
+        |                                                       ^^^^^^^^^^^^^^^
+    649 |             className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-lg flex items-center font-medium"
+    650 |           >
+    651 |             <Plus className="w-5 h-5 mr-2" />
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 120:6:  React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 120:6:  React Hook useEffect has a missing dependency: 'fetchAllData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/SMSAuth.tsx
+  Line 148:40:  Unnecessary escape character: \+  no-useless-escape
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/components/AdminDashboard.tsx:115:7
+TS2304: Cannot find name 'setLoading'.
+    113 |       console.error('Error fetching users:', error);
+    114 |     } finally {
+  > 115 |       setLoading(false);
+        |       ^^^^^^^^^^
+    116 |     }
+    117 |   };
+    118 |
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/components/AdminDashboard.tsx:116:7
+TS2304: Cannot find name 'setLoading'.
+    114 |       console.error('Error fetching users:', error);
+    115 |     } finally {
+  > 116 |       setLoading(false);
+        |       ^^^^^^^^^^
+    117 |     }
+    118 |   };
+    119 |
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/components/AdminDashboard.tsx:115:7
+TS1005: 'try' expected.
+    113 |     } catch (error) {
+    114 |       console.error('Error fetching users:', error);
+  > 115 |     } catch (error) {
+        |       ^^^^^
+    116 |       console.error('Error fetching users:', error);
+    117 |     }
+    118 |   };
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 835:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 834:9:  'handleDeleteUser' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+ERROR in [eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 835:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 838:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 838:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 845:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 845:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 853:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 853:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 853:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/components/CompleteAdminDashboard.tsx
+  Line 93:46:  'generateMockUsers' was used before it was defined  @typescript-eslint/no-use-before-define
+
+ERROR in [eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 853:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/components/CompleteAdminDashboard.tsx:93:46
+TS2448: Block-scoped variable 'generateMockUsers' used before its declaration.
+    91 |   });
+    92 |   
+  > 93 |   const [users, setUsers] = useState<User[]>(generateMockUsers());
+       |                                              ^^^^^^^^^^^^^^^^^
+    94 |   const [institutes, setInstitutes] = useState<Institute[]>([]);
+    95 |   const [content, setContent] = useState<ContentItem[]>([]);
+    96 |   const [financial, setFinancial] = useState<FinancialData>({
+
+ERROR in src/components/CompleteAdminDashboard.tsx:93:46
+TS2454: Variable 'generateMockUsers' is used before being assigned.
+    91 |   });
+    92 |   
+  > 93 |   const [users, setUsers] = useState<User[]>(generateMockUsers());
+       |                                              ^^^^^^^^^^^^^^^^^
+    94 |   const [institutes, setInstitutes] = useState<Institute[]>([]);
+    95 |   const [content, setContent] = useState<ContentItem[]>([]);
+    96 |   const [financial, setFinancial] = useState<FinancialData>({
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 853:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 853:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 858:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 858:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 870:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/components/AdminDashboard.tsx
+  Line 10:3:   'AlertCircle' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  Line 20:3:   'Filter' is defined but never used                                                                                                     @typescript-eslint/no-unused-vars
+  Line 63:10:  'loading' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+  Line 72:6:   React Hook useEffect has missing dependencies: 'fetchAdminStats' and 'fetchUsers'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/components/CompleteAdminDashboard.tsx
+  Line 870:10:  Unexpected use of 'confirm'  no-restricted-globals
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.

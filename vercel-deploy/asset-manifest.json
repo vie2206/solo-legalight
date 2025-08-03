@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "https://legalight.org.in/static/css/main.db381e09.css",
+    "main.js": "https://legalight.org.in/static/js/main.87b1b698.js",
+    "static/js/610.0fa24038.chunk.js": "https://legalight.org.in/static/js/610.0fa24038.chunk.js",
+    "static/js/744.029fb869.chunk.js": "https://legalight.org.in/static/js/744.029fb869.chunk.js",
+    "static/js/732.63b13400.chunk.js": "https://legalight.org.in/static/js/732.63b13400.chunk.js",
+    "static/js/669.b60d0b06.chunk.js": "https://legalight.org.in/static/js/669.b60d0b06.chunk.js",
+    "static/js/395.79e5bc0d.chunk.js": "https://legalight.org.in/static/js/395.79e5bc0d.chunk.js",
+    "static/js/212.88e638bf.chunk.js": "https://legalight.org.in/static/js/212.88e638bf.chunk.js",
+    "static/js/520.0095b90b.chunk.js": "https://legalight.org.in/static/js/520.0095b90b.chunk.js",
+    "static/js/859.ecc4809b.chunk.js": "https://legalight.org.in/static/js/859.ecc4809b.chunk.js",
+    "static/js/934.315dbb0a.chunk.js": "https://legalight.org.in/static/js/934.315dbb0a.chunk.js",
+    "static/js/285.1829ccf6.chunk.js": "https://legalight.org.in/static/js/285.1829ccf6.chunk.js",
+    "static/js/651.5ab1fb5c.chunk.js": "https://legalight.org.in/static/js/651.5ab1fb5c.chunk.js",
+    "static/js/605.4b46b239.chunk.js": "https://legalight.org.in/static/js/605.4b46b239.chunk.js",
+    "static/js/365.c8860305.chunk.js": "https://legalight.org.in/static/js/365.c8860305.chunk.js",
+    "static/js/206.2f223b76.chunk.js": "https://legalight.org.in/static/js/206.2f223b76.chunk.js",
+    "static/js/235.8e806002.chunk.js": "https://legalight.org.in/static/js/235.8e806002.chunk.js",
+    "static/js/163.8809a75a.chunk.js": "https://legalight.org.in/static/js/163.8809a75a.chunk.js",
+    "static/js/701.57fff8b6.chunk.js": "https://legalight.org.in/static/js/701.57fff8b6.chunk.js",
+    "index.html": "https://legalight.org.in/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.db381e09.css",
+    "static/js/main.87b1b698.js"
+  ]
+}

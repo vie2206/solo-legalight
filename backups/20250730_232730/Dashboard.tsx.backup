@@ -1,0 +1,1229 @@
+import React, { useState } from 'react'
+import { 
+  HomeIcon, CalendarIcon, ChartBarIcon, BookOpenIcon, 
+  Cog6ToothIcon, BellIcon, ArrowRightOnRectangleIcon, 
+  Bars3Icon, FireIcon, AcademicCapIcon, LightBulbIcon,
+  DocumentTextIcon, PresentationChartBarIcon, SparklesIcon
+} from '@heroicons/react/24/outline'
+import CLATReadingMastery from './CLATReadingMastery'
+
+// Type Definitions
+interface User {
+  id: string
+  name: string
+  email: string
+  role: 'student' | 'admin' | 'educator' | 'parent' | 'operation_manager'
+  picture?: string
+  target_nlu?: string
+  target_score?: number
+  subscription_tier?: 'free' | 'premium' | 'elite'
+  study_streak?: number
+  total_tests?: number
+  avg_score?: number
+}
+
+interface DashboardProps {
+  user: User | null
+  onLogout: () => void
+}
+
+const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
+  const [currentView, setCurrentView] = useState('dashboard')
+  const [selectedModule, setSelectedModule] = useState<string | null>(null)
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+
+  // CLAT Performance Stats
+  const [stats] = useState({
+    overallProgress: 68,
+    studyStreak: 15,
+    totalHours: 127,
+    testsCompleted: 34,
+    averageScore: 78.5,
+    percentileRank: 89,
+    questionsAttempted: 1247,
+    accuracyRate: 82.3,
+    weeklyGoal: 70,
+    monthlyImprovement: 12.5,
+    clatRank: 2847,
+    targetScore: 85,
+    currentGPA: 3.8
+  })
+
+  // CLAT Learning modules - matching design inspiration
+  const modules = [
+    {
+      id: 'reading-mastery',
+      title: 'CLAT Reading Comprehension',
+      time: '11:00 AM',
+      bgColor: '#87CEEB', // Light blue like MATHEMATICS in screenshot
+      progress: 75,
+      nextLesson: 'Environmental Law Passages',
+      stats: { completed: 45, total: 60 },
+      subject: 'Reading & Comprehension'
+    },
+    {
+      id: 'legal-reasoning',
+      title: 'Legal Reasoning',
+      time: '12:30 PM',
+      bgColor: '#F4A460', // Light orange like HISTORY in screenshot
+      progress: 62,
+      nextLesson: 'Constitutional Law Principles',
+      stats: { completed: 31, total: 50 },
+      subject: 'Legal Aptitude'
+    },
+    {
+      id: 'logical-reasoning',
+      title: 'Logical Reasoning',
+      time: '2:00 PM',
+      bgColor: '#87CEFA', // Light blue like PHYSICS in screenshot
+      progress: 58,
+      nextLesson: 'Syllogisms & Assumptions',
+      stats: { completed: 29, total: 50 },
+      subject: 'Logical Reasoning'
+    },
+    {
+      id: 'current-affairs',
+      title: 'Current Affairs & GK',
+      time: '3:00 PM',
+      bgColor: '#90EE90', // Light green like BIOLOGY in screenshot
+      progress: 80,
+      nextLesson: 'Recent Legal Developments',
+      stats: { completed: 120, total: 150 },
+      subject: 'General Knowledge'
+    },
+    {
+      id: 'quantitative',
+      title: 'Quantitative Techniques',
+      time: '4:30 PM',
+      bgColor: '#FFB6C1', // Light pink like SPANISH in screenshot
+      progress: 70,
+      nextLesson: 'Data Interpretation',
+      stats: { completed: 35, total: 50 },
+      subject: 'Mathematics'
+    }
+  ]
+
+  const handleModuleClick = (moduleId: string) => {
+    if (moduleId === 'reading-mastery') {
+      setSelectedModule('reading-mastery')
+    } else {
+      setSelectedModule(moduleId)
+    }
+  }
+
+  // If CLATReadingMastery is selected, show it
+  if (selectedModule === 'reading-mastery') {
+    return <CLATReadingMastery user={user} onBack={() => setSelectedModule(null)} />
+  }
+
+  // Navigation items
+  const navigationItems = [
+    { id: 'dashboard', label: 'Dashboard', icon: HomeIcon },
+    { id: 'schedule', label: 'Schedule', icon: CalendarIcon },
+    { id: 'tests', label: 'Mock Tests', icon: BookOpenIcon },
+    { id: 'practice', label: 'Practice', icon: AcademicCapIcon },
+    { id: 'analytics', label: 'Analytics', icon: ChartBarIcon },
+    { id: 'ai-planner', label: 'AI Planner', icon: SparklesIcon },
+    { id: 'test-analysis', label: 'Analysis', icon: DocumentTextIcon },
+    { id: 'insights', label: 'Insights', icon: PresentationChartBarIcon },
+    { id: 'vocabulary', label: 'Vocabulary', icon: LightBulbIcon },
+    { id: 'settings', label: 'Settings', icon: Cog6ToothIcon }
+  ]
+
+  return (
+    <div className="min-h-screen" style={{ backgroundColor: '#f8f9fa', fontFamily: 'Fredoka, sans-serif' }}>
+      {/* Sidebar */}
+      <aside className={`fixed left-0 top-0 h-full bg-white border-r border-gray-200 transition-all duration-300 z-40 shadow-sm ${
+        sidebarCollapsed ? 'w-16' : 'w-64'
+      }`}>
+        <div className="flex flex-col h-full">
+          {/* Logo */}
+          <div className="p-4 border-b border-gray-200">
+            <div className="flex items-center justify-between">
+              <div className={`flex items-center space-x-3 ${sidebarCollapsed ? 'justify-center' : ''}`}>
+                <div 
+                  className="w-10 h-10 rounded-2xl flex items-center justify-center text-white font-bold"
+                  style={{ backgroundColor: '#363535' }}
+                >
+                  L
+                </div>
+                {!sidebarCollapsed && (
+                  <div>
+                    <h1 className="font-bold text-lg" style={{ color: '#363535' }}>Level Up</h1>
+                    <p className="text-xs text-gray-500">CLAT Analytics Platform</p>
+                  </div>
+                )}
+              </div>
+              <button
+                onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              >
+                <Bars3Icon className="w-5 h-5 text-gray-600" />
+              </button>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <nav className="flex-1 p-4 space-y-2">
+            {navigationItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setCurrentView(item.id)}
+                className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'space-x-3'} p-3 rounded-2xl transition-all duration-300 ${
+                  currentView === item.id 
+                    ? 'text-white' 
+                    : 'hover:bg-gray-100 text-gray-600'
+                }`}
+                style={currentView === item.id ? { backgroundColor: '#363535' } : {}}
+              >
+                <item.icon className="w-5 h-5" />
+                {!sidebarCollapsed && <span className="font-medium">{item.label}</span>}
+              </button>
+            ))}
+          </nav>
+
+          {/* User Profile */}
+          <div className={`p-4 border-t border-gray-200 ${sidebarCollapsed ? 'flex justify-center' : ''}`}>
+            <div className={`flex items-center ${sidebarCollapsed ? 'justify-center' : 'space-x-3'}`}>
+              <div 
+                className="w-10 h-10 rounded-full flex items-center justify-center font-bold"
+                style={{ backgroundColor: '#ffdd6d', color: '#363535' }}
+              >
+                {user?.name?.[0] || 'U'}
+              </div>
+              {!sidebarCollapsed && (
+                <div className="flex-1">
+                  <p className="font-semibold text-sm" style={{ color: '#363535' }}>{user?.name || 'Student'}</p>
+                  <p className="text-xs text-gray-500">{user?.subscription_tier || 'Free'} Plan</p>
+                </div>
+              )}
+              {!sidebarCollapsed && (
+                <button
+                  onClick={onLogout}
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-all duration-200"
+                >
+                  <ArrowRightOnRectangleIcon className="w-4 h-4 text-gray-600" />
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className={`transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-64'}`}>
+        {/* Top Header */}
+        <header className="sticky top-0 z-30 shadow-lg" style={{ 
+          minHeight: '80px',
+          background: '#0000ff',
+          borderBottom: '3px solid #1e3c72'
+        }}>
+          <div className="px-6 py-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 style={{ 
+                  color: '#ffffff', 
+                  fontFamily: 'Fredoka, sans-serif',
+                  fontWeight: 'bold',
+                  fontSize: '32px',
+                  margin: '0 0 4px 0',
+                  letterSpacing: '1px',
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.2)'
+                }}>LEVEL UP</h1>
+                <p style={{
+                  color: '#e0e0e0',
+                  fontFamily: 'Fredoka, sans-serif',
+                  fontSize: '14px',
+                  margin: '0 0 8px 0',
+                  fontWeight: '400',
+                  opacity: '0.9'
+                }}>Legalight's AI-Powered CLAT Analytics Platform</p>
+                <h2 className="text-xl font-semibold" style={{ color: '#ffffff' }}>
+                  {currentView === 'dashboard' && 'Dashboard'}
+                  {currentView === 'schedule' && 'Study Schedule'}
+                  {currentView === 'tests' && 'Mock Tests'}
+                  {currentView === 'practice' && 'Practice Sessions'}
+                  {currentView === 'analytics' && 'Analytics & Reports'}
+                  {currentView === 'ai-planner' && 'AI Study Planner'}
+                  {currentView === 'test-analysis' && 'Test Analysis'}
+                  {currentView === 'insights' && 'Performance Insights'}
+                  {currentView === 'vocabulary' && 'Vocabulary Builder'}
+                  {currentView === 'settings' && 'Settings'}
+                </h2>
+                <p className="text-sm mt-1" style={{ color: '#e0e0e0' }}>
+                  Welcome back, {user?.name || 'Student'}!
+                </p>
+              </div>
+              <div className="flex items-center space-x-4">
+                <button className="relative p-2 hover:bg-white/20 rounded-lg transition-all duration-200">
+                  <BellIcon className="w-5 h-5 text-white" />
+                  <span 
+                    className="absolute -top-1 -right-1 w-2 h-2 rounded-full"
+                    style={{ backgroundColor: '#fb5053' }}
+                  ></span>
+                </button>
+                <div 
+                  className="text-right px-3 py-2 rounded-2xl"
+                  style={{ backgroundColor: '#ffdd6d' }}
+                >
+                  <p className="text-sm font-semibold" style={{ color: '#363535' }}>
+                    <FireIcon className="inline w-4 h-4 mr-1" />
+                    {stats.studyStreak} days streak
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Content Area */}
+        <div className="p-6">
+          {currentView === 'dashboard' && (
+            <div className="space-y-6">
+              {/* Stats Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>CLAT Score</h3>
+                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ffdd6d' }}></div>
+                  </div>
+                  <div className="mb-2">
+                    <span className="text-4xl font-bold" style={{ color: '#363535' }}>{stats.averageScore}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span 
+                      className="px-2 py-1 text-xs font-medium rounded-full"
+                      style={{ backgroundColor: '#ffdd6d', color: '#363535' }}
+                    >
+                      Above Target
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2">Score improved by {stats.monthlyImprovement}% this month</p>
+                </div>
+
+                <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>Mock Tests</h3>
+                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#fb5053' }}></div>
+                  </div>
+                  <div className="mb-2">
+                    <span className="text-4xl font-bold" style={{ color: '#363535' }}>{stats.testsCompleted}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span 
+                      className="px-2 py-1 text-xs font-medium rounded-full"
+                      style={{ backgroundColor: '#ffdd6d', color: '#363535' }}
+                    >
+                      On Track
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2">Completed {stats.testsCompleted} full-length tests</p>
+                </div>
+
+                <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>Study Streak</h3>
+                    <FireIcon className="w-4 h-4" style={{ color: '#fb5053' }} />
+                  </div>
+                  <div className="mb-2">
+                    <span className="text-4xl font-bold" style={{ color: '#363535' }}>{stats.studyStreak}</span>
+                  </div>
+                  <p className="text-xs text-gray-500">Days in a row</p>
+                </div>
+              </div>
+
+              {/* Today's CLAT Study Schedule - Inspired by mobile app design */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-bold text-xl" style={{ color: '#363535' }}>5 lessons today</h3>
+                  <p className="text-sm text-gray-500">Tuesday, Jan 30</p>
+                </div>
+                
+                <div className="space-y-4">
+                  {modules.map((module) => (
+                    <button
+                      key={module.id}
+                      onClick={() => handleModuleClick(module.id)}
+                      className="w-full rounded-3xl p-6 text-left hover:scale-105 transition-all duration-300 shadow-sm"
+                      style={{ backgroundColor: module.bgColor }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-4">
+                          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#363535' }}></div>
+                          <div>
+                            <h4 className="font-bold text-lg" style={{ color: '#363535' }}>{module.title}</h4>
+                            <p className="text-sm opacity-70" style={{ color: '#363535' }}>{module.nextLesson}</p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <span className="font-bold text-lg" style={{ color: '#363535' }}>{module.time}</span>
+                          <div className="text-xs opacity-70" style={{ color: '#363535' }}>{module.progress}% complete</div>
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* AI Study Planner View */}
+          {currentView === 'ai-planner' && (
+            <div className="space-y-6">
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold" style={{ color: '#363535' }}>AI Study Planner</h2>
+                    <p className="text-gray-500 mt-1">Personalized roadmap to CLAT success</p>
+                  </div>
+                  <div className="p-3 rounded-2xl" style={{ backgroundColor: '#ffdd6d' }}>
+                    <SparklesIcon className="w-6 h-6" style={{ color: '#363535' }} />
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <h3 className="font-semibold text-lg" style={{ color: '#363535' }}>Exam Configuration</h3>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Target CLAT Date</label>
+                        <input 
+                          type="date" 
+                          defaultValue="2025-12-15"
+                          className="w-full p-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-yellow-300 focus:border-transparent"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Target Score</label>
+                        <input 
+                          type="number" 
+                          defaultValue="85"
+                          className="w-full p-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-yellow-300 focus:border-transparent"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Current Level</label>
+                        <select className="w-full p-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-yellow-300 focus:border-transparent">
+                          <option>Beginner</option>
+                          <option selected>Intermediate</option>
+                          <option>Advanced</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <h3 className="font-semibold text-lg" style={{ color: '#363535' }}>AI Recommendations</h3>
+                    <div className="space-y-3">
+                      <div className="p-4 rounded-2xl" style={{ backgroundColor: '#87CEEB' }}>
+                        <h4 className="font-semibold" style={{ color: '#363535' }}>Focus Areas</h4>
+                        <p className="text-sm mt-1" style={{ color: '#363535' }}>Legal Reasoning (40%), Reading Comprehension (35%)</p>
+                      </div>
+                      <div className="p-4 rounded-2xl" style={{ backgroundColor: '#90EE90' }}>
+                        <h4 className="font-semibold" style={{ color: '#363535' }}>Study Schedule</h4>
+                        <p className="text-sm mt-1" style={{ color: '#363535' }}>4 hours/day, 6 days/week recommended</p>
+                      </div>
+                      <div className="p-4 rounded-2xl" style={{ backgroundColor: '#FFB6C1' }}>
+                        <h4 className="font-semibold" style={{ color: '#363535' }}>Next Milestone</h4>
+                        <p className="text-sm mt-1" style={{ color: '#363535' }}>Complete 5 mock tests by next week</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-8 flex space-x-4">
+                  <button 
+                    className="px-6 py-3 rounded-2xl font-semibold text-white hover:opacity-90 transition-all duration-200"
+                    style={{ backgroundColor: '#363535' }}
+                  >
+                    Generate Study Plan
+                  </button>
+                  <button 
+                    className="px-6 py-3 rounded-2xl font-semibold border-2 hover:bg-gray-50 transition-all duration-200"
+                    style={{ borderColor: '#363535', color: '#363535' }}
+                  >
+                    View Current Plan
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Test Analysis View */}
+          {currentView === 'test-analysis' && (
+            <div className="space-y-6">
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold" style={{ color: '#363535' }}>16-Page Test Analysis</h2>
+                    <p className="text-gray-500 mt-1">Comprehensive performance breakdown</p>
+                  </div>
+                  <div className="p-3 rounded-2xl" style={{ backgroundColor: '#fb5053' }}>
+                    <DocumentTextIcon className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <div className="text-center p-6 rounded-2xl" style={{ backgroundColor: '#87CEEB' }}>
+                    <h3 className="text-2xl font-bold" style={{ color: '#363535' }}>78.5</h3>
+                    <p className="text-sm" style={{ color: '#363535' }}>Overall Score</p>
+                  </div>
+                  <div className="text-center p-6 rounded-2xl" style={{ backgroundColor: '#90EE90' }}>
+                    <h3 className="text-2xl font-bold" style={{ color: '#363535' }}>89th</h3>
+                    <p className="text-sm" style={{ color: '#363535' }}>Percentile</p>
+                  </div>
+                  <div className="text-center p-6 rounded-2xl" style={{ backgroundColor: '#FFB6C1' }}>
+                    <h3 className="text-2xl font-bold" style={{ color: '#363535' }}>2847</h3>
+                    <p className="text-sm" style={{ color: '#363535' }}>All India Rank</p>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="font-semibold text-lg mb-4" style={{ color: '#363535' }}>Subject-wise Performance</h3>
+                    <div className="space-y-3">
+                      {[
+                        { subject: 'Reading Comprehension', score: 82, total: 100, color: '#87CEEB' },
+                        { subject: 'Legal Reasoning', score: 75, total: 100, color: '#F4A460' },
+                        { subject: 'Logical Reasoning', score: 78, total: 100, color: '#87CEFA' },
+                        { subject: 'Current Affairs', score: 85, total: 100, color: '#90EE90' },
+                        { subject: 'Quantitative', score: 72, total: 100, color: '#FFB6C1' }
+                      ].map((item, idx) => (
+                        <div key={idx} className="flex items-center justify-between p-3 rounded-2xl" style={{ backgroundColor: item.color }}>
+                          <span className="font-medium" style={{ color: '#363535' }}>{item.subject}</span>
+                          <span className="font-bold" style={{ color: '#363535' }}>{item.score}/{item.total}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="font-semibold text-lg mb-4" style={{ color: '#363535' }}>Key Insights</h3>
+                    <div className="space-y-3">
+                      <div className="p-4 rounded-2xl bg-yellow-50 border border-yellow-200">
+                        <h4 className="font-semibold text-yellow-800">Strength</h4>
+                        <p className="text-sm text-yellow-700">Excellent in Current Affairs and Legal Knowledge</p>
+                      </div>
+                      <div className="p-4 rounded-2xl bg-red-50 border border-red-200">
+                        <h4 className="font-semibold text-red-800">Improvement Area</h4>
+                        <p className="text-sm text-red-700">Focus on Quantitative Techniques and Time Management</p>
+                      </div>
+                      <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200">
+                        <h4 className="font-semibold text-blue-800">Recommendation</h4>
+                        <p className="text-sm text-blue-700">Practice 20 quantitative questions daily for next 2 weeks</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-8 flex space-x-4">
+                  <button 
+                    className="px-6 py-3 rounded-2xl font-semibold text-white hover:opacity-90 transition-all duration-200"
+                    style={{ backgroundColor: '#fb5053' }}
+                  >
+                    Download Full Report
+                  </button>
+                  <button 
+                    className="px-6 py-3 rounded-2xl font-semibold border-2 hover:bg-gray-50 transition-all duration-200"
+                    style={{ borderColor: '#fb5053', color: '#fb5053' }}
+                  >
+                    Compare with Previous
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Performance Insights View */}
+          {currentView === 'insights' && (
+            <div className="space-y-6">
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold" style={{ color: '#363535' }}>Performance Insights</h2>
+                    <p className="text-gray-500 mt-1">AI-powered analytics and recommendations</p>
+                  </div>
+                  <div className="p-3 rounded-2xl" style={{ backgroundColor: '#ffdd6d' }}>
+                    <PresentationChartBarIcon className="w-6 h-6" style={{ color: '#363535' }} />
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  <div className="p-6 rounded-2xl" style={{ backgroundColor: '#87CEEB' }}>
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>Learning Velocity</h3>
+                    <div className="text-3xl font-bold mt-2" style={{ color: '#363535' }}>+12.5%</div>
+                    <p className="text-sm mt-1" style={{ color: '#363535' }}>Improvement this month</p>
+                  </div>
+                  <div className="p-6 rounded-2xl" style={{ backgroundColor: '#90EE90' }}>
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>Consistency</h3>
+                    <div className="text-3xl font-bold mt-2" style={{ color: '#363535' }}>85%</div>
+                    <p className="text-sm mt-1" style={{ color: '#363535' }}>Study schedule adherence</p>
+                  </div>
+                  <div className="p-6 rounded-2xl" style={{ backgroundColor: '#FFB6C1' }}>
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>Focus Score</h3>
+                    <div className="text-3xl font-bold mt-2" style={{ color: '#363535' }}>78</div>
+                    <p className="text-sm mt-1" style={{ color: '#363535' }}>Concentration index</p>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="font-semibold text-lg mb-4" style={{ color: '#363535' }}>Weekly Progress</h3>
+                    <div className="space-y-3">
+                      {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, idx) => (
+                        <div key={day} className="flex items-center justify-between p-3 rounded-2xl bg-gray-50">
+                          <span className="font-medium" style={{ color: '#363535' }}>{day}</span>
+                          <div className="flex items-center space-x-2">
+                            <div className="w-24 h-2 bg-gray-200 rounded-full">
+                              <div 
+                                className="h-2 rounded-full" 
+                                style={{ 
+                                  backgroundColor: '#ffdd6d',
+                                  width: `${[85, 92, 78, 88, 95, 67, 82][idx]}%`
+                                }}
+                              ></div>
+                            </div>
+                            <span className="text-sm font-medium" style={{ color: '#363535' }}>
+                              {[85, 92, 78, 88, 95, 67, 82][idx]}%
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="font-semibold text-lg mb-4" style={{ color: '#363535' }}>AI Recommendations</h3>
+                    <div className="space-y-4">
+                      <div className="p-4 rounded-2xl" style={{ backgroundColor: '#87CEEB' }}>
+                        <h4 className="font-semibold" style={{ color: '#363535' }}>📚 Study Pattern</h4>
+                        <p className="text-sm mt-1" style={{ color: '#363535' }}>Best performance between 2-4 PM. Schedule difficult topics during this time.</p>
+                      </div>
+                      <div className="p-4 rounded-2xl" style={{ backgroundColor: '#90EE90' }}>
+                        <h4 className="font-semibold" style={{ color: '#363535' }}>⚡ Quick Wins</h4>
+                        <p className="text-sm mt-1" style={{ color: '#363535' }}>Focus on Current Affairs - 15 min daily can boost score by 8-10 marks.</p>
+                      </div>
+                      <div className="p-4 rounded-2xl" style={{ backgroundColor: '#FFB6C1' }}>
+                        <h4 className="font-semibold" style={{ color: '#363535' }}>🎯 Priority</h4>
+                        <p className="text-sm mt-1" style={{ color: '#363535' }}>Logical Reasoning shows declining trend. Practice syllogisms and arguments.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Vocabulary Builder View */}
+          {currentView === 'vocabulary' && (
+            <div className="space-y-6">
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold" style={{ color: '#363535' }}>Vocabulary Builder</h2>
+                    <p className="text-gray-500 mt-1">Master legal and academic vocabulary</p>
+                  </div>
+                  <div className="p-3 rounded-2xl" style={{ backgroundColor: '#ffdd6d' }}>
+                    <LightBulbIcon className="w-6 h-6" style={{ color: '#363535' }} />
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  <div className="p-6 rounded-2xl" style={{ backgroundColor: '#87CEEB' }}>
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>Words Learned</h3>
+                    <div className="text-3xl font-bold mt-2" style={{ color: '#363535' }}>247</div>
+                    <p className="text-sm mt-1" style={{ color: '#363535' }}>Out of 300 target</p>
+                  </div>
+                  <div className="p-6 rounded-2xl" style={{ backgroundColor: '#90EE90' }}>
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>Retention Rate</h3>
+                    <div className="text-3xl font-bold mt-2" style={{ color: '#363535' }}>87%</div>
+                    <p className="text-sm mt-1" style={{ color: '#363535' }}>Memory performance</p>
+                  </div>
+                  <div className="p-6 rounded-2xl" style={{ backgroundColor: '#FFB6C1' }}>
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>Daily Streak</h3>
+                    <div className="text-3xl font-bold mt-2" style={{ color: '#363535' }}>12</div>
+                    <p className="text-sm mt-1" style={{ color: '#363535' }}>Days in a row</p>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="font-semibold text-lg mb-4" style={{ color: '#363535' }}>Today's Words</h3>
+                    <div className="space-y-4">
+                      {[
+                        { word: 'Jurisprudence', meaning: 'The theory or philosophy of law', category: 'Legal', difficulty: 'Advanced' },
+                        { word: 'Precedent', meaning: 'An earlier event or action that serves as an example', category: 'Legal', difficulty: 'Intermediate' },
+                        { word: 'Constitutional', meaning: 'Relating to an established set of principles', category: 'Legal', difficulty: 'Basic' },
+                        { word: 'Jurisdiction', meaning: 'Official power to make legal decisions', category: 'Legal', difficulty: 'Intermediate' }
+                      ].map((vocab, idx) => (
+                        <div key={idx} className="p-4 rounded-2xl border border-gray-200 hover:border-yellow-300 transition-all duration-200">
+                          <div className="flex items-center justify-between mb-2">
+                            <h4 className="font-bold text-lg" style={{ color: '#363535' }}>{vocab.word}</h4>
+                            <div className="flex space-x-2">
+                              <span 
+                                className="px-2 py-1 text-xs font-medium rounded-full"
+                                style={{ backgroundColor: '#ffdd6d', color: '#363535' }}
+                              >
+                                {vocab.category}
+                              </span>
+                              <span 
+                                className="px-2 py-1 text-xs font-medium rounded-full"
+                                style={{ backgroundColor: '#87CEEB', color: '#363535' }}
+                              >
+                                {vocab.difficulty}
+                              </span>
+                            </div>
+                          </div>
+                          <p className="text-sm text-gray-600">{vocab.meaning}</p>
+                          <div className="flex space-x-2 mt-3">
+                            <button 
+                              className="px-3 py-1 text-xs font-medium rounded-full border-2 hover:bg-gray-50 transition-all duration-200"
+                              style={{ borderColor: '#363535', color: '#363535' }}
+                            >
+                              Know It
+                            </button>
+                            <button 
+                              className="px-3 py-1 text-xs font-medium rounded-full border-2 hover:bg-gray-50 transition-all duration-200"
+                              style={{ borderColor: '#fb5053', color: '#fb5053' }}
+                            >
+                              Review Later
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="font-semibold text-lg mb-4" style={{ color: '#363535' }}>Personal Vocabulary</h3>
+                    <div className="space-y-4">
+                      <div className="p-4 rounded-2xl" style={{ backgroundColor: '#f8f9fa' }}>
+                        <h4 className="font-semibold mb-2" style={{ color: '#363535' }}>Mastered Words</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {['jurisprudence', 'precedent', 'constitutional', 'jurisdiction', 'statute', 'ordinance'].map((word, idx) => (
+                            <span 
+                              key={idx}
+                              className="px-3 py-1 text-sm font-medium rounded-full"
+                              style={{ backgroundColor: '#90EE90', color: '#363535' }}
+                            >
+                              {word}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div className="p-4 rounded-2xl" style={{ backgroundColor: '#f8f9fa' }}>
+                        <h4 className="font-semibold mb-2" style={{ color: '#363535' }}>Need Review</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {['adjudicate', 'appellant', 'litigant', 'amicus'].map((word, idx) => (
+                            <span 
+                              key={idx}
+                              className="px-3 py-1 text-sm font-medium rounded-full"
+                              style={{ backgroundColor: '#FFB6C1', color: '#363535' }}
+                            >
+                              {word}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-6 flex space-x-4">
+                      <button 
+                        className="px-6 py-3 rounded-2xl font-semibold text-white hover:opacity-90 transition-all duration-200"
+                        style={{ backgroundColor: '#363535' }}
+                      >
+                        Start Quiz
+                      </button>
+                      <button 
+                        className="px-6 py-3 rounded-2xl font-semibold border-2 hover:bg-gray-50 transition-all duration-200"
+                        style={{ borderColor: '#363535', color: '#363535' }}
+                      >
+                        Add Custom Word
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Mock Tests View */}
+          {currentView === 'tests' && (
+            <div className="space-y-6">
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold" style={{ color: '#363535' }}>Mock Tests</h2>
+                    <p className="text-gray-500 mt-1">Full-length CLAT practice tests</p>
+                  </div>
+                  <div className="p-3 rounded-2xl" style={{ backgroundColor: '#fb5053' }}>
+                    <BookOpenIcon className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    { id: 1, title: 'CLAT Mock Test 1', duration: '120 min', questions: 120, difficulty: 'Beginner', status: 'completed', score: 78 },
+                    { id: 2, title: 'CLAT Mock Test 2', duration: '120 min', questions: 120, difficulty: 'Intermediate', status: 'completed', score: 82 },
+                    { id: 3, title: 'CLAT Mock Test 3', duration: '120 min', questions: 120, difficulty: 'Intermediate', status: 'available', score: null },
+                    { id: 4, title: 'CLAT Mock Test 4', duration: '120 min', questions: 120, difficulty: 'Advanced', status: 'available', score: null },
+                    { id: 5, title: 'CLAT Mock Test 5', duration: '120 min', questions: 120, difficulty: 'Advanced', status: 'locked', score: null },
+                    { id: 6, title: 'CLAT Mock Test 6', duration: '120 min', questions: 120, difficulty: 'Expert', status: 'locked', score: null }
+                  ].map((test) => (
+                    <div key={test.id} className="p-6 rounded-2xl border border-gray-200 hover:border-yellow-300 transition-all duration-200">
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="font-bold text-lg" style={{ color: '#363535' }}>{test.title}</h3>
+                        <div className="flex space-x-1">
+                          {test.status === 'completed' && (
+                            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#90EE90' }}></div>
+                          )}
+                          {test.status === 'available' && (
+                            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#ffdd6d' }}></div>
+                          )}
+                          {test.status === 'locked' && (
+                            <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-2 mb-4">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-600">Duration:</span>
+                          <span style={{ color: '#363535' }}>{test.duration}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-600">Questions:</span>
+                          <span style={{ color: '#363535' }}>{test.questions}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-600">Level:</span>
+                          <span 
+                            className="px-2 py-1 text-xs font-medium rounded-full"
+                            style={{ backgroundColor: '#87CEEB', color: '#363535' }}
+                          >
+                            {test.difficulty}
+                          </span>
+                        </div>
+                        {test.score && (
+                          <div className="flex justify-between text-sm">
+                            <span className="text-gray-600">Score:</span>
+                            <span className="font-bold" style={{ color: '#363535' }}>{test.score}%</span>
+                          </div>
+                        )}
+                      </div>
+                      
+                      <div className="flex space-x-2">
+                        {test.status === 'available' && (
+                          <button 
+                            className="flex-1 px-4 py-2 rounded-2xl font-semibold text-white hover:opacity-90 transition-all duration-200"
+                            style={{ backgroundColor: '#363535' }}
+                          >
+                            Start Test
+                          </button>
+                        )}
+                        {test.status === 'completed' && (
+                          <>
+                            <button 
+                              className="flex-1 px-4 py-2 rounded-2xl font-semibold border-2 hover:bg-gray-50 transition-all duration-200"
+                              style={{ borderColor: '#363535', color: '#363535' }}
+                            >
+                              Review
+                            </button>
+                            <button 
+                              className="flex-1 px-4 py-2 rounded-2xl font-semibold text-white hover:opacity-90 transition-all duration-200"
+                              style={{ backgroundColor: '#fb5053' }}
+                            >
+                              Retake
+                            </button>
+                          </>
+                        )}
+                        {test.status === 'locked' && (
+                          <button 
+                            disabled
+                            className="flex-1 px-4 py-2 rounded-2xl font-semibold bg-gray-200 text-gray-500 cursor-not-allowed"
+                          >
+                            Locked
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Analytics View */}
+          {currentView === 'analytics' && (
+            <div className="space-y-6">
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold" style={{ color: '#363535' }}>Analytics & Reports</h2>
+                    <p className="text-gray-500 mt-1">Comprehensive performance analytics</p>
+                  </div>
+                  <div className="p-3 rounded-2xl" style={{ backgroundColor: '#87CEEB' }}>
+                    <ChartBarIcon className="w-6 h-6" style={{ color: '#363535' }} />
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                  <div className="p-6 rounded-2xl" style={{ backgroundColor: '#87CEEB' }}>
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>Total Hours</h3>
+                    <div className="text-3xl font-bold mt-2" style={{ color: '#363535' }}>127</div>
+                    <p className="text-sm mt-1" style={{ color: '#363535' }}>Study time</p>
+                  </div>
+                  <div className="p-6 rounded-2xl" style={{ backgroundColor: '#90EE90' }}>
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>Questions</h3>
+                    <div className="text-3xl font-bold mt-2" style={{ color: '#363535' }}>1247</div>
+                    <p className="text-sm mt-1" style={{ color: '#363535' }}>Attempted</p>
+                  </div>
+                  <div className="p-6 rounded-2xl" style={{ backgroundColor: '#FFB6C1' }}>
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>Accuracy</h3>
+                    <div className="text-3xl font-bold mt-2" style={{ color: '#363535' }}>82.3%</div>
+                    <p className="text-sm mt-1" style={{ color: '#363535' }}>Overall rate</p>
+                  </div>
+                  <div className="p-6 rounded-2xl" style={{ backgroundColor: '#F4A460' }}>
+                    <h3 className="font-semibold" style={{ color: '#363535' }}>Rank</h3>
+                    <div className="text-3xl font-bold mt-2" style={{ color: '#363535' }}>2847</div>
+                    <p className="text-sm mt-1" style={{ color: '#363535' }}>All India</p>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="font-semibold text-lg mb-4" style={{ color: '#363535' }}>Monthly Progress</h3>
+                    <div className="space-y-4">
+                      {[
+                        { month: 'Jan 2025', score: 78.5, tests: 8, hours: 32 },
+                        { month: 'Dec 2024', score: 75.2, tests: 6, hours: 28 },
+                        { month: 'Nov 2024', score: 72.8, tests: 5, hours: 24 },
+                        { month: 'Oct 2024', score: 69.4, tests: 4, hours: 20 }
+                      ].map((data, idx) => (
+                        <div key={idx} className="p-4 rounded-2xl border border-gray-200">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="font-semibold" style={{ color: '#363535' }}>{data.month}</span>
+                            <span className="font-bold text-lg" style={{ color: '#363535' }}>{data.score}%</span>
+                          </div>
+                          <div className="flex justify-between text-sm text-gray-600">
+                            <span>{data.tests} tests</span>
+                            <span>{data.hours} hours</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="font-semibold text-lg mb-4" style={{ color: '#363535' }}>Subject Performance</h3>
+                    <div className="space-y-4">
+                      {[
+                        { subject: 'Reading Comprehension', accuracy: 85, avgTime: '2.5 min', strength: 'High' },
+                        { subject: 'Legal Reasoning', accuracy: 78, avgTime: '3.1 min', strength: 'Medium' },
+                        { subject: 'Logical Reasoning', accuracy: 82, avgTime: '2.8 min', strength: 'High' },
+                        { subject: 'Current Affairs', accuracy: 88, avgTime: '1.2 min', strength: 'High' },
+                        { subject: 'Quantitative', accuracy: 72, avgTime: '3.8 min', strength: 'Low' }
+                      ].map((subject, idx) => (
+                        <div key={idx} className="p-4 rounded-2xl border border-gray-200">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="font-medium" style={{ color: '#363535' }}>{subject.subject}</span>
+                            <span 
+                              className="px-2 py-1 text-xs font-medium rounded-full"
+                              style={{ 
+                                backgroundColor: subject.strength === 'High' ? '#90EE90' : subject.strength === 'Medium' ? '#ffdd6d' : '#FFB6C1',
+                                color: '#363535'
+                              }}
+                            >
+                              {subject.strength}
+                            </span>
+                          </div>
+                          <div className="flex justify-between text-sm text-gray-600">
+                            <span>{subject.accuracy}% accuracy</span>
+                            <span>{subject.avgTime} avg time</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Schedule View */}
+          {currentView === 'schedule' && (
+            <div className="space-y-6">
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold" style={{ color: '#363535' }}>Study Schedule</h2>
+                    <p className="text-gray-500 mt-1">Personalized CLAT preparation timeline</p>
+                  </div>
+                  <div className="p-3 rounded-2xl" style={{ backgroundColor: '#87CEEB' }}>
+                    <CalendarIcon className="w-6 h-6" style={{ color: '#363535' }} />
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <div className="lg:col-span-2">
+                    <h3 className="font-semibold text-lg mb-4" style={{ color: '#363535' }}>This Week's Schedule</h3>
+                    <div className="space-y-4">
+                      {[
+                        { day: 'Monday', date: 'Jan 29', sessions: [
+                          { time: '9:00 AM', subject: 'Reading Comprehension', duration: '90 min', type: 'study', color: '#87CEEB' },
+                          { time: '2:00 PM', subject: 'Legal Reasoning', duration: '60 min', type: 'practice', color: '#F4A460' }
+                        ]},
+                        { day: 'Tuesday', date: 'Jan 30', sessions: [
+                          { time: '10:00 AM', subject: 'Mock Test 3', duration: '120 min', type: 'test', color: '#fb5053' },
+                          { time: '4:00 PM', subject: 'Current Affairs', duration: '45 min', type: 'review', color: '#90EE90' }
+                        ]},
+                        { day: 'Wednesday', date: 'Jan 31', sessions: [
+                          { time: '9:00 AM', subject: 'Logical Reasoning', duration: '75 min', type: 'study', color: '#87CEFA' },
+                          { time: '3:00 PM', subject: 'Vocabulary Building', duration: '30 min', type: 'practice', color: '#ffdd6d' }
+                        ]},
+                        { day: 'Thursday', date: 'Feb 1', sessions: [
+                          { time: '10:00 AM', subject: 'Quantitative Techniques', duration: '90 min', type: 'study', color: '#FFB6C1' },
+                          { time: '2:30 PM', subject: 'Previous Papers', duration: '60 min', type: 'practice', color: '#87CEEB' }
+                        ]}
+                      ].map((daySchedule, idx) => (
+                        <div key={idx} className="border border-gray-200 rounded-2xl p-4">
+                          <div className="flex items-center justify-between mb-3">
+                            <h4 className="font-semibold" style={{ color: '#363535' }}>{daySchedule.day}</h4>
+                            <span className="text-sm text-gray-500">{daySchedule.date}</span>
+                          </div>
+                          <div className="space-y-2">
+                            {daySchedule.sessions.map((session, sessionIdx) => (
+                              <div key={sessionIdx} className="flex items-center justify-between p-3 rounded-2xl" style={{ backgroundColor: session.color }}>
+                                <div>
+                                  <span className="font-medium" style={{ color: '#363535' }}>{session.subject}</span>
+                                  <div className="text-xs opacity-70" style={{ color: '#363535' }}>{session.type.toUpperCase()}</div>
+                                </div>
+                                <div className="text-right">
+                                  <div className="font-medium" style={{ color: '#363535' }}>{session.time}</div>
+                                  <div className="text-xs opacity-70" style={{ color: '#363535' }}>{session.duration}</div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="font-semibold text-lg mb-4" style={{ color: '#363535' }}>Quick Stats</h3>
+                    <div className="space-y-4">
+                      <div className="p-4 rounded-2xl" style={{ backgroundColor: '#87CEEB' }}>
+                        <h4 className="font-semibold" style={{ color: '#363535' }}>Weekly Goal</h4>
+                        <div className="text-2xl font-bold mt-1" style={{ color: '#363535' }}>18/25</div>
+                        <p className="text-sm opacity-70" style={{ color: '#363535' }}>Hours completed</p>
+                      </div>
+                      
+                      <div className="p-4 rounded-2xl" style={{ backgroundColor: '#90EE90' }}>
+                        <h4 className="font-semibold" style={{ color: '#363535' }}>Schedule Adherence</h4>
+                        <div className="text-2xl font-bold mt-1" style={{ color: '#363535' }}>87%</div>
+                        <p className="text-sm opacity-70" style={{ color: '#363535' }}>This week</p>
+                      </div>
+                      
+                      <div className="p-4 rounded-2xl" style={{ backgroundColor: '#FFB6C1' }}>
+                        <h4 className="font-semibold" style={{ color: '#363535' }}>Next Session</h4>
+                        <div className="text-lg font-bold mt-1" style={{ color: '#363535' }}>2:00 PM</div>
+                        <p className="text-sm opacity-70" style={{ color: '#363535' }}>Legal Reasoning</p>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <h4 className="font-semibold" style={{ color: '#363535' }}>Upcoming Deadlines</h4>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Mock Test 4</span>
+                            <span style={{ color: '#363535' }}>Feb 3</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Chapter Review</span>
+                            <span style={{ color: '#363535' }}>Feb 5</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Weekly Assessment</span>
+                            <span style={{ color: '#363535' }}>Feb 7</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-6 flex flex-col space-y-2">
+                      <button 
+                        className="w-full px-4 py-3 rounded-2xl font-semibold text-white hover:opacity-90 transition-all duration-200"
+                        style={{ backgroundColor: '#363535' }}
+                      >
+                        Modify Schedule
+                      </button>
+                      <button 
+                        className="w-full px-4 py-3 rounded-2xl font-semibold border-2 hover:bg-gray-50 transition-all duration-200"
+                        style={{ borderColor: '#363535', color: '#363535' }}
+                      >
+                        Export Calendar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Practice Sessions View */}
+          {currentView === 'practice' && (
+            <div className="space-y-6">
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold" style={{ color: '#363535' }}>Practice Sessions</h2>
+                    <p className="text-gray-500 mt-1">Targeted practice for skill improvement</p>
+                  </div>
+                  <div className="p-3 rounded-2xl" style={{ backgroundColor: '#90EE90' }}>
+                    <AcademicCapIcon className="w-6 h-6" style={{ color: '#363535' }} />
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    { 
+                      title: 'Reading Speed Challenge', 
+                      description: '10 passages, 30 minutes', 
+                      difficulty: 'Intermediate', 
+                      type: 'Timed Practice', 
+                      color: '#87CEEB',
+                      completed: true,
+                      score: 85
+                    },
+                    { 
+                      title: 'Legal Reasoning Drills', 
+                      description: '25 questions, mixed topics', 
+                      difficulty: 'Advanced', 
+                      type: 'Topic Focus', 
+                      color: '#F4A460',
+                      completed: false,
+                      score: null
+                    },
+                    { 
+                      title: 'Logic Puzzles', 
+                      description: '15 complex problems', 
+                      difficulty: 'Expert', 
+                      type: 'Problem Solving', 
+                      color: '#87CEFA',
+                      completed: false,
+                      score: null
+                    },
+                    { 
+                      title: 'GK Quick Fire', 
+                      description: '50 questions, 15 minutes', 
+                      difficulty: 'Beginner', 
+                      type: 'Speed Round', 
+                      color: '#90EE90',
+                      completed: true,
+                      score: 92
+                    },
+                    { 
+                      title: 'Math Concepts', 
+                      description: '20 quantitative problems', 
+                      difficulty: 'Intermediate', 
+                      type: 'Concept Building', 
+                      color: '#FFB6C1',
+                      completed: false,
+                      score: null
+                    },
+                    { 
+                      title: 'Previous Year Mix', 
+                      description: '30 questions from past papers', 
+                      difficulty: 'Advanced', 
+                      type: 'Real Exam Prep', 
+                      color: '#ffdd6d',
+                      completed: false,
+                      score: null
+                    }
+                  ].map((practice, idx) => (
+                    <div key={idx} className="p-6 rounded-2xl border border-gray-200 hover:border-yellow-300 transition-all duration-200">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="w-4 h-4 rounded-full" style={{ backgroundColor: practice.color }}></div>
+                        {practice.completed && (
+                          <span 
+                            className="px-2 py-1 text-xs font-medium rounded-full"
+                            style={{ backgroundColor: '#90EE90', color: '#363535' }}
+                          >
+                            Completed
+                          </span>
+                        )}
+                      </div>
+                      
+                      <h3 className="font-bold text-lg mb-2" style={{ color: '#363535' }}>{practice.title}</h3>
+                      <p className="text-sm text-gray-600 mb-4">{practice.description}</p>
+                      
+                      <div className="space-y-2 mb-4">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-600">Type:</span>
+                          <span style={{ color: '#363535' }}>{practice.type}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-600">Level:</span>
+                          <span 
+                            className="px-2 py-1 text-xs font-medium rounded-full"
+                            style={{ backgroundColor: practice.color, color: '#363535' }}
+                          >
+                            {practice.difficulty}
+                          </span>
+                        </div>
+                        {practice.score && (
+                          <div className="flex justify-between text-sm">
+                            <span className="text-gray-600">Best Score:</span>
+                            <span className="font-bold" style={{ color: '#363535' }}>{practice.score}%</span>
+                          </div>
+                        )}
+                      </div>
+                      
+                      <div className="flex space-x-2">
+                        {!practice.completed ? (
+                          <button 
+                            className="flex-1 px-4 py-2 rounded-2xl font-semibold text-white hover:opacity-90 transition-all duration-200"
+                            style={{ backgroundColor: '#363535' }}
+                          >
+                            Start Practice
+                          </button>
+                        ) : (
+                          <>
+                            <button 
+                              className="flex-1 px-4 py-2 rounded-2xl font-semibold border-2 hover:bg-gray-50 transition-all duration-200"
+                              style={{ borderColor: '#363535', color: '#363535' }}
+                            >
+                              Review
+                            </button>
+                            <button 
+                              className="flex-1 px-4 py-2 rounded-2xl font-semibold text-white hover:opacity-90 transition-all duration-200"
+                              style={{ backgroundColor: '#fb5053' }}
+                            >
+                              Retry
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Other views placeholder */}
+          {!['dashboard', 'ai-planner', 'test-analysis', 'insights', 'vocabulary', 'tests', 'analytics', 'schedule', 'practice'].includes(currentView) && (
+            <div className="text-center py-12">
+              <p className="text-gray-500">
+                {currentView.charAt(0).toUpperCase() + currentView.slice(1)} view coming soon...
+              </p>
+            </div>
+          )}
+        </div>
+      </main>
+    </div>
+  )
+}
+
+export default Dashboard

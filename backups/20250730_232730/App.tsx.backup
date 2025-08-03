@@ -1,0 +1,47 @@
+import React from 'react';
+import Dashboard from './Dashboard';
+
+function App() {
+  return (
+    <div className="App">
+      <header style={{ 
+        padding: '20px', 
+        textAlign: 'center',
+        background: '#0000ff',
+        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+      }}>
+        <h1 style={{ 
+          fontSize: '3rem', 
+          marginBottom: '10px',
+          color: 'white',
+          textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+          fontFamily: 'Fredoka, sans-serif'
+        }}>
+          LEVEL UP
+        </h1>
+        <p style={{ 
+          fontSize: '1.2rem', 
+          opacity: 0.9,
+          color: 'white',
+          marginBottom: '30px',
+          fontFamily: 'Fredoka, sans-serif'
+        }}>
+          Legalight's AI-Powered CLAT Analytics Platform
+        </p>
+      </header>
+      
+      <Dashboard 
+        user={{
+          id: '1',
+          name: 'John Doe',
+          email: 'john@example.com',
+          role: 'student',
+          subscription_tier: 'premium'
+        }}
+        onLogout={() => console.log('Logout clicked')}
+      />
+    </div>
+  );
+}
+
+export default App;
