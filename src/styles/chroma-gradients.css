@@ -1,0 +1,250 @@
+/* Chroma Holographic Gradients - Premium Collection */
+
+:root {
+  /* Original Chroma Gradients */
+  --chroma-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --chroma-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --chroma-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --chroma-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --chroma-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  --chroma-6: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  --chroma-7: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  --chroma-8: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  --chroma-9: linear-gradient(135deg, #a8caba 0%, #5d4e75 100%);
+  --chroma-10: linear-gradient(135deg, #8360c3 0%, #2ebf91 100%);
+  
+  /* Holographic Collection */
+  --chroma-holo-1: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffc93c);
+  --chroma-holo-2: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #43e97b 100%);
+  --chroma-holo-3: linear-gradient(225deg, #fa709a 0%, #fee140 25%, #a8edea 50%, #ff9a9e 75%, #ffecd2 100%);
+  --chroma-holo-4: linear-gradient(315deg, #8360c3 0%, #2ebf91 25%, #667eea 50%, #f093fb 75%, #4facfe 100%);
+  
+  /* Animated Holographic Gradients */
+  --chroma-animated-1: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  --chroma-animated-2: linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffc93c, #ff6b6b);
+  --chroma-animated-3: linear-gradient(270deg, #667eea, #764ba2, #f093fb, #4facfe, #43e97b, #667eea);
+  
+  /* Education Themed Gradients */
+  --chroma-education-1: linear-gradient(135deg, #00A1FF 0%, #8965E5 25%, #00CEB6 50%, #FFB900 75%, #00A1FF 100%);
+  --chroma-education-2: linear-gradient(225deg, #0A7EA4 0%, #47D7BC 25%, #CCDA4E 50%, #8965E5 75%, #00A1FF 100%);
+  --chroma-education-3: linear-gradient(45deg, #FF6692 0%, #46CAEB 25%, #00CEB6 50%, #FFB900 75%, #8965E5 100%);
+}
+
+/* Holographic Animation Keyframes */
+@keyframes holographic-shift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradient-x {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+@keyframes gradient-y {
+  0%, 100% { transform: translateY(-100%); }
+  50% { transform: translateY(100%); }
+}
+
+@keyframes gradient-xy {
+  0%, 100% { transform: translate(-100%, -100%); }
+  25% { transform: translate(100%, -100%); }
+  50% { transform: translate(100%, 100%); }
+  75% { transform: translate(-100%, 100%); }
+}
+
+/* Utility Classes */
+.chroma-bg-1 { background: var(--chroma-1); }
+.chroma-bg-2 { background: var(--chroma-2); }
+.chroma-bg-3 { background: var(--chroma-3); }
+.chroma-bg-4 { background: var(--chroma-4); }
+.chroma-bg-5 { background: var(--chroma-5); }
+.chroma-bg-6 { background: var(--chroma-6); }
+.chroma-bg-7 { background: var(--chroma-7); }
+.chroma-bg-8 { background: var(--chroma-8); }
+.chroma-bg-9 { background: var(--chroma-9); }
+.chroma-bg-10 { background: var(--chroma-10); }
+
+.chroma-holo-1 { 
+  background: var(--chroma-holo-1);
+  background-size: 400% 400%;
+}
+
+.chroma-holo-2 { 
+  background: var(--chroma-holo-2);
+  background-size: 400% 400%;
+}
+
+.chroma-holo-3 { 
+  background: var(--chroma-holo-3);
+  background-size: 400% 400%;
+}
+
+.chroma-holo-4 { 
+  background: var(--chroma-holo-4);
+  background-size: 400% 400%;
+}
+
+.chroma-animated-1 {
+  background: var(--chroma-animated-1);
+  background-size: 400% 400%;
+  animation: holographic-shift 4s ease infinite;
+}
+
+.chroma-animated-2 {
+  background: var(--chroma-animated-2);
+  background-size: 600% 600%;
+  animation: holographic-shift 6s ease infinite;
+}
+
+.chroma-animated-3 {
+  background: var(--chroma-animated-3);
+  background-size: 500% 500%;
+  animation: holographic-shift 5s ease infinite;
+}
+
+.chroma-education-1 {
+  background: var(--chroma-education-1);
+  background-size: 400% 400%;
+  animation: holographic-shift 8s ease infinite;
+}
+
+.chroma-education-2 {
+  background: var(--chroma-education-2);
+  background-size: 400% 400%;
+  animation: holographic-shift 10s ease infinite;
+}
+
+.chroma-education-3 {
+  background: var(--chroma-education-3);
+  background-size: 400% 400%;
+  animation: holographic-shift 7s ease infinite;
+}
+
+/* Holographic Text Effects */
+.chroma-text {
+  background: var(--chroma-holo-2);
+  background-size: 400% 400%;
+  animation: holographic-shift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chroma-text-education {
+  background: var(--chroma-education-1);
+  background-size: 400% 400%;
+  animation: holographic-shift 4s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Holographic Borders */
+.chroma-border {
+  position: relative;
+  background: white;
+}
+
+.chroma-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--chroma-holo-2);
+  background-size: 400% 400%;
+  animation: holographic-shift 3s ease infinite;
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+}
+
+/* Holographic Cards */
+.chroma-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.chroma-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--chroma-holo-1);
+  background-size: 400% 400%;
+  animation: gradient-x 3s ease infinite;
+  opacity: 0.1;
+}
+
+.chroma-card:hover::before {
+  opacity: 0.2;
+}
+
+/* Holographic Buttons */
+.chroma-button {
+  position: relative;
+  background: var(--chroma-holo-2);
+  background-size: 400% 400%;
+  animation: holographic-shift 4s ease infinite;
+  border: none;
+  color: white;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.chroma-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.chroma-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+.chroma-button:hover::before {
+  left: 100%;
+}
+
+/* Responsive Holographic Backgrounds */
+@media (max-width: 768px) {
+  .chroma-animated-1,
+  .chroma-animated-2,
+  .chroma-animated-3,
+  .chroma-education-1,
+  .chroma-education-2,
+  .chroma-education-3 {
+    animation-duration: 8s; /* Slower on mobile for better performance */
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .chroma-animated-1,
+  .chroma-animated-2,
+  .chroma-animated-3,
+  .chroma-education-1,
+  .chroma-education-2,
+  .chroma-education-3,
+  .chroma-text,
+  .chroma-text-education,
+  .chroma-border::before,
+  .chroma-card::before,
+  .chroma-button {
+    animation: none;
+  }
+}

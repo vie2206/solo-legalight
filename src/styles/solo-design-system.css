@@ -1,0 +1,428 @@
+/* SOLO by Legalight - Design System
+   Based on MaterialM, Core 2.0, and custom enhancements
+   Tagline: "we can do hard things"
+*/
+
+/* ===========================
+   COLOR PALETTE
+   =========================== */
+:root {
+  /* Primary Brand Colors - Modern Blue Theme */
+  --solo-primary: #00A1FF;
+  --solo-primary-dark: #0091E5;
+  --solo-primary-light: #00A1FF20;
+  --solo-primary-hover: #0085D9;
+  
+  /* Secondary Colors - Academic Purple */
+  --solo-secondary: #8965E5;
+  --solo-secondary-dark: #7c57d9;
+  --solo-secondary-light: #8965E520;
+  
+  /* Status Colors */
+  --solo-success: #00ceb6;
+  --solo-success-light: #00ceb625;
+  --solo-success-dark: #10bd9d;
+  
+  --solo-warning: #FFB900;
+  --solo-warning-light: #FFB90025;
+  --solo-warning-dark: #d9941a;
+  
+  --solo-error: #FF6692;
+  --solo-error-light: #FF669230;
+  --solo-error-dark: #d9577c;
+  
+  --solo-info: #46caeb;
+  --solo-info-light: #46caeb25;
+  --solo-info-dark: #3cacc8;
+  
+  /* Neutral Colors */
+  --solo-dark: #111c2d;
+  --solo-gray-900: #1A2537;
+  --solo-gray-800: #2A3851;
+  --solo-gray-700: #333F55;
+  --solo-gray-600: #2a3547;
+  --solo-gray-500: #7b8893;
+  --solo-gray-400: #cfd6db;
+  --solo-gray-300: #e0e6eb;
+  --solo-gray-200: #EFF4FA;
+  --solo-gray-100: #F6F9FC;
+  --solo-gray-50: #F8FAFD;
+  --solo-white: #ffffff;
+  
+  /* Educational Theme Colors */
+  --solo-education-primary: #0A7EA4;
+  --solo-education-secondary: #CCDA4E;
+  --solo-education-accent: #47D7BC;
+  
+  /* Modern Gradients from Chroma */
+  --solo-gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --solo-gradient-2: linear-gradient(135deg, #00A1FF 0%, #8965E5 100%);
+  --solo-gradient-3: linear-gradient(135deg, #0A7EA4 0%, #47D7BC 100%);
+  --solo-gradient-holographic: linear-gradient(135deg, #00A1FF 0%, #8965E5 25%, #47D7BC 50%, #CCDA4E 75%, #00A1FF 100%);
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --solo-surface: #111c2d;
+  --solo-surface-light: #1A2537;
+  --solo-surface-lighter: #2A3851;
+  --solo-border: #333F55;
+  --solo-text-primary: #ffffff;
+  --solo-text-secondary: #7b8893;
+}
+
+/* Light Mode Variables */
+[data-theme="light"] {
+  --solo-surface: #ffffff;
+  --solo-surface-light: #F8FAFD;
+  --solo-surface-lighter: #F6F9FC;
+  --solo-border: #e0e6eb;
+  --solo-text-primary: #111c2d;
+  --solo-text-secondary: #2a3547;
+}
+
+/* ===========================
+   TYPOGRAPHY
+   =========================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --solo-font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --solo-font-secondary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Font Sizes */
+  --solo-text-xs: 0.75rem;    /* 12px */
+  --solo-text-sm: 0.875rem;   /* 14px */
+  --solo-text-base: 1rem;     /* 16px */
+  --solo-text-lg: 1.125rem;   /* 18px */
+  --solo-text-xl: 1.25rem;    /* 20px */
+  --solo-text-2xl: 1.5rem;    /* 24px */
+  --solo-text-3xl: 1.875rem;  /* 30px */
+  --solo-text-4xl: 2.25rem;   /* 36px */
+  --solo-text-5xl: 3rem;      /* 48px */
+  
+  /* Font Weights */
+  --solo-font-light: 300;
+  --solo-font-normal: 400;
+  --solo-font-medium: 500;
+  --solo-font-semibold: 600;
+  --solo-font-bold: 700;
+  --solo-font-extrabold: 800;
+  
+  /* Line Heights */
+  --solo-leading-tight: 1.25;
+  --solo-leading-normal: 1.5;
+  --solo-leading-relaxed: 1.75;
+  
+  /* Letter Spacing */
+  --solo-tracking-tight: -0.025em;
+  --solo-tracking-normal: 0;
+  --solo-tracking-wide: 0.025em;
+  --solo-tracking-wider: 0.05em;
+}
+
+/* ===========================
+   SPACING & LAYOUT
+   =========================== */
+:root {
+  /* Spacing Scale */
+  --solo-space-0: 0;
+  --solo-space-1: 0.25rem;   /* 4px */
+  --solo-space-2: 0.5rem;    /* 8px */
+  --solo-space-3: 0.75rem;   /* 12px */
+  --solo-space-4: 1rem;      /* 16px */
+  --solo-space-5: 1.25rem;   /* 20px */
+  --solo-space-6: 1.5rem;    /* 24px */
+  --solo-space-7: 1.75rem;   /* 28px */
+  --solo-space-8: 2rem;      /* 32px */
+  --solo-space-10: 2.5rem;   /* 40px */
+  --solo-space-12: 3rem;     /* 48px */
+  --solo-space-16: 4rem;     /* 64px */
+  --solo-space-20: 5rem;     /* 80px */
+  --solo-space-24: 6rem;     /* 96px */
+  
+  /* Container Widths */
+  --solo-container-sm: 640px;
+  --solo-container-md: 768px;
+  --solo-container-lg: 1024px;
+  --solo-container-xl: 1280px;
+  --solo-container-2xl: 1536px;
+  
+  /* Layout */
+  --solo-sidebar-width: 320px;
+  --solo-sidebar-mini: 87px;
+  --solo-topbar-height: 70px;
+}
+
+/* ===========================
+   BORDERS & SHADOWS
+   =========================== */
+:root {
+  /* Border Radius */
+  --solo-radius-none: 0;
+  --solo-radius-sm: 0.375rem;   /* 6px */
+  --solo-radius-md: 0.5rem;     /* 8px */
+  --solo-radius-lg: 0.75rem;    /* 12px */
+  --solo-radius-xl: 1rem;       /* 16px */
+  --solo-radius-2xl: 1.5rem;    /* 24px */
+  --solo-radius-full: 9999px;
+  
+  /* Box Shadows - MaterialM Style */
+  --solo-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --solo-shadow-md: 0px 1px 4px 0px rgba(133, 146, 173, 0.2);
+  --solo-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  --solo-shadow-xl: 0px 12px 30px -2px rgba(58, 75, 116, 0.14);
+  --solo-shadow-2xl: 0px 24px 24px -12px rgba(0, 0, 0, 0.05);
+  --solo-shadow-holographic: 0px 24px 24px -12px rgba(99, 91, 255, 0.15);
+  --solo-shadow-dark: rgba(145, 158, 171, 0.3) 0px 0px 2px 0px, rgba(145, 158, 171, 0.02) 0px 12px 24px -4px;
+  
+  /* Border Width */
+  --solo-border-0: 0;
+  --solo-border-1: 1px;
+  --solo-border-2: 2px;
+  --solo-border-4: 4px;
+}
+
+/* ===========================
+   ANIMATION & TRANSITIONS
+   =========================== */
+:root {
+  /* Transitions */
+  --solo-transition-fast: 150ms;
+  --solo-transition-base: 200ms;
+  --solo-transition-slow: 300ms;
+  --solo-transition-slower: 500ms;
+  
+  /* Easing */
+  --solo-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --solo-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --solo-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --solo-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ===========================
+   Z-INDEX SCALE
+   =========================== */
+:root {
+  --solo-z-0: 0;
+  --solo-z-10: 10;
+  --solo-z-20: 20;
+  --solo-z-30: 30;
+  --solo-z-40: 40;
+  --solo-z-50: 50;
+  --solo-z-dropdown: 1000;
+  --solo-z-sticky: 1020;
+  --solo-z-fixed: 1030;
+  --solo-z-modal-backdrop: 1040;
+  --solo-z-modal: 1050;
+  --solo-z-popover: 1060;
+  --solo-z-tooltip: 1070;
+}
+
+/* ===========================
+   COMPONENT STYLES
+   =========================== */
+
+/* Buttons */
+.solo-btn {
+  font-family: var(--solo-font-primary);
+  font-weight: var(--solo-font-medium);
+  padding: var(--solo-space-3) var(--solo-space-6);
+  border-radius: var(--solo-radius-lg);
+  transition: all var(--solo-transition-base) var(--solo-ease-in-out);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--solo-space-2);
+  border: var(--solo-border-1) solid transparent;
+}
+
+.solo-btn-primary {
+  background: var(--solo-primary);
+  color: var(--solo-white);
+}
+
+.solo-btn-primary:hover {
+  background: var(--solo-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--solo-shadow-md);
+}
+
+/* Cards - Bento Style */
+.solo-card {
+  background: var(--solo-surface);
+  border: var(--solo-border-1) solid var(--solo-border);
+  border-radius: var(--solo-radius-xl);
+  padding: var(--solo-space-6);
+  transition: all var(--solo-transition-base) var(--solo-ease-in-out);
+}
+
+.solo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--solo-shadow-lg);
+}
+
+.solo-card-bento {
+  background: var(--solo-surface);
+  border: var(--solo-border-1) solid var(--solo-border);
+  border-radius: var(--solo-radius-2xl);
+  padding: var(--solo-space-8);
+  position: relative;
+  overflow: hidden;
+}
+
+.solo-card-bento::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--solo-gradient-2);
+  opacity: 0;
+  transition: opacity var(--solo-transition-base) var(--solo-ease-in-out);
+}
+
+.solo-card-bento:hover::before {
+  opacity: 1;
+}
+
+/* Dashboard Grid */
+.solo-dashboard-grid {
+  display: grid;
+  gap: var(--solo-space-6);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (min-width: 768px) {
+  .solo-dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .solo-dashboard-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .solo-dashboard-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Navigation Tabs */
+.solo-tabs {
+  display: flex;
+  gap: var(--solo-space-2);
+  border-bottom: var(--solo-border-1) solid var(--solo-border);
+  margin-bottom: var(--solo-space-6);
+}
+
+.solo-tab {
+  padding: var(--solo-space-3) var(--solo-space-5);
+  font-weight: var(--solo-font-medium);
+  color: var(--solo-text-secondary);
+  border-bottom: 2px solid transparent;
+  transition: all var(--solo-transition-base) var(--solo-ease-in-out);
+  cursor: pointer;
+}
+
+.solo-tab:hover {
+  color: var(--solo-primary);
+}
+
+.solo-tab.active {
+  color: var(--solo-primary);
+  border-bottom-color: var(--solo-primary);
+}
+
+/* Form Controls */
+.solo-input {
+  width: 100%;
+  padding: var(--solo-space-3) var(--solo-space-4);
+  border: var(--solo-border-1) solid var(--solo-border);
+  border-radius: var(--solo-radius-md);
+  font-size: var(--solo-text-sm);
+  transition: all var(--solo-transition-base) var(--solo-ease-in-out);
+  background: var(--solo-surface);
+  color: var(--solo-text-primary);
+}
+
+.solo-input:focus {
+  outline: none;
+  border-color: var(--solo-primary);
+  box-shadow: 0 0 0 3px var(--solo-primary-light);
+}
+
+/* Stats Cards */
+.solo-stat-card {
+  background: var(--solo-surface);
+  border: var(--solo-border-1) solid var(--solo-border);
+  border-radius: var(--solo-radius-xl);
+  padding: var(--solo-space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--solo-space-4);
+}
+
+.solo-stat-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--solo-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--solo-text-2xl);
+}
+
+.solo-stat-icon.primary {
+  background: var(--solo-primary-light);
+  color: var(--solo-primary);
+}
+
+.solo-stat-icon.success {
+  background: var(--solo-success-light);
+  color: var(--solo-success);
+}
+
+.solo-stat-icon.warning {
+  background: var(--solo-warning-light);
+  color: var(--solo-warning);
+}
+
+.solo-stat-icon.info {
+  background: var(--solo-info-light);
+  color: var(--solo-info);
+}
+
+/* Utility Classes */
+.solo-gradient-text {
+  background: var(--solo-gradient-2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.solo-shadow-holographic {
+  box-shadow: var(--solo-shadow-holographic);
+}
+
+.solo-bg-gradient {
+  background: var(--solo-gradient-2);
+}
+
+.solo-bg-gradient-holographic {
+  background: var(--solo-gradient-holographic);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
