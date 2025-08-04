@@ -145,16 +145,108 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Hero Visual */}
+          {/* Hero Visual - SOLO Dashboard Preview */}
           <div className="relative mx-auto max-w-6xl">
-            <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-r from-purple-500/20 to-pink-500/20 p-2 backdrop-blur-sm">
-              <img
-                src="/hero.webp"
-                alt="SOLO Dashboard Preview"
-                className="h-auto w-full rounded-2xl shadow-2xl"
-              />
+            <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-r from-purple-500/20 to-pink-500/20 p-6 backdrop-blur-sm">
+              {/* SOLO Dashboard Mockup */}
+              <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden">
+                {/* Dashboard Header */}
+                <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-4 text-white">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center">
+                        <Brain className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg">SOLO Dashboard</h3>
+                        <p className="text-white/80 text-sm">CLAT 2026 Preparation</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold">87%</div>
+                      <div className="text-white/80 text-sm">Predicted Rank: 245</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Dashboard Content */}
+                <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Performance Chart */}
+                  <div className="md:col-span-2 bg-gray-50 dark:bg-gray-800 rounded-xl p-4">
+                    <h4 className="font-semibold mb-3 text-gray-900 dark:text-white">Performance Analytics</h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-gray-600 dark:text-gray-300">Legal Reasoning</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
+                            <div className="h-2 bg-purple-500 rounded-full" style={{width: '82%'}}></div>
+                          </div>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">82%</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-gray-600 dark:text-gray-300">English Language</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
+                            <div className="h-2 bg-blue-500 rounded-full" style={{width: '91%'}}></div>
+                          </div>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">91%</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-gray-600 dark:text-gray-300">Current Affairs</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
+                            <div className="h-2 bg-green-500 rounded-full" style={{width: '78%'}}></div>
+                          </div>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">78%</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-gray-600 dark:text-gray-300">Logical Reasoning</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
+                            <div className="h-2 bg-orange-500 rounded-full" style={{width: '85%'}}></div>
+                          </div>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">85%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Study Streak */}
+                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-4">
+                    <h4 className="font-semibold mb-3 text-gray-900 dark:text-white">Study Streak</h4>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-green-600 mb-1">23</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">Days in a row</div>
+                      <div className="mt-3 flex justify-center gap-1">
+                        {[...Array(7)].map((_, i) => (
+                          <div key={i} className={`w-3 h-3 rounded-full ${i < 6 ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* AI Insights */}
+                <div className="px-6 pb-6">
+                  <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="h-8 w-8 rounded-full bg-purple-100 dark:bg-purple-800 flex items-center justify-center flex-shrink-0">
+                        <Sparkles className="h-4 w-4 text-purple-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-purple-900 dark:text-purple-100 mb-1">AI Insight</h4>
+                        <p className="text-sm text-purple-700 dark:text-purple-200">Your Legal Reasoning score improved by 12% this week! Focus on Constitutional Law practice to reach your target rank of 180.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
               {/* Overlay for branding */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-purple-900/30 to-transparent"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-purple-900/10 to-transparent"></div>
             </div>
 
             {/* Floating Stats */}

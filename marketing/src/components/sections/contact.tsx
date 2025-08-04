@@ -13,12 +13,12 @@ import { Textarea } from '@/components/ui/textarea';
 
 const contactInfo = [
   {
-    title: 'Corporate office',
+    title: 'Legalight Office',
     content: (
       <p className="text-muted-foreground mt-3">
-        1 Carlsberg Close
+        India's Leading Legal Education Platform
         <br />
-        1260 Hillview, Australia
+        New Delhi, India
       </p>
     ),
   },
@@ -27,21 +27,21 @@ const contactInfo = [
     content: (
       <div className="mt-3">
         <div>
-          <p className="">Careers</p>
+          <p className="">Student Support</p>
           <Link
-            href="mailto:careers@streamline.com"
+            href="mailto:hello@legalight.in"
             className="text-muted-foreground hover:text-foreground"
           >
-            careers@streamline.com
+            hello@legalight.in
           </Link>
         </div>
         <div className="mt-1">
-          <p className="">Press</p>
+          <p className="">Partnership</p>
           <Link
-            href="mailto:press@streamline.com"
+            href="mailto:partners@legalight.in"
             className="text-muted-foreground hover:text-foreground"
           >
-            press@streamline.com
+            partners@legalight.in
           </Link>
         </div>
       </div>

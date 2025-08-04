@@ -18,15 +18,15 @@ const About = () => {
         />
 
         <TextSection
-          title="The team"
+          title="The SOLO Team"
           paragraphs={[
-            'We started building Mainline in 2019 and launched in 2022. Every endpoint has been designed from the ground up — with no technical debt or legacy systems. We are purpose-built to power project management innovation for the next hundred years.',
-            "We are 100% founder and team-owned, profitable, and we keep our team lean. Over time, this page will become more polished, but for now, we're focused on delivering for developers.",
-            "If you're interested in building the future of PM, check out our open roles below.",
+            'We started building SOLO in 2022 with a vision to revolutionize CLAT preparation through AI. Every feature has been designed from the ground up — with cutting-edge machine learning and personalized analytics. We are purpose-built to power legal education innovation for the next generation of lawyers.',
+            "We are 100% founder-owned, profitable, and we keep our team focused on student success. Our team includes former CLAT toppers, legal education experts, and AI engineers working together to transform how students prepare for law entrance exams.",
+            "If you're passionate about legal education and AI technology, we'd love to hear from you.",
           ]}
           ctaButton={{
-            href: '/careers',
-            text: 'View open roles',
+            href: '/contact',
+            text: 'Join our mission',
           }}
         />
       </div>
@@ -35,8 +35,8 @@ const About = () => {
       <div className="flex flex-col gap-8 lg:gap-16 xl:gap-20">
         <TextSection
           paragraphs={[
-            "At Mainline, we are dedicated to transforming the way teams plan, execute, and deliver projects. Our mission is to provide our customers with an unbeatable edge over delays, inefficiencies, and disorganisation through actionable insights and seamless collaboration. We'll stop at nothing to give you the tools you need to get every project across the finish line.",
-            "We're customer-obsessed — investing the time to understand every aspect of your workflow so that we can help you operate better than ever before. We're all in this together because your success is our success. In our history as a company, we've never lost a customer, because when your projects succeed, so do we.",
+            "At SOLO by Legalight, we are dedicated to transforming how students prepare for CLAT and other law entrance exams. Our mission is to provide every student with AI-powered performance analytics that give them an unbeatable edge over traditional preparation methods. We'll stop at nothing to help you achieve your target rank and secure admission to your dream law school.",
+            "We're student-obsessed — investing the time to understand every aspect of your preparation journey so that we can help you perform better than ever before. We're all in this together because your success is our success. In our journey as a company, we've helped thousands of students improve their ranks and achieve their legal career dreams.",
           ]}
         />
         <ImageSection

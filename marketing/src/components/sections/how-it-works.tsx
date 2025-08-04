@@ -165,25 +165,156 @@ export default function HowItWorks() {
                   </div>
                 </div>
 
-                {/* Visual */}
+                {/* Visual - SOLO Dashboard Preview */}
                 <div className="flex-1">
-                  <div
-                    className={`relative h-80 w-full rounded-3xl bg-gradient-to-br ${step.gradient} overflow-hidden`}
-                  >
-                    <div className="absolute inset-0 bg-black/10"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <IconComponent className="mx-auto mb-4 h-24 w-24 opacity-80" />
-                        <h4 className="mb-2 text-2xl font-bold">
-                          {step.title}
-                        </h4>
-                        <p className="text-white/80">Interactive Preview</p>
+                  <div className="relative h-80 w-full rounded-3xl bg-white dark:bg-gray-900 overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700">
+                    {index === 0 && (
+                      // Step 1: AI Study Planner Preview
+                      <div className="p-6 h-full">
+                        <div className="mb-4 flex items-center gap-2">
+                          <Brain className="h-5 w-5 text-purple-600" />
+                          <h4 className="font-semibold text-gray-900 dark:text-white">AI Study Planner</h4>
+                        </div>
+                        <div className="space-y-3">
+                          <div className="flex items-center justify-between p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                            <div>
+                              <div className="font-medium text-gray-900 dark:text-white">Constitutional Law</div>
+                              <div className="text-sm text-gray-600 dark:text-gray-300">2 hours • High Priority</div>
+                            </div>
+                            <div className="text-purple-600 font-bold">9:00 AM</div>
+                          </div>
+                          <div className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                            <div>
+                              <div className="font-medium text-gray-900 dark:text-white">Reading Comprehension</div>
+                              <div className="text-sm text-gray-600 dark:text-gray-300">1.5 hours • Medium Priority</div>
+                            </div>
+                            <div className="text-blue-600 font-bold">11:30 AM</div>
+                          </div>
+                          <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                            <div>
+                              <div className="font-medium text-gray-900 dark:text-white">Current Affairs</div>
+                              <div className="text-sm text-gray-600 dark:text-gray-300">1 hour • Review</div>
+                            </div>
+                            <div className="text-green-600 font-bold">2:00 PM</div>
+                          </div>
+                          <div className="text-center mt-4 p-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-lg">
+                            <div className="text-sm text-purple-700 dark:text-purple-300">
+                              <Sparkles className="inline h-4 w-4 mr-1" />
+                              AI optimized based on your performance
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                    {/* Decorative elements */}
-                    <div className="absolute top-4 right-4 h-8 w-8 rounded-full bg-white/20"></div>
-                    <div className="absolute bottom-4 left-4 h-6 w-6 rounded-full bg-white/15"></div>
-                    <div className="absolute top-1/2 left-4 h-4 w-4 rounded-full bg-white/10"></div>
+                    )}
+                    
+                    {index === 1 && (
+                      // Step 2: Mock Test Analysis Preview
+                      <div className="p-6 h-full">
+                        <div className="mb-4 flex items-center gap-2">
+                          <BarChart3 className="h-5 w-5 text-blue-600" />
+                          <h4 className="font-semibold text-gray-900 dark:text-white">Level Up Analysis</h4>
+                        </div>
+                        <div className="space-y-4">
+                          <div className="text-center p-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl">
+                            <div className="text-2xl font-bold">124/150</div>
+                            <div className="text-sm opacity-90">Mock Test Score</div>
+                          </div>
+                          <div className="grid grid-cols-3 gap-3">
+                            <div className="text-center p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                              <div className="text-lg font-bold text-purple-600">DECODE</div>
+                              <div className="text-xs text-gray-600 dark:text-gray-300">Analyze</div>
+                            </div>
+                            <div className="text-center p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                              <div className="text-lg font-bold text-orange-600">TRACK</div>
+                              <div className="text-xs text-gray-600 dark:text-gray-300">Progress</div>
+                            </div>
+                            <div className="text-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                              <div className="text-lg font-bold text-green-600">REFLECT</div>
+                              <div className="text-xs text-gray-600 dark:text-gray-300">Improve</div>
+                            </div>
+                          </div>
+                          <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+                            <div className="text-sm font-medium text-yellow-800 dark:text-yellow-200">💡 AI Insight</div>
+                            <div className="text-xs text-yellow-700 dark:text-yellow-300">Focus on Contract Law - 15% improvement needed</div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {index === 2 && (
+                      // Step 3: AI Insights Preview
+                      <div className="p-6 h-full">
+                        <div className="mb-4 flex items-center gap-2">
+                          <Target className="h-5 w-5 text-green-600" />
+                          <h4 className="font-semibold text-gray-900 dark:text-white">Weekly Insights</h4>
+                        </div>
+                        <div className="space-y-3">
+                          <div className="p-4 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-xl">
+                            <div className="flex items-center gap-2 mb-2">
+                              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                <TrendingUp className="h-4 w-4 text-white" />
+                              </div>
+                              <div className="font-semibold text-green-800 dark:text-green-200">This Week's Progress</div>
+                            </div>
+                            <div className="text-sm text-green-700 dark:text-green-300">
+                              • Legal Reasoning: +12% improvement<br/>
+                              • Study streak: 7 days strong!<br/>
+                              • Mock test rank: Up by 45 positions
+                            </div>
+                          </div>
+                          <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                            <div className="text-sm font-medium text-purple-800 dark:text-purple-200 mb-1">🎯 Rank Prediction</div>
+                            <div className="text-lg font-bold text-purple-600">Rank 245</div>
+                            <div className="text-xs text-purple-600">85% confidence • Target: 180</div>
+                          </div>
+                          <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                            <div className="text-sm font-medium text-orange-800 dark:text-orange-200 mb-1">📚 Focus Areas</div>
+                            <div className="text-xs text-orange-700 dark:text-orange-300">
+                              1. Constitutional Law (Priority)<br/>
+                              2. Legal Maxims Practice<br/>
+                              3. Current Affairs Review
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {index === 3 && (
+                      // Step 4: Community Preview
+                      <div className="p-6 h-full">
+                        <div className="mb-4 flex items-center gap-2">
+                          <Users className="h-5 w-5 text-pink-600" />
+                          <h4 className="font-semibold text-gray-900 dark:text-white">Study Community</h4>
+                        </div>
+                        <div className="space-y-3">
+                          <div className="p-3 bg-gradient-to-r from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 rounded-lg">
+                            <div className="flex items-center gap-3 mb-2">
+                              <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">A</div>
+                              <div>
+                                <div className="font-medium text-gray-900 dark:text-white">Arjun M.</div>
+                                <div className="text-xs text-gray-600 dark:text-gray-300">AIR 23 CLAT 2024</div>
+                              </div>
+                            </div>
+                            <div className="text-sm text-gray-700 dark:text-gray-300">"Constitutional Law tip: Focus on landmark cases from 2020-2024 🏛️"</div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-2">
+                            <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-center">
+                              <div className="text-lg font-bold text-blue-600">10K+</div>
+                              <div className="text-xs text-gray-600 dark:text-gray-300">Active Students</div>
+                            </div>
+                            <div className="p-2 bg-green-50 dark:bg-green-900/20 rounded-lg text-center">
+                              <div className="text-lg font-bold text-green-600">24/7</div>
+                              <div className="text-xs text-gray-600 dark:text-gray-300">Peer Support</div>
+                            </div>
+                          </div>
+                          <div className="p-2 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+                            <div className="text-xs text-yellow-800 dark:text-yellow-200">
+                              <span className="font-medium">Study Group:</span> "CLAT 2026 Warriors" (45 members online)
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

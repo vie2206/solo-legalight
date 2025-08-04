@@ -54,8 +54,8 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <header className="bg-background/70 absolute top-5 left-1/2 z-50 w-[min(90%,700px)] -translate-x-1/2 rounded-full border backdrop-blur-md lg:top-12">
-      <div className="flex items-center justify-between px-6 py-3">
+    <header className="bg-background/70 absolute top-5 left-1/2 z-50 w-[min(95%,1200px)] -translate-x-1/2 rounded-full border backdrop-blur-md lg:top-12">
+      <div className="flex items-center justify-between px-8 py-4">
         <Link href="/" className="flex shrink-0 items-center gap-2">
           <div className="text-2xl font-bold">
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -73,7 +73,7 @@ const Navbar = () => {
             {ITEMS.map((link) =>
               link.dropdownItems ? (
                 <NavigationMenuItem key={link.label} className="">
-                  <NavigationMenuTrigger className="data-[state=open]:bg-accent/50 bg-transparent! px-1.5">
+                  <NavigationMenuTrigger className="data-[state=open]:bg-accent/50 bg-transparent! px-3 py-2">
                     {link.label}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -105,7 +105,7 @@ const Navbar = () => {
                   <Link
                     href={link.href}
                     className={cn(
-                      'relative bg-transparent px-1.5 text-sm font-medium',
+                      'relative bg-transparent px-3 py-2 text-sm font-medium hover:text-purple-600 transition-colors',
                       pathname === link.href && 'text-muted-foreground',
                     )}
                   >
