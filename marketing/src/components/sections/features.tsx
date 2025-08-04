@@ -94,19 +94,23 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="bg-gradient-to-b from-white to-gray-50 py-24 dark:from-gray-950 dark:to-gray-900"
+      className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24"
     >
+      {/* Glassmorphism background with floating elements */}
+      <div className="absolute inset-0 bg-black/10"></div>
+      <div className="absolute top-10 right-10 h-40 w-40 animate-pulse rounded-full bg-blue-500/20 blur-3xl"></div>
+      <div className="absolute bottom-20 left-20 h-28 w-28 animate-pulse rounded-full bg-green-500/20 blur-2xl delay-1500"></div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-2 text-sm font-medium text-white">
             <Sparkles className="h-4 w-4" />
             Revolutionary Features
           </div>
-          <h2 className="mb-4 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
+          <h2 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Why SOLO is Different
           </h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
+          <p className="mx-auto max-w-3xl text-xl text-gray-300">
             We're not just another coaching platform. We're creating a new
             category of AI-powered performance analytics that makes every
             student's preparation truly personalized.
@@ -114,12 +118,12 @@ export default function Features() {
         </div>
 
         {/* Blue Ocean Strategy Callout */}
-        <div className="mb-16 rounded-3xl border border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50 p-8 dark:border-blue-800 dark:from-blue-950/30 dark:to-indigo-950/30">
+        <div className="mb-16 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-md p-8 shadow-xl">
           <div className="text-center">
-            <h3 className="mb-4 text-2xl font-bold text-blue-900 dark:text-blue-100">
+            <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
               🚀 Creating a New Category
             </h3>
-            <p className="mx-auto max-w-4xl text-lg text-blue-800 dark:text-blue-200">
+            <p className="mx-auto max-w-4xl text-lg text-gray-700 dark:text-gray-200">
               <strong>No innovation in CLAT prep since 2008.</strong> While
               others focus on marketing and false promises, we're solving the
               real problem: giving every student the personalized insights they
@@ -135,7 +139,7 @@ export default function Features() {
             return (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-lg transition-all duration-300 hover:border-gray-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600"
+                className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-8 shadow-xl transition-all duration-300 hover:border-white/30 hover:bg-white/20 hover:shadow-2xl"
               >
                 {/* Gradient Background */}
                 <div
@@ -150,11 +154,11 @@ export default function Features() {
                 </div>
 
                 {/* Content */}
-                <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="mb-3 text-xl font-semibold text-white">
                   {feature.title}
                 </h3>
 
-                <p className="mb-4 leading-relaxed text-gray-600 dark:text-gray-300">
+                <p className="mb-4 leading-relaxed text-gray-300">
                   {feature.description}
                 </p>
 
@@ -163,7 +167,7 @@ export default function Features() {
                   <div
                     className={`h-2 w-2 rounded-full bg-gradient-to-r ${feature.gradient}`}
                   ></div>
-                  <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <span className="text-sm font-medium text-gray-400">
                     {feature.stats}
                   </span>
                 </div>
@@ -177,7 +181,7 @@ export default function Features() {
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-4 rounded-2xl border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
+          <div className="inline-flex items-center gap-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 shadow-xl">
             <div className="flex -space-x-2">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-sm font-bold text-white">
                 A
@@ -193,10 +197,10 @@ export default function Features() {
               </div>
             </div>
             <div className="text-left">
-              <p className="font-semibold text-gray-900 dark:text-white">
+              <p className="font-semibold text-white">
                 Join 10,000+ students already using SOLO
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <p className="text-sm text-gray-300">
                 Average improvement: +23 marks in 3 months
               </p>
             </div>

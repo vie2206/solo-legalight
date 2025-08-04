@@ -97,18 +97,23 @@ const stats = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-white py-24 dark:from-gray-900 dark:to-gray-950">
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24">
+      {/* Glassmorphism background with floating elements */}
+      <div className="absolute inset-0 bg-black/10"></div>
+      <div className="absolute top-20 left-10 h-32 w-32 animate-pulse rounded-full bg-purple-500/20 blur-3xl"></div>
+      <div className="absolute top-40 right-20 h-24 w-24 animate-pulse rounded-full bg-pink-500/20 blur-2xl delay-1000"></div>
+      <div className="absolute bottom-20 left-1/3 h-20 w-20 animate-pulse rounded-full bg-blue-500/20 blur-xl delay-2000"></div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-20 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-2 text-sm font-medium text-white">
             <Sparkles className="h-4 w-4" />
             How SOLO Works
           </div>
-          <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
+          <h2 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Your Journey to CLAT Success
           </h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
+          <p className="mx-auto max-w-3xl text-xl text-gray-300">
             From your first day to CLAT 2026, SOLO adapts and evolves with you.
             Here's how we transform your preparation into a personalized,
             data-driven success story.
@@ -141,11 +146,11 @@ export default function HowItWorks() {
                     </div>
                   </div>
 
-                  <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+                  <h3 className="text-3xl font-bold text-white">
                     {step.title}
                   </h3>
 
-                  <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+                  <p className="text-lg leading-relaxed text-gray-300">
                     {step.description}
                   </p>
 
@@ -158,7 +163,7 @@ export default function HowItWorks() {
                         <CheckCircle
                           className={`h-5 w-5 bg-gradient-to-r ${step.gradient} rounded-full text-white`}
                         />
-                        <span className="text-gray-700 dark:text-gray-300">
+                        <span className="text-gray-300">
                           {feature}
                         </span>
                       </div>

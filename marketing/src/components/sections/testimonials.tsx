@@ -103,18 +103,22 @@ const stats = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white py-24 dark:from-gray-900 dark:to-gray-950">
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24">
+      {/* Glassmorphism background with floating elements */}
+      <div className="absolute inset-0 bg-black/10"></div>
+      <div className="absolute top-32 right-16 h-36 w-36 animate-pulse rounded-full bg-yellow-500/20 blur-3xl"></div>
+      <div className="absolute bottom-32 left-16 h-32 w-32 animate-pulse rounded-full bg-pink-500/20 blur-2xl delay-1000"></div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-yellow-100 px-4 py-2 text-sm font-medium text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-2 text-sm font-medium text-white">
             <Star className="h-4 w-4" />
             Student Success Stories
           </div>
-          <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
+          <h2 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Real Results from Real Students
           </h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
+          <p className="mx-auto max-w-3xl text-xl text-gray-300">
             Don't just take our word for it. Here's what students from across
             India are saying about their SOLO experience and how it transformed
             their CLAT preparation.
@@ -128,7 +132,7 @@ export default function Testimonials() {
             return (
               <div
                 key={index}
-                className="rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-lg dark:border-gray-700 dark:bg-gray-800"
+                className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 text-center shadow-xl"
               >
                 <IconComponent
                   className={`mx-auto mb-4 h-12 w-12 ${stat.color}`}
@@ -152,7 +156,7 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800"
+              className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-8 shadow-xl transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl"
             >
               {/* Gradient Background */}
               <div
@@ -222,41 +226,41 @@ export default function Testimonials() {
         </div>
 
         {/* Data-Driven Results */}
-        <div className="mt-20 rounded-3xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-purple-50 p-8 dark:border-indigo-800 dark:from-indigo-950/30 dark:to-purple-950/30">
+        <div className="mt-20 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-md p-8 shadow-xl">
           <div className="text-center">
-            <h3 className="mb-6 text-2xl font-bold text-indigo-900 dark:text-indigo-100">
+            <h3 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
               📊 Data-Driven Success Stories
             </h3>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               <div className="text-center">
-                <div className="mb-2 text-3xl font-bold text-indigo-900 dark:text-indigo-100">
+                <div className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
                   2,847
                 </div>
-                <div className="text-sm text-indigo-700 dark:text-indigo-300">
+                <div className="text-sm text-gray-700 dark:text-gray-300">
                   Students improved by 15+ marks
                 </div>
               </div>
               <div className="text-center">
-                <div className="mb-2 text-3xl font-bold text-indigo-900 dark:text-indigo-100">
+                <div className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
                   87%
                 </div>
-                <div className="text-sm text-indigo-700 dark:text-indigo-300">
+                <div className="text-sm text-gray-700 dark:text-gray-300">
                   From Tier-2/3 cities
                 </div>
               </div>
               <div className="text-center">
-                <div className="mb-2 text-3xl font-bold text-indigo-900 dark:text-indigo-100">
+                <div className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
                   156
                 </div>
-                <div className="text-sm text-indigo-700 dark:text-indigo-300">
+                <div className="text-sm text-gray-700 dark:text-gray-300">
                   Average study hours saved
                 </div>
               </div>
               <div className="text-center">
-                <div className="mb-2 text-3xl font-bold text-indigo-900 dark:text-indigo-100">
+                <div className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
                   ₹67K
                 </div>
-                <div className="text-sm text-indigo-700 dark:text-indigo-300">
+                <div className="text-sm text-gray-700 dark:text-gray-300">
                   Average savings vs coaching
                 </div>
               </div>
@@ -273,7 +277,7 @@ export default function Testimonials() {
             Start your free 30-day trial today and see why students across India
             choose SOLO for their CLAT preparation.
           </p>
-          <div className="inline-flex items-center gap-4 rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
+          <div className="inline-flex items-center gap-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-4 shadow-xl">
             <div className="flex -space-x-2">
               {testimonials.slice(0, 4).map((testimonial, index) => (
                 <div
