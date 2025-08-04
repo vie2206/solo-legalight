@@ -149,80 +149,123 @@ export default function Hero() {
           <div className="relative mx-auto max-w-6xl">
             <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-r from-purple-500/20 to-pink-500/20 p-6 backdrop-blur-sm">
               {/* SOLO Dashboard Mockup */}
-              <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden">
+              <div className="overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-gray-900">
                 {/* Dashboard Header */}
                 <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-4 text-white">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
                         <Brain className="h-5 w-5" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg">SOLO Dashboard</h3>
-                        <p className="text-white/80 text-sm">CLAT 2026 Preparation</p>
+                        <h3 className="text-lg font-bold">SOLO Dashboard</h3>
+                        <p className="text-sm text-white/80">
+                          CLAT 2026 Preparation
+                        </p>
                       </div>
                     </div>
                     <div className="text-right">
                       <div className="text-2xl font-bold">87%</div>
-                      <div className="text-white/80 text-sm">Predicted Rank: 245</div>
+                      <div className="text-sm text-white/80">
+                        Predicted Rank: 245
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Dashboard Content */}
-                <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 gap-6 p-6 md:grid-cols-3">
                   {/* Performance Chart */}
-                  <div className="md:col-span-2 bg-gray-50 dark:bg-gray-800 rounded-xl p-4">
-                    <h4 className="font-semibold mb-3 text-gray-900 dark:text-white">Performance Analytics</h4>
+                  <div className="rounded-xl bg-gray-50 p-4 md:col-span-2 dark:bg-gray-800">
+                    <h4 className="mb-3 font-semibold text-gray-900 dark:text-white">
+                      Performance Analytics
+                    </h4>
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-600 dark:text-gray-300">Legal Reasoning</span>
+                        <span className="text-sm text-gray-600 dark:text-gray-300">
+                          Legal Reasoning
+                        </span>
                         <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
-                            <div className="h-2 bg-purple-500 rounded-full" style={{width: '82%'}}></div>
+                          <div className="h-2 w-24 rounded-full bg-gray-200 dark:bg-gray-700">
+                            <div
+                              className="h-2 rounded-full bg-purple-500"
+                              style={{ width: '82%' }}
+                            ></div>
                           </div>
-                          <span className="text-sm font-medium text-gray-900 dark:text-white">82%</span>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">
+                            82%
+                          </span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-600 dark:text-gray-300">English Language</span>
+                        <span className="text-sm text-gray-600 dark:text-gray-300">
+                          English Language
+                        </span>
                         <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
-                            <div className="h-2 bg-blue-500 rounded-full" style={{width: '91%'}}></div>
+                          <div className="h-2 w-24 rounded-full bg-gray-200 dark:bg-gray-700">
+                            <div
+                              className="h-2 rounded-full bg-blue-500"
+                              style={{ width: '91%' }}
+                            ></div>
                           </div>
-                          <span className="text-sm font-medium text-gray-900 dark:text-white">91%</span>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">
+                            91%
+                          </span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-600 dark:text-gray-300">Current Affairs</span>
+                        <span className="text-sm text-gray-600 dark:text-gray-300">
+                          Current Affairs
+                        </span>
                         <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
-                            <div className="h-2 bg-green-500 rounded-full" style={{width: '78%'}}></div>
+                          <div className="h-2 w-24 rounded-full bg-gray-200 dark:bg-gray-700">
+                            <div
+                              className="h-2 rounded-full bg-green-500"
+                              style={{ width: '78%' }}
+                            ></div>
                           </div>
-                          <span className="text-sm font-medium text-gray-900 dark:text-white">78%</span>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">
+                            78%
+                          </span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-600 dark:text-gray-300">Logical Reasoning</span>
+                        <span className="text-sm text-gray-600 dark:text-gray-300">
+                          Logical Reasoning
+                        </span>
                         <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
-                            <div className="h-2 bg-orange-500 rounded-full" style={{width: '85%'}}></div>
+                          <div className="h-2 w-24 rounded-full bg-gray-200 dark:bg-gray-700">
+                            <div
+                              className="h-2 rounded-full bg-orange-500"
+                              style={{ width: '85%' }}
+                            ></div>
                           </div>
-                          <span className="text-sm font-medium text-gray-900 dark:text-white">85%</span>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">
+                            85%
+                          </span>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Study Streak */}
-                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-4">
-                    <h4 className="font-semibold mb-3 text-gray-900 dark:text-white">Study Streak</h4>
+                  <div className="rounded-xl bg-gradient-to-br from-green-50 to-emerald-50 p-4 dark:from-green-900/20 dark:to-emerald-900/20">
+                    <h4 className="mb-3 font-semibold text-gray-900 dark:text-white">
+                      Study Streak
+                    </h4>
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-green-600 mb-1">23</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-300">Days in a row</div>
+                      <div className="mb-1 text-3xl font-bold text-green-600">
+                        23
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">
+                        Days in a row
+                      </div>
                       <div className="mt-3 flex justify-center gap-1">
                         {[...Array(7)].map((_, i) => (
-                          <div key={i} className={`w-3 h-3 rounded-full ${i < 6 ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+                          <div
+                            key={i}
+                            className={`h-3 w-3 rounded-full ${i < 6 ? 'bg-green-500' : 'bg-gray-300'}`}
+                          ></div>
                         ))}
                       </div>
                     </div>
@@ -231,20 +274,26 @@ export default function Hero() {
 
                 {/* AI Insights */}
                 <div className="px-6 pb-6">
-                  <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-4">
+                  <div className="rounded-xl bg-purple-50 p-4 dark:bg-purple-900/20">
                     <div className="flex items-start gap-3">
-                      <div className="h-8 w-8 rounded-full bg-purple-100 dark:bg-purple-800 flex items-center justify-center flex-shrink-0">
+                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-800">
                         <Sparkles className="h-4 w-4 text-purple-600" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-purple-900 dark:text-purple-100 mb-1">AI Insight</h4>
-                        <p className="text-sm text-purple-700 dark:text-purple-200">Your Legal Reasoning score improved by 12% this week! Focus on Constitutional Law practice to reach your target rank of 180.</p>
+                        <h4 className="mb-1 font-semibold text-purple-900 dark:text-purple-100">
+                          AI Insight
+                        </h4>
+                        <p className="text-sm text-purple-700 dark:text-purple-200">
+                          Your Legal Reasoning score improved by 12% this week!
+                          Focus on Constitutional Law practice to reach your
+                          target rank of 180.
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               {/* Overlay for branding */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-purple-900/10 to-transparent"></div>
             </div>

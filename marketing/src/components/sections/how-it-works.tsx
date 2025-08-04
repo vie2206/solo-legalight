@@ -168,111 +168,166 @@ export default function HowItWorks() {
 
                 {/* Visual - SOLO Dashboard Preview */}
                 <div className="flex-1">
-                  <div className="relative h-80 w-full rounded-3xl bg-white dark:bg-gray-900 overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700">
+                  <div className="relative h-80 w-full overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900">
                     {index === 0 && (
                       // Step 1: AI Study Planner Preview
-                      <div className="p-6 h-full">
+                      <div className="h-full p-6">
                         <div className="mb-4 flex items-center gap-2">
                           <Brain className="h-5 w-5 text-purple-600" />
-                          <h4 className="font-semibold text-gray-900 dark:text-white">AI Study Planner</h4>
+                          <h4 className="font-semibold text-gray-900 dark:text-white">
+                            AI Study Planner
+                          </h4>
                         </div>
                         <div className="space-y-3">
-                          <div className="flex items-center justify-between p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                          <div className="flex items-center justify-between rounded-lg bg-purple-50 p-3 dark:bg-purple-900/20">
                             <div>
-                              <div className="font-medium text-gray-900 dark:text-white">Constitutional Law</div>
-                              <div className="text-sm text-gray-600 dark:text-gray-300">2 hours • High Priority</div>
+                              <div className="font-medium text-gray-900 dark:text-white">
+                                Constitutional Law
+                              </div>
+                              <div className="text-sm text-gray-600 dark:text-gray-300">
+                                2 hours • High Priority
+                              </div>
                             </div>
-                            <div className="text-purple-600 font-bold">9:00 AM</div>
+                            <div className="font-bold text-purple-600">
+                              9:00 AM
+                            </div>
                           </div>
-                          <div className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                          <div className="flex items-center justify-between rounded-lg bg-blue-50 p-3 dark:bg-blue-900/20">
                             <div>
-                              <div className="font-medium text-gray-900 dark:text-white">Reading Comprehension</div>
-                              <div className="text-sm text-gray-600 dark:text-gray-300">1.5 hours • Medium Priority</div>
+                              <div className="font-medium text-gray-900 dark:text-white">
+                                Reading Comprehension
+                              </div>
+                              <div className="text-sm text-gray-600 dark:text-gray-300">
+                                1.5 hours • Medium Priority
+                              </div>
                             </div>
-                            <div className="text-blue-600 font-bold">11:30 AM</div>
+                            <div className="font-bold text-blue-600">
+                              11:30 AM
+                            </div>
                           </div>
-                          <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                          <div className="flex items-center justify-between rounded-lg bg-green-50 p-3 dark:bg-green-900/20">
                             <div>
-                              <div className="font-medium text-gray-900 dark:text-white">Current Affairs</div>
-                              <div className="text-sm text-gray-600 dark:text-gray-300">1 hour • Review</div>
+                              <div className="font-medium text-gray-900 dark:text-white">
+                                Current Affairs
+                              </div>
+                              <div className="text-sm text-gray-600 dark:text-gray-300">
+                                1 hour • Review
+                              </div>
                             </div>
-                            <div className="text-green-600 font-bold">2:00 PM</div>
+                            <div className="font-bold text-green-600">
+                              2:00 PM
+                            </div>
                           </div>
-                          <div className="text-center mt-4 p-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-lg">
+                          <div className="mt-4 rounded-lg bg-gradient-to-r from-purple-100 to-pink-100 p-2 text-center dark:from-purple-900/30 dark:to-pink-900/30">
                             <div className="text-sm text-purple-700 dark:text-purple-300">
-                              <Sparkles className="inline h-4 w-4 mr-1" />
+                              <Sparkles className="mr-1 inline h-4 w-4" />
                               AI optimized based on your performance
                             </div>
                           </div>
                         </div>
                       </div>
                     )}
-                    
+
                     {index === 1 && (
                       // Step 2: Mock Test Analysis Preview
-                      <div className="p-6 h-full">
+                      <div className="h-full p-6">
                         <div className="mb-4 flex items-center gap-2">
                           <BarChart3 className="h-5 w-5 text-blue-600" />
-                          <h4 className="font-semibold text-gray-900 dark:text-white">Level Up Analysis</h4>
+                          <h4 className="font-semibold text-gray-900 dark:text-white">
+                            Level Up Analysis
+                          </h4>
                         </div>
                         <div className="space-y-4">
-                          <div className="text-center p-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl">
+                          <div className="rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 p-4 text-center text-white">
                             <div className="text-2xl font-bold">124/150</div>
-                            <div className="text-sm opacity-90">Mock Test Score</div>
+                            <div className="text-sm opacity-90">
+                              Mock Test Score
+                            </div>
                           </div>
                           <div className="grid grid-cols-3 gap-3">
-                            <div className="text-center p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-                              <div className="text-lg font-bold text-purple-600">DECODE</div>
-                              <div className="text-xs text-gray-600 dark:text-gray-300">Analyze</div>
+                            <div className="rounded-lg bg-purple-50 p-3 text-center dark:bg-purple-900/20">
+                              <div className="text-lg font-bold text-purple-600">
+                                DECODE
+                              </div>
+                              <div className="text-xs text-gray-600 dark:text-gray-300">
+                                Analyze
+                              </div>
                             </div>
-                            <div className="text-center p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                              <div className="text-lg font-bold text-orange-600">TRACK</div>
-                              <div className="text-xs text-gray-600 dark:text-gray-300">Progress</div>
+                            <div className="rounded-lg bg-orange-50 p-3 text-center dark:bg-orange-900/20">
+                              <div className="text-lg font-bold text-orange-600">
+                                TRACK
+                              </div>
+                              <div className="text-xs text-gray-600 dark:text-gray-300">
+                                Progress
+                              </div>
                             </div>
-                            <div className="text-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                              <div className="text-lg font-bold text-green-600">REFLECT</div>
-                              <div className="text-xs text-gray-600 dark:text-gray-300">Improve</div>
+                            <div className="rounded-lg bg-green-50 p-3 text-center dark:bg-green-900/20">
+                              <div className="text-lg font-bold text-green-600">
+                                REFLECT
+                              </div>
+                              <div className="text-xs text-gray-600 dark:text-gray-300">
+                                Improve
+                              </div>
                             </div>
                           </div>
-                          <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-                            <div className="text-sm font-medium text-yellow-800 dark:text-yellow-200">💡 AI Insight</div>
-                            <div className="text-xs text-yellow-700 dark:text-yellow-300">Focus on Contract Law - 15% improvement needed</div>
+                          <div className="rounded-lg bg-yellow-50 p-3 dark:bg-yellow-900/20">
+                            <div className="text-sm font-medium text-yellow-800 dark:text-yellow-200">
+                              💡 AI Insight
+                            </div>
+                            <div className="text-xs text-yellow-700 dark:text-yellow-300">
+                              Focus on Contract Law - 15% improvement needed
+                            </div>
                           </div>
                         </div>
                       </div>
                     )}
-                    
+
                     {index === 2 && (
                       // Step 3: AI Insights Preview
-                      <div className="p-6 h-full">
+                      <div className="h-full p-6">
                         <div className="mb-4 flex items-center gap-2">
                           <Target className="h-5 w-5 text-green-600" />
-                          <h4 className="font-semibold text-gray-900 dark:text-white">Weekly Insights</h4>
+                          <h4 className="font-semibold text-gray-900 dark:text-white">
+                            Weekly Insights
+                          </h4>
                         </div>
                         <div className="space-y-3">
-                          <div className="p-4 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-xl">
-                            <div className="flex items-center gap-2 mb-2">
-                              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                          <div className="rounded-xl bg-gradient-to-r from-green-100 to-emerald-100 p-4 dark:from-green-900/30 dark:to-emerald-900/30">
+                            <div className="mb-2 flex items-center gap-2">
+                              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500">
                                 <TrendingUp className="h-4 w-4 text-white" />
                               </div>
-                              <div className="font-semibold text-green-800 dark:text-green-200">This Week's Progress</div>
+                              <div className="font-semibold text-green-800 dark:text-green-200">
+                                This Week's Progress
+                              </div>
                             </div>
                             <div className="text-sm text-green-700 dark:text-green-300">
-                              • Legal Reasoning: +12% improvement<br/>
-                              • Study streak: 7 days strong!<br/>
-                              • Mock test rank: Up by 45 positions
+                              • Legal Reasoning: +12% improvement
+                              <br />
+                              • Study streak: 7 days strong!
+                              <br />• Mock test rank: Up by 45 positions
                             </div>
                           </div>
-                          <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-                            <div className="text-sm font-medium text-purple-800 dark:text-purple-200 mb-1">🎯 Rank Prediction</div>
-                            <div className="text-lg font-bold text-purple-600">Rank 245</div>
-                            <div className="text-xs text-purple-600">85% confidence • Target: 180</div>
+                          <div className="rounded-lg bg-purple-50 p-3 dark:bg-purple-900/20">
+                            <div className="mb-1 text-sm font-medium text-purple-800 dark:text-purple-200">
+                              🎯 Rank Prediction
+                            </div>
+                            <div className="text-lg font-bold text-purple-600">
+                              Rank 245
+                            </div>
+                            <div className="text-xs text-purple-600">
+                              85% confidence • Target: 180
+                            </div>
                           </div>
-                          <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                            <div className="text-sm font-medium text-orange-800 dark:text-orange-200 mb-1">📚 Focus Areas</div>
+                          <div className="rounded-lg bg-orange-50 p-3 dark:bg-orange-900/20">
+                            <div className="mb-1 text-sm font-medium text-orange-800 dark:text-orange-200">
+                              📚 Focus Areas
+                            </div>
                             <div className="text-xs text-orange-700 dark:text-orange-300">
-                              1. Constitutional Law (Priority)<br/>
-                              2. Legal Maxims Practice<br/>
+                              1. Constitutional Law (Priority)
+                              <br />
+                              2. Legal Maxims Practice
+                              <br />
                               3. Current Affairs Review
                             </div>
                           </div>
@@ -282,35 +337,55 @@ export default function HowItWorks() {
 
                     {index === 3 && (
                       // Step 4: Community Preview
-                      <div className="p-6 h-full">
+                      <div className="h-full p-6">
                         <div className="mb-4 flex items-center gap-2">
                           <Users className="h-5 w-5 text-pink-600" />
-                          <h4 className="font-semibold text-gray-900 dark:text-white">Study Community</h4>
+                          <h4 className="font-semibold text-gray-900 dark:text-white">
+                            Study Community
+                          </h4>
                         </div>
                         <div className="space-y-3">
-                          <div className="p-3 bg-gradient-to-r from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 rounded-lg">
-                            <div className="flex items-center gap-3 mb-2">
-                              <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">A</div>
+                          <div className="rounded-lg bg-gradient-to-r from-pink-50 to-purple-50 p-3 dark:from-pink-900/20 dark:to-purple-900/20">
+                            <div className="mb-2 flex items-center gap-3">
+                              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-sm font-bold text-white">
+                                A
+                              </div>
                               <div>
-                                <div className="font-medium text-gray-900 dark:text-white">Arjun M.</div>
-                                <div className="text-xs text-gray-600 dark:text-gray-300">AIR 23 CLAT 2024</div>
+                                <div className="font-medium text-gray-900 dark:text-white">
+                                  Arjun M.
+                                </div>
+                                <div className="text-xs text-gray-600 dark:text-gray-300">
+                                  AIR 23 CLAT 2024
+                                </div>
                               </div>
                             </div>
-                            <div className="text-sm text-gray-700 dark:text-gray-300">"Constitutional Law tip: Focus on landmark cases from 2020-2024 🏛️"</div>
+                            <div className="text-sm text-gray-700 dark:text-gray-300">
+                              "Constitutional Law tip: Focus on landmark cases
+                              from 2020-2024 🏛️"
+                            </div>
                           </div>
                           <div className="grid grid-cols-2 gap-2">
-                            <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-center">
-                              <div className="text-lg font-bold text-blue-600">10K+</div>
-                              <div className="text-xs text-gray-600 dark:text-gray-300">Active Students</div>
+                            <div className="rounded-lg bg-blue-50 p-2 text-center dark:bg-blue-900/20">
+                              <div className="text-lg font-bold text-blue-600">
+                                10K+
+                              </div>
+                              <div className="text-xs text-gray-600 dark:text-gray-300">
+                                Active Students
+                              </div>
                             </div>
-                            <div className="p-2 bg-green-50 dark:bg-green-900/20 rounded-lg text-center">
-                              <div className="text-lg font-bold text-green-600">24/7</div>
-                              <div className="text-xs text-gray-600 dark:text-gray-300">Peer Support</div>
+                            <div className="rounded-lg bg-green-50 p-2 text-center dark:bg-green-900/20">
+                              <div className="text-lg font-bold text-green-600">
+                                24/7
+                              </div>
+                              <div className="text-xs text-gray-600 dark:text-gray-300">
+                                Peer Support
+                              </div>
                             </div>
                           </div>
-                          <div className="p-2 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+                          <div className="rounded-lg bg-yellow-50 p-2 dark:bg-yellow-900/20">
                             <div className="text-xs text-yellow-800 dark:text-yellow-200">
-                              <span className="font-medium">Study Group:</span> "CLAT 2026 Warriors" (45 members online)
+                              <span className="font-medium">Study Group:</span>{' '}
+                              "CLAT 2026 Warriors" (45 members online)
                             </div>
                           </div>
                         </div>

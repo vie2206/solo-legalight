@@ -21,7 +21,7 @@ const About = () => {
           title="The SOLO Team"
           paragraphs={[
             'We started building SOLO in 2022 with a vision to revolutionize CLAT preparation through AI. Every feature has been designed from the ground up — with cutting-edge machine learning and personalized analytics. We are purpose-built to power legal education innovation for the next generation of lawyers.',
-            "We are 100% founder-owned, profitable, and we keep our team focused on student success. Our team includes former CLAT toppers, legal education experts, and AI engineers working together to transform how students prepare for law entrance exams.",
+            'We are 100% founder-owned, profitable, and we keep our team focused on student success. Our team includes former CLAT toppers, legal education experts, and AI engineers working together to transform how students prepare for law entrance exams.',
             "If you're passionate about legal education and AI technology, we'd love to hear from you.",
           ]}
           ctaButton={{

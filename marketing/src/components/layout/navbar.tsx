@@ -105,7 +105,7 @@ const Navbar = () => {
                   <Link
                     href={link.href}
                     className={cn(
-                      'relative bg-transparent px-3 py-2 text-sm font-medium hover:text-purple-600 transition-colors',
+                      'relative bg-transparent px-3 py-2 text-sm font-medium transition-colors hover:text-purple-600',
                       pathname === link.href && 'text-muted-foreground',
                     )}
                   >
