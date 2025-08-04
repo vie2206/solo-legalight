@@ -8,6 +8,7 @@ import {
   Users,
   Sparkles,
   CheckCircle,
+  TrendingUp,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
