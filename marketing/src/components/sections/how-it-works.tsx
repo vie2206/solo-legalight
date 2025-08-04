@@ -106,7 +106,7 @@ export default function HowItWorks() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-20 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-2 text-sm font-medium text-white">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md">
             <Sparkles className="h-4 w-4" />
             How SOLO Works
           </div>
@@ -163,9 +163,7 @@ export default function HowItWorks() {
                         <CheckCircle
                           className={`h-5 w-5 bg-gradient-to-r ${step.gradient} rounded-full text-white`}
                         />
-                        <span className="text-gray-300">
-                          {feature}
-                        </span>
+                        <span className="text-gray-300">{feature}</span>
                       </div>
                     ))}
                   </div>

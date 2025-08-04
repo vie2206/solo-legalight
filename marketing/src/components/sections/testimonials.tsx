@@ -111,7 +111,7 @@ export default function Testimonials() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-2 text-sm font-medium text-white">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md">
             <Star className="h-4 w-4" />
             Student Success Stories
           </div>
@@ -132,7 +132,7 @@ export default function Testimonials() {
             return (
               <div
                 key={index}
-                className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 text-center shadow-xl"
+                className="rounded-2xl border border-white/20 bg-white/10 p-6 text-center shadow-xl backdrop-blur-md"
               >
                 <IconComponent
                   className={`mx-auto mb-4 h-12 w-12 ${stat.color}`}
@@ -156,7 +156,7 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-8 shadow-xl transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl"
+              className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl"
             >
               {/* Gradient Background */}
               <div
@@ -226,7 +226,7 @@ export default function Testimonials() {
         </div>
 
         {/* Data-Driven Results */}
-        <div className="mt-20 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-md p-8 shadow-xl">
+        <div className="mt-20 rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md">
           <div className="text-center">
             <h3 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
               📊 Data-Driven Success Stories
@@ -277,7 +277,7 @@ export default function Testimonials() {
             Start your free 30-day trial today and see why students across India
             choose SOLO for their CLAT preparation.
           </p>
-          <div className="inline-flex items-center gap-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-4 shadow-xl">
+          <div className="inline-flex items-center gap-4 rounded-2xl border border-white/20 bg-white/10 p-4 shadow-xl backdrop-blur-md">
             <div className="flex -space-x-2">
               {testimonials.slice(0, 4).map((testimonial, index) => (
                 <div

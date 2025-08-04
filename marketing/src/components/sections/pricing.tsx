@@ -179,10 +179,8 @@ export default function Pricing() {
             return (
               <Card
                 key={plan.id}
-                className={`relative overflow-hidden border border-white/20 bg-white/10 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl ${
-                  plan.popular
-                    ? 'scale-105 ring-2 ring-purple-500/30'
-                    : ''
+                className={`relative overflow-hidden border border-white/20 bg-white/10 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl ${
+                  plan.popular ? 'scale-105 ring-2 ring-purple-500/30' : ''
                 }`}
               >
                 {/* Popular Badge */}

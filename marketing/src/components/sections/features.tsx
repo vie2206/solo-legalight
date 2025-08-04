@@ -103,7 +103,7 @@ export default function Features() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-2 text-sm font-medium text-white">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md">
             <Sparkles className="h-4 w-4" />
             Revolutionary Features
           </div>
@@ -118,7 +118,7 @@ export default function Features() {
         </div>
 
         {/* Blue Ocean Strategy Callout */}
-        <div className="mb-16 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-md p-8 shadow-xl">
+        <div className="mb-16 rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md">
           <div className="text-center">
             <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
               🚀 Creating a New Category
@@ -139,7 +139,7 @@ export default function Features() {
             return (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-8 shadow-xl transition-all duration-300 hover:border-white/30 hover:bg-white/20 hover:shadow-2xl"
+                className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/20 hover:shadow-2xl"
               >
                 {/* Gradient Background */}
                 <div
@@ -181,7 +181,7 @@ export default function Features() {
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 shadow-xl">
+          <div className="inline-flex items-center gap-4 rounded-2xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur-md">
             <div className="flex -space-x-2">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-sm font-bold text-white">
                 A
