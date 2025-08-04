@@ -143,9 +143,7 @@ export default function Testimonials() {
                 <div className="mb-1 font-semibold text-white">
                   {stat.label}
                 </div>
-                <div className="text-sm text-gray-300">
-                  {stat.sublabel}
-                </div>
+                <div className="text-sm text-gray-300">{stat.sublabel}</div>
               </div>
             );
           })}
@@ -233,33 +231,25 @@ export default function Testimonials() {
             </h3>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               <div className="text-center">
-                <div className="mb-2 text-3xl font-bold text-white">
-                  2,847
-                </div>
+                <div className="mb-2 text-3xl font-bold text-white">2,847</div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">
                   Students improved by 15+ marks
                 </div>
               </div>
               <div className="text-center">
-                <div className="mb-2 text-3xl font-bold text-white">
-                  87%
-                </div>
+                <div className="mb-2 text-3xl font-bold text-white">87%</div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">
                   From Tier-2/3 cities
                 </div>
               </div>
               <div className="text-center">
-                <div className="mb-2 text-3xl font-bold text-white">
-                  156
-                </div>
+                <div className="mb-2 text-3xl font-bold text-white">156</div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">
                   Average study hours saved
                 </div>
               </div>
               <div className="text-center">
-                <div className="mb-2 text-3xl font-bold text-white">
-                  ₹67K
-                </div>
+                <div className="mb-2 text-3xl font-bold text-white">₹67K</div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">
                   Average savings vs coaching
                 </div>
@@ -289,9 +279,7 @@ export default function Testimonials() {
               ))}
             </div>
             <div className="text-left">
-              <p className="font-semibold text-white">
-                Join 10,000+ students
-              </p>
+              <p className="font-semibold text-white">Join 10,000+ students</p>
               <p className="text-sm text-gray-300">
                 Average improvement: +27 marks
               </p>

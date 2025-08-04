@@ -80,7 +80,7 @@ export function Footer() {
             <li key={item.name}>
               <Link
                 href={item.href}
-                className="text-sm text-gray-600 dark:text-gray-400 transition-opacity hover:opacity-75"
+                className="text-sm text-gray-600 transition-opacity hover:opacity-75 dark:text-gray-400"
               >
                 {item.name}
               </Link>
@@ -98,7 +98,7 @@ export function Footer() {
                 SOLO
               </span>
             </div>
-            <div className="font-serif text-sm italic text-gray-600 dark:text-gray-400">
+            <div className="font-serif text-sm text-gray-600 italic dark:text-gray-400">
               by Legalight
             </div>
           </div>
