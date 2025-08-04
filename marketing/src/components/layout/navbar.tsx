@@ -23,30 +23,35 @@ import { cn } from '@/lib/utils';
 const ITEMS = [
   {
     label: 'Features',
-    href: '#features',
+    href: '/features',
     dropdownItems: [
       {
         title: 'AI Study Planner',
-        href: '/#features',
+        href: '/features#ai-planner',
         description: 'Personalized study schedules powered by machine learning',
       },
       {
         title: 'Rank Predictor',
-        href: '/#features',
+        href: '/features#rank-predictor',
         description:
           '85% accurate CLAT rank predictions with 3D visualizations',
       },
       {
         title: 'Mock Test Analysis',
-        href: '/#features',
+        href: '/features#mock-analysis',
         description: 'Level Up your performance with detailed 3-step analysis',
+      },
+      {
+        title: 'All Features',
+        href: '/features',
+        description: 'Explore all revolutionary features in detail',
       },
     ],
   },
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Pricing', href: '#pricing' },
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'For Parents', href: '/parents' },
-  { label: 'Success Stories', href: '#testimonials' },
+  { label: 'Success Stories', href: '/#testimonials' },
 ];
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -35,7 +35,7 @@ export function Footer() {
             Ready to Transform Your CLAT Journey?
           </span>
         </h2>
-        <p className="text-muted-foreground mx-auto max-w-xl leading-snug font-medium text-balance">
+        <p className="mx-auto max-w-xl leading-snug font-medium text-balance text-gray-700 dark:text-gray-300">
           Join thousands of students who've discovered the power of AI-driven
           CLAT preparation. Start your 30-day free trial today.
         </p>
@@ -80,7 +80,7 @@ export function Footer() {
             <li key={item.name}>
               <Link
                 href={item.href}
-                className="text-muted-foreground text-sm transition-opacity hover:opacity-75"
+                className="text-sm text-gray-600 dark:text-gray-400 transition-opacity hover:opacity-75"
               >
                 {item.name}
               </Link>
@@ -98,15 +98,15 @@ export function Footer() {
                 SOLO
               </span>
             </div>
-            <div className="text-muted-foreground font-serif text-sm italic">
+            <div className="font-serif text-sm italic text-gray-600 dark:text-gray-400">
               by Legalight
             </div>
           </div>
-          <p className="text-muted-foreground text-xs">
+          <p className="text-xs text-gray-600 dark:text-gray-400">
             © 2025 Legalight Technologies. All rights reserved. | WHERE LAWYERS
             ARE BORN
           </p>
-          <p className="text-muted-foreground max-w-2xl text-xs">
+          <p className="max-w-2xl text-xs text-gray-600 dark:text-gray-400">
             SOLO is India's first AI-powered performance analytics platform for
             CLAT preparation. Our mission: WE CAN DO HARD THINGS.
           </p>

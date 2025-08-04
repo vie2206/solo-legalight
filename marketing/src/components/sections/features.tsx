@@ -120,10 +120,10 @@ export default function Features() {
         {/* Blue Ocean Strategy Callout */}
         <div className="mb-16 rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md">
           <div className="text-center">
-            <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+            <h3 className="mb-4 text-2xl font-bold text-white">
               🚀 Creating a New Category
             </h3>
-            <p className="mx-auto max-w-4xl text-lg text-gray-700 dark:text-gray-200">
+            <p className="mx-auto max-w-4xl text-lg text-gray-200">
               <strong>No innovation in CLAT prep since 2008.</strong> While
               others focus on marketing and false promises, we're solving the
               real problem: giving every student the personalized insights they

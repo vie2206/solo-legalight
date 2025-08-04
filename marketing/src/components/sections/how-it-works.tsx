@@ -429,10 +429,10 @@ export default function HowItWorks() {
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
-          <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+          <h3 className="mb-4 text-2xl font-bold text-white">
             Ready to Transform Your CLAT Preparation?
           </h3>
-          <p className="mx-auto mb-8 max-w-2xl text-gray-600 dark:text-gray-300">
+          <p className="mx-auto mb-8 max-w-2xl text-gray-300">
             Join thousands of students who've already discovered the power of
             AI-driven preparation. Start your journey today with a free 30-day
             trial.

@@ -140,10 +140,10 @@ export default function Testimonials() {
                 <div className="mb-2 text-4xl font-bold text-gray-900 dark:text-white">
                   {stat.number}
                 </div>
-                <div className="mb-1 font-semibold text-gray-900 dark:text-white">
+                <div className="mb-1 font-semibold text-white">
                   {stat.label}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-sm text-gray-300">
                   {stat.sublabel}
                 </div>
               </div>
@@ -204,7 +204,7 @@ export default function Testimonials() {
               </div>
 
               {/* Quote */}
-              <blockquote className="relative mb-6 leading-relaxed text-gray-700 dark:text-gray-300">
+              <blockquote className="relative mb-6 leading-relaxed text-gray-200">
                 <span className="absolute -top-2 -left-1 text-4xl text-gray-300 dark:text-gray-600">
                   "
                 </span>
@@ -213,7 +213,7 @@ export default function Testimonials() {
 
               {/* Highlight */}
               <div className="relative">
-                <div className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                <div className="flex items-center gap-2 text-sm font-medium text-gray-300">
                   <Sparkles className="h-4 w-4" />
                   Loved: {testimonial.highlight}
                 </div>
@@ -228,12 +228,12 @@ export default function Testimonials() {
         {/* Data-Driven Results */}
         <div className="mt-20 rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md">
           <div className="text-center">
-            <h3 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
+            <h3 className="mb-6 text-2xl font-bold text-white">
               📊 Data-Driven Success Stories
             </h3>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               <div className="text-center">
-                <div className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
+                <div className="mb-2 text-3xl font-bold text-white">
                   2,847
                 </div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">
@@ -241,7 +241,7 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-center">
-                <div className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
+                <div className="mb-2 text-3xl font-bold text-white">
                   87%
                 </div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">
@@ -249,7 +249,7 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-center">
-                <div className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
+                <div className="mb-2 text-3xl font-bold text-white">
                   156
                 </div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">
@@ -257,7 +257,7 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-center">
-                <div className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
+                <div className="mb-2 text-3xl font-bold text-white">
                   ₹67K
                 </div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">
@@ -270,10 +270,10 @@ export default function Testimonials() {
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+          <h3 className="mb-4 text-2xl font-bold text-white">
             Ready to Join These Success Stories?
           </h3>
-          <p className="mx-auto mb-8 max-w-2xl text-gray-600 dark:text-gray-300">
+          <p className="mx-auto mb-8 max-w-2xl text-gray-300">
             Start your free 30-day trial today and see why students across India
             choose SOLO for their CLAT preparation.
           </p>
@@ -289,10 +289,10 @@ export default function Testimonials() {
               ))}
             </div>
             <div className="text-left">
-              <p className="font-semibold text-gray-900 dark:text-white">
+              <p className="font-semibold text-white">
                 Join 10,000+ students
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <p className="text-sm text-gray-300">
                 Average improvement: +27 marks
               </p>
             </div>
