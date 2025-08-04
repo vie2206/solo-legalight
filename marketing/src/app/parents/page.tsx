@@ -9,6 +9,16 @@ import {
   Star,
   CheckCircle,
   BarChart3,
+  Users,
+  Target,
+  BookOpen,
+  Brain,
+  Calendar,
+  AlertTriangle,
+  Activity,
+  Award,
+  Sparkles,
+  ArrowRight,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -94,15 +104,20 @@ export default function ParentsPage() {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-20 text-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24 text-white">
+        {/* Background elements */}
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute top-20 left-10 h-40 w-40 animate-pulse rounded-full bg-purple-500/20 blur-3xl"></div>
+        <div className="absolute top-60 right-20 h-32 w-32 animate-pulse rounded-full bg-pink-500/20 blur-2xl delay-1000"></div>
+        <div className="absolute bottom-40 left-1/3 h-36 w-36 animate-pulse rounded-full bg-blue-500/20 blur-xl delay-2000"></div>
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center">
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-sm">
-              <Heart className="h-4 w-4 text-pink-400" />
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
+              <Heart className="h-5 w-5 text-pink-400" />
               For Concerned Parents
             </div>
 
-            <h1 className="mb-8 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="mb-8 text-6xl font-bold tracking-tight sm:text-7xl lg:text-8xl">
               <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
                 Supporting Your Child's
               </span>
@@ -122,15 +137,18 @@ export default function ParentsPage() {
               <Button
                 asChild
                 size="lg"
-                className="h-16 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-8 text-xl font-semibold hover:from-purple-700 hover:to-pink-700"
+                className="h-16 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-8 text-xl font-semibold shadow-xl hover:from-purple-700 hover:to-pink-700"
               >
-                <Link href="/signup">Start Parent Dashboard</Link>
+                <Link href="/signup">
+                  Start Parent Dashboard
+                  <ArrowRight className="ml-2 h-6 w-6" />
+                </Link>
               </Button>
               <Button
                 asChild
                 variant="outline"
                 size="lg"
-                className="h-16 rounded-xl border-white/30 bg-white/5 px-8 text-xl font-semibold text-white backdrop-blur-sm hover:bg-white/10"
+                className="h-16 rounded-xl border-white/30 bg-white/5 px-8 text-xl font-semibold text-white backdrop-blur-md hover:bg-white/10"
               >
                 <Link href="#features">Learn More</Link>
               </Button>
@@ -142,14 +160,22 @@ export default function ParentsPage() {
       {/* Parent Features */}
       <section
         id="features"
-        className="bg-gradient-to-b from-gray-50 to-white py-24 dark:from-gray-900 dark:to-gray-950"
+        className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24"
       >
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Background elements */}
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute top-32 right-16 h-36 w-36 animate-pulse rounded-full bg-yellow-500/20 blur-3xl"></div>
+        <div className="absolute bottom-32 left-16 h-32 w-32 animate-pulse rounded-full bg-green-500/20 blur-2xl delay-1000"></div>
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-16 text-center">
-            <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
+              <Eye className="h-5 w-5" />
+              Parent Dashboard Features
+            </div>
+            <h2 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
               Everything You Need to Support Your Child
             </h2>
-            <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
+            <p className="mx-auto max-w-3xl text-xl text-gray-300">
               Get complete visibility into your child's CLAT preparation with
               detailed analytics, progress tracking, and well-being monitoring.
             </p>
@@ -161,24 +187,24 @@ export default function ParentsPage() {
               return (
                 <div
                   key={index}
-                  className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800"
+                  className="group relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl"
                 >
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-5`}
+                    className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
                   ></div>
 
                   <div className="relative">
                     <div
-                      className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r ${feature.gradient} mb-6`}
+                      className={`mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r ${feature.gradient} shadow-lg`}
                     >
                       <IconComponent className="h-8 w-8 text-white" />
                     </div>
 
-                    <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+                    <h3 className="mb-4 text-2xl font-bold text-white">
                       {feature.title}
                     </h3>
 
-                    <p className="leading-relaxed text-gray-600 dark:text-gray-300">
+                    <p className="leading-relaxed text-gray-300">
                       {feature.description}
                     </p>
                   </div>
@@ -190,89 +216,163 @@ export default function ParentsPage() {
       </section>
 
       {/* Parent Dashboard Preview */}
-      <section className="bg-gradient-to-br from-indigo-50 to-purple-50 py-24 dark:from-indigo-950/30 dark:to-purple-950/30">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 py-24">
+        {/* Background elements */}
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute top-20 right-10 h-40 w-40 animate-pulse rounded-full bg-indigo-500/20 blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 h-32 w-32 animate-pulse rounded-full bg-cyan-500/20 blur-2xl delay-1000"></div>
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-16 text-center">
-            <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
+              <BarChart3 className="h-5 w-5" />
+              Live Dashboard Preview
+            </div>
+            <h2 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
               Your Parent Dashboard
             </h2>
-            <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
+            <p className="mx-auto max-w-3xl text-xl text-gray-300">
               Get weekly reports and real-time insights into your child's
-              preparation progress.
+              preparation progress with beautiful, actionable analytics.
             </p>
           </div>
 
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-            <div className="space-y-8">
-              <div className="flex items-start gap-4">
-                <CheckCircle className="mt-1 h-6 w-6 flex-shrink-0 text-green-600" />
-                <div>
-                  <h4 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-                    Daily Study Hours Tracking
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Monitor consistent study habits and receive alerts if study
-                    patterns change significantly.
-                  </p>
+            <div className="space-y-6">
+              <div className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-md">
+                <div className="flex items-start gap-4">
+                  <div className="rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 p-3">
+                    <Clock className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="mb-2 text-lg font-semibold text-white">
+                      Daily Study Hours Tracking
+                    </h4>
+                    <p className="text-gray-300">
+                      Monitor consistent study habits and receive alerts if study
+                      patterns change significantly.
+                    </p>
+                    <div className="mt-3 flex items-center gap-2 text-sm text-cyan-300">
+                      <Activity className="h-4 w-4" />
+                      <span>Real-time activity monitoring</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <CheckCircle className="mt-1 h-6 w-6 flex-shrink-0 text-green-600" />
-                <div>
-                  <h4 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-                    Subject-wise Performance
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Detailed breakdown of strengths and weaknesses across all
-                    CLAT subjects with improvement suggestions.
-                  </p>
+              <div className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-md">
+                <div className="flex items-start gap-4">
+                  <div className="rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 p-3">
+                    <BookOpen className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="mb-2 text-lg font-semibold text-white">
+                      Subject-wise Performance
+                    </h4>
+                    <p className="text-gray-300">
+                      Detailed breakdown of strengths and weaknesses across all
+                      CLAT subjects with improvement suggestions.
+                    </p>
+                    <div className="mt-3 flex items-center gap-2 text-sm text-pink-300">
+                      <Target className="h-4 w-4" />
+                      <span>85% accuracy insights</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <CheckCircle className="mt-1 h-6 w-6 flex-shrink-0 text-green-600" />
-                <div>
-                  <h4 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-                    Stress & Well-being Monitoring
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Track mood patterns, stress levels, and receive
-                    recommendations for maintaining mental health.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <CheckCircle className="mt-1 h-6 w-6 flex-shrink-0 text-green-600" />
-                <div>
-                  <h4 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-                    Rank Prediction Updates
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Stay informed about your child's projected CLAT rank with
-                    85% accuracy powered by ML algorithms.
-                  </p>
+              <div className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-md">
+                <div className="flex items-start gap-4">
+                  <div className="rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 p-3">
+                    <Brain className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="mb-2 text-lg font-semibold text-white">
+                      Stress & Well-being Monitoring
+                    </h4>
+                    <p className="text-gray-300">
+                      Track mood patterns, stress levels, and receive
+                      recommendations for maintaining mental health.
+                    </p>
+                    <div className="mt-3 flex items-center gap-2 text-sm text-green-300">
+                      <AlertTriangle className="h-4 w-4" />
+                      <span>Smart wellness alerts</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div className="relative">
-              <div className="h-96 w-full overflow-hidden rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 shadow-2xl">
-                <div className="absolute inset-0 bg-black/10"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <BarChart3 className="mx-auto mb-4 h-24 w-24 opacity-80" />
-                    <h4 className="mb-2 text-2xl font-bold">
-                      Interactive Dashboard
-                    </h4>
-                    <p className="text-white/80">Coming Soon Preview</p>
+              <div className="overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-8 shadow-2xl backdrop-blur-md">
+                {/* Mock Dashboard Header */}
+                <div className="mb-6 flex items-center justify-between">
+                  <h3 className="text-2xl font-bold text-white">Arjun's Progress</h3>
+                  <div className="flex items-center gap-2 rounded-lg bg-green-500/20 px-3 py-1">
+                    <div className="h-2 w-2 rounded-full bg-green-400"></div>
+                    <span className="text-sm text-green-300">Active Now</span>
                   </div>
                 </div>
-                {/* Decorative elements */}
-                <div className="absolute top-4 right-4 h-8 w-8 rounded-full bg-white/20"></div>
-                <div className="absolute bottom-4 left-4 h-6 w-6 rounded-full bg-white/15"></div>
-                <div className="absolute top-1/2 left-4 h-4 w-4 rounded-full bg-white/10"></div>
+
+                {/* Mock Stats Cards */}
+                <div className="mb-6 grid grid-cols-2 gap-4">
+                  <div className="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl font-bold text-white">7.2hrs</div>
+                    <div className="text-sm text-gray-300">Today's Study Time</div>
+                    <div className="mt-2 h-2 rounded-full bg-white/20">
+                      <div className="h-2 w-3/4 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400"></div>
+                    </div>
+                  </div>
+                  <div className="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl font-bold text-white">142</div>
+                    <div className="text-sm text-gray-300">Predicted Rank</div>
+                    <div className="mt-2 flex items-center gap-1 text-xs text-green-300">
+                      <TrendingUp className="h-3 w-3" />
+                      <span>+15 from last week</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mock Subject Performance */}
+                <div className="mb-6">
+                  <h4 className="mb-3 text-lg font-semibold text-white">Subject Performance</h4>
+                  <div className="space-y-3">
+                    {[
+                      { subject: 'Legal Reasoning', score: 85, color: 'from-purple-400 to-pink-400' },
+                      { subject: 'Reading Comprehension', score: 78, color: 'from-blue-400 to-cyan-400' },
+                      { subject: 'Logical Reasoning', score: 92, color: 'from-green-400 to-emerald-400' },
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center justify-between">
+                        <span className="text-sm text-gray-300">{item.subject}</span>
+                        <div className="flex items-center gap-2">
+                          <div className="h-2 w-20 rounded-full bg-white/20">
+                            <div 
+                              className={`h-2 rounded-full bg-gradient-to-r ${item.color}`}
+                              style={{ width: `${item.score}%` }}
+                            ></div>
+                          </div>
+                          <span className="text-sm font-medium text-white">{item.score}%</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Mock Recent Activity */}
+                <div>
+                  <h4 className="mb-3 text-lg font-semibold text-white">Recent Activity</h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-3 rounded-lg bg-white/5 p-2">
+                      <CheckCircle className="h-4 w-4 text-green-400" />
+                      <span className="text-sm text-gray-300">Completed Mock Test #15</span>
+                      <span className="ml-auto text-xs text-gray-400">2h ago</span>
+                    </div>
+                    <div className="flex items-center gap-3 rounded-lg bg-white/5 p-2">
+                      <BookOpen className="h-4 w-4 text-blue-400" />
+                      <span className="text-sm text-gray-300">Read 3 RC passages</span>
+                      <span className="ml-auto text-xs text-gray-400">4h ago</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -280,15 +380,23 @@ export default function ParentsPage() {
       </section>
 
       {/* Parent Testimonials */}
-      <section className="bg-gradient-to-b from-white to-gray-50 py-24 dark:from-gray-950 dark:to-gray-900">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24">
+        {/* Background elements */}
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute top-32 left-16 h-36 w-36 animate-pulse rounded-full bg-pink-500/20 blur-3xl delay-500"></div>
+        <div className="absolute bottom-32 right-16 h-32 w-32 animate-pulse rounded-full bg-cyan-500/20 blur-2xl delay-1500"></div>
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-16 text-center">
-            <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
+              <Users className="h-5 w-5" />
+              Parent Success Stories
+            </div>
+            <h2 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
               What Parents Are Saying
             </h2>
-            <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
+            <p className="mx-auto max-w-3xl text-xl text-gray-300">
               Real experiences from parents whose children achieved success with
-              SOLO.
+              SOLO's comprehensive preparation platform.
             </p>
           </div>
 
@@ -296,31 +404,38 @@ export default function ParentsPage() {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800"
+                className="group relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl"
               >
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${testimonial.bg} opacity-0 transition-opacity duration-300 group-hover:opacity-5`}
+                  className={`absolute inset-0 bg-gradient-to-br ${testimonial.bg} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
                 ></div>
 
                 <div className="relative">
                   <div className="mb-6 flex items-center gap-4">
                     <div
-                      className={`h-14 w-14 rounded-full bg-gradient-to-r ${testimonial.bg} flex items-center justify-center text-xl font-bold text-white`}
+                      className={`h-14 w-14 rounded-full bg-gradient-to-r ${testimonial.bg} flex items-center justify-center text-xl font-bold text-white shadow-lg`}
                     >
                       {testimonial.avatar}
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white">
+                      <h4 className="font-semibold text-white">
                         {testimonial.name}
                       </h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-sm text-gray-300">
                         {testimonial.location}
                       </p>
                     </div>
+                    <div className="ml-auto">
+                      <div className="flex gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                    </div>
                   </div>
 
-                  <blockquote className="leading-relaxed text-gray-700 dark:text-gray-300">
-                    <span className="absolute -top-2 -left-1 text-4xl text-gray-300 dark:text-gray-600">
+                  <blockquote className="leading-relaxed text-gray-200">
+                    <span className="absolute -top-2 -left-1 text-4xl text-gray-300">
                       "
                     </span>
                     <p className="relative z-10">{testimonial.quote}</p>
@@ -331,64 +446,104 @@ export default function ParentsPage() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-lg dark:border-gray-700 dark:bg-gray-800"
-              >
-                <div className="mb-2 text-4xl font-bold text-gray-900 dark:text-white">
-                  {stat.number}
+          <div className="rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md">
+            <div className="mb-8 text-center">
+              <h3 className="mb-4 text-2xl font-bold text-white">
+                📊 Parent Satisfaction Data
+              </h3>
+              <p className="text-gray-300">
+                Based on feedback from 2,500+ parents across India
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {stats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-white/20 bg-white/5 p-6 text-center backdrop-blur-sm transition-all hover:bg-white/10"
+                >
+                  <div className="mb-2 text-4xl font-bold text-white">
+                    {stat.number}
+                  </div>
+                  <div className="mb-1 font-semibold text-white">
+                    {stat.label}
+                  </div>
+                  <div className="text-sm text-gray-300">
+                    {stat.sublabel}
+                  </div>
                 </div>
-                <div className="mb-1 font-semibold text-gray-900 dark:text-white">
-                  {stat.label}
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">
-                  {stat.sublabel}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24 text-white">
-        <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
-          <h2 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl">
-            <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
-              Start Supporting Your Child Today
-            </span>
-          </h2>
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24 text-white">
+        {/* Background elements */}
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute top-20 left-1/4 h-40 w-40 animate-pulse rounded-full bg-purple-500/20 blur-3xl"></div>
+        <div className="absolute bottom-20 right-1/4 h-32 w-32 animate-pulse rounded-full bg-pink-500/20 blur-2xl delay-1000"></div>
+        
+        <div className="relative mx-auto max-w-7xl px-6 text-center lg:px-8">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-white/20 bg-white/10 p-12 shadow-xl backdrop-blur-md">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
+              <Sparkles className="h-5 w-5 text-yellow-400" />
+              Join 2,500+ Satisfied Parents
+            </div>
+            <h2 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl">
+              <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+                Start Supporting Your Child Today
+              </span>
+            </h2>
 
-          <p className="mx-auto mb-12 max-w-3xl text-xl text-gray-300">
-            Join thousands of parents who are actively supporting their child's
-            CLAT journey with complete transparency and detailed insights.
-          </p>
+            <p className="mx-auto mb-8 max-w-3xl text-xl text-gray-300">
+              Join thousands of parents who are actively supporting their child's
+              CLAT journey with complete transparency and detailed insights.
+            </p>
 
-          <div className="mb-12 flex flex-col justify-center gap-6 sm:flex-row">
-            <Button
-              asChild
-              size="lg"
-              className="h-16 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-8 text-xl font-semibold hover:from-purple-700 hover:to-pink-700"
-            >
-              <Link href="/signup">Create Parent Account</Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="h-16 rounded-xl border-white/30 bg-white/5 px-8 text-xl font-semibold text-white backdrop-blur-sm hover:bg-white/10"
-            >
-              <Link href="/contact">Schedule Demo</Link>
-            </Button>
-          </div>
+            <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="rounded-xl border border-white/20 bg-white/5 p-4 backdrop-blur-sm">
+                <div className="mb-2 text-2xl font-bold text-green-400">Free</div>
+                <div className="text-sm text-gray-300">Parent Dashboard Access</div>
+              </div>
+              <div className="rounded-xl border border-white/20 bg-white/5 p-4 backdrop-blur-sm">
+                <div className="mb-2 text-2xl font-bold text-blue-400">Weekly</div>
+                <div className="text-sm text-gray-300">Progress Reports</div>
+              </div>
+              <div className="rounded-xl border border-white/20 bg-white/5 p-4 backdrop-blur-sm">
+                <div className="mb-2 text-2xl font-bold text-purple-400">24/7</div>
+                <div className="text-sm text-gray-300">Real-time Updates</div>
+              </div>
+            </div>
 
-          <div className="inline-flex items-center gap-2 rounded-xl border border-green-500/30 bg-green-500/20 p-4">
-            <Shield className="h-5 w-5 text-green-400" />
-            <span className="font-medium text-green-200">
-              100% Privacy Protected • Child's Data Secure • Cancel Anytime
-            </span>
+            <div className="mb-8 flex flex-col justify-center gap-6 sm:flex-row">
+              <Button
+                asChild
+                size="lg"
+                className="h-16 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-8 text-xl font-semibold shadow-2xl hover:from-purple-700 hover:to-pink-700"
+              >
+                <Link href="/signup">
+                  Create Parent Account
+                  <ArrowRight className="ml-2 h-6 w-6" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="h-16 rounded-xl border-white/30 bg-white/5 px-8 text-xl font-semibold text-white backdrop-blur-md hover:bg-white/10"
+              >
+                <Link href="/contact">Schedule Demo</Link>
+              </Button>
+            </div>
+
+            <div className="inline-flex items-center gap-2 rounded-xl border border-green-500/30 bg-green-500/20 px-6 py-3">
+              <Shield className="h-5 w-5 text-green-400" />
+              <span className="font-medium text-green-200">
+                100% Privacy Protected • Child's Data Secure • Cancel Anytime
+              </span>
+            </div>
           </div>
         </div>
       </section>
