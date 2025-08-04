@@ -48,6 +48,7 @@ const ITEMS = [
       },
     ],
   },
+  { label: 'About', href: '/about' },
   { label: '3D NLU Showcase', href: '/nlu-showcase' },
   { label: 'How It Works', href: '/how-it-works' },
   { label: 'Success Stories', href: '/success-stories' },

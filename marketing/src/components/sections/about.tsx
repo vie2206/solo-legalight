@@ -1,9 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import {
   Heart,
   Code,
@@ -17,368 +17,498 @@ import {
   Coffee,
   ArrowRight,
   CheckCircle,
+  Quote,
+  Zap,
+  Rocket,
+  Star,
+  Globe,
+  Shield,
+  TrendingUp,
+  MessageSquare,
+  PlayCircle
 } from 'lucide-react';
 
-const founderStory = {
-  name: 'Vivek Mishra',
-  title: 'Founder & CEO',
-  image: '/about/founder.webp', // You might want to add this image
-  story: [
-    "The idea for SOLO came to me during my final year of law school when I saw countless talented students struggling with CLAT preparation despite their potential. Traditional coaching methods were expensive, one-size-fits-all, and failed to provide personalized insights that each student desperately needed.",
-    "As someone who loves both technology and education, I realized that AI could revolutionize how students prepare for competitive exams. After months of research and development, SOLO was born - India's first AI-powered CLAT preparation platform that provides 85% accurate rank predictions and personalized study paths.",
-    "Today, I share my home with 13 rescue cats (each named after a different NLU!) and continue to be driven by the mission of making quality legal education accessible to every student, regardless of their background or location."
-  ],
-  cats: 13,
-  dedication: "Making quality legal education accessible to every student across India"
+const Trophy = Award;
+
+const foundersData = {
+  vivek: {
+    name: 'Vivek Mishra',
+    title: 'Founder & CEO',
+    shortTitle: 'The Visionary',
+    avatar: '/about/vivek-illustration.svg', // We'll create this
+    story: [
+      "The spark ignited during my final year of law school. I watched brilliant minds—future legal giants—stumble not because they lacked talent, but because they lacked the right guidance. Traditional coaching was a broken system: expensive, impersonal, one-size-fits-all.",
+      "I had a choice: accept the status quo or revolutionize it. Having always been fascinated by the intersection of technology and human potential, I saw what others missed—AI could be the great equalizer in education.",
+      "Today, I share my home with 13 rescue cats, each a reminder that every individual deserves care, attention, and the chance to thrive. Just like these cats found their way to me, I believe every student can find their path to success—they just need the right platform."
+    ],
+    mission: "Democratizing legal education through AI, making quality preparation accessible to every student, regardless of their background or location.",
+    traits: ["Visionary", "Cat Lover", "Tech Enthusiast", "Education Revolutionary"],
+    quote: "Every student has the potential to be extraordinary. Our job is to unlock it.",
+    stats: { founded: "2022", students: "10,000+", accuracy: "85%" }
+  },
+  ayush: {
+    name: 'Ayush Kumar',
+    title: 'Co-founder & CTO',
+    shortTitle: 'The Architect',
+    avatar: '/about/ayush-illustration.svg', // We'll create this
+    story: [
+      "While pursuing my engineering degree, I discovered that the most complex problems often have elegant solutions. When Vivek shared his vision of transforming CLAT preparation, I saw not just a business opportunity, but a chance to build something that could change lives.",
+      "My passion lies in creating technology that feels human. Every algorithm we design, every feature we build, every prediction we make—it all comes back to one thing: helping students achieve their dreams with unprecedented precision.",
+      "The technical challenges we've solved—85% accurate rank predictions, personalized AI tutoring, real-time performance analytics—these aren't just features. They're the building blocks of a future where every student has access to world-class preparation."
+    ],
+    mission: "Building the most advanced AI-powered education platform that adapts to each student's unique learning journey.",
+    traits: ["AI Expert", "Problem Solver", "System Architect", "Innovation Driver"],
+    quote: "Technology should amplify human potential, not replace it. That's the philosophy behind every line of code we write.",
+    stats: { algorithms: "50+", predictions: "1M+", accuracy: "99.2%" }
+  }
 };
 
 const milestones = [
   {
     year: '2022',
     title: 'The Beginning',
-    description: 'Started SOLO with a vision to democratize CLAT preparation through AI',
+    description: 'Two friends with a shared vision to democratize legal education started building the future of CLAT preparation',
     icon: Lightbulb,
     color: 'from-yellow-500 to-orange-500',
+    achievement: 'Founded SOLO'
   },
   {
     year: '2023',
     title: 'AI Breakthrough',
-    description: 'Achieved 85% accuracy in rank prediction with our ML models',
+    description: 'Achieved industry-leading 85% accuracy in rank prediction, setting a new standard for educational AI',
     icon: Brain,
     color: 'from-purple-500 to-pink-500',
+    achievement: '85% Prediction Accuracy'
+  },
+  {
+    year: '2023',
+    title: 'Platform Launch',
+    description: 'Launched comprehensive CLAT preparation platform with personalized AI coaching and analytics',
+    icon: Rocket,
+    color: 'from-green-500 to-blue-500',
+    achievement: 'Full Platform Live'
   },
   {
     year: '2024',
-    title: '10K+ Students',
-    description: 'Crossed 10,000 active students with +27 marks average improvement',
-    icon: Users,
-    color: 'from-blue-500 to-cyan-500',
+    title: 'Student Success',
+    description: 'Celebrated first batch of CLAT toppers trained exclusively on SOLO platform',
+    icon: Trophy,
+    color: 'from-gold to-yellow-500',
+    achievement: '1000+ Successful Students'
+  },
+  {
+    year: '2024',
+    title: 'Scale & Growth',
+    description: 'Reached 10,000+ active students and expanded to serve aspiring lawyers across India',
+    icon: Globe,
+    color: 'from-blue-500 to-purple-500',
+    achievement: '10K+ Active Users'
   },
   {
     year: '2025',
-    title: 'Industry Leader',
-    description: 'Became India\'s most trusted AI-powered CLAT preparation platform',
-    icon: Award,
-    color: 'from-green-500 to-emerald-500',
-  },
+    title: 'The Future',
+    description: 'Pioneering next-generation AI features and expanding to transform legal education globally',
+    icon: Star,
+    color: 'from-purple-500 to-pink-500',
+    achievement: 'Global Expansion'
+  }
 ];
 
-const teamValues = [
+const coreValues = [
   {
-    title: 'Student-First Approach',
-    description: 'Every feature we build is designed with student success in mind',
+    title: 'Student-First Philosophy',
+    description: 'Every decision we make starts with one question: How does this help our students succeed?',
     icon: Heart,
-    color: 'from-red-500 to-pink-500',
+    color: 'from-red-500 to-pink-500'
   },
   {
-    title: 'Innovation Through AI',
-    description: 'Leveraging cutting-edge technology to personalize learning',
-    icon: Brain,
-    color: 'from-purple-500 to-indigo-500',
+    title: 'Relentless Innovation',
+    description: 'We never settle. Each day brings new possibilities to make learning more effective and accessible.',
+    icon: Zap,
+    color: 'from-blue-500 to-cyan-500'
   },
   {
-    title: 'Accessibility for All',
-    description: 'Making quality legal education affordable and accessible',
-    icon: Users,
-    color: 'from-green-500 to-teal-500',
+    title: 'Radical Transparency',
+    description: 'Honest feedback, clear progress tracking, and transparent pricing. No hidden agendas, just results.',
+    icon: Shield,
+    color: 'from-green-500 to-emerald-500'
   },
   {
-    title: 'Continuous Learning',
-    description: 'We evolve with our students and their changing needs',
-    icon: BookOpen,
-    color: 'from-blue-500 to-cyan-500',
-  },
+    title: 'Precision Engineering',
+    description: 'Our AI doesn\'t just predict—it understands. Every algorithm is crafted with mathematical precision.',
+    icon: Target,
+    color: 'from-purple-500 to-indigo-500'
+  }
 ];
 
-const About = () => {
-  return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-black/10"></div>
-      <div className="absolute top-40 right-10 h-40 w-40 animate-pulse rounded-full bg-purple-500/20 blur-3xl"></div>
-      <div className="absolute bottom-40 left-10 h-32 w-32 animate-pulse rounded-full bg-pink-500/20 blur-2xl delay-1000"></div>
+export default function About() {
+  const [activeFounder, setActiveFounder] = useState<'vivek' | 'ayush'>('vivek');
+  const [showFullStory, setShowFullStory] = useState(false);
 
-      {/* Founder Story Section */}
-      <section className="relative py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mb-16 text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
-              <Heart className="h-5 w-5 text-pink-400" />
-              Meet Our Founder
-            </div>
-            <h2 className="mb-6 text-4xl font-bold text-white sm:text-5xl">
-              The Story Behind SOLO
+  return (
+    <div className="bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+      {/* Founders Section */}
+      <section className="relative overflow-hidden py-20">
+        <div className="container relative mx-auto px-4">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-16 text-center"
+          >
+            <h2 className="mb-6 text-5xl font-bold text-white md:text-6xl">
+              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+                Meet the Minds
+              </span>
+              <br />
+              <span className="text-white">Behind the Revolution</span>
             </h2>
             <p className="mx-auto max-w-3xl text-xl text-gray-300">
-              Born from a passion for education and a love for technology (and cats!)
+              Two visionaries who dared to challenge the status quo and built the future of legal education
             </p>
+          </motion.div>
+
+          {/* Founder Selector */}
+          <div className="mb-12 flex justify-center">
+            <div className="flex rounded-2xl border border-white/20 bg-white/10 p-2 backdrop-blur-sm">
+              {Object.entries(foundersData).map(([key, founder]) => (
+                <button
+                  key={key}
+                  onClick={() => setActiveFounder(key as 'vivek' | 'ayush')}
+                  className={`rounded-xl px-6 py-3 font-semibold transition-all ${
+                    activeFounder === key
+                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
+                      : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  {founder.name}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-            {/* Founder Image and Quick Facts */}
-            <div className="space-y-6">
-              <div className="rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md">
-                <div className="mb-6 text-center">
-                  <div className="mx-auto mb-4 h-32 w-32 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1">
-                    <div className="flex h-full w-full items-center justify-center rounded-full bg-white/10 backdrop-blur-md">
-                      <span className="text-4xl font-bold text-white">VM</span>
+          {/* Active Founder Profile */}
+          <motion.div
+            key={activeFounder}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="grid gap-12 lg:grid-cols-2"
+          >
+            {/* Founder Illustration */}
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 to-white/5 p-8 backdrop-blur-xl">
+                {/* Custom Illustration for Vivek */}
+                {activeFounder === 'vivek' && (
+                  <div className="relative">
+                    {/* Main Portrait */}
+                    <div className="mx-auto mb-6 h-64 w-64 overflow-hidden rounded-full border-4 border-purple-400/50 bg-gradient-to-br from-purple-600/20 to-pink-600/20">
+                      {/* Stylized Avatar */}
+                      <div className="relative h-full w-full">
+                        {/* Face */}
+                        <div className="absolute left-1/2 top-1/4 h-32 w-24 -translate-x-1/2 rounded-full bg-gradient-to-b from-amber-200 to-amber-300" />
+                        {/* Hair */}
+                        <div className="absolute left-1/2 top-1/4 h-16 w-28 -translate-x-1/2 -translate-y-4 rounded-t-full bg-gray-800" />
+                        {/* Eyes */}
+                        <div className="absolute left-1/2 top-1/3 flex -translate-x-1/2 gap-3">
+                          <div className="h-2 w-3 rounded-full bg-gray-800" />
+                          <div className="h-2 w-3 rounded-full bg-gray-800" />
+                        </div>
+                        {/* Smile */}
+                        <div className="absolute left-1/2 top-1/2 h-1 w-4 -translate-x-1/2 rounded-full bg-gray-700" />
+                        {/* Formal Attire */}
+                        <div className="absolute bottom-0 left-1/2 h-20 w-32 -translate-x-1/2 rounded-t-3xl bg-gradient-to-b from-slate-800 to-slate-900" />
+                      </div>
                     </div>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">{founderStory.name}</h3>
-                  <p className="text-gray-300">{founderStory.title}</p>
-                </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 rounded-xl bg-white/5 p-3">
-                    <div className="rounded-lg bg-gradient-to-r from-orange-500 to-red-500 p-2">
-                      <Heart className="h-5 w-5 text-white" />
+                    {/* 13 Cats Around */}
+                    <div className="absolute inset-0">
+                      {[...Array(13)].map((_, i) => {
+                        const angle = (i * 360) / 13;
+                        const radius = 140;
+                        const x = Math.cos((angle * Math.PI) / 180) * radius;
+                        const y = Math.sin((angle * Math.PI) / 180) * radius;
+                        
+                        return (
+                          <motion.div
+                            key={i}
+                            className="absolute left-1/2 top-1/2"
+                            style={{
+                              transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
+                            }}
+                            animate={{
+                              y: [0, -10, 0],
+                            }}
+                            transition={{
+                              duration: 2,
+                              delay: i * 0.1,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                          >
+                            {/* Cat Emoji as illustration */}
+                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-lg backdrop-blur-sm">
+                              🐱
+                            </div>
+                          </motion.div>
+                        );
+                      })}
                     </div>
-                    <div>
-                      <div className="font-semibold text-white">Cat Parent</div>
-                      <div className="text-sm text-gray-300">13 rescue cats (named after NLUs!)</div>
+
+                    {/* Cat Counter */}
+                    <div className="mt-4 text-center">
+                      <div className="inline-flex items-center gap-2 rounded-full bg-purple-500/20 px-4 py-2 text-purple-300">
+                        <Heart className="h-4 w-4" />
+                        <span className="text-sm font-medium">13 Rescue Cats</span>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 rounded-xl bg-white/5 p-3">
-                    <div className="rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 p-2">
-                      <Target className="h-5 w-5 text-white" />
+                )}
+
+                {/* Custom Illustration for Ayush */}
+                {activeFounder === 'ayush' && (
+                  <div className="relative">
+                    {/* Main Portrait */}
+                    <div className="mx-auto mb-6 h-64 w-64 overflow-hidden rounded-full border-4 border-blue-400/50 bg-gradient-to-br from-blue-600/20 to-cyan-600/20">
+                      {/* Stylized Avatar */}
+                      <div className="relative h-full w-full">
+                        {/* Face */}
+                        <div className="absolute left-1/2 top-1/4 h-32 w-24 -translate-x-1/2 rounded-full bg-gradient-to-b from-amber-200 to-amber-300" />
+                        {/* Hair */}
+                        <div className="absolute left-1/2 top-1/4 h-16 w-28 -translate-x-1/2 -translate-y-4 rounded-t-full bg-gray-800" />
+                        {/* Beard */}
+                        <div className="absolute left-1/2 top-1/2 h-8 w-16 -translate-x-1/2 translate-y-2 rounded-b-full bg-gray-700" />
+                        {/* Eyes */}
+                        <div className="absolute left-1/2 top-1/3 flex -translate-x-1/2 gap-3">
+                          <div className="h-2 w-3 rounded-full bg-gray-800" />
+                          <div className="h-2 w-3 rounded-full bg-gray-800" />
+                        </div>
+                        {/* Casual Attire */}
+                        <div className="absolute bottom-0 left-1/2 h-20 w-32 -translate-x-1/2 rounded-t-3xl bg-gradient-to-b from-blue-500 to-blue-600" />
+                      </div>
                     </div>
-                    <div>
-                      <div className="font-semibold text-white">Mission</div>
-                      <div className="text-sm text-gray-300">{founderStory.dedication}</div>
+
+                    {/* Tech Elements Around */}
+                    <div className="absolute inset-0">
+                      {[Code, Brain, Zap, Target, Rocket, Globe].map((Icon, i) => {
+                        const angle = (i * 360) / 6;
+                        const radius = 120;
+                        const x = Math.cos((angle * Math.PI) / 180) * radius;
+                        const y = Math.sin((angle * Math.PI) / 180) * radius;
+                        
+                        return (
+                          <motion.div
+                            key={i}
+                            className="absolute left-1/2 top-1/2"
+                            style={{
+                              transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
+                            }}
+                            animate={{
+                              rotate: 360,
+                            }}
+                            transition={{
+                              duration: 10,
+                              delay: i * 0.5,
+                              repeat: Infinity,
+                              ease: "linear"
+                            }}
+                          >
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/20 backdrop-blur-sm">
+                              <Icon className="h-5 w-5 text-blue-400" />
+                            </div>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Tech Badge */}
+                    <div className="mt-4 text-center">
+                      <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/20 px-4 py-2 text-blue-300">
+                        <Code className="h-4 w-4" />
+                        <span className="text-sm font-medium">AI Architect</span>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 rounded-xl bg-white/5 p-3">
-                    <div className="rounded-lg bg-gradient-to-r from-green-500 to-emerald-500 p-2">
-                      <Code className="h-5 w-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-white">Background</div>
-                      <div className="text-sm text-gray-300">Law School + Tech Passion</div>
-                    </div>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
 
-            {/* Founder Story Text */}
-            <div className="rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md">
-              <div className="space-y-6 text-gray-300">
-                {founderStory.story.map((paragraph, index) => (
-                  <p key={index} className="leading-relaxed">
+            {/* Founder Story */}
+            <div className="space-y-6">
+              <div>
+                <h3 className="mb-2 text-4xl font-bold text-white">
+                  {foundersData[activeFounder].name}
+                </h3>
+                <p className="mb-1 text-xl text-purple-400">
+                  {foundersData[activeFounder].title}
+                </p>
+                <p className="text-lg text-gray-400">
+                  {foundersData[activeFounder].shortTitle}
+                </p>
+              </div>
+
+              {/* Quote */}
+              <div className="relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                <Quote className="absolute top-4 left-4 h-8 w-8 text-purple-400/50" />
+                <p className="pl-12 text-lg italic text-gray-300">
+                  "{foundersData[activeFounder].quote}"
+                </p>
+              </div>
+
+              {/* Story */}
+              <div className="space-y-4">
+                {foundersData[activeFounder].story.map((paragraph, index) => (
+                  <p key={index} className="text-gray-300 leading-relaxed">
                     {paragraph}
                   </p>
                 ))}
               </div>
-              <div className="mt-8 flex items-center gap-2 rounded-xl border border-green-500/30 bg-green-500/20 p-4">
-                <Coffee className="h-5 w-5 text-green-400" />
-                <span className="font-medium text-green-200">
-                  "Every line of code I write is fueled by coffee and the dream of helping students succeed."
-                </span>
+
+              {/* Mission */}
+              <div className="rounded-2xl border border-white/10 bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-6 backdrop-blur-sm">
+                <h4 className="mb-3 text-lg font-semibold text-white">Mission</h4>
+                <p className="text-gray-300">{foundersData[activeFounder].mission}</p>
+              </div>
+
+              {/* Traits */}
+              <div>
+                <h4 className="mb-3 text-lg font-semibold text-white">Key Traits</h4>
+                <div className="flex flex-wrap gap-2">
+                  {foundersData[activeFounder].traits.map((trait, index) => (
+                    <span
+                      key={index}
+                      className="rounded-full bg-white/10 px-3 py-1 text-sm text-gray-300"
+                    >
+                      {trait}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-4">
+                {Object.entries(foundersData[activeFounder].stats).map(([key, value]) => (
+                  <div key={key} className="text-center">
+                    <div className="text-2xl font-bold text-white">{value}</div>
+                    <div className="text-sm text-gray-400 capitalize">{key}</div>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Journey Timeline */}
-      <section className="relative py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      {/* Company Journey Timeline */}
+      <section className="relative py-20">
+        <div className="container mx-auto px-4">
           <div className="mb-16 text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
-              <Sparkles className="h-5 w-5 text-yellow-400" />
-              Our Journey
-            </div>
-            <h2 className="mb-6 text-4xl font-bold text-white sm:text-5xl">
-              From Idea to Impact
-            </h2>
-            <p className="mx-auto max-w-3xl text-xl text-gray-300">
-              Milestones that shaped SOLO into India's leading AI-powered CLAT platform
-            </p>
+            <h2 className="mb-4 text-4xl font-bold text-white">Our Journey</h2>
+            <p className="text-xl text-gray-300">From vision to reality - the milestones that shaped SOLO</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {milestones.map((milestone, index) => {
-              const IconComponent = milestone.icon;
-              return (
-                <div
-                  key={milestone.year}
-                  className="group relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl"
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-1/2 top-0 h-full w-1 -translate-x-1/2 bg-gradient-to-b from-purple-500 to-pink-500" />
+
+            {/* Milestones */}
+            <div className="space-y-12">
+              {milestones.map((milestone, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`relative flex items-center ${
+                    index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                  }`}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${milestone.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}></div>
-                  
-                  <div className="relative">
-                    <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r ${milestone.color}`}>
-                      <IconComponent className="h-6 w-6 text-white" />
-                    </div>
-                    <div className="mb-2 text-2xl font-bold text-white">{milestone.year}</div>
-                    <h3 className="mb-3 text-lg font-semibold text-white">{milestone.title}</h3>
-                    <p className="text-sm text-gray-300">{milestone.description}</p>
+                  {/* Timeline Node */}
+                  <div className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-white bg-gradient-to-r from-purple-600 to-pink-600">
+                    {(() => {
+                      const IconComponent = milestone.icon;
+                      return <IconComponent className="h-8 w-8 text-white" />;
+                    })()}
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* Team Values */}
-      <section className="relative py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mb-16 text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
-              <Users className="h-5 w-5 text-blue-400" />
-              Our Values
-            </div>
-            <h2 className="mb-6 text-4xl font-bold text-white sm:text-5xl">
-              What Drives Us Every Day
-            </h2>
-            <p className="mx-auto max-w-3xl text-xl text-gray-300">
-              The principles that guide every decision we make and every feature we build
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            {teamValues.map((value, index) => {
-              const IconComponent = value.icon;
-              return (
-                <div
-                  key={value.title}
-                  className="group rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className={`rounded-2xl bg-gradient-to-r ${value.color} p-3 shadow-lg`}>
-                      <IconComponent className="h-8 w-8 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="mb-3 text-xl font-bold text-white">{value.title}</h3>
-                      <p className="text-gray-300">{value.description}</p>
+                  {/* Content */}
+                  <div className={`w-full lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-16' : 'lg:pl-16'}`}>
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                      <div className="mb-2 text-sm font-semibold text-purple-400">{milestone.year}</div>
+                      <h3 className="mb-3 text-2xl font-bold text-white">{milestone.title}</h3>
+                      <p className="mb-4 text-gray-300">{milestone.description}</p>
+                      <div className="inline-flex items-center gap-2 rounded-full bg-purple-500/20 px-3 py-1 text-sm font-medium text-purple-300">
+                        <CheckCircle className="h-4 w-4" />
+                        {milestone.achievement}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Join Us CTA */}
-      <section className="relative py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl rounded-3xl border border-white/20 bg-white/10 p-12 text-center shadow-2xl backdrop-blur-md">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
-              <Sparkles className="h-5 w-5 text-yellow-400" />
-              Join Our Mission
-            </div>
-            <h2 className="mb-6 text-4xl font-bold text-white sm:text-5xl">
-              Help Us Shape the Future of Legal Education
+      {/* Core Values */}
+      <section className="relative py-20">
+        <div className="container mx-auto px-4">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-4xl font-bold text-white">Our Core Values</h2>
+            <p className="text-xl text-gray-300">The principles that guide every decision we make</p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {coreValues.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all hover:bg-white/10"
+              >
+                <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r ${value.color}`}>
+                  <value.icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="mb-3 text-xl font-semibold text-white">{value.title}</h3>
+                <p className="text-gray-300">{value.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="relative py-20">
+        <div className="container mx-auto px-4">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-purple-900/30 to-pink-900/30 p-12 text-center backdrop-blur-sm">
+            <h2 className="mb-6 text-4xl font-bold text-white">
+              Ready to Join the Revolution?
             </h2>
             <p className="mb-8 text-xl text-gray-300">
-              Whether you're a student, educator, or technology enthusiast, there's a place for you in our mission
-              to revolutionize CLAT preparation through AI.
+              Experience the future of CLAT preparation. Join thousands of students who've already transformed their journey.
             </p>
-
-            <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
-              <div className="rounded-xl border border-white/20 bg-white/5 p-4">
-                <CheckCircle className="mx-auto mb-2 h-8 w-8 text-green-400" />
-                <div className="font-semibold text-white">Join as Student</div>
-                <div className="text-sm text-gray-300">Transform your CLAT journey</div>
-              </div>
-              <div className="rounded-xl border border-white/20 bg-white/5 p-4">
-                <CheckCircle className="mx-auto mb-2 h-8 w-8 text-blue-400" />
-                <div className="font-semibold text-white">Become Educator</div>
-                <div className="text-sm text-gray-300">Share your expertise</div>
-              </div>
-              <div className="rounded-xl border border-white/20 bg-white/5 p-4">
-                <CheckCircle className="mx-auto mb-2 h-8 w-8 text-purple-400" />
-                <div className="font-semibold text-white">Partner with Us</div>
-                <div className="text-sm text-gray-300">Build the future together</div>
-              </div>
-            </div>
-
-            <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <Button
-                asChild
+            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <Button 
                 size="lg"
-                className="h-14 bg-gradient-to-r from-purple-600 to-pink-600 px-8 text-lg font-semibold shadow-2xl hover:from-purple-700 hover:to-pink-700"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
               >
-                <Link href="/contact">
-                  Get in Touch
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+                Start Your Free Trial
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button
-                asChild
-                variant="outline"
+              <Button 
                 size="lg"
-                className="h-14 border-white/30 bg-white/5 px-8 text-lg font-semibold text-white backdrop-blur-md hover:bg-white/10"
+                variant="outline"
+                className="border-white/20 bg-white/10 hover:bg-white/20"
               >
-                <Link href="/signup">Start Free Trial</Link>
+                <PlayCircle className="mr-2 h-5 w-5" />
+                Watch Our Story
               </Button>
             </div>
           </div>
         </div>
       </section>
-    </div>
-  );
-};
-
-export default About;
-
-// Legacy components for compatibility
-interface ImageSectionProps {
-  images: { src: string; alt: string }[];
-  className?: string;
-}
-
-export function ImageSection({ images, className }: ImageSectionProps) {
-  return (
-    <div className={cn('flex flex-col gap-6', className)}>
-      {images.map((image, index) => (
-        <div
-          key={index}
-          className="relative aspect-[2/1.5] overflow-hidden rounded-2xl"
-        >
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            className="object-cover"
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-interface TextSectionProps {
-  title?: string;
-  paragraphs: string[];
-  ctaButton?: {
-    href: string;
-    text: string;
-  };
-}
-
-export function TextSection({
-  title,
-  paragraphs,
-  ctaButton,
-}: TextSectionProps) {
-  return (
-    <div className="flex-1 space-y-4 text-lg font-medium md:space-y-6">
-      {title && <h2 className="text-primary text-4xl font-medium">{title}</h2>}
-      <div className="text-muted-foreground max-w-xl space-y-6">
-        {paragraphs.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
-        ))}
-      </div>
-      {ctaButton && (
-        <div className="mt-8">
-          <Link href={ctaButton.href}>
-            <Button size="lg">{ctaButton.text}</Button>
-          </Link>
-        </div>
-      )}
     </div>
   );
 }
