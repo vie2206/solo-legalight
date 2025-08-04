@@ -1,5 +1,5 @@
 import About from '@/components/sections/about';
-import AboutHero from '@/components/sections/about-hero';
+import { AboutHero } from '@/components/sections/about-hero';
 
 export const metadata = {
   title: 'About SOLO - Revolutionary CLAT Preparation Platform',
