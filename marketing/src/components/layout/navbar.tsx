@@ -28,13 +28,13 @@ const ITEMS = [
       {
         title: 'AI Study Planner',
         href: '/#features',
-        description:
-          'Personalized study schedules powered by machine learning',
+        description: 'Personalized study schedules powered by machine learning',
       },
       {
         title: 'Rank Predictor',
         href: '/#features',
-        description: '85% accurate CLAT rank predictions with 3D visualizations',
+        description:
+          '85% accurate CLAT rank predictions with 3D visualizations',
       },
       {
         title: 'Mock Test Analysis',
@@ -62,7 +62,7 @@ const Navbar = () => {
               SOLO
             </span>
           </div>
-          <div className="text-sm text-gray-500 dark:text-gray-400 font-serif italic">
+          <div className="font-serif text-sm text-gray-500 italic dark:text-gray-400">
             by Legalight
           </div>
         </Link>
@@ -126,7 +126,10 @@ const Navbar = () => {
             </Button>
           </Link>
           <Link href="/signup" className="max-lg:hidden">
-            <Button size="sm" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white">
+            <Button
+              size="sm"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700"
+            >
               <span className="relative z-10">Start Free Trial</span>
             </Button>
           </Link>
@@ -232,16 +235,16 @@ const Navbar = () => {
             ),
           )}
         </nav>
-        
+
         {/* Mobile Auth Buttons */}
-        <div className="flex flex-col gap-3 pt-6 border-t border-border">
+        <div className="border-border flex flex-col gap-3 border-t pt-6">
           <Link href="/login" onClick={() => setIsMenuOpen(false)}>
             <Button variant="outline" className="w-full">
               Login
             </Button>
           </Link>
           <Link href="/signup" onClick={() => setIsMenuOpen(false)}>
-            <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white">
+            <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700">
               Start Free Trial
             </Button>
           </Link>

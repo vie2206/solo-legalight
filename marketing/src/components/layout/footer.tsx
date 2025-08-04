@@ -24,7 +24,7 @@ export function Footer() {
 
   const legal = [
     { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' }
+    { name: 'Terms of Service', href: '/terms' },
   ];
 
   return (
@@ -36,11 +36,14 @@ export function Footer() {
           </span>
         </h2>
         <p className="text-muted-foreground mx-auto max-w-xl leading-snug font-medium text-balance">
-          Join thousands of students who've discovered the power of AI-driven CLAT preparation. 
-          Start your 30-day free trial today.
+          Join thousands of students who've discovered the power of AI-driven
+          CLAT preparation. Start your 30-day free trial today.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-          <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+        <div className="mt-6 flex flex-col justify-center gap-4 sm:flex-row">
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+          >
             <Link href="/signup">Start Free Trial</Link>
           </Button>
           <Button size="lg" variant="outline">
@@ -85,7 +88,7 @@ export function Footer() {
           ))}
         </ul>
       </nav>
-      
+
       {/* Footer Bottom */}
       <div className="container border-t pt-8 pb-4 text-center">
         <div className="flex flex-col items-center gap-4">
@@ -95,20 +98,21 @@ export function Footer() {
                 SOLO
               </span>
             </div>
-            <div className="text-sm text-muted-foreground font-serif italic">
+            <div className="text-muted-foreground font-serif text-sm italic">
               by Legalight
             </div>
           </div>
-          <p className="text-xs text-muted-foreground">
-            © 2025 Legalight Technologies. All rights reserved. | WHERE LAWYERS ARE BORN
+          <p className="text-muted-foreground text-xs">
+            © 2025 Legalight Technologies. All rights reserved. | WHERE LAWYERS
+            ARE BORN
           </p>
-          <p className="text-xs text-muted-foreground max-w-2xl">
-            SOLO is India's first AI-powered performance analytics platform for CLAT preparation. 
-            Our mission: WE CAN DO HARD THINGS.
+          <p className="text-muted-foreground max-w-2xl text-xs">
+            SOLO is India's first AI-powered performance analytics platform for
+            CLAT preparation. Our mission: WE CAN DO HARD THINGS.
           </p>
         </div>
       </div>
-      
+
       <Image
         src="/footer.svg"
         alt="SOLO Footer"
