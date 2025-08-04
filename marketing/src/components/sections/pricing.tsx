@@ -219,7 +219,7 @@ export default function Pricing() {
                       <p className="text-sm text-gray-500 dark:text-gray-400">
                         ₹{pricing.daily}/day • {pricing.comparison}
                       </p>
-                      {billingCycle === 'annual' && pricing.savings && (
+                      {billingCycle === 'annual' && 'savings' in pricing && pricing.savings && (
                         <p className="text-sm font-medium text-green-600 dark:text-green-400 mt-1">
                           Save ₹{pricing.savings} annually!
                         </p>
