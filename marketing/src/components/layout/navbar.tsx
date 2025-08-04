@@ -49,10 +49,10 @@ const ITEMS = [
     ],
   },
   { label: '3D NLU Showcase', href: '/nlu-showcase' },
-  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'How It Works', href: '/how-it-works' },
+  { label: 'Success Stories', href: '/success-stories' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'For Parents', href: '/parents' },
-  { label: 'Success Stories', href: '/#testimonials' },
 ];
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
