@@ -78,7 +78,10 @@ export default function Hero() {
               size="lg"
               className="h-16 rounded-xl border-white/30 bg-white/5 px-10 text-xl font-semibold text-white backdrop-blur-sm hover:bg-white/10"
             >
-              <Link href="#features">See How It Works</Link>
+              <Link href="/nlu-showcase">
+                <Sparkles className="mr-2 h-6 w-6 text-yellow-400" />
+                Explore 3D NLUs
+              </Link>
             </Button>
           </div>
 

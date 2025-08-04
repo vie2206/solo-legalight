@@ -474,7 +474,6 @@ export default function ParentsPage() {
               ))}
             </div>
           </div>
-          </div>
         </div>
       </section>
 

@@ -48,6 +48,7 @@ const ITEMS = [
       },
     ],
   },
+  { label: '3D NLU Showcase', href: '/nlu-showcase' },
   { label: 'How It Works', href: '/#how-it-works' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'For Parents', href: '/parents' },
