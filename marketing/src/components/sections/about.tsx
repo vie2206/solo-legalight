@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+// Temporarily disable framer-motion to fix deployment issue
+// import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import {
@@ -377,18 +378,16 @@ export default function About() {
   const [showFullData, setShowFullData] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef });
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  // Temporarily disabled animation
+  // const { scrollYProgress } = useScroll({ target: containerRef });
+  // const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
   return (
     <div ref={containerRef} className="bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
       {/* Hero Section with Tagline */}
       <section className="relative overflow-hidden py-20">
         <div className="container relative mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+          <div
             className="text-center"
           >
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-purple-500/20 px-6 py-2 text-purple-300">
@@ -419,20 +418,17 @@ export default function About() {
                 { number: "92%", label: "NLU Success Rate", sublabel: "Our Students" },
                 { number: "+27", label: "Average Score Jump", sublabel: "In 3 Months" }
               ].map((stat, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
                 >
                   <div className="mb-2 text-4xl font-bold text-white">{stat.number}</div>
                   <div className="mb-1 font-semibold text-purple-400">{stat.label}</div>
                   <div className="text-sm text-gray-400">{stat.sublabel}</div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -472,11 +468,8 @@ export default function About() {
           </div>
 
           {/* Enhanced Founder Profile */}
-          <motion.div
+          <div
             key={activeFounder}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
             className="grid gap-12 lg:grid-cols-2"
           >
             {/* Real Photo with Professional Styling */}
@@ -595,7 +588,7 @@ export default function About() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -612,11 +605,8 @@ export default function About() {
 
           <div className="grid gap-8 lg:grid-cols-3">
             {blueOceanFactors.map((factor, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
                 className={`rounded-2xl border border-white/10 p-8 backdrop-blur-sm ${
                   index === 2 ? 'bg-gradient-to-br from-purple-900/30 to-blue-900/30 ring-2 ring-purple-400/50' : 'bg-white/5'
                 }`}
@@ -651,7 +641,7 @@ export default function About() {
                     </div>
                   </div>
                 )}
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -673,11 +663,8 @@ export default function About() {
 
           <div className="grid gap-8 md:grid-cols-2">
             {dataInsights.map((insight, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm"
               >
                 <div className="mb-6 flex items-center justify-between">
@@ -700,7 +687,7 @@ export default function About() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -748,11 +735,8 @@ export default function About() {
           </div>
 
           {/* Active Platform Showcase */}
-          <motion.div
+          <div
             key={activeShowcase}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
             className="grid gap-8 lg:grid-cols-2"
           >
             <div className="space-y-6">
@@ -790,7 +774,7 @@ export default function About() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -806,11 +790,8 @@ export default function About() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {coreValues.map((value, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all hover:bg-white/10"
               >
                 <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r ${value.color}`}>
@@ -821,7 +802,7 @@ export default function About() {
                 <div className="rounded-lg bg-purple-500/20 px-3 py-2 text-sm font-semibold text-purple-300">
                   {value.dataProof}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -844,11 +825,8 @@ export default function About() {
             {/* Enhanced Milestones */}
             <div className="space-y-16">
               {milestones.map((milestone, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className={`relative flex items-center ${
                     index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
                   }`}
@@ -883,7 +861,7 @@ export default function About() {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
