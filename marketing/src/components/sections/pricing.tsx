@@ -124,8 +124,27 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="bg-gradient-to-b from-white to-gray-50 py-24 dark:from-gray-950 dark:to-gray-900"
+      className="relative bg-gradient-to-b from-white to-gray-50 py-24 dark:from-gray-950 dark:to-gray-900"
     >
+      {/* Premium Holographic Background */}
+      <div 
+        className="absolute inset-0 opacity-10 bg-cover bg-center bg-fixed"
+        style={{
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_15.png')",
+          backgroundBlendMode: 'overlay'
+        }}
+      ></div>
+      
+      {/* Chromatic Halos */}
+      <div 
+        className="absolute top-20 right-10 w-80 h-80 opacity-20 animate-pulse"
+        style={{
+          backgroundImage: "url('/ui8-assets/halos/ring-00010.png')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center'
+        }}
+      ></div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-16 text-center">

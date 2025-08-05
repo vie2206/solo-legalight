@@ -189,11 +189,35 @@ const faqCategories = [
 export default function FAQ() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-black/10"></div>
-      <div className="absolute top-20 left-10 h-40 w-40 animate-pulse rounded-full bg-purple-500/20 blur-3xl"></div>
-      <div className="absolute top-60 right-20 h-32 w-32 animate-pulse rounded-full bg-pink-500/20 blur-2xl delay-1000"></div>
-      <div className="absolute bottom-40 left-1/3 h-36 w-36 animate-pulse rounded-full bg-blue-500/20 blur-xl delay-2000"></div>
+      {/* Premium Holographic Background */}
+      <div 
+        className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_25.png')",
+          backgroundBlendMode: 'overlay'
+        }}
+      ></div>
+      <div className="absolute inset-0 bg-black/20"></div>
+      
+      {/* Premium Chromatic Halos */}
+      <div 
+        className="absolute top-20 left-10 w-96 h-96 opacity-8 animate-pulse"
+        style={{
+          backgroundImage: "url('/ui8-assets/halos/ring-00001.png')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center'
+        }}
+      ></div>
+      <div 
+        className="absolute bottom-20 right-10 w-80 h-80 opacity-12 animate-pulse delay-3000"
+        style={{
+          backgroundImage: "url('/ui8-assets/halos/ring-00020.png')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center'
+        }}
+      ></div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}

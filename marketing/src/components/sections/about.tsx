@@ -383,7 +383,40 @@ export default function About() {
   // const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
   return (
-    <div ref={containerRef} className="bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+    <div ref={containerRef} className="relative bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+      {/* Premium Holographic Background */}
+      <div 
+        className="fixed inset-0 opacity-20 bg-cover bg-center bg-fixed"
+        style={{
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_15.png')",
+          backgroundBlendMode: 'overlay',
+          zIndex: 0
+        }}
+      ></div>
+      
+      {/* Floating Chromatic Halos */}
+      <div 
+        className="fixed top-20 right-20 w-96 h-96 opacity-10 animate-pulse"
+        style={{
+          backgroundImage: "url('/ui8-assets/halos/ring-00010.png')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          zIndex: 1
+        }}
+      ></div>
+      <div 
+        className="fixed bottom-20 left-20 w-80 h-80 opacity-15 animate-pulse delay-4000"
+        style={{
+          backgroundImage: "url('/ui8-assets/halos/ring-00020.png')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          zIndex: 1
+        }}
+      ></div>
+      
+      <div className="relative z-10">
       {/* Hero Section with Tagline */}
       <section className="relative overflow-hidden py-20">
         <div className="container relative mx-auto px-4">
@@ -904,6 +937,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 }
