@@ -14,6 +14,13 @@ import {
   Clock,
   Award,
 } from 'lucide-react';
+import { 
+  AIPoweredBentoCard, 
+  AnalyticsBentoCard, 
+  EducationBentoCard, 
+  CommunityBentoCard,
+  BentoCard 
+} from '@/components/ui/bento-card';
 
 const features = [
   {
@@ -132,49 +139,76 @@ export default function Features() {
           </div>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => {
+        {/* Premium Bento Cards Showcase */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 mb-16">
+          {/* AI Prediction Card */}
+          <div className="lg:col-span-1">
+            <AIPoweredBentoCard />
+          </div>
+
+          {/* Mock Test Analysis Card */}
+          <div className="lg:col-span-1">
+            <AnalyticsBentoCard />
+          </div>
+
+          {/* Education Resources Card */}
+          <div className="lg:col-span-1">
+            <EducationBentoCard />
+          </div>
+
+          {/* Community Card */}
+          <div className="lg:col-span-1">
+            <CommunityBentoCard />
+          </div>
+        </div>
+
+        {/* Section Divider with Holographic Gradient */}
+        <div className="relative mb-16 h-32 overflow-hidden rounded-3xl">
+          <div 
+            className="absolute inset-0 opacity-20 bg-cover bg-center"
+            style={{
+              backgroundImage: "url('/ui8-assets/gradients/Gradient_15.png')",
+              backgroundBlendMode: 'overlay'
+            }}
+          ></div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-white mb-2">All Features Included</h3>
+              <p className="text-gray-300">9 revolutionary features that redefine CLAT preparation</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Additional Features Grid */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {features.slice(4).map((feature, index) => {
             const IconComponent = feature.icon;
             return (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/20 hover:shadow-2xl"
-              >
-                {/* Gradient Background */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-5`}
-                ></div>
-
-                {/* Icon */}
-                <div
-                  className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r ${feature.gradient} mb-6`}
-                >
-                  <IconComponent className="h-6 w-6 text-white" />
+              <BentoCard key={index} variant="glassmorphic" className="p-6 h-48">
+                <div className="flex flex-col h-full justify-between">
+                  <div>
+                    <div
+                      className={`inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r ${feature.gradient} mb-4`}
+                    >
+                      <IconComponent className="h-5 w-5 text-white" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-white mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 mt-4">
+                    <div
+                      className={`h-1.5 w-1.5 rounded-full bg-gradient-to-r ${feature.gradient}`}
+                    ></div>
+                    <span className="text-xs font-medium text-gray-400">
+                      {feature.stats}
+                    </span>
+                  </div>
                 </div>
-
-                {/* Content */}
-                <h3 className="mb-3 text-xl font-semibold text-white">
-                  {feature.title}
-                </h3>
-
-                <p className="mb-4 leading-relaxed text-gray-300">
-                  {feature.description}
-                </p>
-
-                {/* Stats */}
-                <div className="flex items-center gap-2">
-                  <div
-                    className={`h-2 w-2 rounded-full bg-gradient-to-r ${feature.gradient}`}
-                  ></div>
-                  <span className="text-sm font-medium text-gray-400">
-                    {feature.stats}
-                  </span>
-                </div>
-
-                {/* Hover Effect */}
-                <div className="absolute inset-0 rounded-2xl ring-1 ring-gray-900/10 transition-all duration-300 ring-inset group-hover:ring-gray-900/20 dark:ring-white/10 dark:group-hover:ring-white/20"></div>
-              </div>
+              </BentoCard>
             );
           })}
         </div>
