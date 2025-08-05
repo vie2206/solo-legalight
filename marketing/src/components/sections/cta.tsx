@@ -18,7 +18,7 @@ export default function CTA() {
       <div 
         className="absolute inset-0 opacity-25 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/ui8-assets/gradients/Gradient_25.png')",
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_25.webp')",
           backgroundBlendMode: 'overlay'
         }}
       ></div>
@@ -28,7 +28,7 @@ export default function CTA() {
       <div 
         className="absolute top-20 left-20 w-80 h-80 opacity-15 animate-pulse"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00001.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00001.webp')",
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'
@@ -37,7 +37,7 @@ export default function CTA() {
       <div 
         className="absolute bottom-10 right-10 w-60 h-60 opacity-10 animate-pulse delay-3000"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00020.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00020.webp')",
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'

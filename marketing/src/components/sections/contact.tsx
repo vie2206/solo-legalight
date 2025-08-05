@@ -72,7 +72,7 @@ export default function Contact() {
       <div 
         className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/ui8-assets/gradients/Gradient_1.png')",
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_1.webp')",
           backgroundBlendMode: 'overlay'
         }}
       ></div>
@@ -82,7 +82,7 @@ export default function Contact() {
       <div 
         className="absolute top-10 right-10 w-80 h-80 opacity-15 animate-pulse"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00010.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00010.webp')",
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'

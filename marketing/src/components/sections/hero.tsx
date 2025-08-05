@@ -19,7 +19,7 @@ export default function Hero() {
       <div 
         className="absolute inset-0 opacity-30 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/ui8-assets/gradients/Gradient_1.png')",
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_1.webp');",
           backgroundBlendMode: 'overlay'
         }}
       ></div>
@@ -29,7 +29,7 @@ export default function Hero() {
       <div 
         className="absolute top-10 right-10 w-96 h-96 opacity-20 animate-pulse"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00001.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00001.webp');"
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'
@@ -38,7 +38,7 @@ export default function Hero() {
       <div 
         className="absolute bottom-20 left-10 w-64 h-64 opacity-15 animate-pulse delay-2000"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00010.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00010.webp');"
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'
@@ -47,7 +47,7 @@ export default function Hero() {
       <div 
         className="absolute top-1/2 left-1/3 w-48 h-48 opacity-10 animate-pulse delay-4000"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00020.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00020.webp');"
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'

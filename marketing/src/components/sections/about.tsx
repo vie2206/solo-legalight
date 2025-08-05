@@ -388,7 +388,7 @@ export default function About() {
       <div 
         className="fixed inset-0 opacity-20 bg-cover bg-center bg-fixed"
         style={{
-          backgroundImage: "url('/ui8-assets/gradients/Gradient_15.png')",
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_15.webp')",
           backgroundBlendMode: 'overlay',
           zIndex: 0
         }}
@@ -398,7 +398,7 @@ export default function About() {
       <div 
         className="fixed top-20 right-20 w-96 h-96 opacity-10 animate-pulse"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00010.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00010.webp')",
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
@@ -408,7 +408,7 @@ export default function About() {
       <div 
         className="fixed bottom-20 left-20 w-80 h-80 opacity-15 animate-pulse delay-4000"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00020.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00020.webp')",
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',

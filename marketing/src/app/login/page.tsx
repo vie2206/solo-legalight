@@ -67,7 +67,7 @@ export default function LoginPage() {
       <div 
         className="absolute inset-0 opacity-15 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/ui8-assets/gradients/Gradient_1.png')",
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_1.webp')",
           backgroundBlendMode: 'overlay'
         }}
       ></div>
@@ -77,7 +77,7 @@ export default function LoginPage() {
       <div 
         className="absolute top-20 left-10 w-96 h-96 opacity-10 animate-pulse"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00001.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00001.webp')",
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'
@@ -86,7 +86,7 @@ export default function LoginPage() {
       <div 
         className="absolute bottom-20 right-10 w-80 h-80 opacity-15 animate-pulse delay-2000"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00020.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00020.webp')",
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'

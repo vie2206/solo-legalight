@@ -193,7 +193,7 @@ export default function FAQ() {
       <div 
         className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/ui8-assets/gradients/Gradient_25.png')",
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_25.webp')",
           backgroundBlendMode: 'overlay'
         }}
       ></div>
@@ -203,7 +203,7 @@ export default function FAQ() {
       <div 
         className="absolute top-20 left-10 w-96 h-96 opacity-8 animate-pulse"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00001.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00001.webp')",
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'
@@ -212,7 +212,7 @@ export default function FAQ() {
       <div 
         className="absolute bottom-20 right-10 w-80 h-80 opacity-12 animate-pulse delay-3000"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00020.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00020.webp')",
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'

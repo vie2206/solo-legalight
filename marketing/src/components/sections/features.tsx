@@ -167,7 +167,7 @@ export default function Features() {
           <div 
             className="absolute inset-0 opacity-20 bg-cover bg-center"
             style={{
-              backgroundImage: "url('/ui8-assets/gradients/Gradient_15.png')",
+              backgroundImage: "url('/ui8-assets/gradients/Gradient_15.webp')",
               backgroundBlendMode: 'overlay'
             }}
           ></div>

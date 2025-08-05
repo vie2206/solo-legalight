@@ -130,7 +130,7 @@ export default function Pricing() {
       <div 
         className="absolute inset-0 opacity-10 bg-cover bg-center bg-fixed"
         style={{
-          backgroundImage: "url('/ui8-assets/gradients/Gradient_15.png')",
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_15.webp')",
           backgroundBlendMode: 'overlay'
         }}
       ></div>
@@ -139,7 +139,7 @@ export default function Pricing() {
       <div 
         className="absolute top-20 right-10 w-80 h-80 opacity-20 animate-pulse"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00010.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00010.webp')",
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'
