@@ -11,6 +11,7 @@ import { SoloHeader } from './shared/SoloHeader';
 import { SoloNavigation, NavigationTab } from './shared/SoloNavigation';
 import { SoloCard, SoloStatCard } from './shared/SoloCard';
 import { SoloButton } from './shared/SoloButton';
+import AdminDoubtOversightIntegrated from './doubt-solving/AdminDoubtOversightIntegrated';
 
 interface SoloAdminDashboardProps {
   user: User;
@@ -61,6 +62,7 @@ const SoloAdminDashboard: React.FC<SoloAdminDashboardProps> = ({ user, onLogout 
     { id: 'vocabulary', label: 'Vocabulary', icon: Brain },
     { id: 'achievements', label: 'Goals & Achievements', icon: Target },
     { id: 'social-learning', label: 'Social Learning', icon: MessageSquare },
+    { id: 'doubt-oversight', label: 'Doubt Resolution', icon: Brain },
     { id: 'communications', label: 'Communications', icon: Mail, badge: stats.supportTickets },
     { id: 'notifications', label: 'Notifications', icon: Bell },
     { id: 'security', label: 'Security & Access', icon: Shield, badge: stats.systemAlerts },
@@ -316,6 +318,8 @@ const SoloAdminDashboard: React.FC<SoloAdminDashboardProps> = ({ user, onLogout 
         return renderOverview();
       case 'users':
         return renderUsers();
+      case 'doubt-oversight':
+        return <AdminDoubtOversightIntegrated user={user} />;
       default:
         return (
           <SoloCard title={navigationTabs.find(tab => tab.id === activeTab)?.label || 'Feature'}>

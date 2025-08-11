@@ -14,8 +14,11 @@ import {
   Bookmark, Hash, AtSign, Link, ExternalLink, Image, Video,
   Mic, Camera, Printer, Smartphone, Tablet, Laptop, Tv,
   Radio, Bluetooth, WifiOff, Battery, BatteryLow, Power,
-  Scale, Book
+  Scale, Book, MessageCircle
 } from 'lucide-react';
+
+// Import the EducatorDoubtManager component
+const EducatorDoubtManager = React.lazy(() => import('./doubt-solving/EducatorDoubtManager'));
 
 interface CompleteEducatorDashboardProps {
   user: any;
@@ -114,7 +117,7 @@ interface ContentItem {
 }
 
 const CompleteEducatorDashboard: React.FC<CompleteEducatorDashboardProps> = ({ user, onLogout }) => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'students' | 'assignments' | 'grading' | 'content' | 'classes' | 'analytics' | 'reports' | 'communication' | 'assessments' | 'curriculum' | 'resources' | 'attendance' | 'gradebook' | 'calendar' | 'feedback' | 'portfolio' | 'settings' | 'help'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'students' | 'assignments' | 'doubts' | 'grading' | 'content' | 'classes' | 'analytics' | 'reports' | 'communication' | 'assessments' | 'curriculum' | 'resources' | 'attendance' | 'gradebook' | 'calendar' | 'feedback' | 'portfolio' | 'settings' | 'help'>('overview');
   
   // State management
   const [loading, setLoading] = useState(true);
@@ -781,6 +784,7 @@ const CompleteEducatorDashboard: React.FC<CompleteEducatorDashboardProps> = ({ u
               { id: 'overview', label: 'Overview', icon: Activity, color: 'text-blue-600' },
               { id: 'students', label: 'Students', icon: Users, color: 'text-green-600' },
               { id: 'assignments', label: 'Assignments', icon: FileText, color: 'text-purple-600' },
+              { id: 'doubts', label: 'Doubts', icon: MessageCircle, color: 'text-blue-600' },
               { id: 'grading', label: 'Grading', icon: Clipboard, color: 'text-orange-600' },
               { id: 'classes', label: 'Classes', icon: Calendar, color: 'text-red-600' },
               { id: 'content', label: 'Content', icon: BookOpen, color: 'text-indigo-600' },
@@ -1385,6 +1389,18 @@ const CompleteEducatorDashboard: React.FC<CompleteEducatorDashboardProps> = ({ u
               </div>
             </div>
           </div>
+        )}
+        
+        {/* Doubt Resolution Management System */}
+        {activeTab === 'doubts' && (
+          <React.Suspense fallback={
+            <div className="flex items-center justify-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading Doubt Management System...</p>
+            </div>
+          }>
+            <EducatorDoubtManager user={user} />
+          </React.Suspense>
         )}
         
         {/* Comprehensive Grading & Assessment Center */}

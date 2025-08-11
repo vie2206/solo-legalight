@@ -8,6 +8,9 @@ import {
   Eye, Headphones, Sunrise, Moon, Coffee, CheckCircle,
   ArrowRight, Flame, Globe, PenTool, Mic, Camera
 } from 'lucide-react';
+import AITextExplainer from './components/ai/AITextExplainer';
+import ReadingAssessment, { AssessmentResults } from './components/reading/ReadingAssessment';
+import ReadingResults from './components/reading/ReadingResults';
 
 const CLATReadingMastery = () => {
   // Core state management
@@ -76,6 +79,9 @@ const CLATReadingMastery = () => {
     economics: 69,
     legalAwareness: 91
   });
+
+  // Reading Assessment state
+  const [assessmentResults, setAssessmentResults] = useState<AssessmentResults | null>(null);
 
   // Sample passages with enhanced metadata
   const passages = [
@@ -749,6 +755,17 @@ India faces unique challenges in climate litigation. While the country contribut
               <Trophy className="w-5 h-5" />
             </div>
           </button>
+
+          <button 
+            onClick={() => setCurrentScreen('assessment')}
+            className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl py-4 px-6 font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-[1.02]"
+          >
+            <div className="flex items-center justify-center space-x-2">
+              <Brain className="w-5 h-5" />
+              <span>Reading Assessment</span>
+              <Target className="w-5 h-5" />
+            </div>
+          </button>
           
           <div className="grid grid-cols-5 gap-3">
             <button 
@@ -994,10 +1011,259 @@ India faces unique challenges in climate litigation. While the country contribut
     );
   };
 
+  // Reader Screen with AI Text Explainer
+  const ReaderScreen = () => {
+    if (!selectedPassage) return null;
+
+    const passage = selectedPassage as any;
+
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+        {/* Enhanced Header */}
+        <div className="bg-white shadow-sm border-b border-gray-100 px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <button 
+                onClick={() => setCurrentScreen('home')}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-600" />
+              </button>
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <Brain className="w-5 h-5 mr-2 text-blue-500" />
+                  AI-Powered Reading
+                </h2>
+                <p className="text-sm text-gray-500">
+                  Highlight any text to get instant AI explanations
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-3">
+              {isReading && (
+                <div className="bg-green-100 px-3 py-1 rounded-full">
+                  <span className="text-green-700 text-sm font-medium flex items-center">
+                    <Clock className="w-4 h-4 mr-1" />
+                    {Math.floor(readingTimer / 60)}:{(readingTimer % 60).toString().padStart(2, '0')}
+                  </span>
+                </div>
+              )}
+              <div className="bg-gradient-to-r from-blue-500 to-purple-600 px-3 py-1 rounded-full">
+                <span className="text-white text-sm font-semibold">
+                  ⚡ AI Explainer Active
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="px-6 py-3 bg-gray-50">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
+              <span>Reading Progress</span>
+              <span>{passage.title}</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div 
+                className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-300"
+                style={{ width: '45%' }}
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Reading Interface */}
+        <div className="px-6 py-8">
+          <div className="max-w-4xl mx-auto">
+            {/* Passage Metadata */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h1 className="text-2xl font-bold text-gray-900 mb-2">{passage.title}</h1>
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {passage.estimatedTime} min read
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Target className="w-4 h-4" />
+                      Difficulty: {passage.difficulty}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Star className="w-4 h-4 text-yellow-500" />
+                      CLAT {passage.clatRelevance}/10
+                    </span>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-lg font-bold text-blue-600">{passage.aiComplexity}/10</div>
+                  <div className="text-sm text-gray-500">AI Complexity</div>
+                </div>
+              </div>
+              
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2">
+                {passage.tags && passage.tags.map((tag: string, index: number) => (
+                  <span
+                    key={index}
+                    className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* AI Text Explainer with Passage Content */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+              <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
+                  <Zap className="w-4 h-4" />
+                  How to Use AI Explainer
+                </h3>
+                <p className="text-blue-800 text-sm">
+                  Highlight any word, phrase, or sentence to get instant AI-powered explanations. 
+                  Perfect for understanding complex legal concepts, vocabulary, and contextual meanings.
+                </p>
+              </div>
+
+              <AITextExplainer
+                content={passage.text || passage.content || "This is a sample passage for AI explanation demonstration."}
+                subject="reading_comprehension"
+                userLevel="intermediate"
+                onExplanationGenerated={(explanation) => {
+                  console.log('AI Explanation generated:', explanation);
+                  // Track user engagement with AI explanations
+                }}
+                className="text-lg leading-relaxed"
+              />
+            </div>
+
+            {/* Reading Actions */}
+            <div className="mt-8 flex justify-center gap-4">
+              <button
+                onClick={() => setCurrentScreen('home')}
+                className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-medium transition-colors"
+              >
+                Finish Reading
+              </button>
+              <button
+                onClick={() => {
+                  // Start practice questions for this passage
+                  setCurrentScreen('practice-questions');
+                }}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              >
+                Practice Questions
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Passages Library Screen
+  const PassagesScreen = () => (
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50">
+      <div className="bg-white shadow-sm border-b border-gray-100 px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <button 
+              onClick={() => setCurrentScreen('home')}
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-600" />
+            </button>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900">Reading Passages</h2>
+              <p className="text-sm text-gray-500">Choose a passage to start reading</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-6 py-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid gap-4">
+            {passages.map((passage: any, index: number) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all duration-200 cursor-pointer"
+                onClick={() => startReading(passage)}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{passage.title}</h3>
+                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">{passage.preview || passage.text?.substring(0, 150) + "..."}</p>
+                    
+                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        {passage.estimatedTime || 5} min
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Target className="w-4 h-4" />
+                        {passage.difficulty || 'Medium'}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Brain className="w-4 h-4" />
+                        AI Complexity: {passage.aiComplexity || 7}/10
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="ml-4">
+                    <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 py-1 rounded-full text-xs font-medium">
+                      CLAT {passage.clatRelevance || 8}/10
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Placeholder screens
+  const VocabularyScreen = () => <div>Vocabulary Screen - Coming Soon</div>;
+  const FlashcardsScreen = () => <div>Flashcards Screen - Coming Soon</div>;
+  const ChallengesScreen = () => <div>Challenges Screen - Coming Soon</div>;
+  const AnalyticsScreen = () => <div>Analytics Screen - Coming Soon</div>;
+
   // Screen Router
   const renderScreen = () => {
     switch (currentScreen) {
       case 'gk-quiz': return <GKQuizScreen />;
+      case 'reader': return <ReaderScreen />;
+      case 'passages': return <PassagesScreen />;
+      case 'vocabulary': return <VocabularyScreen />;
+      case 'flashcards': return <FlashcardsScreen />;
+      case 'challenges': return <ChallengesScreen />;
+      case 'analytics': return <AnalyticsScreen />;
+      case 'assessment': return (
+        <ReadingAssessment
+          onComplete={(results) => {
+            setAssessmentResults(results);
+            setCurrentScreen('assessment-results');
+          }}
+          onBack={() => setCurrentScreen('home')}
+        />
+      );
+      case 'assessment-results': return assessmentResults ? (
+        <ReadingResults
+          results={assessmentResults}
+          onRetake={() => {
+            setAssessmentResults(null);
+            setCurrentScreen('assessment');
+          }}
+          onContinueLearning={() => setCurrentScreen('passages')}
+          onBack={() => setCurrentScreen('home')}
+        />
+      ) : <HomeScreen />;
       default: return <HomeScreen />;
     }
   };

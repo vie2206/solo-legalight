@@ -10,6 +10,7 @@ import { SoloHeader } from './shared/SoloHeader';
 import { SoloNavigation, NavigationTab } from './shared/SoloNavigation';
 import { SoloCard, SoloStatCard } from './shared/SoloCard';
 import { SoloButton } from './shared/SoloButton';
+import ParentDoubtTracker from './doubt-solving/ParentDoubtTracker';
 
 interface SoloParentDashboardProps {
   user: UserType;
@@ -91,6 +92,7 @@ const SoloParentDashboard: React.FC<SoloParentDashboardProps> = ({ user, onLogou
     { id: 'overview', label: 'Overview', icon: LayoutDashboard },
     { id: 'children', label: 'My Children', icon: Users, badge: children.length },
     { id: 'performance', label: 'Performance', icon: BarChart3 },
+    { id: 'doubt-tracking', label: 'Doubt Tracking', icon: Brain },
     { id: 'schedule', label: 'Study Schedule', icon: Calendar },
     { id: 'payments', label: 'Payments', icon: CreditCard },
     { id: 'communication', label: 'Communication', icon: MessageSquare },
@@ -408,6 +410,8 @@ const SoloParentDashboard: React.FC<SoloParentDashboardProps> = ({ user, onLogou
         return renderOverview();
       case 'children':
         return renderChildren();
+      case 'doubt-tracking':
+        return <ParentDoubtTracker user={user} />;
       default:
         return (
           <SoloCard title={navigationTabs.find(tab => tab.id === activeTab)?.label || 'Feature'}>

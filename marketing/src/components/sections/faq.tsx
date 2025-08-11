@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import {
   Accordion,
   AccordionContent,
@@ -7,7 +8,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, HelpCircle, Sparkles } from 'lucide-react';
+import { ArrowRight, HelpCircle, Sparkles, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 
 const faqCategories = [
@@ -187,8 +188,10 @@ const faqCategories = [
 ];
 
 export default function FAQ() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24">
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-12">
       {/* Premium Holographic Background */}
       <div 
         className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat"
@@ -220,35 +223,54 @@ export default function FAQ() {
       ></div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-20 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
-            <HelpCircle className="h-5 w-5" />
-            Frequently Asked Questions
-          </div>
-          <h1 className="mb-6 text-6xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl">
-            <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
-              Questions?
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
-              We've Got Answers
-            </span>
-          </h1>
-          <p className="mx-auto max-w-3xl text-xl text-gray-300 sm:text-2xl">
-            Everything you need to know about SOLO, CLAT preparation, pricing,
-            and more. Can't find what you're looking for? Reach out to our
-            support team.
-          </p>
+        {/* Collapsed Header - Always Visible */}
+        <div className="text-center">
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="group mx-auto mb-8 flex items-center gap-4 rounded-2xl border border-white/20 bg-white/10 px-8 py-6 text-white backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:scale-105"
+          >
+            <HelpCircle className="h-8 w-8 text-purple-300" />
+            <div className="text-left">
+              <h3 className="text-2xl font-bold">
+                <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+                  Questions? We've Got Answers
+                </span>
+              </h3>
+              <p className="text-sm text-gray-300">
+                Click to explore our comprehensive FAQ
+              </p>
+            </div>
+            <ChevronDown className={`h-6 w-6 text-purple-300 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+          </button>
         </div>
 
-        {/* FAQ Categories */}
-        <div className="space-y-12">
-          {faqCategories.map((category, categoryIndex) => (
-            <div
-              key={categoryIndex}
-              className="rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md"
-            >
+        {/* Expandable FAQ Content */}
+        {isExpanded && (
+          <div className="space-y-8 animate-in slide-in-from-top duration-500">
+            {/* Expanded Header */}
+            <div className="mb-16 text-center">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
+                <HelpCircle className="h-5 w-5" />
+                Frequently Asked Questions
+              </div>
+              <h1 className="mb-6 text-5xl font-bold tracking-tight text-white sm:text-6xl">
+                <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+                  Everything You Need to Know
+                </span>
+              </h1>
+              <p className="mx-auto max-w-3xl text-lg text-gray-300">
+                Comprehensive answers about SOLO, CLAT preparation, pricing, and more. 
+                Can't find what you're looking for? Contact our support team.
+              </p>
+            </div>
+
+            {/* FAQ Categories */}
+            <div className="space-y-8">
+              {faqCategories.map((category, categoryIndex) => (
+                <div
+                  key={categoryIndex}
+                  className="rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md"
+                >
               <div className="mb-8 flex items-center gap-4">
                 <div className="text-4xl">{category.icon}</div>
                 <h2 className="text-3xl font-bold text-white">
@@ -274,123 +296,125 @@ export default function FAQ() {
               </Accordion>
             </div>
           ))}
-        </div>
-
-        {/* Still Have Questions Section */}
-        <div className="mt-20 text-center">
-          <div className="mx-auto max-w-4xl rounded-3xl border border-white/20 bg-white/10 p-12 shadow-xl backdrop-blur-md">
-            <div className="mb-6 flex items-center justify-center gap-3">
-              <Sparkles className="h-8 w-8 text-yellow-400" />
-              <h3 className="text-3xl font-bold text-white">
-                Still Have Questions?
-              </h3>
-              <Sparkles className="h-8 w-8 text-yellow-400" />
             </div>
 
-            <p className="mb-8 text-xl text-gray-300">
-              Our support team is here to help you 24/7. Get personalized
-              assistance from CLAT preparation experts.
-            </p>
+            {/* Still Have Questions Section */}
+            <div className="mt-20 text-center">
+              <div className="mx-auto max-w-4xl rounded-3xl border border-white/20 bg-white/10 p-12 shadow-xl backdrop-blur-md">
+                <div className="mb-6 flex items-center justify-center gap-3">
+                  <Sparkles className="h-8 w-8 text-yellow-400" />
+                  <h3 className="text-3xl font-bold text-white">
+                    Still Have Questions?
+                  </h3>
+                  <Sparkles className="h-8 w-8 text-yellow-400" />
+                </div>
 
-            <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-              <div className="rounded-xl border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
-                <div className="mb-3 text-2xl">💬</div>
-                <h4 className="mb-2 font-semibold text-white">Live Chat</h4>
-                <p className="text-sm text-gray-300">
-                  Instant answers to your questions
+                <p className="mb-8 text-xl text-gray-300">
+                  Our support team is here to help you 24/7. Get personalized
+                  assistance from CLAT preparation experts.
                 </p>
-              </div>
-              <div className="rounded-xl border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
-                <div className="mb-3 text-2xl">📧</div>
-                <h4 className="mb-2 font-semibold text-white">Email Support</h4>
-                <p className="text-sm text-gray-300">hello@legalight.in</p>
-              </div>
-              <div className="rounded-xl border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
-                <div className="mb-3 text-2xl">📞</div>
-                <h4 className="mb-2 font-semibold text-white">Phone Support</h4>
-                <p className="text-sm text-gray-300">+91 88888 88888</p>
+
+                <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+                  <div className="rounded-xl border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
+                    <div className="mb-3 text-2xl">💬</div>
+                    <h4 className="mb-2 font-semibold text-white">Live Chat</h4>
+                    <p className="text-sm text-gray-300">
+                      Instant answers to your questions
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
+                    <div className="mb-3 text-2xl">📧</div>
+                    <h4 className="mb-2 font-semibold text-white">Email Support</h4>
+                    <p className="text-sm text-gray-300">hello@legalight.in</p>
+                  </div>
+                  <div className="rounded-xl border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
+                    <div className="mb-3 text-2xl">📞</div>
+                    <h4 className="mb-2 font-semibold text-white">Phone Support</h4>
+                    <p className="text-sm text-gray-300">+91 88888 88888</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="h-14 bg-gradient-to-r from-purple-600 to-pink-600 px-8 text-lg font-semibold hover:from-purple-700 hover:to-pink-700"
+                  >
+                    <Link href="/contact">
+                      Contact Support
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="h-14 border-white/30 bg-white/5 px-8 text-lg font-semibold text-white backdrop-blur-sm hover:bg-white/10"
+                  >
+                    <Link href="/signup">Start Free Trial</Link>
+                  </Button>
+                </div>
               </div>
             </div>
 
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="h-14 bg-gradient-to-r from-purple-600 to-pink-600 px-8 text-lg font-semibold hover:from-purple-700 hover:to-pink-700"
-              >
-                <Link href="/contact">
-                  Contact Support
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="h-14 border-white/30 bg-white/5 px-8 text-lg font-semibold text-white backdrop-blur-sm hover:bg-white/10"
-              >
-                <Link href="/signup">Start Free Trial</Link>
-              </Button>
+            {/* Popular Questions Quick Access */}
+            <div className="mt-16 rounded-3xl border border-white/20 bg-white/5 p-8 backdrop-blur-md">
+              <h3 className="mb-6 text-center text-2xl font-bold text-white">
+                🔥 Most Popular Questions
+              </h3>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <button className="rounded-xl border border-white/20 bg-white/5 p-4 text-left transition-all hover:bg-white/10">
+                  <div className="text-sm font-medium text-white">
+                    How accurate is rank prediction?
+                  </div>
+                  <div className="mt-1 text-xs text-gray-400">
+                    85%+ accuracy across 10K+ students
+                  </div>
+                </button>
+                <button className="rounded-xl border border-white/20 bg-white/5 p-4 text-left transition-all hover:bg-white/10">
+                  <div className="text-sm font-medium text-white">
+                    What's the cost?
+                  </div>
+                  <div className="mt-1 text-xs text-gray-400">
+                    ₹4,999/year - just ₹13.7/day
+                  </div>
+                </button>
+                <button className="rounded-xl border border-white/20 bg-white/5 p-4 text-left transition-all hover:bg-white/10">
+                  <div className="text-sm font-medium text-white">
+                    Is 30-day trial really free?
+                  </div>
+                  <div className="mt-1 text-xs text-gray-400">
+                    Yes! No credit card required
+                  </div>
+                </button>
+                <button className="rounded-xl border border-white/20 bg-white/5 p-4 text-left transition-all hover:bg-white/10">
+                  <div className="text-sm font-medium text-white">
+                    Scholarships available?
+                  </div>
+                  <div className="mt-1 text-xs text-gray-400">
+                    Shamnad Basheer Equity + more
+                  </div>
+                </button>
+                <button className="rounded-xl border border-white/20 bg-white/5 p-4 text-left transition-all hover:bg-white/10">
+                  <div className="text-sm font-medium text-white">
+                    What results can I expect?
+                  </div>
+                  <div className="mt-1 text-xs text-gray-400">
+                    +27 marks avg improvement
+                  </div>
+                </button>
+                <button className="rounded-xl border border-white/20 bg-white/5 p-4 text-left transition-all hover:bg-white/10">
+                  <div className="text-sm font-medium text-white">
+                    Complete CLAT preparation?
+                  </div>
+                  <div className="mt-1 text-xs text-gray-400">
+                    Yes! All sections + unlimited mocks
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Popular Questions Quick Access */}
-        <div className="mt-16 rounded-3xl border border-white/20 bg-white/5 p-8 backdrop-blur-md">
-          <h3 className="mb-6 text-center text-2xl font-bold text-white">
-            🔥 Most Popular Questions
-          </h3>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <button className="rounded-xl border border-white/20 bg-white/5 p-4 text-left transition-all hover:bg-white/10">
-              <div className="text-sm font-medium text-white">
-                How accurate is rank prediction?
-              </div>
-              <div className="mt-1 text-xs text-gray-400">
-                85%+ accuracy across 10K+ students
-              </div>
-            </button>
-            <button className="rounded-xl border border-white/20 bg-white/5 p-4 text-left transition-all hover:bg-white/10">
-              <div className="text-sm font-medium text-white">
-                What's the cost?
-              </div>
-              <div className="mt-1 text-xs text-gray-400">
-                ₹4,999/year - just ₹13.7/day
-              </div>
-            </button>
-            <button className="rounded-xl border border-white/20 bg-white/5 p-4 text-left transition-all hover:bg-white/10">
-              <div className="text-sm font-medium text-white">
-                Is 30-day trial really free?
-              </div>
-              <div className="mt-1 text-xs text-gray-400">
-                Yes! No credit card required
-              </div>
-            </button>
-            <button className="rounded-xl border border-white/20 bg-white/5 p-4 text-left transition-all hover:bg-white/10">
-              <div className="text-sm font-medium text-white">
-                Scholarships available?
-              </div>
-              <div className="mt-1 text-xs text-gray-400">
-                Shamnad Basheer Equity + more
-              </div>
-            </button>
-            <button className="rounded-xl border border-white/20 bg-white/5 p-4 text-left transition-all hover:bg-white/10">
-              <div className="text-sm font-medium text-white">
-                What results can I expect?
-              </div>
-              <div className="mt-1 text-xs text-gray-400">
-                +27 marks avg improvement
-              </div>
-            </button>
-            <button className="rounded-xl border border-white/20 bg-white/5 p-4 text-left transition-all hover:bg-white/10">
-              <div className="text-sm font-medium text-white">
-                Complete CLAT preparation?
-              </div>
-              <div className="mt-1 text-xs text-gray-400">
-                Yes! All sections + unlimited mocks
-              </div>
-            </button>
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );

@@ -1,0 +1,29 @@
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  33% {
+    transform: translateX(30px) translateY(-30px);
+  }
+  66% {
+    transform: translateX(-30px) translateY(30px);
+  }
+}
+
+.animateGradientX {
+  background-size: 200% 200%;
+  animation: gradient-x 4s ease infinite;
+}
+
+.animateGradientShift {
+  animation: gradient-shift 10s ease infinite;
+}

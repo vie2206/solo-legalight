@@ -9,16 +9,24 @@ const SoloAdminDashboard = lazy(() => import('./components/SoloAdminDashboard'))
 const SoloEducatorDashboard = lazy(() => import('./components/SoloEducatorDashboard'));
 const SoloParentDashboard = lazy(() => import('./components/SoloParentDashboard'));
 const SoloOperationManagerDashboard = lazy(() => import('./components/SoloOperationManagerDashboard'));
-const SoloStudentDashboard = lazy(() => import('./components/SoloStudentDashboard'));
+const SoloStudentDashboard = lazy(() => import('./components/RevolutionaryStudentDashboard'));
 const MockTestStandalone = lazy(() => import('./MockTestStandalone'));
 const FlashcardApp = lazy(() => import('./components/flashcards/FlashcardApp'));
 const TieredDashboard = lazy(() => import('./components/TieredDashboard'));
 const SubscriptionPlans = lazy(() => import('./components/SubscriptionPlans'));
+const ScreenshotGenerator = lazy(() => import('./ScreenshotGenerator'));
 
 // Landing Page and Auth Components
 const SoloLandingPage = lazy(() => import('./components/landing/SoloLandingPage'));
 const AppleStyleLanding = lazy(() => import('./components/landing/AppleStyleLanding'));
 const SoloOTPAuth = lazy(() => import('./components/auth/SoloOTPAuth'));
+const SOLOModernUI = lazy(() => import('./components/modern/SOLOModernUI'));
+const HulyDesignSystem = lazy(() => import('./components/huly/HulyDesignSystem'));
+
+// AI-Powered Learning Modules
+const CLATVocabularyMastery = lazy(() => import('./CLATVocabularyMastery'));
+const CLATReadingMasteryComplete = lazy(() => import('./CLATReadingMasteryComplete'));
+const CLATAIDashboard = lazy(() => import('./CLATAIDashboard'));
 
 // Loading component
 const AppLoader = () => (
@@ -41,14 +49,32 @@ const AppLoader = () => (
 
 
 function App() {
-  const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [currentView, setCurrentView] = useState<'landing' | 'auth' | 'dashboard' | 'admin-cms' | 'flashcards' | 'subscription'>('landing');
+  // Demo user for screenshot capture  
+  const [user, setUser] = useState<User | null>({
+    id: 'demo-student-001',
+    name: 'Demo Student', 
+    email: 'student@demo.com',
+    role: 'student' as const,
+    picture: '',
+    subscription_tier: 'pro' as SubscriptionTier
+  });
+  const [token, setToken] = useState<string | null>('demo-token-student');
+  const [loading, setLoading] = useState(false);
+  const [currentView, setCurrentView] = useState<'landing' | 'auth' | 'dashboard' | 'admin-cms' | 'flashcards' | 'subscription' | 'screenshots' | 'vocabulary' | 'reading-mastery' | 'ai-dashboard' | 'modern-ui' | 'huly'>('dashboard');
   const [loginForm, setLoginForm] = useState({ email: '', password: '', role: 'student' });
   const [authMode, setAuthMode] = useState<'sms' | 'demo' | 'email' | 'mocktest' | 'otp'>('otp');
 
   const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+
+  // Check for URL parameters for screenshot mode
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('mode') === 'screenshots') {
+      setCurrentView('screenshots');
+      setLoading(false);
+      return;
+    }
+  }, []);
 
   // Check for existing auth on mount
   useEffect(() => {
@@ -505,6 +531,12 @@ function App() {
         </Suspense>
       )}
 
+      {currentView === 'screenshots' && (
+        <Suspense fallback={<AppLoader />}>
+          <ScreenshotGenerator />
+        </Suspense>
+      )}
+
       {currentView === 'subscription' && user && (
         <Suspense fallback={<AppLoader />}>
           <div className="min-h-screen bg-gray-50">
@@ -529,6 +561,36 @@ function App() {
               }}
             />
           </div>
+        </Suspense>
+      )}
+
+      {currentView === 'vocabulary' && (
+        <Suspense fallback={<AppLoader />}>
+          <CLATVocabularyMastery />
+        </Suspense>
+      )}
+
+      {currentView === 'reading-mastery' && (
+        <Suspense fallback={<AppLoader />}>
+          <CLATReadingMasteryComplete />
+        </Suspense>
+      )}
+
+      {currentView === 'ai-dashboard' && (
+        <Suspense fallback={<AppLoader />}>
+          <CLATAIDashboard />
+        </Suspense>
+      )}
+
+      {currentView === 'modern-ui' && (
+        <Suspense fallback={<AppLoader />}>
+          <SOLOModernUI />
+        </Suspense>
+      )}
+
+      {currentView === 'huly' && (
+        <Suspense fallback={<AppLoader />}>
+          <HulyDesignSystem />
         </Suspense>
       )}
     </div>

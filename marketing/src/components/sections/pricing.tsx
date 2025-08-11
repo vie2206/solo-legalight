@@ -346,6 +346,101 @@ export default function Pricing() {
           </div>
         </div>
 
+        {/* Additional Value Blocks */}
+        <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="group rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 p-6 text-center transition-all hover:scale-105 hover:shadow-xl dark:border-blue-800 dark:from-blue-950/30 dark:to-blue-900/30">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white">
+              <Trophy className="h-6 w-6" />
+            </div>
+            <h4 className="mb-2 text-lg font-bold text-blue-900 dark:text-blue-100">
+              30-Day Free Trial
+            </h4>
+            <p className="text-sm text-blue-700 dark:text-blue-300">
+              Try all premium features risk-free. No credit card required.
+            </p>
+          </div>
+          
+          <div className="group rounded-2xl border border-green-200 bg-gradient-to-br from-green-50 to-green-100 p-6 text-center transition-all hover:scale-105 hover:shadow-xl dark:border-green-800 dark:from-green-950/30 dark:to-green-900/30">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white">
+              <Check className="h-6 w-6" />
+            </div>
+            <h4 className="mb-2 text-lg font-bold text-green-900 dark:text-green-100">
+              Money-Back Guarantee
+            </h4>
+            <p className="text-sm text-green-700 dark:text-green-300">
+              100% satisfaction guaranteed. Full refund within 30 days.
+            </p>
+          </div>
+          
+          <div className="group rounded-2xl border border-purple-200 bg-gradient-to-br from-purple-50 to-purple-100 p-6 text-center transition-all hover:scale-105 hover:shadow-xl dark:border-purple-800 dark:from-purple-950/30 dark:to-purple-900/30">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-purple-500 to-purple-600 text-white">
+              <Sparkles className="h-6 w-6" />
+            </div>
+            <h4 className="mb-2 text-lg font-bold text-purple-900 dark:text-purple-100">
+              No Hidden Costs
+            </h4>
+            <p className="text-sm text-purple-700 dark:text-purple-300">
+              What you see is what you pay. No surprise charges ever.
+            </p>
+          </div>
+          
+          <div className="group rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 to-orange-100 p-6 text-center transition-all hover:scale-105 hover:shadow-xl dark:border-orange-800 dark:from-orange-950/30 dark:to-orange-900/30">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white">
+              <ArrowRight className="h-6 w-6" />
+            </div>
+            <h4 className="mb-2 text-lg font-bold text-orange-900 dark:text-orange-100">
+              Cancel Anytime
+            </h4>
+            <p className="text-sm text-orange-700 dark:text-orange-300">
+              No long-term contracts. Cancel your subscription anytime.
+            </p>
+          </div>
+        </div>
+        
+        {/* Success Metrics */}
+        <div className="mb-16 rounded-3xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-purple-50 p-12 dark:border-indigo-800 dark:from-indigo-950/30 dark:to-purple-950/30">
+          <div className="text-center">
+            <h3 className="mb-8 text-3xl font-bold text-indigo-900 dark:text-indigo-100">
+              🚀 Why Students Choose SOLO
+            </h3>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+              <div className="text-center">
+                <div className="mb-3 text-4xl font-black text-indigo-600 dark:text-indigo-400">
+                  90%+
+                </div>
+                <div className="text-lg font-semibold text-indigo-800 dark:text-indigo-200">
+                  Cost Savings
+                </div>
+                <div className="text-sm text-indigo-600 dark:text-indigo-400">
+                  vs Traditional Coaching
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="mb-3 text-4xl font-black text-purple-600 dark:text-purple-400">
+                  24/7
+                </div>
+                <div className="text-lg font-semibold text-purple-800 dark:text-purple-200">
+                  AI Support
+                </div>
+                <div className="text-sm text-purple-600 dark:text-purple-400">
+                  Always Available
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="mb-3 text-4xl font-black text-pink-600 dark:text-pink-400">
+                  Zero
+                </div>
+                <div className="text-lg font-semibold text-pink-800 dark:text-pink-200">
+                  Travel Time
+                </div>
+                <div className="text-sm text-pink-600 dark:text-pink-400">
+                  Study from Anywhere
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         {/* FAQ Preview */}
         <div className="text-center">
           <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">

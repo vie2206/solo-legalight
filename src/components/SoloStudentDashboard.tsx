@@ -14,6 +14,7 @@ import { SoloButton } from './shared/SoloButton';
 interface SoloStudentDashboardProps {
   user: UserType;
   onLogout: () => void;
+  onNavigate?: (view: string) => void;
 }
 
 interface StudentStats {
@@ -49,7 +50,7 @@ interface MockTest {
   completedAt?: string;
 }
 
-const SoloStudentDashboard: React.FC<SoloStudentDashboardProps> = ({ user, onLogout }) => {
+const SoloStudentDashboard: React.FC<SoloStudentDashboardProps> = ({ user, onLogout, onNavigate }) => {
   const [activeTab, setActiveTab] = useState<string>('overview');
   const [stats, setStats] = useState<StudentStats>({
     studyStreak: 15,
@@ -176,14 +177,20 @@ const SoloStudentDashboard: React.FC<SoloStudentDashboardProps> = ({ user, onLog
           iconColor="bg-solo-warning-light text-solo-warning"
         >
           <div className="space-y-3">
-            <SoloButton variant="primary" size="small" fullWidth icon={Play}>
+            <SoloButton 
+              variant="primary" 
+              size="small" 
+              fullWidth 
+              icon={Brain}
+              onClick={() => onNavigate?.('ai-dashboard')}
+            >
+              🚀 AI Dashboard
+            </SoloButton>
+            <SoloButton variant="ghost" size="small" fullWidth icon={Play}>
               Continue Last Session
             </SoloButton>
             <SoloButton variant="ghost" size="small" fullWidth icon={FileText}>
               Take Mock Test
-            </SoloButton>
-            <SoloButton variant="ghost" size="small" fullWidth icon={Brain}>
-              Practice Vocabulary
             </SoloButton>
             <SoloButton variant="ghost" size="small" fullWidth icon={Calendar}>
               View Study Plan

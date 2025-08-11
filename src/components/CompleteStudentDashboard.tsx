@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   LineChart, Line, PieChart, Pie, Cell, AreaChart, Area, RadialBarChart, RadialBar
@@ -21,6 +21,11 @@ import {
   Scale, Book, Flame, Trophy, Medal, Sparkles, Crown,
   Coffee, Timer, Pause, Play, RotateCcw, TrendingDown
 } from 'lucide-react';
+
+// Lazy load the comprehensive mock test framework
+const CompleteMockTestFramework = React.lazy(() => import('./CompleteMockTestFramework'));
+const CLATAIDashboard = React.lazy(() => import('../CLATAIDashboard'));
+const DoubtSolvingCenter = React.lazy(() => import('./doubt-solving/DoubtSolvingCenter'));
 
 interface CompleteStudentDashboardProps {
   user: any;
@@ -77,6 +82,7 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
   const [activeTab, setActiveTab] = useState('overview');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentView, setCurrentView] = useState<'dashboard' | 'mock-framework' | 'ai-dashboard' | 'doubt-solving'>('dashboard');
 
   // State management
   const [studySessions, setStudySessions] = useState<StudySession[]>([]);
@@ -356,6 +362,52 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
     );
   }
 
+  // Handle different views
+  if (currentView === 'mock-framework') {
+    return (
+      <Suspense fallback={
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading Comprehensive Mock Test Framework...</p>
+          </div>
+        </div>
+      }>
+        <CompleteMockTestFramework onBack={() => setCurrentView('dashboard')} />
+      </Suspense>
+    );
+  }
+
+  if (currentView === 'ai-dashboard') {
+    return (
+      <Suspense fallback={
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading AI Dashboard...</p>
+          </div>
+        </div>
+      }>
+        <CLATAIDashboard />
+      </Suspense>
+    );
+  }
+
+  if (currentView === 'doubt-solving') {
+    return (
+      <Suspense fallback={
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading Doubt Solving Center...</p>
+          </div>
+        </div>
+      }>
+        <DoubtSolvingCenter user={user} onBack={() => setCurrentView('dashboard')} />
+      </Suspense>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -413,9 +465,11 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
               { id: 'overview', label: 'Overview', icon: BarChart3 },
               { id: 'subjects', label: 'Subjects', icon: BookOpen },
               { id: 'mock_tests', label: 'Mock Tests', icon: FileText },
+              { id: 'doubt_solving', label: 'Ask Doubts', icon: MessageSquare },
               { id: 'study_plan', label: 'Study Plan', icon: Calendar },
               { id: 'achievements', label: 'Achievements', icon: Award },
               { id: 'analytics', label: 'Analytics', icon: LineChartIcon },
+              { id: 'ai_dashboard', label: 'AI Dashboard', icon: Zap },
               { id: 'practice', label: 'Practice', icon: Brain },
               { id: 'progress', label: 'Progress', icon: Target }
             ].map((tab) => (
@@ -513,6 +567,75 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
                   <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
                   <span className="text-sm text-green-600">↑12 from last test</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Smart AI Notifications */}
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl shadow-sm p-6 border border-blue-200">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <Brain className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">Smart AI Study Nudges</h3>
+                    <p className="text-sm text-gray-600">Personalized recommendations based on your performance</p>
+                  </div>
+                </div>
+                <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  Configure
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-white rounded-lg p-4 border border-yellow-200">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <AlertTriangle className="w-4 h-4 text-yellow-600" />
+                    <span className="text-sm font-medium text-gray-900">Study Reminder</span>
+                  </div>
+                  <p className="text-xs text-gray-600 mb-2">
+                    You haven't studied Legal Reasoning for 2 days. Your performance dropped 8% last week.
+                  </p>
+                  <button className="w-full bg-yellow-100 text-yellow-800 rounded-md py-1 px-2 text-xs font-medium hover:bg-yellow-200">
+                    Start 15-min session now
+                  </button>
+                </div>
+
+                <div className="bg-white rounded-lg p-4 border border-green-200">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Target className="w-4 h-4 text-green-600" />
+                    <span className="text-sm font-medium text-gray-900">Optimal Time</span>
+                  </div>
+                  <p className="text-xs text-gray-600 mb-2">
+                    Your peak performance time is 4:00 PM. Schedule your next mock test then for best results.
+                  </p>
+                  <button className="w-full bg-green-100 text-green-800 rounded-md py-1 px-2 text-xs font-medium hover:bg-green-200">
+                    Schedule test
+                  </button>
+                </div>
+
+                <div className="bg-white rounded-lg p-4 border border-purple-200">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Trophy className="w-4 h-4 text-purple-600" />
+                    <span className="text-sm font-medium text-gray-900">Achievement Ready</span>
+                  </div>
+                  <p className="text-xs text-gray-600 mb-2">
+                    Score 80%+ on your next Constitutional Law quiz to unlock "Law Scholar" badge!
+                  </p>
+                  <button className="w-full bg-purple-100 text-purple-800 rounded-md py-1 px-2 text-xs font-medium hover:bg-purple-200">
+                    Take quiz now
+                  </button>
+                </div>
+              </div>
+
+              <div className="mt-4 p-3 bg-blue-100 rounded-lg">
+                <div className="flex items-center space-x-2">
+                  <Bell className="w-4 h-4 text-blue-600" />
+                  <span className="text-sm font-medium text-blue-900">Next AI Nudge</span>
+                </div>
+                <p className="text-xs text-blue-700 mt-1">
+                  Based on your study pattern, we'll remind you to review Current Affairs tomorrow at 3:30 PM
+                </p>
               </div>
             </div>
 
@@ -657,10 +780,19 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-gray-900">Mock Test Results</h2>
-              <button className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
-                <PlayCircle className="w-4 h-4" />
-                <span>Take New Test</span>
-              </button>
+              <div className="flex items-center space-x-3">
+                <button 
+                  onClick={() => setCurrentView('mock-framework')}
+                  className="flex items-center space-x-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+                >
+                  <BarChart3 className="w-4 h-4" />
+                  <span>Comprehensive Analysis</span>
+                </button>
+                <button className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                  <PlayCircle className="w-4 h-4" />
+                  <span>Take New Test</span>
+                </button>
+              </div>
             </div>
 
             {/* Mock Test Performance Chart */}
@@ -929,6 +1061,287 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
                   </button>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* AI Dashboard Tab */}
+        {activeTab === 'ai_dashboard' && (
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-gray-900">AI-Powered Learning Dashboard</h2>
+              <button 
+                onClick={() => setCurrentView('ai-dashboard')}
+                className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                <Brain className="w-4 h-4" />
+                <span>Open Full AI Dashboard</span>
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* AI Feature Cards */}
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border border-purple-200">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
+                    <Trophy className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">CLAT AI Rank Predictor</h3>
+                    <p className="text-sm text-gray-600">3D visualization & predictions</p>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setCurrentView('ai-dashboard')}
+                  className="w-full bg-purple-600 text-white rounded-lg py-2 text-sm font-medium hover:bg-purple-700"
+                >
+                  View Predictions
+                </button>
+              </div>
+
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <Brain className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Smart AI Notifications</h3>
+                    <p className="text-sm text-gray-600">Personalized study nudges</p>
+                  </div>
+                </div>
+                <button className="w-full bg-blue-600 text-white rounded-lg py-2 text-sm font-medium hover:bg-blue-700">
+                  Configure Nudges
+                </button>
+              </div>
+
+              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border border-green-200">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+                    <Target className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">AI Study Recommendations</h3>
+                    <p className="text-sm text-gray-600">Adaptive learning paths</p>
+                  </div>
+                </div>
+                <button className="w-full bg-green-600 text-white rounded-lg py-2 text-sm font-medium hover:bg-green-700">
+                  Get Recommendations
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="text-lg font-semibold mb-4">Recent AI Insights</h3>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3 p-3 bg-yellow-50 rounded-lg border border-yellow-200">
+                  <Bell className="w-5 h-5 text-yellow-600" />
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">Focus on Legal Reasoning</p>
+                    <p className="text-xs text-gray-600">AI detected 15% improvement opportunity</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <Target className="w-5 h-5 text-blue-600" />
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">Optimal Study Time: 4:00 PM</p>
+                    <p className="text-xs text-gray-600">Based on your performance patterns</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                  <Trophy className="w-5 h-5 text-green-600" />
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">Predicted Rank: Top 15%</p>
+                    <p className="text-xs text-gray-600">Continue current study pattern</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Doubt Solving Tab */}
+        {activeTab === 'doubt_solving' && (
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-gray-900">Ask Doubts & Get Help</h2>
+              <button 
+                onClick={() => setCurrentView('doubt-solving')}
+                className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>Open Doubt Center</span>
+              </button>
+            </div>
+
+            {/* Quick Doubt Options */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <Brain className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">AI Tutor (Instant)</h3>
+                    <p className="text-sm text-gray-600">Get immediate AI-powered answers</p>
+                  </div>
+                </div>
+                <div className="space-y-2 mb-4">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span className="text-sm text-gray-700">Available 24/7</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span className="text-sm text-gray-700">Instant responses</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span className="text-sm text-gray-700">Step-by-step solutions</span>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setCurrentView('doubt-solving')}
+                  className="w-full bg-blue-600 text-white rounded-lg py-2 text-sm font-medium hover:bg-blue-700"
+                >
+                  Ask AI Tutor
+                </button>
+              </div>
+
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+                    <Users className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Human Educators</h3>
+                    <p className="text-sm text-gray-600">Get help from qualified teachers</p>
+                  </div>
+                </div>
+                <div className="space-y-2 mb-4">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span className="text-sm text-gray-700">Expert guidance</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span className="text-sm text-gray-700">Personalized explanations</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span className="text-sm text-gray-700">Detailed feedback</span>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setCurrentView('doubt-solving')}
+                  className="w-full bg-green-600 text-white rounded-lg py-2 text-sm font-medium hover:bg-green-700"
+                >
+                  Ask Educator
+                </button>
+              </div>
+            </div>
+
+            {/* Recent Doubts */}
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="text-lg font-semibold mb-4">Your Recent Doubts</h3>
+              <div className="space-y-4">
+                {[
+                  {
+                    title: 'Understanding Fundamental Rights vs Directive Principles',
+                    subject: 'Constitutional Law',
+                    status: 'resolved',
+                    responses: 3,
+                    time: '2 hours ago'
+                  },
+                  {
+                    title: 'Logical Reasoning - Syllogism Problem',
+                    subject: 'Legal Reasoning', 
+                    status: 'in_progress',
+                    responses: 1,
+                    time: '1 day ago'
+                  },
+                  {
+                    title: 'Current Affairs - Recent Supreme Court Judgments',
+                    subject: 'Current Affairs',
+                    status: 'open',
+                    responses: 0,
+                    time: '2 days ago'
+                  }
+                ].map((doubt, index) => (
+                  <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                    <div className="flex items-start space-x-3">
+                      <div className={`w-2 h-2 rounded-full mt-2 ${
+                        doubt.status === 'resolved' ? 'bg-green-500' :
+                        doubt.status === 'in_progress' ? 'bg-yellow-500' :
+                        'bg-red-500'
+                      }`} />
+                      <div>
+                        <h4 className="font-medium text-gray-900 line-clamp-1">{doubt.title}</h4>
+                        <div className="flex items-center space-x-2 mt-1">
+                          <span className="text-xs text-gray-500">{doubt.subject}</span>
+                          <span className="text-xs text-gray-400">•</span>
+                          <span className="text-xs text-gray-500">{doubt.responses} responses</span>
+                          <span className="text-xs text-gray-400">•</span>
+                          <span className="text-xs text-gray-500">{doubt.time}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <span className={`px-2 py-1 text-xs rounded-full ${
+                      doubt.status === 'resolved' ? 'bg-green-100 text-green-800' :
+                      doubt.status === 'in_progress' ? 'bg-yellow-100 text-yellow-800' :
+                      'bg-red-100 text-red-800'
+                    }`}>
+                      {doubt.status.replace('_', ' ')}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-4 text-center">
+                <button 
+                  onClick={() => setCurrentView('doubt-solving')}
+                  className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                >
+                  View All Doubts →
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-2xl font-bold text-gray-900">12</p>
+                    <p className="text-sm text-gray-600">Total Doubts Asked</p>
+                  </div>
+                  <div className="p-3 bg-blue-100 rounded-lg">
+                    <MessageSquare className="w-6 h-6 text-blue-600" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-2xl font-bold text-gray-900">9</p>
+                    <p className="text-sm text-gray-600">Doubts Resolved</p>
+                  </div>
+                  <div className="p-3 bg-green-100 rounded-lg">
+                    <CheckCircle className="w-6 h-6 text-green-600" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-2xl font-bold text-gray-900">4.8</p>
+                    <p className="text-sm text-gray-600">Average Rating</p>
+                  </div>
+                  <div className="p-3 bg-yellow-100 rounded-lg">
+                    <Star className="w-6 h-6 text-yellow-600" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}

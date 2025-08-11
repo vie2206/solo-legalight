@@ -54,13 +54,30 @@ export const SoloOTPAuth: React.FC<SoloOTPAuthProps> = ({ onSuccess, onBack }) =
     setError('');
 
     try {
-      // Simulate API call to send OTP
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Real API call to backend
+      const response = await fetch('/api/auth/send-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          phone: authMethod === 'phone' ? formData.phone : null,
+          email: authMethod === 'email' ? formData.email : null,
+          role: userType,
+          name: formData.name
+        })
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send OTP');
+      }
       
       setCurrentStep('otp');
       setCountdown(60); // 60 seconds countdown
-    } catch (err) {
-      setError('Failed to send OTP. Please try again.');
+    } catch (err: any) {
+      setError(err.message || 'Failed to send OTP. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -96,22 +113,42 @@ export const SoloOTPAuth: React.FC<SoloOTPAuthProps> = ({ onSuccess, onBack }) =
     setError('');
 
     try {
-      // Simulate OTP verification
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Real API call to verify OTP
+      const response = await fetch('/api/auth/verify-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          phone: authMethod === 'phone' ? formData.phone : null,
+          email: authMethod === 'email' ? formData.email : null,
+          otp: otpString
+        })
+      });
+
+      const data = await response.json();
       
-      // Mock successful verification
+      if (!response.ok) {
+        throw new Error(data.error || 'Invalid OTP');
+      }
+      
+      // Store auth token
+      if (data.token) {
+        localStorage.setItem('authToken', data.token);
+        localStorage.setItem('userData', JSON.stringify(data.user));
+      }
+      
       setCurrentStep('success');
       
       // Auto-proceed to dashboard after success animation
       setTimeout(() => {
-        onSuccess(userType, {
-          name: formData.name,
-          [authMethod]: authMethod === 'phone' ? formData.phone : formData.email,
-          userType
+        onSuccess(data.user.role, {
+          ...data.user,
+          token: data.token
         });
       }, 2000);
-    } catch (err) {
-      setError('Invalid OTP. Please try again.');
+    } catch (err: any) {
+      setError(err.message || 'Invalid OTP. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -122,11 +159,29 @@ export const SoloOTPAuth: React.FC<SoloOTPAuthProps> = ({ onSuccess, onBack }) =
     
     setIsLoading(true);
     try {
-      // Simulate resend API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Real API call to resend OTP
+      const response = await fetch('/api/auth/send-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          phone: authMethod === 'phone' ? formData.phone : null,
+          email: authMethod === 'email' ? formData.email : null,
+          role: userType,
+          name: formData.name
+        })
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to resend OTP');
+      }
+      
       setCountdown(60);
-    } catch (err) {
-      setError('Failed to resend OTP');
+    } catch (err: any) {
+      setError(err.message || 'Failed to resend OTP');
     } finally {
       setIsLoading(false);
     }
