@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/package.json",
+      "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "build"
@@ -12,7 +12,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://api.legalight.org.in/api/$1"
+      "destination": "https://solo-legalight-backend-production.up.railway.app/api/$1"
     }
   ],
   "headers": [
