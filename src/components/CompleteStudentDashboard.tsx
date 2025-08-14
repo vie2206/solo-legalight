@@ -1,4 +1,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
+import { RevolutionaryLoading, StudySessionLoading, MockTestLoading, AIAnalysisLoading } from './shared/RevolutionaryLoading';
+import '../styles/revolutionary-theme.css';
+import '../styles/revolutionary-components.css';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   LineChart, Line, PieChart, Pie, Cell, AreaChart, Area, RadialBarChart, RadialBar
@@ -30,6 +33,17 @@ const DoubtSolvingCenter = React.lazy(() => import('./doubt-solving/DoubtSolving
 interface CompleteStudentDashboardProps {
   user: any;
   onLogout: () => void;
+}
+
+interface DashboardStats {
+  studyStreak: number;
+  totalStudyHours: number;
+  completedMockTests: number;
+  averageScore: number;
+  weakAreas: string[];
+  strongAreas: string[];
+  nextMilestone: string;
+  rankPrediction: number;
 }
 
 interface StudySession {
@@ -341,11 +355,8 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="flex items-center space-x-2">
-          <RefreshCw className="w-6 h-6 animate-spin text-blue-600" />
-          <span className="text-lg text-gray-600">Loading Student Dashboard...</span>
-        </div>
+      <div className="min-h-screen dark-theme flex items-center justify-center">
+        <StudySessionLoading />
       </div>
     );
   }
@@ -368,8 +379,7 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
       <Suspense fallback={
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading Comprehensive Mock Test Framework...</p>
+            <MockTestLoading />
           </div>
         </div>
       }>
@@ -383,8 +393,7 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
       <Suspense fallback={
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading AI Dashboard...</p>
+            <AIAnalysisLoading />
           </div>
         </div>
       }>
@@ -398,8 +407,7 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
       <Suspense fallback={
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading Doubt Solving Center...</p>
+            <RevolutionaryLoading message="Loading Doubt Solving Center..." />
           </div>
         </div>
       }>
@@ -409,35 +417,35 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+    <div className="min-h-screen dark-theme">
+      {/* Revolutionary Header */}
+      <header className="glass-card border-0 shadow-none m-4 mb-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center glow-effect">
                   <GraduationCap className="w-5 h-5 text-white" />
                 </div>
-                <h1 className="text-xl font-bold text-gray-900">Student Dashboard</h1>
+                <h1 className="text-xl font-bold gradient-text">SOLO Student Dashboard</h1>
               </div>
               <div className="hidden md:flex items-center space-x-4">
-                <div className="flex items-center space-x-2">
-                  <Flame className="w-4 h-4 text-orange-500" />
-                  <span className="text-sm font-medium text-gray-700">{studyStreak} day streak</span>
+                <div className="study-streak-badge">
+                  <Flame className="w-4 h-4" />
+                  <span className="text-sm font-medium">{studyStreak} day streak</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <Clock className="w-4 h-4 text-blue-500" />
-                  <span className="text-sm font-medium text-gray-700">{formatTime(studyTimeToday)} today</span>
+                <div className="study-time-badge">
+                  <Clock className="w-4 h-4" />
+                  <span className="text-sm font-medium">{formatTime(studyTimeToday)} today</span>
                 </div>
               </div>
             </div>
 
             <div className="flex items-center space-x-4">
-              <button className="p-2 text-gray-400 hover:text-gray-600">
+              <button className="btn-revolutionary btn-glass p-2">
                 <Bell className="w-5 h-5" />
               </button>
-              <button className="p-2 text-gray-400 hover:text-gray-600">
+              <button className="btn-revolutionary btn-glass p-2">
                 <Settings className="w-5 h-5" />
               </button>
               <div className="flex items-center space-x-2">
@@ -448,7 +456,7 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
               </div>
               <button
                 onClick={onLogout}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                className="btn-revolutionary btn-primary"
               >
                 Logout
               </button>

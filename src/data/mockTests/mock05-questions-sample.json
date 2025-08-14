@@ -1,0 +1,91 @@
+{
+  "mockTestId": "mock05",
+  "questions": [
+    {
+      "id": 1,
+      "section": "English Language",
+      "passage": "The recent arrests across Gujarat for spreading inflammatory content related to the Pahalgam terrorist attack have brought India's digital literacy crisis into sharp focus. During heightened national security tensions in May 2025, multiple individuals were detained for disseminating misleading information on social media platforms, allegedly undermining India's sovereignty and unity. This incident underscores a fundamental problem: while India has achieved remarkable digital penetration with over 700 million internet users, the nation has produced 'a generation of users, but not critical thinkers.'",
+      "question": "What is the primary concern highlighted by the passage regarding India's digital landscape?",
+      "options": {
+        "A": "The lack of internet penetration in rural areas across the country",
+        "B": "The gap between digital literacy and media literacy among Indian internet users",
+        "C": "The government's excessive regulation of social media platforms",
+        "D": "The shortage of technological infrastructure for digital communication"
+      },
+      "correctAnswer": "B",
+      "explanation": "The passage emphasizes the distinction between digital literacy (ability to use technology) and media literacy (ability to critically evaluate content), highlighting this gap as the primary concern.",
+      "difficulty": "medium",
+      "topic": "Digital Literacy"
+    },
+    {
+      "id": 25,
+      "section": "Current Affairs",
+      "passage": "The [1] BRICS Summit held in Kazan, Russia, in October 2024, marked a significant expansion of the grouping with the formal inclusion of new member nations including Egypt, Ethiopia, Iran, and the UAE.",
+      "question": "Which number has been replaced by [1] in the passage above?",
+      "options": {
+        "A": "15th",
+        "B": "16th",
+        "C": "17th",
+        "D": "18th"
+      },
+      "correctAnswer": "B",
+      "explanation": "The 16th BRICS Summit was held in Kazan, Russia in October 2024.",
+      "difficulty": "easy",
+      "topic": "BRICS Summit"
+    },
+    {
+      "id": 53,
+      "section": "Legal Reasoning",
+      "passage": "The Supreme Court on November 15 ruled that arbitration awards cannot be challenged in courts on grounds of patent illegality when the arbitration involves international commercial disputes under Section 34 of the Arbitration and Conciliation Act, 2015.",
+      "question": "TechGlobal Inc., an American software company, entered into a contract with Mumbai-based DataSoft Ltd. for developing a financial application. A dispute arose regarding software specifications, and the matter went to arbitration as per their contract. The arbitral tribunal awarded ₹50 crores to TechGlobal, but DataSoft believes the award contains clear legal errors in interpreting Indian contract law. Based on the passage, what would be DataSoft's position in challenging this award?",
+      "options": {
+        "A": "DataSoft can challenge the award on grounds of patent illegality since it involves interpretation of Indian law",
+        "B": "DataSoft cannot challenge the award on patent illegality grounds as this is an international commercial arbitration",
+        "C": "DataSoft can challenge the award only if they can prove the arbitrator was biased",
+        "D": "DataSoft must accept the award as international arbitrations cannot be challenged in Indian courts"
+      },
+      "correctAnswer": "B",
+      "explanation": "Since TechGlobal is an American company, this is an international commercial arbitration. The Supreme Court ruling clearly states that patent illegality is not a ground for challenging international commercial arbitration awards.",
+      "difficulty": "hard",
+      "topic": "Arbitration Law"
+    },
+    {
+      "id": 87,
+      "section": "Logical Reasoning",
+      "passage": "Many observers wonder whether my analysis of artificial intelligence algorithms in social media is about technological advancement or about the systematic manipulation of human consciousness.",
+      "question": "Which of the following conveys the main idea expressed in the passage?",
+      "options": {
+        "A": "AI algorithms are primarily beneficial for social media user engagement and satisfaction",
+        "B": "The technical development of AI algorithms should be the main focus of social media research",
+        "C": "AI-driven social media algorithms create echo chambers that threaten democratic discourse and social unity",
+        "D": "Social media platforms need more sophisticated AI algorithms to improve user experience"
+      },
+      "correctAnswer": "C",
+      "explanation": "The passage emphasizes how AI-driven personalization creates digital echo chambers that fragment society and threaten democratic discourse.",
+      "difficulty": "medium",
+      "topic": "AI and Social Media"
+    },
+    {
+      "id": 111,
+      "section": "Quantitative Techniques",
+      "passage": "The Poolside chess club management had misplaced the order of its annual winners from 2001 to 2005, among Pavan, Bishu, Rahul, Arti and Gavin.",
+      "question": "Who won the chess tournament in 2003?",
+      "options": {
+        "A": "Pavan",
+        "B": "Gavin",
+        "C": "Arti",
+        "D": "None of these"
+      },
+      "correctAnswer": "C",
+      "explanation": "Based on the logical deduction from staff responses and reward patterns, Arti won the chess tournament in 2003.",
+      "difficulty": "hard",
+      "topic": "Logic Puzzle"
+    }
+  ],
+  "metadata": {
+    "totalQuestions": 120,
+    "sampleSize": 5,
+    "createdAt": "2025-01-12T10:00:00Z",
+    "note": "This is a sample of questions from Mock Test 05. Full test contains all 120 questions."
+  }
+}

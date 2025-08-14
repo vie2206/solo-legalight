@@ -1,0 +1,91 @@
+{
+  "mockTestId": "mock06",
+  "questions": [
+    {
+      "id": 1,
+      "section": "English Language",
+      "passage": "Dr. Carol Dweck's research on mindset reveals fundamental differences between growth and fixed mindset individuals in their approach to challenges, effort, feedback, and success of others. Those with a growth mindset view challenges as opportunities to learn and develop their abilities, while fixed mindset individuals see challenges as threats to their established self-image. This psychological framework has profound implications for educational outcomes, career development, and personal resilience in an increasingly competitive world.",
+      "question": "According to the passage, what is the primary difference between growth and fixed mindset individuals regarding challenges?",
+      "options": {
+        "A": "Growth mindset individuals avoid challenges while fixed mindset individuals embrace them",
+        "B": "Growth mindset individuals view challenges as learning opportunities while fixed mindset individuals see them as threats",
+        "C": "Growth mindset individuals are naturally more talented than fixed mindset individuals",
+        "D": "Growth mindset individuals work harder while fixed mindset individuals rely on natural ability"
+      },
+      "correctAnswer": "B",
+      "explanation": "The passage clearly states that growth mindset individuals 'view challenges as opportunities to learn and develop their abilities, while fixed mindset individuals see challenges as threats to their established self-image.'",
+      "difficulty": "medium",
+      "topic": "Growth vs Fixed Mindset"
+    },
+    {
+      "id": 25,
+      "section": "Current Affairs",
+      "passage": "The National Education Policy 2025 amendments introduced significant changes to India's educational framework, emphasizing skill-based learning, multilingual education, and technology integration across all levels.",
+      "question": "Which of the following is NOT a key feature of the National Education Policy 2025 amendments?",
+      "options": {
+        "A": "Skill-based learning approach",
+        "B": "Multilingual education framework",
+        "C": "Technology integration across levels",
+        "D": "Mandatory English-only instruction"
+      },
+      "correctAnswer": "D",
+      "explanation": "The policy emphasizes multilingual education, which directly contradicts mandatory English-only instruction.",
+      "difficulty": "easy",
+      "topic": "Education Policy"
+    },
+    {
+      "id": 53,
+      "section": "Legal Reasoning",
+      "passage": "The Supreme Court's interpretation of secularism and socialism as basic features of the Constitution has evolved significantly since the Kesavananda Bharati case. Recent judgments have clarified that while these principles cannot be amended out of the Constitution, their practical implementation must adapt to contemporary challenges while maintaining their core essence.",
+      "question": "TechCorp, a multinational company, wants to establish a research facility in India but insists on hiring only employees from certain religious communities for 'cultural compatibility.' Based on the passage's discussion of secularism as a basic feature, what would be the constitutional position?",
+      "options": {
+        "A": "The practice is acceptable as it relates to private employment decisions",
+        "B": "The practice violates the constitutional principle of secularism and would be unconstitutional",
+        "C": "The practice is acceptable if it serves a legitimate business purpose",
+        "D": "The practice is acceptable for multinational companies but not for domestic companies"
+      },
+      "correctAnswer": "B",
+      "explanation": "Secularism as a basic feature of the Constitution prohibits discrimination based on religion, even in private employment contexts where the state has regulatory authority.",
+      "difficulty": "hard",
+      "topic": "Constitutional Law - Secularism"
+    },
+    {
+      "id": 87,
+      "section": "Logical Reasoning",
+      "passage": "The development of artificial intelligence raises fundamental questions about algorithmic bias, privacy, and the concentration of power in technology companies. As AI systems increasingly influence decisions about employment, credit, healthcare, and criminal justice, the need for comprehensive ethical frameworks and regulatory oversight becomes critical.",
+      "question": "Which of the following can be logically inferred from the passage?",
+      "options": {
+        "A": "AI systems are inherently biased and should be banned from decision-making processes",
+        "B": "The increasing influence of AI in critical areas necessitates ethical and regulatory frameworks",
+        "C": "Technology companies are deliberately creating biased AI systems to maintain power",
+        "D": "Current AI systems are adequately regulated and pose no significant ethical concerns"
+      },
+      "correctAnswer": "B",
+      "explanation": "The passage directly states that as AI influence increases in critical areas, 'the need for comprehensive ethical frameworks and regulatory oversight becomes critical.'",
+      "difficulty": "medium",
+      "topic": "AI Ethics and Regulation"
+    },
+    {
+      "id": 111,
+      "section": "Quantitative Techniques",
+      "passage": "A survey of 1,000 students across five different coaching institutes showed their CLAT score improvements: Institute A (average improvement: 45 marks), Institute B (average improvement: 38 marks), Institute C (average improvement: 52 marks), Institute D (average improvement: 41 marks), and Institute E (average improvement: 49 marks). Each institute had an equal number of students in the survey.",
+      "question": "What is the overall average score improvement across all institutes?",
+      "options": {
+        "A": "43 marks",
+        "B": "45 marks", 
+        "C": "47 marks",
+        "D": "49 marks"
+      },
+      "correctAnswer": "B",
+      "explanation": "Since each institute has equal students (200 each), the overall average is (45+38+52+41+49)/5 = 225/5 = 45 marks.",
+      "difficulty": "easy",
+      "topic": "Average Calculation"
+    }
+  ],
+  "metadata": {
+    "totalQuestions": 120,
+    "sampleSize": 5,
+    "createdAt": "2025-01-12T10:30:00Z",
+    "note": "This is a sample of questions from Mock Test 06. Full test contains all 120 questions with high-quality content including psychology, constitutional law, AI ethics, and quantitative analysis."
+  }
+}

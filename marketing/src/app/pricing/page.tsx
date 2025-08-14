@@ -1,12 +1,18 @@
-import AdvancedPricing from '@/components/sections/advanced-pricing';
+import Pricing from '@/components/sections/pricing';
+import CTA from '@/components/sections/cta';
 
 export const metadata = {
-  title:
-    'SOLO Pricing - Transform Your CLAT Prep for ₹10/Day | Scholarships Available',
-  description:
-    'Get SOLO for less than ₹10/day. Includes Shamnad Basheer Equity Scholarship, financial aid, and disability support. Compare all tiers with detailed feature breakdown.',
+  title: 'SOLO Pricing - Affordable AI-Powered CLAT Preparation',
+  description: 'Choose the perfect SOLO plan for your CLAT preparation. Start with our 30-day free trial and experience the power of AI-driven performance analytics.',
 };
 
 export default function PricingPage() {
-  return <AdvancedPricing />;
+  return (
+    <>
+      <div className="pt-32">
+        <Pricing />
+      </div>
+      <CTA />
+    </>
+  );
 }

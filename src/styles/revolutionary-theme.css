@@ -1,0 +1,314 @@
+/* 🚀 REVOLUTIONARY THEME SYSTEM - Extracted from 13 Top Tech Products */
+/* Based on Huly, Neon, Invertase, and other cutting-edge platforms */
+
+:root {
+  /* 🎨 PRIMARY COLOR SYSTEM - Inspired by Neon.com & Huly.io */
+  --primary-dark: #090A0C;          /* Huly's sophisticated dark */
+  --primary-gradient: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  --accent-blue: #478BEB;           /* Huly's accent blue */
+  --accent-gradient: linear-gradient(135deg, #478BEB 0%, #6366f1 100%);
+  
+  /* 🌟 GLASSMORPHIC SYSTEM - Inspired by Neon.com */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --glass-backdrop: blur(12px);
+  
+  /* ✨ HOLOGRAPHIC GRADIENTS - From extracted design DNA */
+  --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  
+  /* 📝 TYPOGRAPHY SYSTEM - Inspired by all 13 platforms */
+  --font-heading: 'Griggs Variable', 'Inter', -apple-system, system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* 📏 SPACING SYSTEM - Based on 8px grid from top platforms */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  
+  /* 🎭 ANIMATION SYSTEM - Micro-interactions from 13 sites */
+  --easing-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  
+  /* 🌈 STATUS COLORS - Educational context optimized */
+  --success: #10b981;     /* Achievement green */
+  --warning: #f59e0b;     /* Study reminder orange */
+  --error: #ef4444;       /* Error red (gentle) */
+  --info: #3b82f6;        /* Information blue */
+  
+  /* 📱 MOBILE-OPTIMIZED SPACING */
+  --mobile-padding: var(--space-4);
+  --mobile-margin: var(--space-3);
+  --touch-target: 44px;   /* Minimum touch target */
+}
+
+/* 🌙 DARK THEME MASTER CLASS */
+.dark-theme {
+  background: var(--primary-dark);
+  color: #E2E3E9;
+  
+  /* Glassmorphic surfaces */
+  .glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-backdrop);
+    border-radius: 16px;
+    box-shadow: var(--glass-shadow);
+    transition: all var(--duration-normal) var(--easing-smooth);
+  }
+  
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* 🎯 REVOLUTIONARY BUTTON SYSTEM */
+.btn-revolutionary {
+  position: relative;
+  padding: var(--space-3) var(--space-6);
+  border-radius: 12px;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  transition: all var(--duration-normal) var(--easing-smooth);
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  min-height: var(--touch-target);
+}
+
+.btn-primary {
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow: 0 4px 16px rgba(71, 139, 235, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(71, 139, 235, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ✨ MAGIC HOVER EFFECTS - Inspired by Invertase */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left var(--duration-slow) var(--easing-smooth);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+/* 🎨 GRADIENT TEXT EFFECTS - From reference sites */
+.gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* 📱 MOBILE-FIRST RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  :root {
+    --space-factor: 0.8;
+  }
+  
+  .btn-revolutionary {
+    padding: var(--space-4) var(--space-6);
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  .glass-card {
+    margin: var(--mobile-margin);
+    padding: var(--mobile-padding);
+  }
+}
+
+/* 🌟 LOADING ANIMATIONS - Micro-interactions */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.loading-shimmer {
+  position: relative;
+  overflow: hidden;
+  background: var(--glass-bg);
+}
+
+.loading-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+/* 🎯 FOCUS STATES - Accessibility optimized */
+.btn-revolutionary:focus,
+.glass-card:focus {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+/* 📊 PROGRESS INDICATORS - Educational context */
+.progress-revolutionary {
+  width: 100%;
+  height: 8px;
+  background: var(--glass-bg);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-revolutionary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--accent-gradient);
+  border-radius: 4px;
+  transition: width var(--duration-slow) var(--easing-smooth);
+  width: var(--progress-value, 0%);
+}
+
+/* 🚀 ENTRANCE ANIMATIONS */
+.fade-in-up {
+  animation: fadeInUp var(--duration-slow) var(--easing-smooth);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🎨 REVOLUTIONARY CARD SYSTEM */
+.study-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: var(--space-6);
+  backdrop-filter: var(--glass-backdrop);
+  transition: all var(--duration-normal) var(--easing-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.study-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.study-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  transform: scaleX(0);
+  transition: transform var(--duration-normal) var(--easing-smooth);
+}
+
+.study-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* 🎯 EDUCATIONAL ENHANCEMENTS */
+.achievement-badge {
+  background: var(--gradient-4);
+  color: white;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  animation: pulse-glow 2s infinite;
+}
+
+/* 📱 MOBILE TOUCH OPTIMIZATION */
+@media (hover: none) and (pointer: coarse) {
+  .btn-revolutionary {
+    min-height: 48px; /* Larger touch targets */
+  }
+  
+  .glass-card:hover {
+    transform: none; /* Disable hover effects on touch */
+  }
+  
+  .study-card:hover {
+    transform: none;
+  }
+}
+
+/* 🌟 PERFORMANCE OPTIMIZATIONS */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+.gpu-acceleration {
+  transform: translateZ(0);
+}

@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { RevolutionaryLoading, StudySessionLoading } from './shared/RevolutionaryLoading';
+import '../styles/revolutionary-theme.css';
+import '../styles/revolutionary-components.css';
 import { 
   Users, BookOpen, BarChart3, Settings, Clock, Award,
   Target, TrendingUp, Activity, Calendar, MessageSquare,
@@ -566,13 +569,13 @@ const CompleteParentDashboard: React.FC<CompleteParentDashboardProps> = ({ user,
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+    <div className="min-h-screen dark-theme">
+      {/* Revolutionary Parent Header */}
+      <header className="glass-card border-0 shadow-none m-4 mb-0">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <h1 className="text-2xl font-bold text-gray-900">Parent Dashboard</h1>
+              <h1 className="text-2xl font-bold gradient-text">SOLO Parent Dashboard</h1>
               {/* Child Selector */}
               <select 
                 value={selectedChild}

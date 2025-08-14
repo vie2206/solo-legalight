@@ -1,0 +1,91 @@
+{
+  "mockTestId": "mock07",
+  "questions": [
+    {
+      "id": 1,
+      "section": "English Language",
+      "passage": "I had the train compartment to myself up to Rohana, then a girl got in. As I was totally blind at the time, my eyes sensitive only to light and darkness, I was unable to tell what the girl looked like. But I knew she wore slippers from the way they slapped against her heels. I liked the sound of her voice and even the sound of her slippers.",
+      "question": "What does the word \"pretence\" mean in the story when describing the narrator's behavior?",
+      "options": {
+        "A": "A deliberate deception rooted in his desire to appear normal and avoid social awkwardness",
+        "B": "A genuine attempt to observe his surroundings despite his limitations",
+        "C": "A casual gesture made without any particular intention or purpose",
+        "D": "A polite response to the girl's direct question about the scenery"
+      },
+      "correctAnswer": "A",
+      "explanation": "The narrator makes a pretence of studying the landscape to hide his blindness and maintain normal social interaction.",
+      "difficulty": "medium",
+      "topic": "Literary Analysis - Ruskin Bond"
+    },
+    {
+      "id": 25,
+      "section": "Current Affairs",
+      "passage": "The 26/11 Mumbai terrorist attacks of 2008 involved coordinated strikes at multiple locations.",
+      "question": "Which of the following was the codename given to the anti-terrorist operation launched by Indian security forces to neutralize the attackers?",
+      "options": {
+        "A": "Operation Black Thunder",
+        "B": "Operation Blue Star",
+        "C": "Operation Black Tornado",
+        "D": "Operation Vijay"
+      },
+      "correctAnswer": "C",
+      "explanation": "Operation Black Tornado was the codename for the anti-terrorist operation launched during the 26/11 Mumbai attacks.",
+      "difficulty": "easy",
+      "topic": "Counter-terrorism Operations"
+    },
+    {
+      "id": 53,
+      "section": "Legal Reasoning",
+      "passage": "Article 39-A of the Constitution mandates free legal aid to ensure equal justice for all citizens. On January 15, 2025, NALSA amended its regulations to require that applications for legal aid be processed within 30 days of submission, with automatic approval if no response is given within this period.",
+      "question": "Priya, a domestic violence victim with annual income of Rs 3 lakh, applies for free legal aid for her High Court case on February 1, 2025. The DLSA does not respond to her application. On March 5, 2025, she demands automatic approval citing the 30-day rule. Is she entitled to automatic approval?",
+      "options": {
+        "A": "No, because domestic violence victims need special court permission for legal aid",
+        "B": "No, because her income exceeds the threshold for High Court cases",
+        "C": "Yes, because 32 days have passed since her application without any response",
+        "D": "Yes, because she belongs to the women and children category under Section 12"
+      },
+      "correctAnswer": "C",
+      "explanation": "Since 32 days have passed without response from DLSA, the 30-day automatic approval rule applies regardless of other considerations.",
+      "difficulty": "hard",
+      "topic": "Legal Aid Services"
+    },
+    {
+      "id": 85,
+      "section": "Logical Reasoning",
+      "passage": "In 2024, over 60 countries held national elections, encompassing nearly half of the world's population. According to the 2024 V-Dem Report, electoral autocracies now govern 44% of the world's population—3.5 billion people. Despite a year replete with elections, authoritarianism has tightened its global grip.",
+      "question": "Which of the following must be true based on the information provided in the passage?",
+      "options": {
+        "A": "Electoral autocracies hold regular elections but lack adequate liberal democratic protections",
+        "B": "All countries that held elections in 2024 were functioning democracies",
+        "C": "Citizens in electoral autocracies are completely satisfied with their governments",
+        "D": "Schumpeter's definition of democracy is the most comprehensive available"
+      },
+      "correctAnswer": "A",
+      "explanation": "The passage indicates that electoral autocracies can hold elections while still maintaining authoritarian control, showing elections alone don't guarantee democracy.",
+      "difficulty": "medium",
+      "topic": "Democracy and Electoral Systems"
+    },
+    {
+      "id": 109,
+      "section": "Quantitative Techniques",
+      "passage": "In Pitampura area of Delhi, there are 1200 people living in five different apartments. The number of males is 24 more than the number of females. One-fourth of the total population are in Umang apartment. 16% of the total population are living in Drishti apartment.",
+      "question": "The total number of females in Drishti apartment and Kala Kunj apartment together are how much more/less than the total number of males in Paradise and Umang apartments together?",
+      "options": {
+        "A": "77",
+        "B": "97",
+        "C": "87",
+        "D": "107"
+      },
+      "correctAnswer": "C",
+      "explanation": "Based on the given distribution and gender ratios across apartments, the calculation shows a difference of 87.",
+      "difficulty": "hard",
+      "topic": "Data Interpretation"
+    }
+  ],
+  "metadata": {
+    "totalQuestions": 120,
+    "sampleSize": 5,
+    "createdAt": "2025-01-12T10:45:00Z",
+    "note": "This is a sample of questions from Mock Test 07. Full test contains all 120 questions with comprehensive coverage across literature analysis, current affairs, legal reasoning, logical analysis, and quantitative techniques."
+  }
+}

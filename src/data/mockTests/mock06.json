@@ -1,0 +1,148 @@
+{
+  "id": "mock06",
+  "title": "LEGALIGHT Mock Test 06 - CLAT 2026",
+  "description": "Full-length CLAT mock test with 120 questions across 5 sections",
+  "duration": 7200,
+  "totalQuestions": 120,
+  "totalMarks": 120,
+  "markingScheme": {
+    "correct": 1,
+    "incorrect": -0.25,
+    "unattempted": 0
+  },
+  "sections": [
+    {
+      "id": "english",
+      "name": "English Language",
+      "questions": 24,
+      "startQuestion": 1,
+      "endQuestion": 24,
+      "passages": [
+        {
+          "id": "passage1",
+          "title": "Growth vs Fixed Mindset Psychology",
+          "content": "Dr. Carol Dweck's research on mindset reveals fundamental differences between growth and fixed mindset individuals in their approach to challenges, effort, feedback, and success of others...",
+          "questions": [1, 2, 3, 4, 5, 6]
+        },
+        {
+          "id": "passage2", 
+          "title": "Nature and Cognitive Performance - David Strayer Research",
+          "content": "University of Utah psychologist David Strayer's groundbreaking research demonstrates that spending time in nature dramatically improves cognitive performance and reduces mental fatigue...",
+          "questions": [7, 8, 9, 10, 11, 12]
+        },
+        {
+          "id": "passage3",
+          "title": "Urban Planning and Mental Health",
+          "content": "Contemporary urban planning research increasingly focuses on the psychological impacts of city design on resident wellbeing and mental health outcomes...",
+          "questions": [13, 14, 15, 16, 17, 18]
+        },
+        {
+          "id": "passage4",
+          "title": "Technology and Human Connection",
+          "content": "The paradox of digital connectivity - how increased technological connection may be creating unprecedented levels of human isolation and loneliness...",
+          "questions": [19, 20, 21, 22, 23, 24]
+        }
+      ]
+    },
+    {
+      "id": "currentAffairs",
+      "name": "Current Affairs including General Knowledge",
+      "questions": 28,
+      "startQuestion": 25,
+      "endQuestion": 52,
+      "topics": [
+        "Indian Education Policy 2025",
+        "Climate Change Summit 2024",
+        "Digital India Initiatives",
+        "Economic Survey Highlights",
+        "International Relations Updates",
+        "Supreme Court Recent Judgments",
+        "Space Technology Advances",
+        "Healthcare Policy Changes"
+      ]
+    },
+    {
+      "id": "legalReasoning",
+      "name": "Legal Reasoning", 
+      "questions": 34,
+      "startQuestion": 53,
+      "endQuestion": 86,
+      "passages": [
+        {
+          "title": "Constitutional Law - Secularism and Socialism",
+          "content": "The Supreme Court's interpretation of secularism and socialism as basic features of the Constitution in landmark cases and their contemporary relevance...",
+          "questions": [53, 54, 55, 56, 57, 58, 59]
+        },
+        {
+          "title": "Contract Law - Digital Age Contracts",
+          "content": "Modern contract law challenges in the digital economy, including e-contracts, digital signatures, and online dispute resolution mechanisms...",
+          "questions": [60, 61, 62, 63, 64, 65, 66]
+        },
+        {
+          "title": "Criminal Law - Cyber Crimes",
+          "content": "Evolution of criminal law to address cybercrime, digital evidence, and jurisdiction issues in the internet age...",
+          "questions": [67, 68, 69, 70, 71, 72, 73]
+        },
+        {
+          "title": "Environmental Law - Climate Justice",
+          "content": "Emerging principles of climate justice and environmental protection in Indian jurisprudence and international law...",
+          "questions": [74, 75, 76, 77, 78, 79, 80]
+        },
+        {
+          "title": "Corporate Law - Start-up Regulations",
+          "content": "Legal framework for start-ups, venture capital, and emerging business models in India's evolving economy...",
+          "questions": [81, 82, 83, 84, 85, 86]
+        }
+      ]
+    },
+    {
+      "id": "logicalReasoning",
+      "name": "Logical Reasoning",
+      "questions": 24,
+      "startQuestion": 87,
+      "endQuestion": 110,
+      "passages": [
+        {
+          "title": "Artificial Intelligence Ethics",
+          "content": "Ethical considerations in AI development, algorithmic bias, and the need for responsible AI governance frameworks...",
+          "questions": [87, 88, 89, 90, 91, 92]
+        },
+        {
+          "title": "Social Media and Democracy",
+          "content": "The impact of social media platforms on democratic processes, information dissemination, and public opinion formation...",
+          "questions": [93, 94, 95, 96, 97, 98]
+        },
+        {
+          "title": "Economic Policy Analysis", 
+          "content": "Critical analysis of economic policies, their intended outcomes versus actual results, and policy evaluation frameworks...",
+          "questions": [99, 100, 101, 102, 103, 104]
+        },
+        {
+          "title": "Educational System Reform",
+          "content": "Arguments for and against various educational reforms, skill-based learning vs traditional methods, and future of education...",
+          "questions": [105, 106, 107, 108, 109, 110]
+        }
+      ]
+    },
+    {
+      "id": "quantitative", 
+      "name": "Quantitative Techniques",
+      "questions": 10,
+      "startQuestion": 111,
+      "endQuestion": 120,
+      "problems": [
+        {
+          "title": "Data Interpretation - Educational Statistics",
+          "questions": [111, 112, 113, 114, 115]
+        },
+        {
+          "title": "Mathematical Reasoning - Probability and Statistics",
+          "questions": [116, 117, 118, 119, 120]
+        }
+      ]
+    }
+  ],
+  "status": "active",
+  "createdAt": "2025-01-12T10:30:00Z",
+  "source": "LEGALIGHT Mock Test Series 2026"
+}

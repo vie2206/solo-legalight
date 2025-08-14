@@ -23,37 +23,30 @@ import { cn } from '@/lib/utils';
 const ITEMS = [
   {
     label: 'Features',
-    href: '/features',
+    href: '#features',
     dropdownItems: [
       {
         title: 'AI Study Planner',
-        href: '/features#ai-planner',
-        description: 'Personalized study schedules powered by machine learning',
+        href: '/#features',
+        description:
+          'Personalized study schedules powered by machine learning',
       },
       {
         title: 'Rank Predictor',
-        href: '/features#rank-predictor',
-        description:
-          '85% accurate CLAT rank predictions with 3D visualizations',
+        href: '/#features',
+        description: '85% accurate CLAT rank predictions with 3D visualizations',
       },
       {
         title: 'Mock Test Analysis',
-        href: '/features#mock-analysis',
+        href: '/#features',
         description: 'Level Up your performance with detailed 3-step analysis',
-      },
-      {
-        title: 'All Features',
-        href: '/features',
-        description: 'Explore all revolutionary features in detail',
       },
     ],
   },
-  { label: 'About', href: '/about' },
-  { label: '3D NLU Showcase', href: '/nlu-showcase' },
-  { label: 'How It Works', href: '/how-it-works' },
-  { label: 'Success Stories', href: '/success-stories' },
-  { label: 'Pricing', href: '/pricing' },
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Pricing', href: '#pricing' },
   { label: 'For Parents', href: '/parents' },
+  { label: 'Success Stories', href: '#testimonials' },
 ];
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -61,15 +54,15 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <header className="bg-background/70 absolute top-5 left-1/2 z-50 w-[min(95%,1200px)] -translate-x-1/2 rounded-full border backdrop-blur-md lg:top-12">
-      <div className="flex items-center justify-between px-8 py-4">
+    <header className="bg-background/70 absolute top-5 left-1/2 z-50 w-[min(90%,700px)] -translate-x-1/2 rounded-full border backdrop-blur-md lg:top-12">
+      <div className="flex items-center justify-between px-6 py-3">
         <Link href="/" className="flex shrink-0 items-center gap-2">
           <div className="text-2xl font-bold">
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               SOLO
             </span>
           </div>
-          <div className="font-serif text-sm text-gray-500 italic dark:text-gray-400">
+          <div className="text-sm text-gray-500 dark:text-gray-400 font-serif italic">
             by Legalight
           </div>
         </Link>
@@ -80,7 +73,7 @@ const Navbar = () => {
             {ITEMS.map((link) =>
               link.dropdownItems ? (
                 <NavigationMenuItem key={link.label} className="">
-                  <NavigationMenuTrigger className="data-[state=open]:bg-accent/50 bg-transparent! px-3 py-2">
+                  <NavigationMenuTrigger className="data-[state=open]:bg-accent/50 bg-transparent! px-1.5">
                     {link.label}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -112,7 +105,7 @@ const Navbar = () => {
                   <Link
                     href={link.href}
                     className={cn(
-                      'relative bg-transparent px-3 py-2 text-sm font-medium transition-colors hover:text-purple-600',
+                      'relative bg-transparent px-1.5 text-sm font-medium',
                       pathname === link.href && 'text-muted-foreground',
                     )}
                   >
@@ -133,10 +126,7 @@ const Navbar = () => {
             </Button>
           </Link>
           <Link href="/signup" className="max-lg:hidden">
-            <Button
-              size="sm"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700"
-            >
+            <Button size="sm" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white">
               <span className="relative z-10">Start Free Trial</span>
             </Button>
           </Link>
@@ -242,16 +232,16 @@ const Navbar = () => {
             ),
           )}
         </nav>
-
+        
         {/* Mobile Auth Buttons */}
-        <div className="border-border flex flex-col gap-3 border-t pt-6">
+        <div className="flex flex-col gap-3 pt-6 border-t border-border">
           <Link href="/login" onClick={() => setIsMenuOpen(false)}>
             <Button variant="outline" className="w-full">
               Login
             </Button>
           </Link>
           <Link href="/signup" onClick={() => setIsMenuOpen(false)}>
-            <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700">
+            <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white">
               Start Free Trial
             </Button>
           </Link>

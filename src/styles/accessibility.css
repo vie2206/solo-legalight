@@ -1,0 +1,548 @@
+/* 🌟 ACCESSIBILITY ENHANCEMENTS CSS */
+/* WCAG 2.1 AA Compliance for CLAT Educational Platform */
+
+/* =============================================================================
+   HIGH CONTRAST MODES
+   ============================================================================= */
+
+.high-contrast {
+  --bg-primary: #000000;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #e5e5e5;
+  --border-color: #666666;
+  --accent-color: #ffff00;
+  --focus-color: #ffff00;
+}
+
+.extra-high-contrast {
+  --bg-primary: #000000;
+  --bg-secondary: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
+  --border-color: #ffffff;
+  --accent-color: #ffff00;
+  --focus-color: #ff0000;
+}
+
+.high-contrast *,
+.extra-high-contrast * {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+.high-contrast .bg-white,
+.high-contrast .bg-gray-50,
+.high-contrast .bg-gray-100,
+.extra-high-contrast .bg-white,
+.extra-high-contrast .bg-gray-50,
+.extra-high-contrast .bg-gray-100 {
+  background-color: var(--bg-primary) !important;
+}
+
+.high-contrast .bg-gray-800,
+.high-contrast .bg-gray-900,
+.extra-high-contrast .bg-gray-800,
+.extra-high-contrast .bg-gray-900 {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* =============================================================================
+   REDUCED MOTION
+   ============================================================================= */
+
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+.reduced-motion .animate-spin,
+.reduced-motion .animate-pulse,
+.reduced-motion .animate-bounce {
+  animation: none !important;
+}
+
+/* =============================================================================
+   DYSLEXIA-FRIENDLY FONTS
+   ============================================================================= */
+
+.dyslexia-friendly {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', 'Arial', sans-serif !important;
+}
+
+.dyslexia-friendly * {
+  font-family: inherit !important;
+  letter-spacing: 0.1em !important;
+  line-height: 1.6 !important;
+}
+
+.dyslexia-friendly h1,
+.dyslexia-friendly h2,
+.dyslexia-friendly h3,
+.dyslexia-friendly h4,
+.dyslexia-friendly h5,
+.dyslexia-friendly h6 {
+  font-weight: 600 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* =============================================================================
+   FOCUS INDICATORS
+   ============================================================================= */
+
+/* Default focus */
+.focus-default *:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Enhanced focus */
+.focus-enhanced *:focus {
+  outline: 3px solid #3b82f6;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.3);
+}
+
+/* High contrast focus */
+.focus-high-contrast *:focus {
+  outline: 4px solid #ffff00;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 8px rgba(255, 255, 0, 0.5);
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+
+/* =============================================================================
+   COLOR BLIND FRIENDLY
+   ============================================================================= */
+
+.color-blind-friendly {
+  /* Use patterns and shapes alongside colors */
+}
+
+.color-blind-friendly .text-green-600,
+.color-blind-friendly .bg-green-500 {
+  position: relative;
+}
+
+.color-blind-friendly .text-green-600::after,
+.color-blind-friendly .bg-green-500::after {
+  content: '✓';
+  color: #000000;
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+.color-blind-friendly .text-red-600,
+.color-blind-friendly .bg-red-500 {
+  position: relative;
+}
+
+.color-blind-friendly .text-red-600::after,
+.color-blind-friendly .bg-red-500::after {
+  content: '✗';
+  color: #000000;
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+.color-blind-friendly .text-yellow-600,
+.color-blind-friendly .bg-yellow-500 {
+  position: relative;
+}
+
+.color-blind-friendly .text-yellow-600::after,
+.color-blind-friendly .bg-yellow-500::after {
+  content: '⚠';
+  color: #000000;
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+/* =============================================================================
+   SCREEN READER ENHANCEMENTS
+   ============================================================================= */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.5rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background-color: #3b82f6;
+  color: white;
+  z-index: 9999;
+}
+
+/* =============================================================================
+   SKIP NAVIGATION LINKS
+   ============================================================================= */
+
+.skip-nav {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #3b82f6;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 9999;
+  transition: top 0.3s;
+}
+
+.skip-nav:focus {
+  top: 6px;
+}
+
+/* =============================================================================
+   KEYBOARD NAVIGATION ENHANCEMENTS
+   ============================================================================= */
+
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* Ensure all interactive elements are keyboard accessible */
+button,
+[role="button"],
+[role="tab"],
+[role="menuitem"],
+[role="option"],
+a,
+input,
+select,
+textarea {
+  position: relative;
+}
+
+/* Visual indicator for keyboard users */
+.keyboard-navigation button:focus,
+.keyboard-navigation [role="button"]:focus,
+.keyboard-navigation a:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+   EDUCATIONAL CONTENT ACCESSIBILITY
+   ============================================================================= */
+
+/* Math and formula accessibility */
+.math-content {
+  font-family: 'STIX Two Math', 'Latin Modern Math', serif;
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+/* Code blocks for programming questions */
+.code-block {
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.high-contrast .code-block {
+  background-color: #1a1a1a !important;
+  border-color: #666666 !important;
+  color: #ffffff !important;
+}
+
+/* Question numbering for screen readers */
+.question-number::before {
+  content: "Question ";
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+}
+
+/* Timer accessibility */
+.timer-warning {
+  animation: pulse 2s infinite;
+}
+
+.reduced-motion .timer-warning {
+  animation: none;
+  background-color: #fbbf24 !important;
+  color: #000000 !important;
+}
+
+/* =============================================================================
+   PRINT ACCESSIBILITY
+   ============================================================================= */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  * {
+    background: white !important;
+    color: black !important;
+  }
+  
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+  }
+}
+
+/* =============================================================================
+   RESPONSIVE FONT SCALING
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --bg-primary: #000000;
+    --text-primary: #ffffff;
+    --border-color: #ffffff;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .auto-dark {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+}
+
+/* =============================================================================
+   MOBILE ACCESSIBILITY ENHANCEMENTS
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Larger touch targets for mobile */
+  button,
+  [role="button"],
+  a,
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improved spacing for readability */
+  .mobile-accessible {
+    padding: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* Simplified navigation for screen readers */
+  .mobile-nav {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+}
+
+/* =============================================================================
+   ANNOUNCEMENT REGION
+   ============================================================================= */
+
+.announcements {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.live-region {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* =============================================================================
+   EDUCATIONAL SPECIFIC ENHANCEMENTS
+   ============================================================================= */
+
+/* Mock test question accessibility */
+.question-container {
+  border: 2px solid transparent;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+}
+
+.question-container:focus-within {
+  border-color: #3b82f6;
+  background-color: #f8fafc;
+}
+
+.high-contrast .question-container:focus-within {
+  border-color: #ffff00 !important;
+  background-color: #1a1a1a !important;
+}
+
+/* Option selection accessibility */
+.option-container {
+  position: relative;
+  cursor: pointer;
+  padding: 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.option-container:hover {
+  background-color: #f1f5f9;
+}
+
+.option-container input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.option-container input[type="radio"]:focus + label {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Progress indicators */
+.progress-accessible {
+  position: relative;
+}
+
+.progress-accessible::after {
+  content: attr(aria-valuenow) "% complete";
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Score display accessibility */
+.score-display {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.score-display[aria-label]::before {
+  content: attr(aria-label) ": ";
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+/* =============================================================================
+   UTILITY CLASSES FOR ACCESSIBILITY
+   ============================================================================= */
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.visually-hidden:focus {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0.5rem !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+  background-color: #3b82f6 !important;
+  color: white !important;
+  z-index: 9999 !important;
+}
+
+.focus-trap:focus {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.landmark {
+  position: relative;
+}
+
+.landmark::before {
+  content: attr(aria-label);
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* =============================================================================
+   PERFORMANCE OPTIMIZATIONS FOR ACCESSIBILITY
+   ============================================================================= */
+
+/* Optimize for screen readers */
+@media speech {
+  .decorative {
+    speak: none;
+  }
+  
+  .important {
+    speak: always;
+  }
+  
+  .spell-out {
+    speak-as: spell-out;
+  }
+}
+
+/* Reduce motion for vestibular disorders */
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .auto-contrast {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+  }
+}
