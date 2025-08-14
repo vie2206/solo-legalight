@@ -6,13 +6,15 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "build"
-      },
-      "env": {
-        "CI": "false",
-        "DISABLE_ESLINT_PLUGIN": "true"
       }
     }
   ],
+  "build": {
+    "env": {
+      "CI": "false",
+      "DISABLE_ESLINT_PLUGIN": "true"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
