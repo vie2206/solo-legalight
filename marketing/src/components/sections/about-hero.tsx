@@ -75,3 +75,5 @@ export function AboutHero() {
     </section>
   );
 }
+
+export default AboutHero;
