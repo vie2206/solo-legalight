@@ -156,7 +156,7 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Right Side - SMS Authentication */}
+        {/* Right Side - Login Form */}
         <div className="flex min-h-screen flex-1 items-center justify-center p-4 lg:max-w-md">
           <div className="w-full max-w-md">
             {/* Back Link */}
@@ -169,73 +169,73 @@ export default function LoginPage() {
             </Link>
 
             <Card className="border border-white/20 bg-white/10 p-8 shadow-2xl backdrop-blur-md">
-              {/* Header */}
-              <div className="mb-8 text-center">
-                {/* SOLO Logo */}
-                <div className="mb-6">
-                  <div className="mb-3 flex items-center justify-center gap-3">
-                    <div className="rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 p-3">
-                      <Target className="h-8 w-8 text-white" />
+            {/* Header */}
+            <div className="mb-8 text-center">
+              {/* SOLO Logo */}
+              <div className="mb-6">
+                <div className="mb-3 flex items-center justify-center gap-3">
+                  <div className="rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 p-3">
+                    <Target className="h-8 w-8 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold">
+                      <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        SOLO
+                      </span>
                     </div>
-                    <div>
-                      <div className="text-3xl font-bold">
-                        <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                          SOLO
-                        </span>
-                      </div>
-                      <div className="text-xs font-medium text-gray-400">
-                        AI-Powered CLAT Prep
-                      </div>
+                    <div className="text-xs font-medium text-gray-400">
+                      AI-Powered CLAT Prep
                     </div>
                   </div>
                 </div>
-
-                <div className="mb-4">
-                  <h1 className="mb-2 text-3xl font-bold text-white">
-                    Get Started!
-                  </h1>
-                  <p className="text-gray-300">
-                    Sign in with your mobile number to continue
-                  </p>
-                </div>
-
-                {/* Quick Achievement */}
-                <div className="mb-6 rounded-xl border border-green-500/30 bg-green-500/20 p-3">
-                  <div className="flex items-center justify-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-green-400" />
-                    <span className="text-sm font-medium text-green-200">
-                      Join 10,000+ students achieving their target ranks
-                    </span>
-                  </div>
-                </div>
               </div>
 
-              {/* SMS Authentication Component */}
-              <div className="space-y-6">
-                <SMSAuth 
-                  onSuccess={handleAuthSuccess}
-                  onBack={() => window.history.back()}
-                />
+              <div className="mb-4">
+                <h1 className="mb-2 text-3xl font-bold text-white">
+                  Get Started!
+                </h1>
+                <p className="text-gray-300">
+                  Sign in with your mobile number to continue
+                </p>
               </div>
 
-              {/* Trust Indicators */}
-              <div className="mt-6 rounded-xl border border-white/20 bg-white/5 p-4 backdrop-blur-sm">
-                <div className="flex items-center justify-center gap-4 text-xs text-gray-300">
-                  <div className="flex items-center gap-1">
-                    <CheckCircle className="h-3 w-3 text-green-400" />
-                    <span>Secure Login</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <CheckCircle className="h-3 w-3 text-green-400" />
-                    <span>Data Protected</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <CheckCircle className="h-3 w-3 text-green-400" />
-                    <span>Always Free Trial</span>
-                  </div>
+              {/* Quick Achievement */}
+              <div className="mb-6 rounded-xl border border-green-500/30 bg-green-500/20 p-3">
+                <div className="flex items-center justify-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-green-400" />
+                  <span className="text-sm font-medium text-green-200">
+                    Join 10,000+ students achieving their target ranks
+                  </span>
                 </div>
               </div>
-            </Card>
+            </div>
+
+            {/* SMS Authentication Component */}
+            <div className="space-y-6">
+              <SMSAuth 
+                onSuccess={handleAuthSuccess}
+                onBack={() => window.history.back()}
+              />
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="mt-6 rounded-xl border border-white/20 bg-white/5 p-4 backdrop-blur-sm">
+              <div className="flex items-center justify-center gap-4 text-xs text-gray-300">
+                <div className="flex items-center gap-1">
+                  <CheckCircle className="h-3 w-3 text-green-400" />
+                  <span>Secure Login</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <CheckCircle className="h-3 w-3 text-green-400" />
+                  <span>Data Protected</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <CheckCircle className="h-3 w-3 text-green-400" />
+                  <span>Always Free Trial</span>
+                </div>
+              </div>
+            </div>
+          </Card>
           </div>
         </div>
       </div>

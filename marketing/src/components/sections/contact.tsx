@@ -13,12 +13,12 @@ import { Textarea } from '@/components/ui/textarea';
 
 const contactInfo = [
   {
-    title: 'Corporate office',
+    title: 'Legalight Office',
     content: (
       <p className="text-muted-foreground mt-3">
-        1 Carlsberg Close
+        India's Leading Legal Education Platform
         <br />
-        1260 Hillview, Australia
+        New Delhi, India
       </p>
     ),
   },
@@ -27,21 +27,21 @@ const contactInfo = [
     content: (
       <div className="mt-3">
         <div>
-          <p className="">Careers</p>
+          <p className="">Student Support</p>
           <Link
-            href="mailto:careers@streamline.com"
+            href="mailto:hello@legalight.in"
             className="text-muted-foreground hover:text-foreground"
           >
-            careers@streamline.com
+            hello@legalight.in
           </Link>
         </div>
         <div className="mt-1">
-          <p className="">Press</p>
+          <p className="">Partnership</p>
           <Link
-            href="mailto:press@streamline.com"
+            href="mailto:partners@legalight.in"
             className="text-muted-foreground hover:text-foreground"
           >
-            press@streamline.com
+            partners@legalight.in
           </Link>
         </div>
       </div>
@@ -67,20 +67,41 @@ const contactInfo = [
 
 export default function Contact() {
   return (
-    <section className="py-28 lg:py-32 lg:pt-44">
-      <div className="container max-w-2xl">
-        <h1 className="text-center text-2xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+    <section className="relative py-28 lg:py-32 lg:pt-44 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      {/* Premium Holographic Background */}
+      <div 
+        className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_1.webp')",
+          backgroundBlendMode: 'overlay'
+        }}
+      ></div>
+      <div className="absolute inset-0 bg-black/20"></div>
+      
+      {/* Premium Chromatic Halos */}
+      <div 
+        className="absolute top-10 right-10 w-80 h-80 opacity-15 animate-pulse"
+        style={{
+          backgroundImage: "url('/ui8-assets/halos/ring-00010.webp')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center'
+        }}
+      ></div>
+
+      <div className="relative container max-w-2xl">
+        <h1 className="text-center text-2xl font-semibold tracking-tight md:text-4xl lg:text-5xl text-white">
           Contact us
         </h1>
-        <p className="text-muted-foreground mt-4 text-center leading-snug font-medium lg:mx-auto">
+        <p className="text-gray-300 mt-4 text-center leading-snug font-medium lg:mx-auto">
           Hopefully this form gets through our spam filters.
         </p>
 
         <div className="mt-10 flex justify-between gap-8 max-sm:flex-col md:mt-14 lg:mt-20 lg:gap-12">
           {contactInfo.map((info, index) => (
             <div key={index}>
-              <h2 className="font-medium">{info.title}</h2>
-              {info.content}
+              <h2 className="font-medium text-white">{info.title}</h2>
+              <div className="text-gray-300">{info.content}</div>
             </div>
           ))}
         </div>
@@ -89,7 +110,7 @@ export default function Contact() {
 
         {/* Inquiry Form */}
         <div className="mx-auto">
-          <h2 className="text-lg font-semibold">Inquiries</h2>
+          <h2 className="text-lg font-semibold text-white">Inquiries</h2>
           <form className="mt-8 space-y-5">
             <div className="space-y-2">
               <Label>Full name</Label>
