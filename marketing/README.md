@@ -1,4 +1,4 @@
-# SOLO by Legalight - Marketing Website
+# Mainline NextJS Template
 
 Mainline NextJS Template is a premium template built by https://www.shadcnblocks.com
 

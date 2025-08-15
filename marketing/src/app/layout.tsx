@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     template: '%s | SOLO by Legalight',
   },
   description:
-    "Transform your CLAT preparation with SOLO - India's first AI-powered performance analytics platform. Get personalized insights, predictive rank analysis, and join India's smartest study community.",
+    'Transform your CLAT preparation with SOLO - India\'s first AI-powered performance analytics platform. Get personalized insights, predictive rank analysis, and join India\'s smartest study community.',
   keywords: [
     'CLAT',
     'Law Entrance',
@@ -101,7 +101,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'SOLO by Legalight - AI-Powered CLAT Preparation Platform',
     description:
-      "Transform your CLAT preparation with SOLO - India's first AI-powered performance analytics platform. Get personalized insights, predictive rank analysis, and join India's smartest study community.",
+      'Transform your CLAT preparation with SOLO - India\'s first AI-powered performance analytics platform. Get personalized insights, predictive rank analysis, and join India\'s smartest study community.',
     siteName: 'SOLO by Legalight',
     images: [
       {
@@ -116,7 +116,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'SOLO by Legalight - AI-Powered CLAT Preparation Platform',
     description:
-      "Transform your CLAT preparation with SOLO - India's first AI-powered performance analytics platform. Get personalized insights, predictive rank analysis, and join India's smartest study community.",
+      'Transform your CLAT preparation with SOLO - India\'s first AI-powered performance analytics platform. Get personalized insights, predictive rank analysis, and join India\'s smartest study community.',
     images: ['/og-image.jpg'],
     creator: '@legalight',
   },
