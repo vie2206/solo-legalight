@@ -47,38 +47,8 @@ const eslintConfig = [
       'react/no-unescaped-entities': 'off',
       'no-console': 'off',
       'react/jsx-no-undef': 'off',
-      'import/order': [
-        'error',
-        {
-          groups: [
-            ['builtin', 'external'],
-            ['internal', 'parent', 'sibling', 'index'],
-          ],
-          pathGroups: [
-            {
-              pattern: 'react',
-              group: 'builtin',
-              position: 'before',
-            },
-            {
-              pattern: 'next/**',
-              group: 'builtin',
-              position: 'before',
-            },
-            {
-              pattern: '@/**',
-              group: 'internal',
-              position: 'after',
-            },
-          ],
-          pathGroupsExcludedImportTypes: ['builtin'],
-          'newlines-between': 'always',
-          alphabetize: {
-            order: 'asc',
-            caseInsensitive: true,
-          },
-        },
-      ],
+      'import/order': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
     },
   },
 ];

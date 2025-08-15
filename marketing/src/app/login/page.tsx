@@ -61,7 +61,7 @@ export default function LoginPage() {
       <div 
         className="absolute inset-0 opacity-15 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/ui8-assets/gradients/Gradient_1.png')",
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_1.webp')",
           backgroundBlendMode: 'overlay'
         }}
       ></div>
@@ -71,7 +71,7 @@ export default function LoginPage() {
       <div 
         className="absolute top-20 left-10 w-96 h-96 opacity-10 animate-pulse"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00001.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00001.webp')",
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'
@@ -80,7 +80,7 @@ export default function LoginPage() {
       <div 
         className="absolute bottom-20 right-10 w-80 h-80 opacity-15 animate-pulse delay-2000"
         style={{
-          backgroundImage: "url('/ui8-assets/halos/ring-00020.png')",
+          backgroundImage: "url('/ui8-assets/halos/ring-00020.webp')",
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'
@@ -95,11 +95,11 @@ export default function LoginPage() {
             <div className="mb-12">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
                 <Sparkles className="h-5 w-5 text-yellow-400" />
-                Welcome to SOLO
+                Welcome Back to SOLO
               </div>
               <h1 className="mb-6 text-5xl font-bold text-white">
                 <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
-                  Start Your
+                  Continue Your
                 </span>
                 <br />
                 <span className="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
@@ -107,8 +107,8 @@ export default function LoginPage() {
                 </span>
               </h1>
               <p className="text-xl text-gray-300">
-                Join thousands of students achieving their target ranks with
-                AI-powered CLAT preparation.
+                Pick up where you left off and accelerate your preparation with
+                AI-powered insights.
               </p>
             </div>
 

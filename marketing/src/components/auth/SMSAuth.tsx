@@ -34,7 +34,7 @@ const SMSAuth: React.FC<SMSAuthProps> = ({ onSuccess, onBack }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://solo-legalight-backend-production.up.railway.app';
 
   const roles = [
     { value: 'student', label: '👨‍🎓 Student', color: 'bg-blue-600 hover:bg-blue-700' },
@@ -155,43 +155,6 @@ const SMSAuth: React.FC<SMSAuthProps> = ({ onSuccess, onBack }) => {
       setOtp(value);
     }
   };
-
-  if (step === 'role') {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-        <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
-          <div className="text-center mb-6">
-            <MessageSquare className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-gray-900">Choose Your Role</h2>
-            <p className="text-gray-600 mt-2">Select how you'll be using Level Up</p>
-          </div>
-
-          <div className="space-y-3 mb-6">
-            {roles.map((roleOption) => (
-              <button
-                key={roleOption.value}
-                onClick={() => setRole(roleOption.value)}
-                className={`w-full p-3 rounded-lg text-white font-medium transition-colors ${
-                  role === roleOption.value 
-                    ? roleOption.color + ' ring-2 ring-offset-2 ring-blue-500' 
-                    : roleOption.color + ' opacity-70'
-                }`}
-              >
-                {roleOption.label}
-              </button>
-            ))}
-          </div>
-
-          <button
-            onClick={() => setStep('phone')}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition-colors"
-          >
-            Continue
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   if (step === 'phone') {
     return (
