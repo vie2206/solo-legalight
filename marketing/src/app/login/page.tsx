@@ -165,7 +165,7 @@ export default function LoginPage() {
                     onChange={handleInputChange}
                     className="pl-20 bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-purple-400"
                     pattern="[0-9]{10}"
-                    maxLength="10"
+                    maxLength={10}
                     required
                   />
                 </div>
