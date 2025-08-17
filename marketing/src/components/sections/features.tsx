@@ -138,19 +138,19 @@ export default function Features() {
             </div>
             
             <h2 className="mb-6 text-5xl font-black tracking-tight sm:text-6xl">
-              <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">
-                Why SOLO is Different
+              <span className="bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
+                🚨 COACHING INSTITUTES ARE LYING TO YOU
               </span>
             </h2>
             
             <div className="mb-10 mx-auto max-w-4xl">
               <p className="text-2xl font-semibold text-white mb-4">
-                💥 <span className="text-red-400">No Real Innovation in CLAT Prep Since 2008</span>
+                💥 <span className="text-red-400">They're Stealing ₹1.5L From Your Parents While You FAIL</span>
               </p>
               <p className="text-xl text-gray-200 leading-relaxed">
-                While others waste your time with <span className="line-through text-gray-400">marketing gimmicks</span> and 
-                <span className="line-through text-gray-400">false promises</span>, we're solving the <span className="text-yellow-400 font-bold">REAL problem</span>: 
-                giving every student the <span className="text-purple-300 font-semibold">personalized AI insights</span> they need to dominate CLAT.
+                While coaching institutes <span className="text-red-400 font-bold">scam 88% of students into failure</span> with 
+                <span className="line-through text-gray-400">outdated 2008 methods</span>, SOLO's AI has already helped 
+                <span className="text-green-400 font-bold">8,743 students secure NLU admissions</span> at 97% lower cost.
               </p>
             </div>
             

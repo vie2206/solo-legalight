@@ -15,6 +15,19 @@ import {
   Maximize, BarChart, LineChart, Gauge, Radar, Hexagon
 } from 'lucide-react';
 
+// Import UI8 Design System
+import '../styles/ui8-design-system.css';
+
+// Import UI8 Nudge Animations
+import { 
+  TestCompletionAnimation, 
+  ScoreRevealAnimation,
+  RankImprovementAnimation,
+  AchievementAnimation,
+  ExamReminderAnimation,
+  NudgeTheme 
+} from './animations/NudgeAnimations';
+
 interface CompleteMockTestFrameworkProps {
   onBack?: () => void;
 }
@@ -1015,48 +1028,78 @@ const CompleteMockTestFramework: React.FC<CompleteMockTestFrameworkProps> = ({ o
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen ui8-dark-theme ui8-scrollbar p-6">
+      {/* Test Completion Animation */}
+      <div className="fixed top-4 right-4 z-10">
+        <TestCompletionAnimation 
+          theme={NudgeTheme.DARK}
+          size="md"
+          autoPlay={true}
+          trigger="onMount"
+        />
+      </div>
+
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">Complete Mock Test Analysis Framework</h1>
-              <p className="text-gray-600 mt-1">Comprehensive analysis covering all aspects of mock test performance (Pages 1-42)</p>
+        {/* UI8 Enhanced Header */}
+        <div className="mb-8 animate-ui8-fade-in-up">
+          <div className="flex justify-between items-center mb-6">
+            <div className="animate-ui8-fade-in-left">
+              <h1 className="text-ui8-hero text-clat-text-primary">Complete Mock Test Analysis Framework</h1>
+              <p className="text-ui8-body text-clat-text-secondary mt-2">Comprehensive analysis covering all aspects of mock test performance (Pages 1-42)</p>
             </div>
             {onBack && (
               <button
                 onClick={onBack}
-                className="flex items-center text-gray-600 hover:text-gray-900"
+                className="btn-ui8-secondary hover-ui8-lift flex items-center"
               >
-                <ChevronLeft className="w-5 h-5 mr-1" />
+                <ChevronLeft className="w-5 h-5 mr-2" />
                 Back
               </button>
             )}
           </div>
 
-          {/* Phase Navigation */}
-          <div className="flex space-x-4 border-b">
-            {[
-              { id: 'pre-mock', label: 'Pre-Mock Planning', icon: Calendar, pages: '1-4' },
-              { id: 'analysis', label: 'Mock Analysis', icon: BarChart3, pages: '5-23' },
-              { id: 'post-mock', label: 'Post-Mock Takeaways', icon: Target, pages: '24-31' },
-              { id: 'long-term', label: 'Long-term Strategy', icon: Trophy, pages: '32-42' }
-            ].map((phase) => (
-              <button
-                key={phase.id}
-                onClick={() => setActivePhase(phase.id as any)}
-                className={`pb-3 px-4 border-b-2 font-medium transition-colors flex items-center space-x-2 ${
-                  activePhase === phase.id
-                    ? 'border-indigo-600 text-indigo-600'
-                    : 'border-transparent text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                <phase.icon className="w-4 h-4" />
-                <span>{phase.label}</span>
-                <span className="text-xs bg-gray-100 px-2 py-1 rounded">Pages {phase.pages}</span>
-              </button>
-            ))}
+          {/* UI8 Enhanced Phase Navigation */}
+          <div className="nav-ui8 p-2 rounded-xl">
+            <div className="flex space-x-2 overflow-x-auto stagger-ui8-children">
+              {[
+                { id: 'pre-mock', label: 'Pre-Mock Planning', icon: Calendar, pages: '1-4', color: 'var(--clat-primary)' },
+                { id: 'analysis', label: 'Mock Analysis', icon: BarChart3, pages: '5-23', color: 'var(--clat-secondary)' },
+                { id: 'post-mock', label: 'Post-Mock Takeaways', icon: Target, pages: '24-31', color: 'var(--clat-success)' },
+                { id: 'long-term', label: 'Long-term Strategy', icon: Trophy, pages: '32-42', color: 'var(--clat-warning)' }
+              ].map((phase, index) => (
+                <button
+                  key={phase.id}
+                  onClick={() => setActivePhase(phase.id as any)}
+                  className={`nav-ui8-link flex items-center space-x-3 py-4 px-6 rounded-xl font-medium transition-all duration-300 hover-ui8-scale animate-ui8-fade-in-left ${
+                    activePhase === phase.id
+                      ? 'active card-ui8-glass'
+                      : 'hover:card-ui8-glass'
+                  }`}
+                  style={{ 
+                    '--stagger-index': index,
+                    ...(activePhase === phase.id && {
+                      background: `linear-gradient(135deg, ${phase.color}20 0%, ${phase.color}10 100%)`,
+                      borderColor: phase.color,
+                      color: phase.color,
+                      boxShadow: `0 0 20px ${phase.color}30`
+                    })
+                  }}
+                >
+                  <phase.icon className="w-5 h-5" style={{ 
+                    filter: activePhase === phase.id ? `drop-shadow(0 0 4px ${phase.color})` : 'none' 
+                  }} />
+                  <div className="text-left">
+                    <div>{phase.label}</div>
+                    <div className="badge-ui8-primary text-xs px-2 py-1 rounded-full mt-1">
+                      Pages {phase.pages}
+                    </div>
+                  </div>
+                  {activePhase === phase.id && (
+                    <ExamReminderAnimation size="sm" autoPlay={true} className="ml-2" />
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 

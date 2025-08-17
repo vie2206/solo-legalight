@@ -6,6 +6,18 @@ import {
   Award, Target, Calendar, UserCheck, PieChart, Search, Filter,
   GraduationCap, X, Brain, Sparkles, LineChart, BarChart, Trophy
 } from 'lucide-react';
+
+// Import UI8 Design System
+import '../styles/ui8-design-system.css';
+
+// Import UI8 Nudge Animations
+import { 
+  WelcomeAnimation, 
+  AIInsightAnimation, 
+  AchievementAnimation, 
+  SubscriptionSuccessAnimation,
+  NudgeTheme 
+} from './animations/NudgeAnimations';
 import MockTestAdminDashboard from './MockTestAdminDashboard';
 import SocialLearningManagement from './admin/SocialLearningManagement';
 import WeeklyInsightsAnalytics from './admin/WeeklyInsightsAnalytics';
@@ -2435,50 +2447,87 @@ const CompleteAdminDashboard: React.FC<CompleteAdminDashboardProps> = ({ user, o
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Error Display */}
+    <div className="min-h-screen ui8-dark-theme ui8-scrollbar">
+      {/* AI Insight Animation for Admin Control */}
+      <div className="fixed top-4 right-4 z-10">
+        <AIInsightAnimation 
+          theme={NudgeTheme.DARK}
+          size="lg"
+          autoPlay={true}
+          trigger="onMount"
+        />
+      </div>
+
+      {/* Achievement Animation for System Excellence */}
+      <div className="fixed bottom-4 left-4 z-10">
+        <AchievementAnimation 
+          theme={NudgeTheme.DARK}
+          size="sm"
+          autoPlay={true}
+          trigger="onIntersect"
+        />
+      </div>
+
+      {/* UI8 Enhanced Error Display */}
       {error && (
-        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-          <div className="flex">
-            <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+        <div className="toast-ui8-error m-4 animate-ui8-fade-in-left">
+          <div className="flex items-center">
+            <div className="flex-shrink-0 mr-3">
+              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
             </div>
-            <div className="ml-3">
-              <p className="text-sm text-yellow-700">{error}</p>
-            </div>
+            <p className="text-sm font-medium">{error}</p>
           </div>
         </div>
       )}
-      {/* Enhanced Header */}
-      <header className="bg-white shadow-lg border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mr-4">
+
+      {/* UI8 Enhanced Header */}
+      <header className="nav-ui8 border-0 shadow-none m-4 mb-0 animate-ui8-fade-in-up"
+              style={{ 
+                background: 'var(--clat-gradient-secondary)',
+                boxShadow: 'var(--clat-glow-primary)' 
+              }}>
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center animate-ui8-fade-in-left">
+              <div className="w-14 h-14 rounded-xl flex items-center justify-center mr-4 hover-ui8-glow" 
+                   style={{ 
+                     background: 'var(--clat-glass-bg)',
+                     backdropFilter: 'var(--clat-backdrop-blur)',
+                     border: '1px solid var(--clat-glass-border)' 
+                   }}>
                 <Shield className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">LEVEL UP</h1>
-                <p className="text-sm text-gray-600">Advanced Admin Control Center</p>
+                <h1 className="text-ui8-hero text-white">SOLO ADMIN</h1>
+                <p className="text-white/80 text-ui8-body">Advanced Admin Control Center</p>
               </div>
             </div>
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-6 animate-ui8-fade-in-left" style={{ animationDelay: '200ms' }}>
               <div className="flex items-center space-x-4">
-                <Bell className="w-6 h-6 text-gray-400 hover:text-gray-600 cursor-pointer" />
-                <Mail className="w-6 h-6 text-gray-400 hover:text-gray-600 cursor-pointer" />
-                <div className="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white font-bold">
+                <button className="btn-ui8-secondary p-3 hover-ui8-lift">
+                  <Bell className="w-6 h-6" />
+                </button>
+                <button className="btn-ui8-secondary p-3 hover-ui8-lift">
+                  <Mail className="w-6 h-6" />
+                </button>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg hover-ui8-glow"
+                     style={{ 
+                       background: 'var(--clat-gradient-primary)',
+                       boxShadow: 'var(--clat-glow-primary)' 
+                     }}>
                   {user.name.charAt(0)}
                 </div>
               </div>
-              <div className="text-right">
-                <p className="text-sm font-medium text-gray-900">{user.name}</p>
-                <p className="text-xs text-gray-500">System Administrator</p>
+              <div className="text-right card-ui8-glass px-4 py-2">
+                <p className="text-sm font-medium text-white">{user.name}</p>
+                <p className="text-xs text-white/70">System Administrator</p>
               </div>
               <button
                 onClick={onLogout}
-                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-2 rounded-lg font-medium transition-all"
+                className="btn-ui8-primary hover-ui8-lift"
+                style={{ background: 'var(--clat-gradient-english)' }}
               >
                 Logout
               </button>

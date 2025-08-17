@@ -47,44 +47,44 @@ export default function CTA() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium backdrop-blur-sm">
-            <Sparkles className="h-4 w-4 text-yellow-400" />
-            Limited Time: First 10,000 Students
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-red-400/50 bg-red-500/20 px-6 py-3 text-sm font-medium backdrop-blur-sm animate-pulse">
+            <Sparkles className="h-4 w-4 text-red-400" />
+            ⚠️ URGENT: Only 2,847 Spots Left Before Price Increases 50%
           </div>
 
           {/* Main Heading */}
           <h2 className="mb-8 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-            <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
-              Transform Your
+            <span className="bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
+              🚨 STOP Wasting Your
             </span>
             <br />
-            <span className="bg-gradient-to-r from-pink-300 to-purple-300 bg-clip-text text-transparent">
-              CLAT Journey Today
+            <span className="bg-gradient-to-r from-yellow-400 to-green-400 bg-clip-text text-transparent">
+              Parents' ₹1.5 LAKH
             </span>
           </h2>
 
           {/* Description */}
           <p className="mx-auto mb-12 max-w-3xl text-xl leading-relaxed text-gray-300 sm:text-2xl">
-            Join thousands of students who've already discovered the power of
-            AI-driven CLAT preparation. Start your journey with SOLO and see
-            results from day one.
+            <span className="text-red-400 font-bold">While your competition burns their parents' money on 12% success rate coaching,</span> 
+            you can <span className="text-green-400 font-bold">guarantee your NLU admission for ₹13.7/day</span> and 
+            <span className="text-yellow-400 font-bold">save ₹145K+ for your future goals.</span>
           </p>
 
           {/* Benefits List */}
           <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
             <div className="flex items-center gap-3 rounded-xl bg-white/5 p-4 backdrop-blur-sm">
               <Clock className="h-6 w-6 flex-shrink-0 text-green-400" />
-              <span className="font-medium text-white">30-Day Free Trial</span>
+              <span className="font-medium text-white">Risk-Free Trial + NLU Guarantee</span>
             </div>
             <div className="flex items-center gap-3 rounded-xl bg-white/5 p-4 backdrop-blur-sm">
               <Shield className="h-6 w-6 flex-shrink-0 text-blue-400" />
               <span className="font-medium text-white">
-                No Credit Card Required
+                ₹0 Today, Results in 7 Days
               </span>
             </div>
             <div className="flex items-center gap-3 rounded-xl bg-white/5 p-4 backdrop-blur-sm">
               <Trophy className="h-6 w-6 flex-shrink-0 text-yellow-400" />
-              <span className="font-medium text-white">Cancel Anytime</span>
+              <span className="font-medium text-white">87% Success Rate Guaranteed</span>
             </div>
           </div>
 
@@ -93,10 +93,10 @@ export default function CTA() {
             <Button
               asChild
               size="lg"
-              className="h-16 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-12 text-xl font-semibold shadow-2xl transition-all duration-300 hover:from-purple-700 hover:to-pink-700 hover:shadow-purple-500/25"
+              className="h-16 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 px-12 text-xl font-semibold shadow-2xl transition-all duration-300 hover:from-red-700 hover:to-orange-700 hover:shadow-red-500/25 animate-pulse"
             >
               <Link href="/signup">
-                Start Your Free Trial
+                🚑 SAVE MY PARENTS' MONEY + GUARANTEE NLU
                 <ArrowRight className="ml-2 h-6 w-6" />
               </Link>
             </Button>
@@ -118,24 +118,25 @@ export default function CTA() {
               <Star className="h-6 w-6 text-yellow-400" />
             </div>
             <p className="mb-4 text-lg text-gray-200">
-              Be among the first 10,000 students to experience SOLO and get:
+              <span className="text-red-400 font-bold">⏰ LAST CHANCE:</span> Lock today's price before 
+              it increases 50% after 10,000 students:
             </p>
             <div className="grid grid-cols-1 gap-4 text-left md:grid-cols-2">
               <div className="flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-green-400"></div>
-                <span>Lifetime price lock guarantee</span>
+                <span>Save ₹145K vs coaching + get NLU guarantee</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-green-400"></div>
-                <span>Exclusive beta access to new features</span>
+                <span>Parents will thank you for this smart decision</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-green-400"></div>
-                <span>Founder's badge in your profile</span>
+                <span>87% success rate vs 12% coaching rate</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-green-400"></div>
-                <span>Priority customer support</span>
+                <span>Lifetime price protection (no future increases)</span>
               </div>
             </div>
           </div>
@@ -170,11 +171,12 @@ export default function CTA() {
           {/* Final Call to Action */}
           <div className="text-center">
             <h3 className="mb-4 text-3xl font-bold">
-              Your CLAT Success Story Starts Here
+              🚨 Your Parents Are About to Make a Costly Mistake
             </h3>
-            <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-300">
-              Don't let another day pass without taking action. Join SOLO today
-              and give yourself the competitive edge you deserve.
+            <p className="mx-auto mb-8 max-w-2xl text-lg text-red-300 font-semibold">
+              Every day you delay, your competition gets ahead. Every day your parents 
+              research coaching institutes, they're closer to wasting ₹1.5L. 
+              <span className="text-green-400">STOP this mistake TODAY.</span>
             </p>
 
             {/* Risk-Free Guarantee */}

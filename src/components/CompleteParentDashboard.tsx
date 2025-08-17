@@ -2,6 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { RevolutionaryLoading, StudySessionLoading } from './shared/RevolutionaryLoading';
 import '../styles/revolutionary-theme.css';
 import '../styles/revolutionary-components.css';
+import '../styles/ui8-design-system.css';
+
+// Import UI8 Nudge Animations
+import { 
+  WelcomeAnimation, 
+  StudyProgressAnimation, 
+  TestCompletionAnimation, 
+  AchievementAnimation, 
+  SubscriptionSuccessAnimation,
+  CommunityJoinAnimation,
+  NudgeTheme 
+} from './animations/NudgeAnimations';
 import { 
   Users, BookOpen, BarChart3, Settings, Clock, Award,
   Target, TrendingUp, Activity, Calendar, MessageSquare,
@@ -569,49 +581,68 @@ const CompleteParentDashboard: React.FC<CompleteParentDashboardProps> = ({ user,
   ];
 
   return (
-    <div className="min-h-screen dark-theme">
-      {/* Revolutionary Parent Header */}
-      <header className="glass-card border-0 shadow-none m-4 mb-0">
+    <div className="min-h-screen ui8-dark-theme ui8-scrollbar">
+      {/* Community Join Animation for Parent Dashboard */}
+      <div className="fixed top-4 left-4 z-10">
+        <CommunityJoinAnimation 
+          theme={NudgeTheme.DARK}
+          size="sm"
+          autoPlay={true}
+          trigger="onMount"
+        />
+      </div>
+
+      {/* UI8 Enhanced Parent Header */}
+      <header className="nav-ui8 border-0 shadow-none m-4 mb-0 animate-ui8-fade-in-up">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <h1 className="text-2xl font-bold gradient-text">SOLO Parent Dashboard</h1>
-              {/* Child Selector */}
+            <div className="flex items-center space-x-6 animate-ui8-fade-in-left">
+              <h1 className="text-ui8-heading text-clat-text-primary">SOLO Parent Dashboard</h1>
+              {/* UI8 Enhanced Child Selector */}
               <select 
                 value={selectedChild}
                 onChange={(e) => setSelectedChild(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="input-ui8 hover-ui8-glow transition-all duration-300"
+                style={{ 
+                  background: 'var(--clat-glass-bg)',
+                  backdropFilter: 'var(--clat-backdrop-blur)',
+                  border: '1px solid var(--clat-glass-border)',
+                  minWidth: '200px'
+                }}
               >
-                <option value="all">All Children</option>
+                <option value="all" className="bg-clat-bg-secondary text-clat-text-primary">All Children</option>
                 {children.map(child => (
-                  <option key={child.id} value={child.id}>{child.name}</option>
+                  <option key={child.id} value={child.id} className="bg-clat-bg-secondary text-clat-text-primary">
+                    {child.name}
+                  </option>
                 ))}
               </select>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3 animate-ui8-fade-in-left" style={{ animationDelay: '200ms' }}>
               <button 
                 onClick={fetchParentData}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="btn-ui8-secondary p-3 hover-ui8-lift"
                 title="Refresh"
               >
-                <RefreshCw className="w-5 h-5 text-gray-600" />
+                <RefreshCw className="w-5 h-5" />
               </button>
-              <button className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                <Bell className="w-5 h-5 text-gray-600" />
+              <button className="btn-ui8-secondary p-3 hover-ui8-lift relative">
+                <Bell className="w-5 h-5" />
                 {dashboardStats.unreadMessages > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center badge-ui8-warning">
                     {dashboardStats.unreadMessages}
                   </span>
                 )}
               </button>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 card-ui8-glass px-4 py-2 hover-ui8-scale">
                 <div className="text-right">
-                  <p className="text-sm font-medium text-gray-900">{user?.name || 'Parent'}</p>
-                  <p className="text-xs text-gray-500">{user?.email}</p>
+                  <p className="text-sm font-medium text-clat-text-primary">{user?.name || 'Parent'}</p>
+                  <p className="text-xs text-clat-text-secondary">{user?.email}</p>
                 </div>
                 <button 
                   onClick={onLogout}
-                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                  className="btn-ui8-primary hover-ui8-lift"
+                  style={{ background: 'var(--clat-gradient-english)' }}
                 >
                   Logout
                 </button>
@@ -620,21 +651,32 @@ const CompleteParentDashboard: React.FC<CompleteParentDashboardProps> = ({ user,
           </div>
         </div>
         
-        {/* Tab Navigation */}
+        {/* UI8 Enhanced Tab Navigation */}
         <div className="px-6 -mb-px">
-          <nav className="flex space-x-6 overflow-x-auto">
-            {tabs.map((tab) => (
+          <nav className="flex space-x-2 overflow-x-auto py-2 stagger-ui8-children">
+            {tabs.map((tab, index) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center space-x-2 px-3 py-3 border-b-2 transition-colors whitespace-nowrap ${
+                className={`nav-ui8-link flex items-center space-x-2 py-3 px-4 rounded-xl font-medium transition-all duration-300 hover-ui8-scale animate-ui8-fade-in-left ${
                   activeTab === tab.id
-                    ? 'border-purple-600 text-purple-600'
-                    : 'border-transparent text-gray-600 hover:text-gray-900'
+                    ? 'active card-ui8-glass'
+                    : 'hover:card-ui8-glass'
                 }`}
+                style={{ 
+                  '--stagger-index': index,
+                  ...(activeTab === tab.id && {
+                    background: 'linear-gradient(135deg, var(--clat-secondary)20 0%, var(--clat-secondary)10 100%)',
+                    borderColor: 'var(--clat-secondary)',
+                    color: 'var(--clat-secondary)',
+                    boxShadow: '0 0 20px var(--clat-secondary)30'
+                  })
+                }}
               >
-                <tab.icon className="w-4 h-4" />
-                <span className="font-medium">{tab.label}</span>
+                <tab.icon className="w-4 h-4" style={{ 
+                  filter: activeTab === tab.id ? 'drop-shadow(0 0 4px var(--clat-secondary))' : 'none' 
+                }} />
+                <span>{tab.label}</span>
               </button>
             ))}
           </nav>

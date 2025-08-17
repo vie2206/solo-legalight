@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../styles/mobile.css';
 
 @plugin '@nobie-org/tailwindcss-animate';
 @plugin '@tailwindcss/typography';
@@ -207,4 +208,186 @@ body {
 }
 body {
   position: relative;
+}
+
+/* ===================================================================
+   UI8 DESIGN SYSTEM - ESSENTIAL CLAT STYLING
+   =================================================================== */
+
+/* CLAT Color Variables */
+:root {
+  --clat-primary: #1a365d;
+  --clat-primary-light: #2563eb;
+  --clat-secondary: #dc2626;
+  --clat-accent: #f59e0b;
+  --clat-success: #059669;
+  --clat-glass-bg: rgba(255, 255, 255, 0.85);
+  --clat-glass-border: rgba(255, 255, 255, 0.2);
+  --clat-backdrop-blur: blur(20px);
+  --clat-gradient-primary: linear-gradient(135deg, #1a365d 0%, #2563eb 50%, #f59e0b 100%);
+  --clat-gradient-success: linear-gradient(135deg, #059669 0%, #f59e0b 100%);
+  --clat-glow-primary: 0 0 20px rgba(37, 99, 235, 0.4);
+  --clat-glow-success: 0 0 20px rgba(5, 150, 105, 0.4);
+}
+
+/* UI8 Premium Glass Cards */
+.card-ui8-glass {
+  background: var(--clat-glass-bg);
+  backdrop-filter: var(--clat-backdrop-blur);
+  border: 1px solid var(--clat-glass-border);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+/* UI8 Premium Buttons */
+.btn-ui8-primary {
+  background: var(--clat-gradient-primary);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--clat-glow-primary);
+}
+
+.btn-ui8-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--clat-glow-primary), 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-ui8-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* UI8 Premium Inputs */
+.input-ui8 {
+  background: var(--clat-glass-bg);
+  backdrop-filter: var(--clat-backdrop-blur);
+  border: 1px solid var(--clat-glass-border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.input-ui8:focus {
+  outline: none;
+  border-color: var(--clat-primary-light);
+  box-shadow: var(--clat-glow-primary);
+}
+
+/* UI8 Premium Animations */
+.animate-ui8-fade-in-up {
+  animation: ui8-fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-ui8-scale-in {
+  animation: ui8-scale-in 0.5s ease-out forwards;
+}
+
+.animate-ui8-fade-in-left {
+  animation: ui8-fade-in-left 0.4s ease-out forwards;
+}
+
+.hover-ui8-lift:hover {
+  transform: translateY(-4px);
+  transition: transform 0.3s ease;
+}
+
+.hover-ui8-glow:hover {
+  box-shadow: var(--clat-glow-primary);
+  transition: box-shadow 0.3s ease;
+}
+
+/* UI8 Loading Animation */
+.loading-ui8 {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: ui8-spin 1s linear infinite;
+}
+
+/* UI8 Typography */
+.text-ui8-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.text-ui8-body {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* UI8 Badges */
+.badge-ui8-primary {
+  background: var(--clat-gradient-primary);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* UI8 Toast Notifications */
+.toast-ui8-error {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  color: white;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+}
+
+/* UI8 Keyframe Animations */
+@keyframes ui8-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ui8-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ui8-fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ui8-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Dark mode support */
+.dark {
+  --clat-glass-bg: rgba(15, 23, 42, 0.85);
+  --clat-glass-border: rgba(148, 163, 184, 0.2);
 }

@@ -31,22 +31,46 @@ const stats = [
 
 export function AboutHero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-black/10"></div>
-      <div className="absolute top-20 left-10 h-40 w-40 animate-pulse rounded-full bg-purple-500/20 blur-3xl"></div>
-      <div className="absolute top-60 right-20 h-32 w-32 animate-pulse rounded-full bg-pink-500/20 blur-2xl delay-1000"></div>
-      <div className="absolute bottom-40 left-1/3 h-36 w-36 animate-pulse rounded-full bg-blue-500/20 blur-xl delay-2000"></div>
+    <section className="relative overflow-hidden bg-ui8-hero py-24">
+      {/* UI8 Premium Background */}
+      <div 
+        className="absolute inset-0 opacity-30 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_15.webp')",
+          backgroundBlendMode: 'overlay'
+        }}
+      ></div>
+      <div className="absolute inset-0 bg-black/20"></div>
+      
+      {/* UI8 Premium Halos */}
+      <div 
+        className="absolute top-10 right-10 w-96 h-96 opacity-20 animate-ui8-float"
+        style={{
+          backgroundImage: "url('/ui8-assets/halos/ring-00001.webp')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center'
+        }}
+      ></div>
+      <div 
+        className="absolute bottom-20 left-10 w-64 h-64 opacity-15 animate-ui8-pulse"
+        style={{
+          backgroundImage: "url('/ui8-assets/halos/ring-00010.webp')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center'
+        }}
+      ></div>
 
       <div className="relative container mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-8 md:gap-20 lg:flex-row lg:items-center lg:gap-24 xl:gap-24">
           <div className="flex-[1.5]">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
+            <div className="mb-6 badge-ui8-primary animate-ui8-fade-in-left">
               <Sparkles className="h-5 w-5 text-yellow-400" />
               Our Story & Mission
             </div>
             
-            <h1 className="mb-6 text-6xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl">
+            <h1 className="mb-6 text-ui8-heading animate-ui8-fade-in-up text-6xl sm:text-7xl lg:text-8xl">
               <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
                 Revolutionizing
               </span>
@@ -79,8 +103,8 @@ export function AboutHero() {
           </div>
 
           <div className="relative flex flex-1 flex-col justify-center gap-6 pt-10 lg:ps-10 lg:pt-0">
-            <div className="rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md">
-              <h3 className="mb-6 text-2xl font-bold text-white text-center">
+            <div className="card-ui8-glass animate-ui8-scale-in">
+              <h3 className="mb-6 text-ui8-subheading text-center">
                 🚀 Impact So Far
               </h3>
               {stats.map((stat, index) => {
@@ -107,11 +131,11 @@ export function AboutHero() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-md">
+            <div className="card-ui8-glass animate-ui8-fade-in-right">
               <div className="text-center">
                 <div className="mb-3 flex items-center justify-center gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400 animate-ui8-pulse" style={{animationDelay: `${i * 0.1}s`}} />
                   ))}
                 </div>
                 <div className="text-lg font-semibold text-white">4.9/5 Rating</div>

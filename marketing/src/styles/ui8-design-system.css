@@ -1,0 +1,858 @@
+/* ===================================================================
+   UI8 DESIGN SYSTEM FOR LEGALIGHT - PREMIUM ₹50,000+ TEMPLATE
+   Revolutionary CLAT Education Platform Visual Framework
+   Glassmorphism + CLAT Psychology + Premium Animations
+   =================================================================== */
+
+/* ===================================================================
+   CLAT COLOR PSYCHOLOGY FOUNDATION
+   =================================================================== */
+:root {
+  /* CLAT Primary Colors - Law & Justice Theme */
+  --clat-primary: #1a365d;           /* Deep legal blue - trust & authority */
+  --clat-primary-light: #2563eb;     /* Bright confidence blue */
+  --clat-primary-dark: #0f172a;      /* Midnight legal depth */
+  --clat-secondary: #dc2626;         /* Legal red - urgency & importance */
+  --clat-secondary-light: #ef4444;   /* Alert red */
+  --clat-secondary-dark: #991b1b;    /* Deep legal red */
+  --clat-accent: #f59e0b;            /* Achievement gold */
+  --clat-accent-light: #fbbf24;      /* Success gold */
+  --clat-success: #059669;           /* Achievement green */
+  --clat-warning: #d97706;           /* Attention orange */
+  --clat-error: #dc2626;             /* Error red */
+
+  /* CLAT Text Colors - Readability Optimized */
+  --clat-text-primary: #0f172a;      /* Primary reading text */
+  --clat-text-secondary: #475569;    /* Secondary information */
+  --clat-text-muted: #64748b;        /* Muted helper text */
+  --clat-text-disabled: #94a3b8;     /* Disabled state */
+  --clat-text-inverse: #f8fafc;      /* Dark background text */
+
+  /* CLAT Background Colors - Premium Feel */
+  --clat-bg-primary: #ffffff;        /* Pure white primary */
+  --clat-bg-secondary: #f8fafc;      /* Light gray background */
+  --clat-bg-tertiary: #f1f5f9;       /* Card backgrounds */
+  --clat-bg-dark: #0f172a;           /* Dark mode primary */
+  --clat-bg-dark-secondary: #1e293b; /* Dark mode secondary */
+
+  /* UI8 GLASSMORPHISM SYSTEM */
+  --clat-glass-bg: rgba(255, 255, 255, 0.85);
+  --clat-glass-bg-dark: rgba(15, 23, 42, 0.85);
+  --clat-glass-border: rgba(255, 255, 255, 0.2);
+  --clat-glass-border-dark: rgba(148, 163, 184, 0.2);
+  --clat-backdrop-blur: blur(20px);
+  --clat-backdrop-blur-strong: blur(40px);
+
+  /* UI8 PREMIUM GRADIENTS */
+  --clat-gradient-primary: linear-gradient(135deg, 
+    var(--clat-primary) 0%, 
+    var(--clat-primary-light) 50%, 
+    var(--clat-accent) 100%);
+  --clat-gradient-secondary: linear-gradient(135deg, 
+    var(--clat-secondary) 0%, 
+    var(--clat-secondary-light) 100%);
+  --clat-gradient-success: linear-gradient(135deg, 
+    var(--clat-success) 0%, 
+    var(--clat-accent) 100%);
+  --clat-gradient-glass: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.2) 0%, 
+    rgba(255, 255, 255, 0.05) 100%);
+  --clat-gradient-hero: linear-gradient(135deg, 
+    #1a365d 0%, 
+    #2563eb 25%, 
+    #dc2626 50%, 
+    #f59e0b 75%, 
+    #059669 100%);
+
+  /* UI8 PREMIUM SHADOWS & GLOWS */
+  --clat-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --clat-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --clat-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --clat-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --clat-shadow-premium: 0 25px 50px -12px rgba(26, 54, 93, 0.25);
+  
+  /* UI8 GLOWS - Premium Visual Effects */
+  --clat-glow-primary: 0 0 20px rgba(37, 99, 235, 0.4), 0 0 40px rgba(37, 99, 235, 0.2);
+  --clat-glow-secondary: 0 0 20px rgba(220, 38, 38, 0.4), 0 0 40px rgba(220, 38, 38, 0.2);
+  --clat-glow-success: 0 0 20px rgba(5, 150, 105, 0.4), 0 0 40px rgba(5, 150, 105, 0.2);
+  --clat-glow-accent: 0 0 20px rgba(245, 158, 11, 0.4), 0 0 40px rgba(245, 158, 11, 0.2);
+
+  /* UI8 TYPOGRAPHY SCALE - Premium Font System */
+  --ui8-font-xs: 0.75rem;      /* 12px */
+  --ui8-font-sm: 0.875rem;     /* 14px */
+  --ui8-font-base: 1rem;       /* 16px */
+  --ui8-font-lg: 1.125rem;     /* 18px */
+  --ui8-font-xl: 1.25rem;      /* 20px */
+  --ui8-font-2xl: 1.5rem;      /* 24px */
+  --ui8-font-3xl: 1.875rem;    /* 30px */
+  --ui8-font-4xl: 2.25rem;     /* 36px */
+  --ui8-font-5xl: 3rem;        /* 48px */
+  --ui8-font-6xl: 3.75rem;     /* 60px */
+
+  /* UI8 SPACING SYSTEM */
+  --ui8-space-xs: 0.25rem;     /* 4px */
+  --ui8-space-sm: 0.5rem;      /* 8px */
+  --ui8-space-md: 1rem;        /* 16px */
+  --ui8-space-lg: 1.5rem;      /* 24px */
+  --ui8-space-xl: 2rem;        /* 32px */
+  --ui8-space-2xl: 3rem;       /* 48px */
+  --ui8-space-3xl: 4rem;       /* 64px */
+
+  /* UI8 BORDER RADIUS SYSTEM */
+  --ui8-radius-sm: 0.375rem;   /* 6px */
+  --ui8-radius-md: 0.5rem;     /* 8px */
+  --ui8-radius-lg: 0.75rem;    /* 12px */
+  --ui8-radius-xl: 1rem;       /* 16px */
+  --ui8-radius-2xl: 1.5rem;    /* 24px */
+  --ui8-radius-full: 9999px;   /* Full round */
+
+  /* UI8 ANIMATION TIMING */
+  --ui8-duration-fast: 150ms;
+  --ui8-duration-normal: 300ms;
+  --ui8-duration-slow: 500ms;
+  --ui8-duration-slower: 1000ms;
+  --ui8-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ui8-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ui8-ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] {
+  --clat-text-primary: #f8fafc;
+  --clat-text-secondary: #e2e8f0;
+  --clat-text-muted: #94a3b8;
+  --clat-text-disabled: #64748b;
+  --clat-text-inverse: #0f172a;
+  --clat-bg-primary: #0f172a;
+  --clat-bg-secondary: #1e293b;
+  --clat-bg-tertiary: #334155;
+  --clat-glass-bg: var(--clat-glass-bg-dark);
+  --clat-glass-border: var(--clat-glass-border-dark);
+}
+
+/* ===================================================================
+   UI8 COMPONENT SYSTEM - PREMIUM BUILDING BLOCKS
+   =================================================================== */
+
+/* UI8 CARDS - Premium Glass Morphism */
+.card-ui8-glass {
+  background: var(--clat-glass-bg);
+  backdrop-filter: var(--clat-backdrop-blur);
+  border: 1px solid var(--clat-glass-border);
+  border-radius: var(--ui8-radius-2xl);
+  padding: var(--ui8-space-2xl);
+  box-shadow: var(--clat-shadow-premium);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-ui8-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--clat-gradient-glass);
+  opacity: 0.8;
+}
+
+.card-ui8-premium {
+  @apply card-ui8-glass;
+  background: var(--clat-gradient-glass);
+  box-shadow: var(--clat-shadow-xl), var(--clat-glow-primary);
+  transform: translateY(0);
+  transition: all var(--ui8-duration-normal) var(--ui8-ease-in-out);
+}
+
+.card-ui8-premium:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--clat-shadow-premium), var(--clat-glow-primary);
+}
+
+/* UI8 BUTTONS - Premium Interactive Elements */
+.btn-ui8-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ui8-space-md) var(--ui8-space-xl);
+  background: var(--clat-gradient-primary);
+  color: var(--clat-text-inverse);
+  border: none;
+  border-radius: var(--ui8-radius-xl);
+  font-weight: 600;
+  font-size: var(--ui8-font-base);
+  cursor: pointer;
+  transition: all var(--ui8-duration-normal) var(--ui8-ease-in-out);
+  box-shadow: var(--clat-shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ui8-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width var(--ui8-duration-normal), height var(--ui8-duration-normal);
+}
+
+.btn-ui8-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-ui8-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--clat-shadow-xl), var(--clat-glow-primary);
+}
+
+.btn-ui8-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ui8-secondary {
+  @apply btn-ui8-primary;
+  background: transparent;
+  color: var(--clat-primary);
+  border: 2px solid var(--clat-primary);
+  box-shadow: none;
+}
+
+.btn-ui8-secondary:hover {
+  background: var(--clat-primary);
+  color: var(--clat-text-inverse);
+  box-shadow: var(--clat-glow-primary);
+}
+
+/* UI8 INPUTS - Premium Form Elements */
+.input-ui8 {
+  width: 100%;
+  padding: var(--ui8-space-md) var(--ui8-space-lg);
+  background: var(--clat-glass-bg);
+  backdrop-filter: var(--clat-backdrop-blur);
+  border: 2px solid var(--clat-glass-border);
+  border-radius: var(--ui8-radius-lg);
+  color: var(--clat-text-primary);
+  font-size: var(--ui8-font-base);
+  transition: all var(--ui8-duration-normal) var(--ui8-ease-in-out);
+  outline: none;
+}
+
+.input-ui8:focus {
+  border-color: var(--clat-primary);
+  box-shadow: var(--clat-glow-primary);
+  transform: translateY(-1px);
+}
+
+.input-ui8::placeholder {
+  color: var(--clat-text-muted);
+}
+
+/* UI8 FIELD GROUPS */
+.field-group {
+  position: relative;
+  margin-bottom: var(--ui8-space-lg);
+}
+
+.field-group label {
+  display: block;
+  margin-bottom: var(--ui8-space-sm);
+  color: var(--clat-text-secondary);
+  font-weight: 500;
+  font-size: var(--ui8-font-sm);
+}
+
+/* UI8 TYPOGRAPHY - Premium Text Styles */
+.text-ui8-heading {
+  font-size: var(--ui8-font-2xl);
+  font-weight: 700;
+  line-height: 1.2;
+  background: var(--clat-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-ui8-subheading {
+  font-size: var(--ui8-font-xl);
+  font-weight: 600;
+  color: var(--clat-text-primary);
+  line-height: 1.3;
+}
+
+.text-ui8-body {
+  font-size: var(--ui8-font-base);
+  color: var(--clat-text-secondary);
+  line-height: 1.6;
+}
+
+.text-ui8-caption {
+  font-size: var(--ui8-font-sm);
+  color: var(--clat-text-muted);
+  line-height: 1.4;
+}
+
+/* UI8 BADGES - Premium Labels */
+.badge-ui8-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--ui8-space-xs) var(--ui8-space-md);
+  background: var(--clat-gradient-primary);
+  color: var(--clat-text-inverse);
+  border-radius: var(--ui8-radius-full);
+  font-size: var(--ui8-font-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-ui8-secondary {
+  @apply badge-ui8-primary;
+  background: var(--clat-glass-bg);
+  color: var(--clat-text-primary);
+  border: 1px solid var(--clat-glass-border);
+}
+
+/* UI8 TOAST NOTIFICATIONS - Premium Feedback */
+.toast-ui8-success {
+  display: flex;
+  align-items: center;
+  padding: var(--ui8-space-md) var(--ui8-space-lg);
+  background: var(--clat-gradient-success);
+  color: var(--clat-text-inverse);
+  border-radius: var(--ui8-radius-lg);
+  box-shadow: var(--clat-shadow-lg), var(--clat-glow-success);
+  backdrop-filter: var(--clat-backdrop-blur);
+}
+
+.toast-ui8-error {
+  @apply toast-ui8-success;
+  background: var(--clat-gradient-secondary);
+  box-shadow: var(--clat-shadow-lg), var(--clat-glow-secondary);
+}
+
+.toast-ui8-warning {
+  @apply toast-ui8-success;
+  background: linear-gradient(135deg, var(--clat-warning) 0%, var(--clat-accent) 100%);
+  box-shadow: var(--clat-shadow-lg), var(--clat-glow-accent);
+}
+
+/* UI8 LOADING ANIMATIONS - Premium Spinners */
+.loading-ui8 {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: currentColor;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===================================================================
+   UI8 ANIMATION SYSTEM - PREMIUM MOTION DESIGN
+   =================================================================== */
+
+/* UI8 Entrance Animations */
+@keyframes ui8-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ui8-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ui8-fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ui8-fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ui8-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ui8-bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ui8-slide-in-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* UI8 Continuous Animations */
+@keyframes ui8-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes ui8-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes ui8-glow-pulse {
+  0%, 100% {
+    box-shadow: var(--clat-glow-primary);
+  }
+  50% {
+    box-shadow: var(--clat-shadow-lg);
+  }
+}
+
+@keyframes ui8-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* UI8 Animation Classes */
+.animate-ui8-fade-in {
+  animation: ui8-fade-in var(--ui8-duration-slow) var(--ui8-ease-in-out);
+}
+
+.animate-ui8-fade-in-up {
+  animation: ui8-fade-in-up var(--ui8-duration-slow) var(--ui8-ease-in-out);
+}
+
+.animate-ui8-fade-in-left {
+  animation: ui8-fade-in-left var(--ui8-duration-slow) var(--ui8-ease-in-out);
+}
+
+.animate-ui8-fade-in-right {
+  animation: ui8-fade-in-right var(--ui8-duration-slow) var(--ui8-ease-in-out);
+}
+
+.animate-ui8-scale-in {
+  animation: ui8-scale-in var(--ui8-duration-slow) var(--ui8-ease-bounce);
+}
+
+.animate-ui8-bounce-in {
+  animation: ui8-bounce-in var(--ui8-duration-slower) var(--ui8-ease-elastic);
+}
+
+.animate-ui8-slide-in-up {
+  animation: ui8-slide-in-up var(--ui8-duration-slow) var(--ui8-ease-in-out);
+}
+
+.animate-ui8-float {
+  animation: ui8-float 3s ease-in-out infinite;
+}
+
+.animate-ui8-pulse {
+  animation: ui8-pulse 2s ease-in-out infinite;
+}
+
+.animate-ui8-glow-pulse {
+  animation: ui8-glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-ui8-gradient-shift {
+  background-size: 200% 200%;
+  animation: ui8-gradient-shift 3s ease infinite;
+}
+
+/* UI8 Hover Effects */
+.hover-ui8-lift:hover {
+  transform: translateY(-4px);
+  transition: transform var(--ui8-duration-normal) var(--ui8-ease-in-out);
+}
+
+.hover-ui8-glow:hover {
+  box-shadow: var(--clat-glow-primary);
+  transition: box-shadow var(--ui8-duration-normal) var(--ui8-ease-in-out);
+}
+
+.hover-ui8-scale:hover {
+  transform: scale(1.05);
+  transition: transform var(--ui8-duration-normal) var(--ui8-ease-in-out);
+}
+
+.hover-ui8-rotate:hover {
+  transform: rotate(5deg);
+  transition: transform var(--ui8-duration-normal) var(--ui8-ease-in-out);
+}
+
+/* ===================================================================
+   UI8 UTILITY CLASSES - PREMIUM HELPERS
+   =================================================================== */
+
+/* Glass Effects */
+.glass-ui8 {
+  background: var(--clat-glass-bg);
+  backdrop-filter: var(--clat-backdrop-blur);
+  border: 1px solid var(--clat-glass-border);
+}
+
+.glass-ui8-strong {
+  background: var(--clat-glass-bg);
+  backdrop-filter: var(--clat-backdrop-blur-strong);
+  border: 1px solid var(--clat-glass-border);
+}
+
+/* Gradient Backgrounds */
+.bg-ui8-primary {
+  background: var(--clat-gradient-primary);
+}
+
+.bg-ui8-secondary {
+  background: var(--clat-gradient-secondary);
+}
+
+.bg-ui8-success {
+  background: var(--clat-gradient-success);
+}
+
+.bg-ui8-hero {
+  background: var(--clat-gradient-hero);
+}
+
+/* Shadow Utilities */
+.shadow-ui8-sm {
+  box-shadow: var(--clat-shadow-sm);
+}
+
+.shadow-ui8-md {
+  box-shadow: var(--clat-shadow-md);
+}
+
+.shadow-ui8-lg {
+  box-shadow: var(--clat-shadow-lg);
+}
+
+.shadow-ui8-xl {
+  box-shadow: var(--clat-shadow-xl);
+}
+
+.shadow-ui8-premium {
+  box-shadow: var(--clat-shadow-premium);
+}
+
+/* Glow Effects */
+.glow-ui8-primary {
+  box-shadow: var(--clat-glow-primary);
+}
+
+.glow-ui8-secondary {
+  box-shadow: var(--clat-glow-secondary);
+}
+
+.glow-ui8-success {
+  box-shadow: var(--clat-glow-success);
+}
+
+.glow-ui8-accent {
+  box-shadow: var(--clat-glow-accent);
+}
+
+/* ===================================================================
+   UI8 RESPONSIVE DESIGN SYSTEM
+   =================================================================== */
+
+/* Mobile First Approach */
+@media (max-width: 640px) {
+  .card-ui8-glass {
+    padding: var(--ui8-space-lg);
+    border-radius: var(--ui8-radius-xl);
+  }
+  
+  .btn-ui8-primary {
+    padding: var(--ui8-space-md) var(--ui8-space-lg);
+    font-size: var(--ui8-font-sm);
+  }
+  
+  .text-ui8-heading {
+    font-size: var(--ui8-font-xl);
+  }
+  
+  .text-ui8-subheading {
+    font-size: var(--ui8-font-lg);
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .card-ui8-glass {
+    padding: var(--ui8-space-xl);
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1025px) {
+  .card-ui8-premium:hover {
+    transform: translateY(-12px) scale(1.02);
+  }
+  
+  .btn-ui8-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+  }
+}
+
+/* ===================================================================
+   UI8 CUSTOM COMPONENTS - CLAT SPECIFIC
+   =================================================================== */
+
+/* CLAT Score Progress Bar */
+.clat-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--clat-glass-bg);
+  border-radius: var(--ui8-radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.clat-progress-fill {
+  height: 100%;
+  background: var(--clat-gradient-success);
+  border-radius: var(--ui8-radius-full);
+  transition: width var(--ui8-duration-slow) var(--ui8-ease-in-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.clat-progress-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.4), 
+    transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* CLAT Achievement Badges */
+.clat-achievement {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--ui8-space-sm) var(--ui8-space-md);
+  background: var(--clat-gradient-success);
+  color: var(--clat-text-inverse);
+  border-radius: var(--ui8-radius-full);
+  font-size: var(--ui8-font-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: var(--clat-glow-success);
+  animation: ui8-glow-pulse 2s ease-in-out infinite;
+}
+
+/* CLAT Rank Display */
+.clat-rank-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--ui8-space-lg);
+  background: var(--clat-gradient-primary);
+  color: var(--clat-text-inverse);
+  border-radius: var(--ui8-radius-2xl);
+  box-shadow: var(--clat-shadow-premium), var(--clat-glow-primary);
+  text-align: center;
+}
+
+.clat-rank-number {
+  font-size: var(--ui8-font-4xl);
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: var(--ui8-space-sm);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.clat-rank-label {
+  font-size: var(--ui8-font-sm);
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* CLAT Study Streak */
+.clat-streak {
+  display: flex;
+  align-items: center;
+  padding: var(--ui8-space-md);
+  background: var(--clat-gradient-accent);
+  color: var(--clat-text-inverse);
+  border-radius: var(--ui8-radius-lg);
+  box-shadow: var(--clat-glow-accent);
+}
+
+.clat-streak-icon {
+  font-size: var(--ui8-font-2xl);
+  margin-right: var(--ui8-space-md);
+  animation: ui8-pulse 1.5s ease-in-out infinite;
+}
+
+.clat-streak-text {
+  flex: 1;
+}
+
+.clat-streak-number {
+  font-size: var(--ui8-font-xl);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.clat-streak-label {
+  font-size: var(--ui8-font-sm);
+  opacity: 0.9;
+}
+
+/* ===================================================================
+   UI8 ACCESSIBILITY ENHANCEMENTS
+   =================================================================== */
+
+/* Focus Styles */
+.btn-ui8-primary:focus,
+.btn-ui8-secondary:focus,
+.input-ui8:focus {
+  outline: 2px solid var(--clat-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+  :root {
+    --clat-glass-bg: rgba(255, 255, 255, 0.95);
+    --clat-glass-border: rgba(0, 0, 0, 0.3);
+  }
+  
+  .input-ui8 {
+    border-width: 3px;
+  }
+  
+  .btn-ui8-primary,
+  .btn-ui8-secondary {
+    border-width: 3px;
+  }
+}
+
+/* ===================================================================
+   UI8 PRINT STYLES
+   =================================================================== */
+
+@media print {
+  .card-ui8-glass,
+  .card-ui8-premium {
+    background: white !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  .btn-ui8-primary,
+  .btn-ui8-secondary {
+    background: white !important;
+    color: black !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+  
+  .animate-ui8-fade-in,
+  .animate-ui8-fade-in-up,
+  .animate-ui8-scale-in,
+  .animate-ui8-bounce-in,
+  .animate-ui8-float,
+  .animate-ui8-pulse,
+  .animate-ui8-glow-pulse {
+    animation: none !important;
+  }
+}
+
+/* ===================================================================
+   END UI8 DESIGN SYSTEM
+   =================================================================== */

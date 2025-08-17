@@ -1,7 +1,7 @@
 import { DM_Mono, Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 
 import { Footer } from '@/components/layout/footer';
 import Navbar from '@/components/layout/navbar';
@@ -61,7 +61,16 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://solo-legalight.vercel.app'),
   title: {
     default: 'SOLO by Legalight - AI-Powered CLAT Preparation Platform',
     template: '%s | SOLO by Legalight',

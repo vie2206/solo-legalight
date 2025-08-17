@@ -17,6 +17,19 @@ import {
   Scale, Book, MessageCircle
 } from 'lucide-react';
 
+// Import UI8 Design System
+import '../styles/ui8-design-system.css';
+
+// Import UI8 Nudge Animations
+import { 
+  WelcomeAnimation, 
+  StudyProgressAnimation, 
+  AIInsightAnimation, 
+  AchievementAnimation, 
+  CommunityJoinAnimation,
+  NudgeTheme 
+} from './animations/NudgeAnimations';
+
 // Import the EducatorDoubtManager component
 const EducatorDoubtManager = React.lazy(() => import('./doubt-solving/EducatorDoubtManager'));
 
@@ -749,25 +762,40 @@ const CompleteEducatorDashboard: React.FC<CompleteEducatorDashboardProps> = ({ u
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Enhanced Header */}
-      <header className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div>
-              <h1 className="text-3xl font-bold text-white">Advanced Educator Portal</h1>
-              <p className="text-indigo-100 mt-1">Welcome back, {user.name} • Comprehensive Teaching Dashboard</p>
+    <div className="min-h-screen ui8-dark-theme ui8-scrollbar">
+      {/* AI Insight Animation for Educator Portal */}
+      <div className="fixed top-4 right-4 z-10">
+        <AIInsightAnimation 
+          theme={NudgeTheme.DARK}
+          size="md"
+          autoPlay={true}
+          trigger="onMount"
+        />
+      </div>
+
+      {/* UI8 Enhanced Header */}
+      <header className="nav-ui8 shadow-none m-4 mb-0 animate-ui8-fade-in-up"
+              style={{ 
+                background: 'var(--clat-gradient-primary)',
+                boxShadow: 'var(--clat-glow-primary)' 
+              }}>
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="flex justify-between items-center">
+            <div className="animate-ui8-fade-in-left">
+              <h1 className="text-ui8-hero text-white">Advanced Educator Portal</h1>
+              <p className="text-white/80 mt-2 text-ui8-body">Welcome back, {user.name} • Comprehensive Teaching Dashboard</p>
             </div>
-            <div className="flex items-center space-x-4">
-              <div className="bg-white/20 rounded-lg px-3 py-2">
+            <div className="flex items-center space-x-4 animate-ui8-fade-in-left" style={{ animationDelay: '200ms' }}>
+              <div className="card-ui8-glass px-4 py-2 hover-ui8-scale">
                 <span className="text-white text-sm font-medium">Professional Educator</span>
               </div>
-              <button className="bg-white/20 rounded-lg p-2 text-white hover:bg-white/30 transition-colors">
+              <button className="btn-ui8-secondary p-3 hover-ui8-lift">
                 <Bell className="w-5 h-5" />
               </button>
               <button
                 onClick={onLogout}
-                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                className="btn-ui8-primary hover-ui8-lift"
+                style={{ background: 'var(--clat-gradient-english)' }}
               >
                 Logout
               </button>
@@ -776,42 +804,56 @@ const CompleteEducatorDashboard: React.FC<CompleteEducatorDashboardProps> = ({ u
         </div>
       </header>
 
-      {/* Enhanced Navigation Tabs */}
-      <div className="bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8 overflow-x-auto">
+      {/* UI8 Enhanced Navigation Tabs */}
+      <div className="nav-ui8 m-4 mt-0 animate-ui8-fade-in-up" style={{ animationDelay: '100ms' }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex space-x-2 overflow-x-auto py-2 stagger-ui8-children">
             {[
-              { id: 'overview', label: 'Overview', icon: Activity, color: 'text-blue-600' },
-              { id: 'students', label: 'Students', icon: Users, color: 'text-green-600' },
-              { id: 'assignments', label: 'Assignments', icon: FileText, color: 'text-purple-600' },
-              { id: 'doubts', label: 'Doubts', icon: MessageCircle, color: 'text-blue-600' },
-              { id: 'grading', label: 'Grading', icon: Clipboard, color: 'text-orange-600' },
-              { id: 'classes', label: 'Classes', icon: Calendar, color: 'text-red-600' },
-              { id: 'content', label: 'Content', icon: BookOpen, color: 'text-indigo-600' },
-              { id: 'analytics', label: 'Analytics', icon: BarChart3, color: 'text-pink-600' },
-              { id: 'communication', label: 'Messages', icon: MessageSquare, color: 'text-blue-600' },
-              { id: 'assessments', label: 'Assessments', icon: Target, color: 'text-green-600' },
-              { id: 'gradebook', label: 'Gradebook', icon: Star, color: 'text-yellow-600' },
-              { id: 'attendance', label: 'Attendance', icon: CheckCircle, color: 'text-purple-600' },
-              { id: 'reports', label: 'Reports', icon: PieChart, color: 'text-orange-600' },
-              { id: 'resources', label: 'Resources', icon: Database, color: 'text-red-600' },
-              { id: 'curriculum', label: 'Curriculum', icon: GraduationCap, color: 'text-indigo-600' },
-              { id: 'feedback', label: 'Feedback', icon: MessageSquare, color: 'text-pink-600' },
-              { id: 'portfolio', label: 'Portfolio', icon: Briefcase, color: 'text-blue-600' },
-              { id: 'settings', label: 'Settings', icon: Settings, color: 'text-gray-600' },
-              { id: 'help', label: 'Help', icon: HelpCircle, color: 'text-green-600' }
-            ].map((tab) => (
+              { id: 'overview', label: 'Overview', icon: Activity, color: 'var(--clat-primary)' },
+              { id: 'students', label: 'Students', icon: Users, color: 'var(--clat-success)' },
+              { id: 'assignments', label: 'Assignments', icon: FileText, color: 'var(--clat-secondary)' },
+              { id: 'doubts', label: 'Doubts', icon: MessageCircle, color: 'var(--clat-primary)' },
+              { id: 'grading', label: 'Grading', icon: Clipboard, color: 'var(--clat-warning)' },
+              { id: 'classes', label: 'Classes', icon: Calendar, color: 'var(--clat-error)' },
+              { id: 'content', label: 'Content', icon: BookOpen, color: 'var(--clat-logical)' },
+              { id: 'analytics', label: 'Analytics', icon: BarChart3, color: 'var(--clat-secondary)' },
+              { id: 'communication', label: 'Messages', icon: MessageSquare, color: 'var(--clat-primary)' },
+              { id: 'assessments', label: 'Assessments', icon: Target, color: 'var(--clat-success)' },
+              { id: 'gradebook', label: 'Gradebook', icon: Star, color: 'var(--clat-warning)' },
+              { id: 'attendance', label: 'Attendance', icon: CheckCircle, color: 'var(--clat-secondary)' },
+              { id: 'reports', label: 'Reports', icon: PieChart, color: 'var(--clat-warning)' },
+              { id: 'resources', label: 'Resources', icon: Database, color: 'var(--clat-error)' },
+              { id: 'curriculum', label: 'Curriculum', icon: GraduationCap, color: 'var(--clat-logical)' },
+              { id: 'feedback', label: 'Feedback', icon: MessageSquare, color: 'var(--clat-secondary)' },
+              { id: 'portfolio', label: 'Portfolio', icon: Briefcase, color: 'var(--clat-primary)' },
+              { id: 'settings', label: 'Settings', icon: Settings, color: 'var(--clat-text-muted)' },
+              { id: 'help', label: 'Help', icon: HelpCircle, color: 'var(--clat-success)' }
+            ].map((tab, index) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center px-1 py-4 border-b-2 font-medium text-sm transition-colors whitespace-nowrap ${
+                className={`nav-ui8-link flex items-center space-x-2 py-3 px-4 rounded-xl font-medium transition-all duration-300 hover-ui8-scale animate-ui8-fade-in-left ${
                   activeTab === tab.id
-                    ? `border-indigo-500 ${tab.color}`
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    ? 'active card-ui8-glass'
+                    : 'hover:card-ui8-glass'
                 }`}
+                style={{ 
+                  '--stagger-index': index,
+                  ...(activeTab === tab.id && {
+                    background: `linear-gradient(135deg, ${tab.color}20 0%, ${tab.color}10 100%)`,
+                    borderColor: tab.color,
+                    color: tab.color,
+                    boxShadow: `0 0 20px ${tab.color}30`
+                  })
+                }}
               >
-                <tab.icon className="w-4 h-4 mr-2" />
-                {tab.label}
+                <tab.icon className="w-4 h-4" style={{ 
+                  filter: activeTab === tab.id ? `drop-shadow(0 0 4px ${tab.color})` : 'none' 
+                }} />
+                <span>{tab.label}</span>
+                {activeTab === tab.id && index < 5 && (
+                  <StudyProgressAnimation size="sm" autoPlay={true} className="ml-1" />
+                )}
               </button>
             ))}
           </div>

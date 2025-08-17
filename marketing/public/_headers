@@ -1,0 +1,26 @@
+# Security Headers for SOLO by Legalight Marketing Site
+
+/*
+  # Content Security Policy (CSP)
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://cdn.vercel-insights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://solo-legalight-backend-production.up.railway.app https://vercel.live https://vitals.vercel-insights.com wss:; frame-ancestors 'none';
+  
+  # Prevent MIME type sniffing
+  X-Content-Type-Options: nosniff
+  
+  # Enable XSS protection
+  X-XSS-Protection: 1; mode=block
+  
+  # Prevent page from being embedded in frames (clickjacking protection)
+  X-Frame-Options: DENY
+  
+  # Strict Transport Security (HTTPS only)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  
+  # Referrer Policy
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Permissions Policy
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  
+  # Remove server info
+  X-Powered-By: SOLO by Legalight Marketing

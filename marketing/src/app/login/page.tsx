@@ -16,7 +16,7 @@ import {
   Clock,
   BarChart3,
 } from 'lucide-react';
-import SMSAuth from '@/components/auth/SMSAuth';
+import SimpleSMSAuth from '@/components/auth/SimpleSMSAuth';
 
 const features = [
   {
@@ -47,12 +47,22 @@ const stats = [
 
 export default function LoginPage() {
   const handleAuthSuccess = (token: string, user: any) => {
-    // Store the token and user data
+    // Store with frontend naming convention
+    localStorage.setItem('auth_token', token);
+    localStorage.setItem('user_data', JSON.stringify(user));
+    
+    // Also store with marketing naming for backward compatibility
     localStorage.setItem('authToken', token);
     localStorage.setItem('userData', JSON.stringify(user));
     
-    // Redirect to frontend application
-    window.location.href = 'https://solo-legalight.vercel.app';
+    // Redirect with URL parameters for immediate handoff
+    const userDataEncoded = encodeURIComponent(JSON.stringify(user));
+    const redirectUrl = `https://solo-legalight.vercel.app?token=${token}&userData=${userDataEncoded}`;
+    
+    // Add a small delay to ensure localStorage is written
+    setTimeout(() => {
+      window.location.href = redirectUrl;
+    }, 100);
   };
 
   return (
@@ -212,9 +222,8 @@ export default function LoginPage() {
 
             {/* SMS Authentication Component */}
             <div className="space-y-6">
-              <SMSAuth 
+              <SimpleSMSAuth 
                 onSuccess={handleAuthSuccess}
-                onBack={() => window.history.back()}
               />
             </div>
 

@@ -123,21 +123,45 @@ const scholarships = [
 
 export default function AdvancedPricing() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-black/10"></div>
-      <div className="absolute top-20 left-10 h-40 w-40 animate-pulse rounded-full bg-purple-500/20 blur-3xl"></div>
-      <div className="absolute top-60 right-20 h-32 w-32 animate-pulse rounded-full bg-pink-500/20 blur-2xl delay-1000"></div>
-      <div className="absolute bottom-40 left-1/3 h-36 w-36 animate-pulse rounded-full bg-blue-500/20 blur-xl delay-2000"></div>
+    <section className="relative overflow-hidden bg-ui8-hero py-24">
+      {/* UI8 Premium Background */}
+      <div 
+        className="absolute inset-0 opacity-30 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/ui8-assets/gradients/Gradient_25.webp')",
+          backgroundBlendMode: 'overlay'
+        }}
+      ></div>
+      <div className="absolute inset-0 bg-black/20"></div>
+      
+      {/* UI8 Premium Halos */}
+      <div 
+        className="absolute top-10 right-10 w-96 h-96 opacity-20 animate-ui8-float"
+        style={{
+          backgroundImage: "url('/ui8-assets/halos/ring-00001.webp')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center'
+        }}
+      ></div>
+      <div 
+        className="absolute bottom-20 left-10 w-64 h-64 opacity-15 animate-ui8-pulse"
+        style={{
+          backgroundImage: "url('/ui8-assets/halos/ring-00020.webp')",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center'
+        }}
+      ></div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="mb-20 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-md">
+          <div className="mb-6 badge-ui8-primary animate-ui8-fade-in-up">
             <Star className="h-5 w-5 text-yellow-400" />
             Transform Your CLAT Journey for ₹13.7/Day
           </div>
-          <h1 className="mb-6 text-6xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl">
+          <h1 className="mb-6 text-ui8-heading animate-ui8-scale-in text-6xl sm:text-7xl lg:text-8xl">
             <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
               Pricing That
             </span>
@@ -154,7 +178,7 @@ export default function AdvancedPricing() {
         </div>
 
         {/* Value Proposition */}
-        <div className="mb-16 rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md">
+        <div className="mb-16 card-ui8-glass animate-ui8-fade-in-up">
           <div className="text-center">
             <h2 className="mb-6 text-3xl font-bold text-white">
               💡 The ROI of Your SOLO Investment
@@ -199,9 +223,10 @@ export default function AdvancedPricing() {
           {plans.map((plan) => (
             <div
               key={plan.id}
-              className={`group relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl ${
+              className={`group relative overflow-hidden card-ui8-premium transition-all duration-300 hover-ui8-lift ${
                 plan.popular ? 'scale-105 ring-2 ring-purple-500/30' : ''
-              }`}
+              } ${plan.popular ? 'animate-ui8-bounce-in' : 'animate-ui8-fade-in-up'}`}
+              style={{animationDelay: `${plans.indexOf(plan) * 0.2}s`}}
             >
               {/* Popular Badge */}
               {plan.popular && (
@@ -260,7 +285,7 @@ export default function AdvancedPricing() {
                 {/* CTA Button */}
                 <Button
                   asChild
-                  className={`h-14 w-full bg-gradient-to-r text-lg font-semibold ${plan.gradient} shadow-lg transition-all duration-300 hover:opacity-90`}
+                  className={`btn-ui8-primary h-14 w-full bg-gradient-to-r text-lg font-semibold ${plan.gradient} hover-ui8-glow`}
                 >
                   <Link href="/signup">
                     {plan.cta}

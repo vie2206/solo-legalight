@@ -2,6 +2,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { RevolutionaryLoading, StudySessionLoading, MockTestLoading, AIAnalysisLoading } from './shared/RevolutionaryLoading';
 import '../styles/revolutionary-theme.css';
 import '../styles/revolutionary-components.css';
+import '../styles/ui8-design-system.css';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   LineChart, Line, PieChart, Pie, Cell, AreaChart, Area, RadialBarChart, RadialBar
@@ -24,6 +25,18 @@ import {
   Scale, Book, Flame, Trophy, Medal, Sparkles, Crown,
   Coffee, Timer, Pause, Play, RotateCcw, TrendingDown
 } from 'lucide-react';
+
+// Import UI8 Nudge Animations
+import { 
+  WelcomeAnimation, 
+  StudyProgressAnimation, 
+  TestCompletionAnimation, 
+  AchievementAnimation, 
+  ScoreRevealAnimation, 
+  RankImprovementAnimation, 
+  AIInsightAnimation,
+  NudgeTheme 
+} from '../components/animations/NudgeAnimations';
 
 // Lazy load the comprehensive mock test framework
 const CompleteMockTestFramework = React.lazy(() => import('./CompleteMockTestFramework'));
@@ -417,46 +430,66 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
   }
 
   return (
-    <div className="min-h-screen dark-theme">
-      {/* Revolutionary Header */}
-      <header className="glass-card border-0 shadow-none m-4 mb-0">
+    <div className="min-h-screen ui8-dark-theme ui8-scrollbar">
+      {/* Welcome Animation */}
+      <div className="fixed top-4 left-4 z-10">
+        <WelcomeAnimation 
+          theme={NudgeTheme.DARK}
+          size="sm"
+          autoPlay={true}
+          trigger="onMount"
+        />
+      </div>
+
+      {/* UI8 Enhanced Header */}
+      <header className="nav-ui8 border-0 shadow-none m-4 mb-0 animate-ui8-fade-in-up">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center glow-effect">
-                  <GraduationCap className="w-5 h-5 text-white" />
+              <div className="flex items-center space-x-3 animate-ui8-fade-in-left">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center hover-ui8-glow" 
+                     style={{ 
+                       background: 'var(--clat-gradient-primary)',
+                       boxShadow: 'var(--clat-glow-primary)' 
+                     }}>
+                  <GraduationCap className="w-6 h-6 text-white" />
                 </div>
-                <h1 className="text-xl font-bold gradient-text">SOLO Student Dashboard</h1>
+                <h1 className="text-ui8-heading text-clat-text-primary">
+                  SOLO Student Dashboard
+                </h1>
               </div>
               <div className="hidden md:flex items-center space-x-4">
-                <div className="study-streak-badge">
+                <div className="badge-ui8-success flex items-center space-x-2 px-3 py-2 hover-ui8-lift">
                   <Flame className="w-4 h-4" />
                   <span className="text-sm font-medium">{studyStreak} day streak</span>
                 </div>
-                <div className="study-time-badge">
+                <div className="badge-ui8-primary flex items-center space-x-2 px-3 py-2 hover-ui8-lift">
                   <Clock className="w-4 h-4" />
                   <span className="text-sm font-medium">{formatTime(studyTimeToday)} today</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center space-x-4">
-              <button className="btn-revolutionary btn-glass p-2">
+            <div className="flex items-center space-x-3 animate-ui8-fade-in-left" style={{ animationDelay: '200ms' }}>
+              <button className="btn-ui8-secondary p-2 hover-ui8-lift">
                 <Bell className="w-5 h-5" />
               </button>
-              <button className="btn-revolutionary btn-glass p-2">
+              <button className="btn-ui8-secondary p-2 hover-ui8-lift">
                 <Settings className="w-5 h-5" />
               </button>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center text-white font-bold text-sm">
+              <div className="flex items-center space-x-3 card-ui8-glass px-3 py-2 hover-ui8-scale">
+                <div className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm hover-ui8-glow"
+                     style={{ 
+                       background: 'var(--clat-gradient-secondary)',
+                       boxShadow: 'var(--clat-glow-primary)' 
+                     }}>
                   {user.name?.split(' ').map((n: string) => n[0]).join('') || 'ST'}
                 </div>
-                <span className="text-sm font-medium text-gray-700">{user.name}</span>
+                <span className="text-sm font-medium text-clat-text-primary">{user.name}</span>
               </div>
               <button
                 onClick={onLogout}
-                className="btn-revolutionary btn-primary"
+                className="btn-ui8-primary hover-ui8-lift"
               >
                 Logout
               </button>
@@ -465,32 +498,43 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
         </div>
       </header>
 
-      {/* Navigation Tabs */}
-      <nav className="bg-white border-b border-gray-200">
+      {/* UI8 Enhanced Navigation Tabs */}
+      <nav className="nav-ui8 m-4 mt-0 animate-ui8-fade-in-up" style={{ animationDelay: '100ms' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8 overflow-x-auto">
+          <div className="flex space-x-2 overflow-x-auto py-2 stagger-ui8-children">
             {[
-              { id: 'overview', label: 'Overview', icon: BarChart3 },
-              { id: 'subjects', label: 'Subjects', icon: BookOpen },
-              { id: 'mock_tests', label: 'Mock Tests', icon: FileText },
-              { id: 'doubt_solving', label: 'Ask Doubts', icon: MessageSquare },
-              { id: 'study_plan', label: 'Study Plan', icon: Calendar },
-              { id: 'achievements', label: 'Achievements', icon: Award },
-              { id: 'analytics', label: 'Analytics', icon: LineChartIcon },
-              { id: 'ai_dashboard', label: 'AI Dashboard', icon: Zap },
-              { id: 'practice', label: 'Practice', icon: Brain },
-              { id: 'progress', label: 'Progress', icon: Target }
-            ].map((tab) => (
+              { id: 'overview', label: 'Overview', icon: BarChart3, color: 'var(--clat-primary)' },
+              { id: 'subjects', label: 'Subjects', icon: BookOpen, color: 'var(--clat-legal)' },
+              { id: 'mock_tests', label: 'Mock Tests', icon: FileText, color: 'var(--clat-english)' },
+              { id: 'doubt_solving', label: 'Ask Doubts', icon: MessageSquare, color: 'var(--clat-secondary)' },
+              { id: 'study_plan', label: 'Study Plan', icon: Calendar, color: 'var(--clat-success)' },
+              { id: 'achievements', label: 'Achievements', icon: Award, color: 'var(--clat-warning)' },
+              { id: 'analytics', label: 'Analytics', icon: LineChartIcon, color: 'var(--clat-logical)' },
+              { id: 'ai_dashboard', label: 'AI Dashboard', icon: Zap, color: 'var(--clat-secondary)' },
+              { id: 'practice', label: 'Practice', icon: Brain, color: 'var(--clat-gk)' },
+              { id: 'progress', label: 'Progress', icon: Target, color: 'var(--clat-math)' }
+            ].map((tab, index) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${
+                className={`nav-ui8-link flex items-center space-x-2 py-3 px-4 rounded-xl font-medium text-sm whitespace-nowrap transition-all duration-300 hover-ui8-scale animate-ui8-fade-in-left ${
                   activeTab === tab.id
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    ? 'active card-ui8-glass'
+                    : 'hover:card-ui8-glass'
                 }`}
+                style={{ 
+                  '--stagger-index': index,
+                  ...(activeTab === tab.id && {
+                    background: `linear-gradient(135deg, ${tab.color}20 0%, ${tab.color}10 100%)`,
+                    borderColor: tab.color,
+                    color: tab.color,
+                    boxShadow: `0 0 20px ${tab.color}30`
+                  })
+                }}
               >
-                <tab.icon className="w-4 h-4" />
+                <tab.icon className="w-4 h-4" style={{ 
+                  filter: activeTab === tab.id ? `drop-shadow(0 0 4px ${tab.color})` : 'none' 
+                }} />
                 <span>{tab.label}</span>
               </button>
             ))}
@@ -500,80 +544,109 @@ const CompleteStudentDashboard: React.FC<CompleteStudentDashboardProps> = ({ use
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        {/* Overview Tab */}
+        {/* Overview Tab - UI8 Enhanced */}
         {activeTab === 'overview' && (
-          <div className="space-y-6">
-            {/* Quick Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="space-y-8 animate-ui8-fade-in-up">
+            {/* AI Insight Animation */}
+            <div className="flex justify-center mb-6">
+              <AIInsightAnimation 
+                theme={NudgeTheme.DARK}
+                size="lg"
+                autoPlay={true}
+                trigger="onIntersect"
+              />
+            </div>
+
+            {/* UI8 Enhanced Quick Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-ui8-children">
+              <div className="card-ui8-glass hover-ui8-lift animate-ui8-scale-in" style={{'--stagger-index': 0}}>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-2xl font-bold text-gray-900">{studyTimeToday}m</p>
-                    <p className="text-sm text-gray-600">Study Time Today</p>
+                    <p className="text-ui8-display text-clat-text-primary">{studyTimeToday}m</p>
+                    <p className="text-ui8-caption text-clat-text-secondary">Study Time Today</p>
                   </div>
-                  <div className="p-3 bg-blue-100 rounded-lg">
-                    <Clock className="w-6 h-6 text-blue-600" />
+                  <div className="p-3 rounded-xl hover-ui8-glow" 
+                       style={{ 
+                         background: 'var(--clat-gradient-primary)',
+                         boxShadow: 'var(--clat-glow-primary)' 
+                       }}>
+                    <Clock className="w-6 h-6 text-white" />
                   </div>
                 </div>
                 <div className="mt-4">
-                  <div className="flex items-center justify-between text-xs text-gray-500">
+                  <div className="flex items-center justify-between text-xs text-clat-text-muted">
                     <span>Goal: {dailyGoal}m</span>
-                    <span>{Math.round((studyTimeToday / dailyGoal) * 100)}%</span>
+                    <span className="badge-ui8-primary px-2 py-1">{Math.round((studyTimeToday / dailyGoal) * 100)}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
+                  <div className="progress-ui8 mt-2">
                     <div 
-                      className="bg-blue-600 h-2 rounded-full" 
+                      className="progress-ui8-fill" 
                       style={{ width: `${Math.min((studyTimeToday / dailyGoal) * 100, 100)}%` }}
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-sm p-6">
+              <div className="card-ui8-glass hover-ui8-lift animate-ui8-scale-in" style={{'--stagger-index': 1}}>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-2xl font-bold text-gray-900">{studyStreak}</p>
-                    <p className="text-sm text-gray-600">Day Streak</p>
+                    <p className="text-ui8-display text-clat-text-primary">{studyStreak}</p>
+                    <p className="text-ui8-caption text-clat-text-secondary">Day Streak</p>
                   </div>
-                  <div className="p-3 bg-orange-100 rounded-lg">
-                    <Flame className="w-6 h-6 text-orange-600" />
+                  <div className="p-3 rounded-xl hover-ui8-glow" 
+                       style={{ 
+                         background: 'var(--clat-gradient-success)',
+                         boxShadow: 'var(--clat-glow-success)' 
+                       }}>
+                    <Flame className="w-6 h-6 text-white" />
                   </div>
                 </div>
                 <div className="mt-4 flex items-center">
-                  <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-                  <span className="text-sm text-green-600">Keep it going!</span>
+                  <TrendingUp className="w-4 h-4 text-clat-success mr-2" />
+                  <span className="text-sm text-clat-success font-medium">Keep it going!</span>
+                  <StudyProgressAnimation size="sm" autoPlay={true} className="ml-2" />
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-sm p-6">
+              <div className="card-ui8-glass hover-ui8-lift animate-ui8-scale-in" style={{'--stagger-index': 2}}>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-2xl font-bold text-gray-900">78.5%</p>
-                    <p className="text-sm text-gray-600">Average Score</p>
+                    <p className="text-ui8-display text-clat-text-primary">78.5%</p>
+                    <p className="text-ui8-caption text-clat-text-secondary">Average Score</p>
                   </div>
-                  <div className="p-3 bg-green-100 rounded-lg">
-                    <Target className="w-6 h-6 text-green-600" />
+                  <div className="p-3 rounded-xl hover-ui8-glow" 
+                       style={{ 
+                         background: 'var(--clat-gradient-legal)',
+                         boxShadow: 'var(--clat-glow-success)' 
+                       }}>
+                    <Target className="w-6 h-6 text-white" />
                   </div>
                 </div>
                 <div className="mt-4 flex items-center">
-                  <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-                  <span className="text-sm text-green-600">+3.2% from last week</span>
+                  <TrendingUp className="w-4 h-4 text-clat-success mr-2" />
+                  <span className="text-sm text-clat-success font-medium">+3.2% from last week</span>
+                  <ScoreRevealAnimation size="sm" autoPlay={true} className="ml-2" />
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-sm p-6">
+              <div className="card-ui8-glass hover-ui8-lift animate-ui8-scale-in" style={{'--stagger-index': 3}}>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-2xl font-bold text-gray-900">245</p>
-                    <p className="text-sm text-gray-600">Current Rank</p>
+                    <p className="text-ui8-display text-clat-text-primary">245</p>
+                    <p className="text-ui8-caption text-clat-text-secondary">Current Rank</p>
                   </div>
-                  <div className="p-3 bg-purple-100 rounded-lg">
-                    <Trophy className="w-6 h-6 text-purple-600" />
+                  <div className="p-3 rounded-xl hover-ui8-glow" 
+                       style={{ 
+                         background: 'var(--clat-gradient-secondary)',
+                         boxShadow: 'var(--clat-glow-primary)' 
+                       }}>
+                    <Trophy className="w-6 h-6 text-white" />
                   </div>
                 </div>
                 <div className="mt-4 flex items-center">
-                  <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-                  <span className="text-sm text-green-600">↑12 from last test</span>
+                  <TrendingUp className="w-4 h-4 text-clat-success mr-2" />
+                  <span className="text-sm text-clat-success font-medium">↑12 from last test</span>
+                  <RankImprovementAnimation size="sm" autoPlay={true} className="ml-2" />
                 </div>
               </div>
             </div>

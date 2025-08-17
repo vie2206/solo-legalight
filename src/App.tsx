@@ -3,12 +3,34 @@ import SMSAuth from './components/SMSAuth';
 import { User } from './types';
 import { SubscriptionTier } from './types/subscription';
 import { RevolutionaryLoading } from './components/shared/RevolutionaryLoading';
+import ErrorBoundary from './components/ErrorBoundary';
+import { showSuccess, showError, showWarning } from './utils/notifications';
+import { validateEmail, validatePassword, sanitizeString, loginRateLimiter } from './utils/validation';
+import { secureStorage, validateJWTStructure, isTokenExpired } from './utils/secureStorage';
+import { performanceMonitor, debounce } from './utils/performance';
 import './styles/revolutionary-theme.css';
 import './styles/revolutionary-components.css';
+import './styles/mobile-responsive.css';
 
-// Lazy load dashboards for better bundle splitting
-const AdminCMS = lazy(() => import('./components/AdminCMS'));
-const CompleteAdminDashboard = lazy(() => import('./components/CompleteAdminDashboard'));
+// Lazy load dashboards for better bundle splitting with performance tracking
+const AdminCMS = lazy(() => {
+  performanceMonitor.mark('admin-cms-load-start');
+  return import('./components/AdminCMS').then(module => {
+    performanceMonitor.mark('admin-cms-load-end');
+    performanceMonitor.measure('admin-cms-load', 'admin-cms-load-start', 'admin-cms-load-end');
+    return module;
+  });
+});
+
+const CompleteAdminDashboard = lazy(() => {
+  performanceMonitor.mark('admin-dashboard-load-start');
+  return import('./components/CompleteAdminDashboard').then(module => {
+    performanceMonitor.mark('admin-dashboard-load-end');
+    performanceMonitor.measure('admin-dashboard-load', 'admin-dashboard-load-start', 'admin-dashboard-load-end');
+    return module;
+  });
+});
+
 const SoloEducatorDashboard = lazy(() => import('./components/SoloEducatorDashboard'));
 const SoloParentDashboard = lazy(() => import('./components/SoloParentDashboard'));
 const SoloOperationManagerDashboard = lazy(() => import('./components/SoloOperationManagerDashboard'));
@@ -57,6 +79,11 @@ function App() {
   const [currentView, setCurrentView] = useState<'landing' | 'auth' | 'dashboard' | 'admin-cms' | 'flashcards' | 'subscription' | 'screenshots' | 'vocabulary' | 'reading-mastery' | 'ai-dashboard' | 'modern-ui' | 'huly' | 'testing'>('dashboard');
   const [loginForm, setLoginForm] = useState({ email: '', password: '', role: 'student' });
   const [authMode, setAuthMode] = useState<'sms' | 'demo' | 'email' | 'mocktest' | 'otp'>('otp');
+  
+  // Debounced form update for better performance
+  const debouncedFormUpdate = debounce((updates: Partial<typeof loginForm>) => {
+    setLoginForm(prev => ({ ...prev, ...updates }));
+  }, 150);
 
   const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
@@ -75,27 +102,101 @@ function App() {
     }
   }, []);
 
-  // Check for existing auth on mount
+  // Check for existing auth on mount and handle marketing redirects
   useEffect(() => {
+    performanceMonitor.mark('auth-check-start');
+    
+    // Handle marketing website redirects with URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const marketingToken = urlParams.get('token');
+    const marketingUserData = urlParams.get('userData');
+    
+    if (marketingToken && marketingUserData) {
+      try {
+        // Validate token structure before storing
+        if (!validateJWTStructure(marketingToken)) {
+          console.error('Invalid token structure from marketing redirect');
+          return;
+        }
+        
+        // Check if token is expired
+        if (isTokenExpired(marketingToken)) {
+          console.error('Expired token from marketing redirect');
+          showError('Session Expired', 'Please log in again');
+          return;
+        }
+        
+        // Store with secure storage (expires in 24 hours)
+        secureStorage.setItem('auth_token', marketingToken, 24 * 60);
+        secureStorage.setItem('user_data', marketingUserData, 24 * 60);
+        
+        // Also store in regular localStorage for backward compatibility
+        localStorage.setItem('auth_token', marketingToken);
+        localStorage.setItem('user_data', marketingUserData);
+        
+        setToken(marketingToken);
+        setUser(JSON.parse(decodeURIComponent(marketingUserData)));
+        
+        // Clear URL parameters for security
+        window.history.replaceState({}, document.title, window.location.pathname);
+        setCurrentView('dashboard');
+        setLoading(false);
+        return;
+      } catch (error) {
+        console.error('Error processing marketing redirect:', error);
+        showError('Authentication Error', 'Failed to process login. Please try again.');
+      }
+    }
+    
+    // Check for marketing naming convention and migrate
+    const marketingStoredToken = localStorage.getItem('authToken');
+    const marketingStoredUser = localStorage.getItem('userData');
+    
+    if (marketingStoredToken && marketingStoredUser && !localStorage.getItem('auth_token')) {
+      try {
+        // Migrate from marketing naming to frontend naming
+        localStorage.setItem('auth_token', marketingStoredToken);
+        localStorage.setItem('user_data', marketingStoredUser);
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('userData');
+        setToken(marketingStoredToken);
+        setUser(JSON.parse(marketingStoredUser));
+        setCurrentView('dashboard');
+        setLoading(false);
+        return;
+      } catch (error) {
+        console.error('Error migrating marketing tokens:', error);
+      }
+    }
+    
+    // Check for existing frontend auth
     const savedToken = localStorage.getItem('auth_token');
     const savedUser = localStorage.getItem('user_data');
     
     if (savedToken && savedUser) {
-      setToken(savedToken);
-      setUser(JSON.parse(savedUser));
+      try {
+        setToken(savedToken);
+        setUser(JSON.parse(savedUser));
+        setCurrentView('dashboard');
+      } catch (error) {
+        console.error('Error parsing saved user data:', error);
+        localStorage.removeItem('auth_token');
+        localStorage.removeItem('user_data');
+      }
     }
     
     // Always set loading to false immediately for demo mode
     setLoading(false);
     
-    // Ensure we show landing page initially
-    if (!savedToken) {
+    // Ensure we show landing page initially if no auth
+    if (!savedToken && !marketingStoredToken && !marketingToken) {
       setCurrentView('landing');
     }
   }, []);
 
   // Demo login function (offline mock)
   const handleDemoLogin = async (role: string) => {
+    setLoading(true);
     try {
       // Create mock user data based on role
       const mockUsers = {
@@ -148,7 +249,7 @@ function App() {
 
       const userData = mockUsers[role as keyof typeof mockUsers];
       if (!userData) {
-        alert('Invalid role selected');
+        showError('Invalid role selected', 'Please select a valid user role');
         return;
       }
 
@@ -163,58 +264,128 @@ function App() {
       localStorage.setItem('user_data', JSON.stringify(userData));
       
       console.log(`Demo login successful for ${role}:`, userData);
+      showSuccess('Demo Login Successful!', `Welcome ${userData.name} (${role})`);
     } catch (error) {
       console.error('Demo login error:', error);
-      alert('Demo login failed');
+      showError('Demo Login Failed', 'Please try again or contact support');
+    } finally {
+      setLoading(false);
     }
   };
 
   // Regular login function
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Sanitize inputs
+    const email = sanitizeString(loginForm.email);
+    const password = loginForm.password; // Don't sanitize password as it may contain special chars
+    
+    // Validate inputs
+    const emailValidation = validateEmail(email);
+    const passwordValidation = validatePassword(password);
+    
+    if (!emailValidation.isValid) {
+      showError('Invalid Email', emailValidation.errors[0]);
+      return;
+    }
+    
+    if (!passwordValidation.isValid) {
+      showError('Invalid Password', passwordValidation.errors[0]);
+      return;
+    }
+    
+    // Check rate limiting
+    if (!loginRateLimiter.canAttempt(email)) {
+      const waitTime = Math.ceil(loginRateLimiter.getTimeUntilNextAttempt(email) / 1000 / 60);
+      showWarning('Too Many Attempts', `Please wait ${waitTime} minutes before trying again`);
+      return;
+    }
+    
+    setLoading(true);
     try {
       const response = await fetch(`${API_BASE}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: loginForm.email,
-          password: loginForm.password
+          email: email,
+          password: password
         })
       });
 
       const data = await response.json();
       
       if (data.token && data.user) {
-        setToken(data.token);
-        setUser(data.user);
+        // Validate token before storing
+        if (!validateJWTStructure(data.token)) {
+          showError('Invalid Token', 'Received invalid authentication token');
+          return;
+        }
+        
+        showSuccess('Login Successful!', `Welcome back, ${data.user.name}`);
+        
+        // Store with secure storage (expires in 24 hours)
+        secureStorage.setItem('auth_token', data.token, 24 * 60);
+        secureStorage.setItem('user_data', JSON.stringify(data.user), 24 * 60);
+        
+        // Also store in regular localStorage for backward compatibility
         localStorage.setItem('auth_token', data.token);
         localStorage.setItem('user_data', JSON.stringify(data.user));
+        
+        setToken(data.token);
+        setUser(data.user);
       } else {
-        alert(data.error || 'Login failed');
+        showError('Login Failed', data.error || 'Please check your credentials');
       }
     } catch (error) {
       console.error('Login error:', error);
-      alert('Login failed');
+      showError('Connection Error', 'Unable to connect to server. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   // SMS Authentication success handler
   const handleSMSSuccess = (newToken: string, newUser: User) => {
-    setToken(newToken);
-    setUser(newUser);
+    // Validate token before storing
+    if (!validateJWTStructure(newToken)) {
+      showError('Invalid Token', 'Received invalid authentication token');
+      return;
+    }
+    
+    showSuccess(`Welcome ${newUser.name}!`, `Successfully logged in as ${newUser.role}`);
+    
+    // Store with secure storage (expires in 24 hours)
+    secureStorage.setItem('auth_token', newToken, 24 * 60);
+    secureStorage.setItem('user_data', JSON.stringify(newUser), 24 * 60);
+    
+    // Also store in regular localStorage for backward compatibility
     localStorage.setItem('auth_token', newToken);
     localStorage.setItem('user_data', JSON.stringify(newUser));
+    
+    setToken(newToken);
+    setUser(newUser);
     setAuthMode('sms');
   };
 
   // Logout function
   const handleLogout = () => {
+    // Clear secure storage
+    secureStorage.removeItem('auth_token');
+    secureStorage.removeItem('user_data');
+    
+    // Clear regular localStorage for backward compatibility
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('user_data');
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userData');
+    
     setUser(null);
     setToken(null);
     setCurrentView('dashboard');
-    localStorage.removeItem('auth_token');
-    localStorage.removeItem('user_data');
     setAuthMode('sms'); // Reset to SMS auth
+    
+    showSuccess('Logged Out', 'You have been securely logged out');
   };
 
   // Loading screen
@@ -243,39 +414,15 @@ function App() {
     // Show SMS Authentication by default
     if (authMode === 'sms') {
       return (
-        <div>
-          <header style={{ 
-            padding: '20px', 
-            textAlign: 'center',
-            background: '#0000ff',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
-          }}>
-            <h1 style={{ 
-              fontSize: '3rem', 
-              marginBottom: '10px',
-              color: 'white',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-              fontFamily: 'Fredoka, sans-serif'
-            }}>
+        <div className="mobile-viewport-fix prevent-horizontal-scroll">
+          <header className="responsive-header">
+            <h1 className="responsive-title">
               SOLO by Legalight
             </h1>
-            <p style={{ 
-              fontSize: '1.2rem', 
-              opacity: 0.9,
-              color: 'white',
-              marginBottom: '10px',
-              fontFamily: 'Plus Jakarta Sans, sans-serif',
-              fontWeight: '600'
-            }}>
+            <p className="responsive-subtitle">
               we can do hard things
             </p>
-            <p style={{ 
-              fontSize: '1rem', 
-              opacity: 0.8,
-              color: 'white',
-              marginBottom: '10px',
-              fontFamily: 'Plus Jakarta Sans, sans-serif'
-            }}>
+            <p className="responsive-description">
               AI-Powered Legal Education Platform
             </p>
           </header>
@@ -290,61 +437,37 @@ function App() {
 
     // Demo/Email login fallback
     return (
-      <div className="min-h-screen bg-gray-50">
-        <header style={{ 
-          padding: '20px', 
-          textAlign: 'center',
-          background: '#0000ff',
-          boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
-        }}>
-          <h1 style={{ 
-            fontSize: '3rem', 
-            marginBottom: '10px',
-            color: 'white',
-            textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-            fontFamily: 'Fredoka, sans-serif'
-          }}>
+      <div className="mobile-viewport-fix bg-gray-50 prevent-horizontal-scroll">
+        <header className="responsive-header">
+          <h1 className="responsive-title">
             SOLO by Legalight
           </h1>
-          <p style={{ 
-            fontSize: '1.2rem', 
-            opacity: 0.9,
-            color: 'white',
-            marginBottom: '10px',
-            fontFamily: 'Plus Jakarta Sans, sans-serif',
-            fontWeight: '600'
-          }}>
+          <p className="responsive-subtitle">
             we can do hard things
           </p>
-          <p style={{ 
-            fontSize: '1rem', 
-            opacity: 0.8,
-            color: 'white',
-            marginBottom: '30px',
-            fontFamily: 'Plus Jakarta Sans, sans-serif'
-          }}>
+          <p className="responsive-description" style={{ marginBottom: '1.5rem' }}>
             AI-Powered Legal Education Platform
           </p>
         </header>
 
-        <div className="flex items-center justify-center min-h-[calc(100vh-200px)] p-6">
-          <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
-            <h2 className="text-2xl font-bold text-center text-gray-900 mb-6">
+        <div className="flex items-center justify-center min-h-[calc(100vh-200px)] safe-area-insets">
+          <div className="responsive-login-card">
+            <h2 className="responsive-text-2xl font-bold text-center text-gray-900 mb-6">
               Demo & Testing
             </h2>
 
             {/* Switch to SMS Auth */}
-            <div className="mb-6">
+            <div className="mb-6 space-y-3">
               <button
                 onClick={() => setAuthMode('sms')}
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg font-medium transition-colors mb-3"
+                className="responsive-button bg-green-600 hover:bg-green-700 text-white"
               >
                 📱 Login with SMS (Recommended)
               </button>
               
               <button
                 onClick={() => setAuthMode('mocktest')}
-                className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 px-4 rounded-lg font-medium transition-colors"
+                className="responsive-button bg-purple-600 hover:bg-purple-700 text-white"
               >
                 📊 View Mock Test Dashboard (Direct)
               </button>
@@ -361,8 +484,8 @@ function App() {
 
             {/* Demo Login Options */}
             <div className="space-y-3 mb-6">
-              <h3 className="text-lg font-semibold text-gray-700 text-center">Quick Demo Login</h3>
-              <div className="grid grid-cols-1 gap-2">
+              <h3 className="responsive-text-lg font-semibold text-gray-700 text-center">Quick Demo Login</h3>
+              <div className="responsive-demo-grid">
                 {[
                   { role: 'student', label: '👨‍🎓 Student Demo', color: 'bg-blue-600 hover:bg-blue-700' },
                   { role: 'admin', label: '⚙️ Admin Demo', color: 'bg-red-600 hover:bg-red-700' },
@@ -373,9 +496,17 @@ function App() {
                   <button
                     key={role}
                     onClick={() => handleDemoLogin(role)}
-                    className={`w-full py-2 px-4 rounded-md text-white font-medium transition-colors ${color}`}
+                    disabled={loading}
+                    className={`responsive-button text-white ${color} disabled:opacity-50 disabled:cursor-not-allowed`}
                   >
-                    {label}
+                    {loading ? (
+                      <div className="flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                        Loading...
+                      </div>
+                    ) : (
+                      label
+                    )}
                   </button>
                 ))}
               </div>
@@ -391,9 +522,9 @@ function App() {
             </div>
 
             {/* Regular Login Form */}
-            <form onSubmit={handleLogin} className="mt-6 space-y-4">
+            <form onSubmit={handleLogin} className="responsive-form mt-6">
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="block responsive-text-sm font-medium text-gray-700 mb-2">
                   Email
                 </label>
                 <input
@@ -401,14 +532,14 @@ function App() {
                   type="email"
                   value={loginForm.email}
                   onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="responsive-input border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Enter your email"
                   required
                 />
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="password" className="block responsive-text-sm font-medium text-gray-700 mb-2">
                   Password
                 </label>
                 <input
@@ -416,7 +547,7 @@ function App() {
                   type="password"
                   value={loginForm.password}
                   onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="responsive-input border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Enter your password"
                   required
                 />
@@ -424,9 +555,17 @@ function App() {
 
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                disabled={loading}
+                className="responsive-button bg-blue-600 hover:bg-blue-700 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed mt-4"
               >
-                Sign In
+                {loading ? (
+                  <div className="flex items-center">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Signing In...
+                  </div>
+                ) : (
+                  'Sign In'
+                )}
               </button>
             </form>
           </div>
@@ -440,15 +579,16 @@ function App() {
   
   // Main application with role-based routing
   return (
-    <div className="App dark-theme">
-      
-      {currentView === 'landing' && (
-        <Suspense fallback={<AppLoader />}>
-          <AppleStyleLanding 
-            onGetStarted={() => setCurrentView('auth')}
-          />
-        </Suspense>
-      )}
+    <ErrorBoundary>
+      <div className="App dark-theme">
+        
+        {currentView === 'landing' && (
+          <Suspense fallback={<AppLoader />}>
+            <AppleStyleLanding 
+              onGetStarted={() => setCurrentView('auth')}
+            />
+          </Suspense>
+        )}
 
       {currentView === 'auth' && (
         <Suspense fallback={<AppLoader />}>
@@ -598,7 +738,8 @@ function App() {
           <RevolutionarySystemTests />
         </Suspense>
       )}
-    </div>
+      </div>
+    </ErrorBoundary>
   );
 }
 

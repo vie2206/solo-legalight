@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { registerSW, sendPerformanceMetrics } from './utils/serviceWorker';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,7 +14,16 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Register service worker for performance and offline support
+registerSW();
+
+// Enhanced performance monitoring with Web Vitals
+reportWebVitals((metric) => {
+  console.log('Web Vital:', metric);
+  
+  // Send to service worker for potential analytics
+  sendPerformanceMetrics(metric);
+  
+  // You can also send to your analytics service here
+  // analytics.track('Web Vital', metric);
+});

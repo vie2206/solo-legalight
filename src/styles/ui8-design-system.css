@@ -1,0 +1,535 @@
+/* ========================================
+   UI8 DESIGN SYSTEM - CLAT PLATFORM
+   Revolutionary Visual Enhancement System
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* ===== DESIGN TOKENS ===== */
+:root {
+  /* === FOUNDATION COLORS (UI8 Enhanced) === */
+  --clat-bg-primary: #0A0B0F;        /* Deep focus background */
+  --clat-bg-secondary: #16182D;       /* Elevated surfaces */
+  --clat-bg-tertiary: #1A1B1F;       /* Cards and components */
+  --clat-bg-quaternary: #252831;     /* Input fields, modals */
+  
+  /* === TEXT SYSTEM === */
+  --clat-text-primary: #FFFFFF;       /* Primary content */
+  --clat-text-secondary: #94A3B8;     /* Supporting information */
+  --clat-text-muted: #64748B;         /* Subtle details */
+  --clat-text-disabled: #475569;      /* Disabled states */
+  
+  /* === CLAT BRAND COLORS (Educational Psychology) === */
+  --clat-primary: #3B82F6;            /* Trust and learning */
+  --clat-primary-light: #60A5FA;      /* Hover states */
+  --clat-primary-dark: #2563EB;       /* Active states */
+  
+  --clat-secondary: #8B5CF6;          /* AI and innovation */
+  --clat-secondary-light: #A78BFA;    /* Hover states */
+  --clat-secondary-dark: #7C3AED;     /* Active states */
+  
+  /* === SEMANTIC COLORS === */
+  --clat-success: #10B981;            /* Correct answers, achievements */
+  --clat-success-light: #34D399;      /* Success highlights */
+  --clat-success-dark: #059669;       /* Success emphasis */
+  
+  --clat-warning: #F59E0B;            /* Important notices */
+  --clat-warning-light: #FBBF24;      /* Warning highlights */
+  --clat-warning-dark: #D97706;       /* Warning emphasis */
+  
+  --clat-error: #EF4444;              /* Wrong answers, errors */
+  --clat-error-light: #F87171;        /* Error highlights */
+  --clat-error-dark: #DC2626;         /* Error emphasis */
+  
+  /* === SUBJECT-SPECIFIC COLORS === */
+  --clat-legal: #059669;              /* Legal Reasoning */
+  --clat-english: #DC2626;            /* English Language */
+  --clat-logical: #7C3AED;            /* Logical Reasoning */
+  --clat-gk: #EA580C;                 /* General Knowledge */
+  --clat-math: #2563EB;               /* Mathematics */
+  
+  /* === UI8 GRADIENT SYSTEM === */
+  --clat-gradient-primary: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+  --clat-gradient-success: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  --clat-gradient-ai: linear-gradient(135deg, #00E5FF 0%, #8B5CF6 100%);
+  --clat-gradient-legal: linear-gradient(135deg, #059669 0%, #047857 100%);
+  --clat-gradient-english: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  --clat-gradient-hero: linear-gradient(135deg, #0A0B0F 0%, #16182D 50%, #1A1B1F 100%);
+  
+  /* === GLASSMORPHISM SYSTEM (UI8 Premium) === */
+  --clat-glass-bg: rgba(255, 255, 255, 0.05);
+  --clat-glass-border: rgba(255, 255, 255, 0.1);
+  --clat-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --clat-backdrop-blur: blur(16px);
+  
+  /* === GLOW EFFECTS (UI8 Premium) === */
+  --clat-glow-primary: 0 0 20px rgba(59, 130, 246, 0.3);
+  --clat-glow-success: 0 0 20px rgba(16, 185, 129, 0.3);
+  --clat-glow-warning: 0 0 20px rgba(245, 158, 11, 0.3);
+  --clat-glow-error: 0 0 20px rgba(239, 68, 68, 0.3);
+  --clat-glow-ai: 0 0 20px rgba(0, 229, 255, 0.3);
+  
+  /* === SPACING SYSTEM === */
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  
+  /* === ANIMATION SYSTEM === */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+}
+
+/* ===== UI8 COMPONENT ENHANCEMENTS ===== */
+
+/* Enhanced Buttons (UI8 Style) */
+.btn-ui8-primary {
+  background: var(--clat-gradient-primary);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  box-shadow: var(--clat-glow-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ui8-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+}
+
+.btn-ui8-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ui8-secondary {
+  background: var(--clat-glass-bg);
+  color: var(--clat-text-primary);
+  border: 1px solid var(--clat-glass-border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  backdrop-filter: var(--clat-backdrop-blur);
+}
+
+.btn-ui8-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--clat-primary);
+  transform: translateY(-1px);
+}
+
+/* UI8 Glass Cards */
+.card-ui8-glass {
+  background: var(--clat-glass-bg);
+  backdrop-filter: var(--clat-backdrop-blur);
+  border: 1px solid var(--clat-glass-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--clat-glass-shadow);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.card-ui8-glass:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: var(--clat-primary);
+}
+
+/* Subject Cards (UI8 Enhanced) */
+.card-ui8-legal {
+  background: linear-gradient(135deg, var(--clat-legal) 0%, rgba(5, 150, 105, 0.1) 100%);
+  border: 1px solid var(--clat-legal);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.card-ui8-legal:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--clat-glow-success);
+}
+
+.card-ui8-english {
+  background: linear-gradient(135deg, var(--clat-english) 0%, rgba(220, 38, 38, 0.1) 100%);
+  border: 1px solid var(--clat-english);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.card-ui8-english:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--clat-glow-error);
+}
+
+.card-ui8-logical {
+  background: linear-gradient(135deg, var(--clat-logical) 0%, rgba(124, 58, 237, 0.1) 100%);
+  border: 1px solid var(--clat-logical);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.card-ui8-logical:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+/* UI8 Progress Bars */
+.progress-ui8 {
+  width: 100%;
+  height: 0.5rem;
+  background: var(--clat-bg-tertiary);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-ui8-fill {
+  height: 100%;
+  background: var(--clat-gradient-primary);
+  border-radius: 0.25rem;
+  transition: width var(--duration-slow) var(--ease-out);
+  position: relative;
+}
+
+.progress-ui8-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* UI8 Input Fields */
+.input-ui8 {
+  background: var(--clat-bg-quaternary);
+  border: 1px solid var(--clat-glass-border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: var(--clat-text-primary);
+  font-size: 1rem;
+  transition: all var(--duration-normal) var(--ease-out);
+  width: 100%;
+}
+
+.input-ui8:focus {
+  outline: none;
+  border-color: var(--clat-primary);
+  box-shadow: var(--clat-glow-primary);
+  background: var(--clat-bg-tertiary);
+}
+
+.input-ui8::placeholder {
+  color: var(--clat-text-muted);
+}
+
+/* UI8 Navigation Enhancement */
+.nav-ui8 {
+  background: var(--clat-glass-bg);
+  backdrop-filter: var(--clat-backdrop-blur);
+  border-bottom: 1px solid var(--clat-glass-border);
+  padding: 1rem 0;
+}
+
+.nav-ui8-link {
+  color: var(--clat-text-secondary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all var(--duration-normal) var(--ease-out);
+  position: relative;
+}
+
+.nav-ui8-link:hover {
+  color: var(--clat-text-primary);
+  background: var(--clat-glass-bg);
+}
+
+.nav-ui8-link.active {
+  color: var(--clat-primary);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* UI8 Modal/Dialog Enhancement */
+.modal-ui8 {
+  background: var(--clat-bg-secondary);
+  border: 1px solid var(--clat-glass-border);
+  border-radius: 1rem;
+  box-shadow: var(--clat-glass-shadow);
+  backdrop-filter: var(--clat-backdrop-blur);
+}
+
+.modal-ui8-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+/* UI8 Notification/Toast Enhancement */
+.toast-ui8-success {
+  background: var(--clat-gradient-success);
+  color: white;
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  box-shadow: var(--clat-glow-success);
+}
+
+.toast-ui8-error {
+  background: var(--clat-gradient-english);
+  color: white;
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  box-shadow: var(--clat-glow-error);
+}
+
+/* UI8 Loading States */
+.loading-ui8 {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid var(--clat-glass-border);
+  border-top: 2px solid var(--clat-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* UI8 Hover Animations */
+.hover-ui8-lift {
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.hover-ui8-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-ui8-scale {
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.hover-ui8-scale:hover {
+  transform: scale(1.02);
+}
+
+.hover-ui8-glow {
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.hover-ui8-glow:hover {
+  box-shadow: var(--clat-glow-primary);
+}
+
+/* UI8 Responsive Utilities */
+@media (max-width: 768px) {
+  .card-ui8-glass {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+  
+  .btn-ui8-primary,
+  .btn-ui8-secondary {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* UI8 Animation Entrance Effects */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-ui8-fade-in-up {
+  animation: fadeInUp var(--duration-normal) var(--ease-out);
+}
+
+.animate-ui8-fade-in-left {
+  animation: fadeInLeft var(--duration-normal) var(--ease-out);
+}
+
+.animate-ui8-scale-in {
+  animation: scaleIn var(--duration-fast) var(--ease-out);
+}
+
+/* UI8 Stagger Animation System */
+.stagger-ui8-children > * {
+  animation-delay: calc(100ms * var(--stagger-index, 0));
+}
+
+/* UI8 Glassmorphic Form Enhancement */
+.form-ui8 {
+  background: var(--clat-glass-bg);
+  backdrop-filter: var(--clat-backdrop-blur);
+  border: 1px solid var(--clat-glass-border);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: var(--clat-glass-shadow);
+}
+
+.form-ui8 .field-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-ui8 label {
+  display: block;
+  color: var(--clat-text-primary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* UI8 Badge/Tag System */
+.badge-ui8 {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-ui8-primary {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--clat-primary);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.badge-ui8-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--clat-success);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.badge-ui8-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--clat-warning);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+/* UI8 Dark Mode Enhancements */
+.ui8-dark-theme {
+  background: var(--clat-bg-primary);
+  color: var(--clat-text-primary);
+  min-height: 100vh;
+}
+
+.ui8-dark-theme * {
+  border-color: var(--clat-glass-border);
+}
+
+/* UI8 Scrollbar Enhancement */
+.ui8-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ui8-scrollbar::-webkit-scrollbar-track {
+  background: var(--clat-bg-tertiary);
+  border-radius: 4px;
+}
+
+.ui8-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--clat-primary);
+  border-radius: 4px;
+}
+
+.ui8-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--clat-primary-light);
+}
+
+/* UI8 Typography Enhancements */
+.text-ui8-hero {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  background: var(--clat-gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-ui8-display {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--clat-text-primary);
+}
+
+.text-ui8-heading {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--clat-text-primary);
+}
+
+.text-ui8-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--clat-text-secondary);
+}
+
+.text-ui8-caption {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--clat-text-muted);
+}
