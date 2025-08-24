@@ -10,13 +10,15 @@ import { SoloCard } from '../shared/SoloCard';
 interface SoloOTPAuthProps {
   onSuccess: (userType: string, userData: any) => void;
   onBack: () => void;
+  marketingFlow?: boolean; // New prop to indicate marketing website flow
+  prefilledEmail?: string; // Pre-filled email from marketing
 }
 
 type AuthStep = 'method' | 'details' | 'otp' | 'success';
 type AuthMethod = 'phone' | 'email';
 type UserType = 'student' | 'parent' | 'educator' | 'operation_manager' | 'admin';
 
-export const SoloOTPAuth: React.FC<SoloOTPAuthProps> = ({ onSuccess, onBack }) => {
+export const SoloOTPAuth: React.FC<SoloOTPAuthProps> = ({ onSuccess, onBack, marketingFlow = false, prefilledEmail = '' }) => {
   const [currentStep, setCurrentStep] = useState<AuthStep>('method');
   const [authMethod, setAuthMethod] = useState<AuthMethod>('phone');
   const [userType, setUserType] = useState<UserType>('student');
@@ -28,9 +30,16 @@ export const SoloOTPAuth: React.FC<SoloOTPAuthProps> = ({ onSuccess, onBack }) =
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    email: '',
+    email: prefilledEmail, // Pre-fill email from marketing
     otp: ['', '', '', '', '', '']
   });
+
+  // Auto-select email method if coming from marketing with email
+  useEffect(() => {
+    if (marketingFlow && prefilledEmail) {
+      setAuthMethod('email');
+    }
+  }, [marketingFlow, prefilledEmail]);
 
   // OTP input refs
   const otpRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -257,40 +266,52 @@ export const SoloOTPAuth: React.FC<SoloOTPAuthProps> = ({ onSuccess, onBack }) =
           {/* Details Form */}
           {currentStep === 'details' && (
             <form onSubmit={handleFormSubmit} className="space-y-6">
-              {/* User Type Selection */}
-              <div>
-                <label className="block text-sm font-medium text-solo-gray-700 mb-3">
-                  I am a:
-                </label>
-                <div className="grid grid-cols-1 gap-2">
-                  {userTypeOptions.map((option) => (
-                    <label
-                      key={option.value}
-                      className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all ${
-                        userType === option.value
-                          ? 'border-solo-primary bg-solo-primary-light'
-                          : 'border-solo-gray-200 hover:border-solo-gray-300'
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="userType"
-                        value={option.value}
-                        checked={userType === option.value}
-                        onChange={(e) => setUserType(e.target.value as UserType)}
-                        className="sr-only"
-                      />
-                      <div className="flex-1">
-                        <div className="font-medium text-solo-dark">{option.label}</div>
-                        <div className="text-sm text-solo-gray-600">{option.description}</div>
-                      </div>
-                      {userType === option.value && (
-                        <CheckCircle className="w-5 h-5 text-solo-primary" />
-                      )}
-                    </label>
-                  ))}
+              {/* User Type Selection - Hidden for marketing flows (student-only) */}
+              {!marketingFlow && (
+                <div>
+                  <label className="block text-sm font-medium text-solo-gray-700 mb-3">
+                    I am a:
+                  </label>
+                  <div className="grid grid-cols-1 gap-2">
+                    {userTypeOptions.map((option) => (
+                      <label
+                        key={option.value}
+                        className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all ${
+                          userType === option.value
+                            ? 'border-solo-primary bg-solo-primary-light'
+                            : 'border-solo-gray-200 hover:border-solo-gray-300'
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="userType"
+                          value={option.value}
+                          checked={userType === option.value}
+                          onChange={(e) => setUserType(e.target.value as UserType)}
+                          className="sr-only"
+                        />
+                        <div className="flex-1">
+                          <div className="font-medium text-solo-dark">{option.label}</div>
+                          <div className="text-sm text-solo-gray-600">{option.description}</div>
+                        </div>
+                        {userType === option.value && (
+                          <CheckCircle className="w-5 h-5 text-solo-primary" />
+                        )}
+                      </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
+
+              {/* Marketing flow student indicator */}
+              {marketingFlow && (
+                <div className="text-center">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                    <span className="text-green-600">🎓</span>
+                    CLAT Student Registration
+                  </div>
+                </div>
+              )}
 
               {/* Name Input */}
               <div>

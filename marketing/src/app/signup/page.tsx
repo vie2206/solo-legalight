@@ -90,8 +90,13 @@ export default function SignupPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle signup logic here
-    console.log('Signup attempt:', formData);
+    // Redirect to main webapp with signup context and form data
+    const params = new URLSearchParams({
+      name: formData.name,
+      email: formData.email,
+      source: 'marketing'
+    });
+    window.location.href = `https://solo-legalight.vercel.app?${params.toString()}`;
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

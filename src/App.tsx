@@ -87,7 +87,7 @@ function App() {
 
   const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
-  // Check for URL parameters for screenshot mode and testing
+  // Check for URL parameters for screenshot mode, testing, and marketing redirects
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('mode') === 'screenshots') {
@@ -97,6 +97,24 @@ function App() {
     }
     if (urlParams.get('mode') === 'testing') {
       setCurrentView('testing');
+      setLoading(false);
+      return;
+    }
+    
+    // Handle marketing website signup redirects
+    const marketingSource = urlParams.get('source');
+    const marketingName = urlParams.get('name');
+    const marketingEmail = urlParams.get('email');
+    
+    if (marketingSource === 'marketing' && marketingName && marketingEmail) {
+      // Pre-populate form data from marketing site
+      setLoginForm({
+        ...loginForm,
+        email: marketingEmail
+      });
+      // Go directly to OTP auth for seamless experience
+      setCurrentView('auth');
+      setAuthMode('otp');
       setLoading(false);
       return;
     }
@@ -188,9 +206,17 @@ function App() {
     // Always set loading to false immediately for demo mode
     setLoading(false);
     
-    // Ensure we show landing page initially if no auth
+    // For unified experience, go directly to auth instead of landing page
+    // This removes the separate landing page and creates a seamless marketing-to-app flow
     if (!savedToken && !marketingStoredToken && !marketingToken) {
-      setCurrentView('landing');
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('source') === 'marketing') {
+        // Coming from marketing, go directly to auth
+        setCurrentView('auth');
+      } else {
+        // Direct access, still show landing for now (can be removed later)
+        setCurrentView('landing');
+      }
     }
   }, []);
 
@@ -616,6 +642,8 @@ function App() {
               localStorage.setItem('user_data', JSON.stringify(newUser));
             }}
             onBack={() => setCurrentView('landing')}
+            marketingFlow={new URLSearchParams(window.location.search).get('source') === 'marketing'}
+            prefilledEmail={new URLSearchParams(window.location.search).get('email') || ''}
           />
         </Suspense>
       )}
