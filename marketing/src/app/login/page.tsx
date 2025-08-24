@@ -57,7 +57,7 @@ export default function LoginPage() {
     
     // Redirect with URL parameters for immediate handoff
     const userDataEncoded = encodeURIComponent(JSON.stringify(user));
-    const redirectUrl = `https://solo-legalight.vercel.app?token=${token}&userData=${userDataEncoded}`;
+    const redirectUrl = `https://solo.legalight.org.in?token=${token}&userData=${userDataEncoded}`;
     
     // Add a small delay to ensure localStorage is written
     setTimeout(() => {

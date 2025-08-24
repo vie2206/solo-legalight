@@ -96,7 +96,7 @@ export default function SignupPage() {
       email: formData.email,
       source: 'marketing'
     });
-    window.location.href = `https://solo-legalight.vercel.app?${params.toString()}`;
+    window.location.href = `https://solo.legalight.org.in?${params.toString()}`;
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

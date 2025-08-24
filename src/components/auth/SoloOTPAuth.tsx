@@ -198,10 +198,7 @@ export const SoloOTPAuth: React.FC<SoloOTPAuthProps> = ({ onSuccess, onBack, mar
 
   const userTypeOptions = [
     { value: 'student', label: '👨‍🎓 Student', description: 'CLAT Aspirant' },
-    { value: 'parent', label: '👨‍👩‍👧‍👦 Parent', description: 'Student Guardian' },
-    { value: 'educator', label: '👩‍🏫 Educator', description: 'Teacher/Mentor' },
-    { value: 'operation_manager', label: '👔 Manager', description: 'Operations Team' },
-    { value: 'admin', label: '⚙️ Admin', description: 'System Administrator' }
+    { value: 'admin', label: '⚙️ Admin', description: 'Platform Administrator' }
   ];
 
   return (

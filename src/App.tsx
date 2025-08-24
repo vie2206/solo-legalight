@@ -247,30 +247,6 @@ function App() {
           picture: '',
           subscription_tier: 'ultra' as SubscriptionTier
         },
-        educator: {
-          id: 'demo-educator-001',
-          name: 'Demo Educator',
-          email: 'educator@demo.com',
-          role: 'educator' as const,
-          picture: '',
-          subscription_tier: 'ultra' as SubscriptionTier
-        },
-        parent: {
-          id: 'demo-parent-001',
-          name: 'Demo Parent',
-          email: 'parent@demo.com',
-          role: 'parent' as const,
-          picture: '',
-          subscription_tier: 'pro' as SubscriptionTier
-        },
-        operation_manager: {
-          id: 'demo-manager-001',
-          name: 'Demo Manager',
-          email: 'manager@demo.com',
-          role: 'operation_manager' as const,
-          picture: '',
-          subscription_tier: 'ultra' as SubscriptionTier
-        }
       };
 
       const userData = mockUsers[role as keyof typeof mockUsers];
@@ -514,10 +490,7 @@ function App() {
               <div className="responsive-demo-grid">
                 {[
                   { role: 'student', label: '👨‍🎓 Student Demo', color: 'bg-blue-600 hover:bg-blue-700' },
-                  { role: 'admin', label: '⚙️ Admin Demo', color: 'bg-red-600 hover:bg-red-700' },
-                  { role: 'educator', label: '👩‍🏫 Educator Demo', color: 'bg-green-600 hover:bg-green-700' },
-                  { role: 'parent', label: '👨‍👩‍👧‍👦 Parent Demo', color: 'bg-purple-600 hover:bg-purple-700' },
-                  { role: 'operation_manager', label: '👔 Manager Demo', color: 'bg-indigo-600 hover:bg-indigo-700' }
+                  { role: 'admin', label: '⚙️ Admin Demo', color: 'bg-red-600 hover:bg-red-700' }
                 ].map(({ role, label, color }) => (
                   <button
                     key={role}
@@ -600,8 +573,8 @@ function App() {
     );
   }
 
-  // Role-based navigation
-  const showAdminCMS = user.role === 'admin' || user.role === 'operation_manager' || user.role === 'educator';
+  // Role-based navigation (simplified for students + admins only)
+  const showAdminCMS = user.role === 'admin';
   
   // Main application with role-based routing
   return (
@@ -650,24 +623,9 @@ function App() {
 
       {currentView === 'dashboard' && (
         <Suspense fallback={<AppLoader />}>
-          {/* Render different dashboards based on user role */}
+          {/* Simplified dashboard routing - Students + Admins only */}
           {user.role === 'admin' ? (
             <CompleteAdminDashboard 
-              user={user}
-              onLogout={handleLogout}
-            />
-          ) : user.role === 'operation_manager' ? (
-            <SoloOperationManagerDashboard 
-              user={user}
-              onLogout={handleLogout}
-            />
-          ) : user.role === 'educator' ? (
-            <SoloEducatorDashboard 
-              user={user}
-              onLogout={handleLogout}
-            />
-          ) : user.role === 'parent' ? (
-            <SoloParentDashboard 
               user={user}
               onLogout={handleLogout}
             />
