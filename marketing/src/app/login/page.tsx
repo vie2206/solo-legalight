@@ -16,7 +16,7 @@ import {
   Clock,
   BarChart3,
 } from 'lucide-react';
-import SimpleSMSAuth from '@/components/auth/SimpleSMSAuth';
+import UnifiedAuth from '@/components/auth/UnifiedAuth';
 
 const features = [
   {
@@ -46,24 +46,6 @@ const stats = [
 ];
 
 export default function LoginPage() {
-  const handleAuthSuccess = (token: string, user: any) => {
-    // Store with frontend naming convention
-    localStorage.setItem('auth_token', token);
-    localStorage.setItem('user_data', JSON.stringify(user));
-    
-    // Also store with marketing naming for backward compatibility
-    localStorage.setItem('authToken', token);
-    localStorage.setItem('userData', JSON.stringify(user));
-    
-    // Redirect with URL parameters for immediate handoff
-    const userDataEncoded = encodeURIComponent(JSON.stringify(user));
-    const redirectUrl = `https://solo.legalight.org.in?token=${token}&userData=${userDataEncoded}`;
-    
-    // Add a small delay to ensure localStorage is written
-    setTimeout(() => {
-      window.location.href = redirectUrl;
-    }, 100);
-  };
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
@@ -220,11 +202,9 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* SMS Authentication Component */}
+            {/* Unified Authentication Component */}
             <div className="space-y-6">
-              <SimpleSMSAuth 
-                onSuccess={handleAuthSuccess}
-              />
+              <UnifiedAuth />
             </div>
 
             {/* Trust Indicators */}
