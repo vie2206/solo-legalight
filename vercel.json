@@ -1,4 +1,5 @@
 {
+  "name": "solo-legalight-frontend",
   "version": 2,
   "builds": [
     {
@@ -9,27 +10,14 @@
       }
     }
   ],
-  "build": {
-    "env": {
-      "CI": "false",
-      "DISABLE_ESLINT_PLUGIN": "true"
-    }
-  },
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "https://solo-legalight-backend-production.up.railway.app/api/$1"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ],
-  "headers": [
-    {
-      "source": "/static/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    }
-  ]
+  "env": {
+    "REACT_APP_SUPABASE_URL": "https://nrapwcbdowptlrrbfxta.supabase.co",
+    "REACT_APP_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5yYXB3Y2Jkb3dwdGxycmJmeHRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjA3NzQ5NzksImV4cCI6MjAzNjM1MDk3OX0.VQQ5DRdVpL-kFDGhfUv8L9iJFpg0_tgpgtPv2wHzNR4"
+  }
 }
